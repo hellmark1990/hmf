@@ -1,0 +1,59 @@
+<?php
+
+namespace ProfileBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="ProfileBundle\Repository\UserRepository")
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="text", name="about", nullable=true)
+     */
+    private $about;
+
+    /**
+     * @ORM\Column(type="string", name="phone", nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", name="skype", nullable=true)
+     */
+    private $skype;
+
+    /**
+     * @ORM\Column(type="string", name="vk", nullable=true)
+     */
+    private $vk;
+
+    /**
+     * @ORM\Column(type="string", name="facebook", nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @ORM\Column(type="string", name="twitter", nullable=true)
+     */
+    private $twitter;
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}
