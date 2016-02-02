@@ -38,6 +38,13 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - 'bootstrap_3_horizontal_layout.html.twig'
+
+    form:
+        resources:
+            # other files
+            - 'SonataMediaBundle:Form:media_widgets.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -49,6 +56,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        types:
+            json: Sonata\Doctrine\Types\JsonType
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
@@ -58,8 +67,14 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+#        naming_strategy: doctrine.orm.naming_strategy.underscore
+#        auto_mapping: true
+        entity_managers:
+            default:
+                mappings:
+                    SonataMediaBundle: ~
+                    ProfileBundle: ~
+                    ApplicationSonataMediaBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -87,3 +102,34 @@ sonata_block:
     blocks:
         sonata.admin.block.admin_list:
             contexts: [admin]
+
+sonata_media:
+    db_driver: doctrine_orm # or doctrine_mongodb
+    default_context: default
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  %kernel.root_dir%/../web/uploads/media
+            create:     false
+
+
+    providers:
+        image:
+            resizer: sonata.media.resizer.square
+            thumbnail:  sonata.media.thumbnail.format
+            filesystem: sonata.media.filesystem.local

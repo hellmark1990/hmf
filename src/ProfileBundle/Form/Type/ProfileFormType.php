@@ -34,12 +34,12 @@ class ProfileFormType extends AbstractType
     {
         $this->buildUserForm($builder, $options);
 
-        $builder->add('current_password', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'), array(
-            'label' => 'form.current_password',
-            'translation_domain' => 'FOSUserBundle',
-            'mapped' => false,
-            'constraints' => new UserPassword(),
-        ));
+//        $builder->add('current_password', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'), array(
+//            'label' => 'form.current_password',
+//            'translation_domain' => 'FOSUserBundle',
+//            'mapped' => false,
+//            'constraints' => new UserPassword(),
+//        ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -84,6 +84,11 @@ class ProfileFormType extends AbstractType
             ->add('phone', 'text', ['required' => false])
             ->add('vk', 'text', ['required' => false])
             ->add('facebook', 'text', ['required' => false])
+            ->add('avatar', 'sonata_media_type', [
+                'required' => false,
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'default',
+            ])
             ->add('twitter', 'text', ['required' => false]);
     }
 }

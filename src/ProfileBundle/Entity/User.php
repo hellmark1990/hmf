@@ -50,6 +50,11 @@ class User extends BaseUser
      */
     private $twitter;
 
+    /**
+     * @ORM\OneToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     */
+    private $avatar;
+
 
     public function __construct()
     {
@@ -193,5 +198,28 @@ class User extends BaseUser
     public function getTwitter()
     {
         return $this->twitter;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $avatar
+     * @return User
+     */
+    public function setAvatar(\Application\Sonata\MediaBundle\Entity\Media $avatar = null)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 }
