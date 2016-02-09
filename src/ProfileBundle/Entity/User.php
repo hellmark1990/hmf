@@ -2,6 +2,7 @@
 
 namespace ProfileBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
@@ -54,6 +55,13 @@ class User extends BaseUser
      * @ORM\OneToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
      */
     private $avatar;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Proposition", mappedBy="user")
+     */
+    private $propositions;
 
 
     public function __construct()
@@ -221,5 +229,38 @@ class User extends BaseUser
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Add propositions
+     *
+     * @param \ProfileBundle\Entity\Proposition $propositions
+     * @return User
+     */
+    public function addProposition(\ProfileBundle\Entity\Proposition $propositions)
+    {
+        $this->propositions[] = $propositions;
+
+        return $this;
+    }
+
+    /**
+     * Remove propositions
+     *
+     * @param \ProfileBundle\Entity\Proposition $propositions
+     */
+    public function removeProposition(\ProfileBundle\Entity\Proposition $propositions)
+    {
+        $this->propositions->removeElement($propositions);
+    }
+
+    /**
+     * Get propositions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPropositions()
+    {
+        return $this->propositions;
     }
 }

@@ -1,0 +1,195 @@
+<?php
+
+namespace ProfileBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Proposition
+ *
+ * @ORM\Table(name="proposition")
+ * @ORM\Entity(repositoryClass="ProfileBundle\Entity\PropositionRepository")
+ */
+class Proposition
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     */
+    private $userId;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="propositions")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="place", type="string", length=255, nullable=true)
+     */
+    private $place;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="\Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinTable(name="proposition_media",
+     *      joinColumns={@ORM\JoinColumn(name="proposition_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="media_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $medias;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Proposition
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Proposition
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     * @return Proposition
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set place
+     *
+     * @param string $place
+     * @return Proposition
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return string
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * Set user
+     *
+     * @param User $user
+     * @return Proposition
+     */
+    public function setUser(User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}
