@@ -31,6 +31,7 @@ framework:
     session:
         # handler_id set to null will use default session handler from php.ini
         handler_id:  ~
+        gc_probability: 0
     fragments:       ~
     http_method_override: true
 
@@ -39,12 +40,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form_themes:
-        - 'bootstrap_3_horizontal_layout.html.twig'
-
-    form:
-        resources:
-            # other files
-            - 'SonataMediaBundle:Form:media_widgets.html.twig'
+        - "%kernel.root_dir%/Resources/views/Form/custom_layout.html.twig"
 
 # Doctrine Configuration
 doctrine:
@@ -67,14 +63,15 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-#        naming_strategy: doctrine.orm.naming_strategy.underscore
 #        auto_mapping: true
+#        naming_strategy: doctrine.orm.naming_strategy.underscore
         entity_managers:
             default:
                 mappings:
                     SonataMediaBundle: ~
                     ProfileBundle: ~
                     ApplicationSonataMediaBundle: ~
+                    BookBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:

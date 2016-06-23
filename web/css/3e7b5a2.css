@@ -1,0 +1,18 @@
+ul.auth-nav{
+    float: right;
+}
+.auth-nav > li{
+    float: left;
+    min-width: 80px;
+    list-style-type: none;
+    text-align: left;
+}
+
+
+.auth-nav.social-share  li  a{
+    width: 100%!important;
+}
+
+.auth-nav > li > a:hover{
+    color: white;
+}

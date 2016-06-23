@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+
+{% block content -%}
+    <h1>Book list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Publisher</th>
+                <th>Publisheddate</th>
+                <th>Description</th>
+                <th>Pagecount</th>
+                <th>Printedpagecount</th>
+                <th>Imageurl</th>
+                <th>Language</th>
+                <th>Previewlink</th>
+                <th>Readerlink</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('book_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.publisher }}</td>
+                <td>{% if entity.publishedDate %}{{ entity.publishedDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.pageCount }}</td>
+                <td>{{ entity.printedPageCount }}</td>
+                <td>{{ entity.imageUrl }}</td>
+                <td>{{ entity.language }}</td>
+                <td>{{ entity.previewLink }}</td>
+                <td>{{ entity.readerLink }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('book_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('book_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('book_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

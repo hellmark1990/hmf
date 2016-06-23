@@ -8,6 +8,11 @@ ul.auth-nav{
     text-align: left;
 }
 
+
+.auth-nav.social-share  li  a{
+    width: 100%!important;
+}
+
 .auth-nav > li > a:hover{
     color: white;
 }

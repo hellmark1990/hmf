@@ -18,3 +18,7 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
     locale: uk
+
+    # Google
+    google_api_key: AIzaSyCmWmxHHOZTWL6qpA04If7xtfzVa8NzMJM
+    google_project_name: ibooker

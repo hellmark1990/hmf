@@ -56,13 +56,6 @@ class User extends BaseUser
      */
     private $avatar;
 
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Proposition", mappedBy="user")
-     */
-    private $propositions;
-
 
     public function __construct()
     {
@@ -86,7 +79,7 @@ class User extends BaseUser
     /**
      * Get about
      *
-     * @return string 
+     * @return string
      */
     public function getAbout()
     {
@@ -109,7 +102,7 @@ class User extends BaseUser
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -132,7 +125,7 @@ class User extends BaseUser
     /**
      * Get skype
      *
-     * @return string 
+     * @return string
      */
     public function getSkype()
     {
@@ -155,7 +148,7 @@ class User extends BaseUser
     /**
      * Get vk
      *
-     * @return string 
+     * @return string
      */
     public function getVk()
     {
@@ -178,7 +171,7 @@ class User extends BaseUser
     /**
      * Get facebook
      *
-     * @return string 
+     * @return string
      */
     public function getFacebook()
     {
@@ -201,7 +194,7 @@ class User extends BaseUser
     /**
      * Get twitter
      *
-     * @return string 
+     * @return string
      */
     public function getTwitter()
     {
@@ -224,43 +217,11 @@ class User extends BaseUser
     /**
      * Get avatar
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return \Application\Sonata\MediaBundle\Entity\Media
      */
     public function getAvatar()
     {
         return $this->avatar;
     }
 
-    /**
-     * Add propositions
-     *
-     * @param \ProfileBundle\Entity\Proposition $propositions
-     * @return User
-     */
-    public function addProposition(\ProfileBundle\Entity\Proposition $propositions)
-    {
-        $this->propositions[] = $propositions;
-
-        return $this;
-    }
-
-    /**
-     * Remove propositions
-     *
-     * @param \ProfileBundle\Entity\Proposition $propositions
-     */
-    public function removeProposition(\ProfileBundle\Entity\Proposition $propositions)
-    {
-        $this->propositions->removeElement($propositions);
-    }
-
-    /**
-     * Get propositions
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPropositions()
-    {
-        return $this->propositions;
-    }
 }
