@@ -1,0 +1,4 @@
+services:
+    book.google_search:
+        class: BookBundle\Services\GoogleSearch
+        arguments: [@service_container, %google_api_key%, %google_project_name%]

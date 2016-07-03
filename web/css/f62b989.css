@@ -1,0 +1,14 @@
+.ui-menu .ui-menu-item .ui-menu-item-icon-book {
+    background-repeat: no-repeat;
+    background-position: 2px, 0;
+    background-size: contain;
+    padding-left: 40px;
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.ui-menu .ui-menu-item {
+    clear: both;
+    height: 60px;
+}

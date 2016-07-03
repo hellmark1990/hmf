@@ -3,12 +3,13 @@
 namespace BookBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class BookType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -17,7 +18,13 @@ class BookType extends AbstractType
         $builder
             ->add('name')
             ->add('publisher')
-            ->add('publishedDate')
+            ->add('publishedDate', DateType::class, array(
+                'widget' => 'single_text',
+                // do not render as type="date", to avoid HTML5 date pickers
+                'html5' => false,
+                // add a class that can eb selected in JavaScript
+                'attr' => ['class' => 'js-datepicker-publishedDate'],
+            ))
             ->add('description')
             ->add('pageCount')
             ->add('printedPageCount')
@@ -28,13 +35,13 @@ class BookType extends AbstractType
             ->add('image', 'sonata_media_type', [
                 'required' => false,
                 'provider' => 'sonata.media.provider.image',
-                'context'  => 'default',
-            ])
-        ;
+                'context' => 'default',
+                'attr' => ['class' => 'form-book-image'],
+            ]);
 
 
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

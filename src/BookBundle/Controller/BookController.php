@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use BookBundle\Entity\Book;
 use BookBundle\Form\BookType;
+use Symfony\Component\Intl\Locale\Locale;
 
 /**
  * Book controller.
@@ -251,21 +252,32 @@ class BookController extends Controller
     /**
      * @Route("/search/in/google", name="book_search_google")
      */
-    public function ajax_google_search_books()
+    public function ajax_google_search_books(Request $request)
     {
+        if (empty($request->get('term'))) {
+            return new JsonResponse([]);
+        }
 
-        // https://developers.google.com/api-client-library/php/start/get_started?hl=ru#calling-an-api
+        $search_result = $this->get('book.google_search')->search($request->get('term'));
 
-        $result = [
-            [
-                'value' => "jquery",
-                'label' => "jQuery",
-                'desc' => "the write less, do more, JavaScript library",
-                'icon' => "jquery_32x32.png"
-            ],
-        ];
+        $result = [];
+        foreach ($search_result as $book) {
+            $authors = implode(',', (array)$book['volumeInfo']['authors']);
+
+            $result[] = [
+                'title' => $book['volumeInfo']['title'],
+                'authors' => $authors,
+                'thumbnail' => $book['volumeInfo']['imageLinks']['thumbnail'],
+                'publisher' => $book['volumeInfo']['publisher'],
+                'publishedDate' => $book['volumeInfo']['publishedDate'],
+                'description' => $book['volumeInfo']['description'],
+                'pageCount' => $book['volumeInfo']['pageCount'],
+                'printedPageCount' => $book['volumeInfo']['printedPageCount'],
+                'language' => $book['volumeInfo']['language'],
+                'previewLink' => $book['volumeInfo']['previewLink'],
+            ];
+        }
 
         return new JsonResponse($result);
-
     }
 }

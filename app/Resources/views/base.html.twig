@@ -64,6 +64,10 @@
         <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
 
+        {% stylesheets '@BookBundle/Resources/public/css/*' filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+
     {% endblock %}
 
     <!--[if lt IE 9]>

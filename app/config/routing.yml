@@ -7,6 +7,9 @@ app_admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation
 
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 profile:
     resource: "@ProfileBundle/Controller/"
     type:     annotation
@@ -15,9 +18,6 @@ profile:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
-
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
 admin_area:
     resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
