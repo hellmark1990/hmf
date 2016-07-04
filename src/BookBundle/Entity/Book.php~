@@ -96,6 +96,12 @@ class Book
      */
     private $image;
 
+ 
+    /**
+    * @ORM\ManyToMany(targetEntity="Book", mappedBy="books")
+    */
+    private $shelfs;
+
 
     /**
      * Get id
@@ -335,5 +341,28 @@ class Book
     public function getReaderLink()
     {
         return $this->readerLink;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $image
+     * @return Book
+     */
+    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

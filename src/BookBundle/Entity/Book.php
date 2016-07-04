@@ -96,6 +96,12 @@ class Book
      */
     private $image;
 
+ 
+    /**
+    * @ORM\ManyToMany(targetEntity="Book", mappedBy="books")
+    */
+    private $shelfs;
+
 
     /**
      * Get id
@@ -358,5 +364,45 @@ class Book
     public function getImage()
     {
         return $this->image;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->shelfs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add shelfs
+     *
+     * @param \BookBundle\Entity\Book $shelfs
+     * @return Book
+     */
+    public function addShelf(\BookBundle\Entity\Book $shelfs)
+    {
+        $this->shelfs[] = $shelfs;
+
+        return $this;
+    }
+
+    /**
+     * Remove shelfs
+     *
+     * @param \BookBundle\Entity\Book $shelfs
+     */
+    public function removeShelf(\BookBundle\Entity\Book $shelfs)
+    {
+        $this->shelfs->removeElement($shelfs);
+    }
+
+    /**
+     * Get shelfs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getShelfs()
+    {
+        return $this->shelfs;
     }
 }
