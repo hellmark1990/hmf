@@ -10,8 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="book")
  * @ORM\Entity(repositoryClass="BookBundle\Entity\BookRepository")
  */
-class Book
-{
+class Book {
     /**
      * @var integer
      *
@@ -96,20 +95,24 @@ class Book
      */
     private $image;
 
- 
     /**
-    * @ORM\ManyToMany(targetEntity="Book", mappedBy="books")
-    */
+     * @ORM\ManyToMany(targetEntity="Book", mappedBy="books")
+     */
     private $shelfs;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ProfileBundle\Entity\User", inversedBy="books")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $user;
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
-    public function getId()
-    {
+    public function getId(){
         return $this->id;
     }
 
@@ -119,8 +122,7 @@ class Book
      * @param string $name
      * @return Book
      */
-    public function setName($name)
-    {
+    public function setName($name){
         $this->name = $name;
 
         return $this;
@@ -129,10 +131,9 @@ class Book
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
-    {
+    public function getName(){
         return $this->name;
     }
 
@@ -142,8 +143,7 @@ class Book
      * @param string $publisher
      * @return Book
      */
-    public function setPublisher($publisher)
-    {
+    public function setPublisher($publisher){
         $this->publisher = $publisher;
 
         return $this;
@@ -152,10 +152,9 @@ class Book
     /**
      * Get publisher
      *
-     * @return string 
+     * @return string
      */
-    public function getPublisher()
-    {
+    public function getPublisher(){
         return $this->publisher;
     }
 
@@ -165,8 +164,7 @@ class Book
      * @param \DateTime $publishedDate
      * @return Book
      */
-    public function setPublishedDate($publishedDate)
-    {
+    public function setPublishedDate($publishedDate){
         $this->publishedDate = $publishedDate;
 
         return $this;
@@ -175,10 +173,9 @@ class Book
     /**
      * Get publishedDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getPublishedDate()
-    {
+    public function getPublishedDate(){
         return $this->publishedDate;
     }
 
@@ -188,8 +185,7 @@ class Book
      * @param string $description
      * @return Book
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description){
         $this->description = $description;
 
         return $this;
@@ -198,10 +194,9 @@ class Book
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription(){
         return $this->description;
     }
 
@@ -211,8 +206,7 @@ class Book
      * @param integer $pageCount
      * @return Book
      */
-    public function setPageCount($pageCount)
-    {
+    public function setPageCount($pageCount){
         $this->pageCount = $pageCount;
 
         return $this;
@@ -221,10 +215,9 @@ class Book
     /**
      * Get pageCount
      *
-     * @return integer 
+     * @return integer
      */
-    public function getPageCount()
-    {
+    public function getPageCount(){
         return $this->pageCount;
     }
 
@@ -234,8 +227,7 @@ class Book
      * @param integer $printedPageCount
      * @return Book
      */
-    public function setPrintedPageCount($printedPageCount)
-    {
+    public function setPrintedPageCount($printedPageCount){
         $this->printedPageCount = $printedPageCount;
 
         return $this;
@@ -244,10 +236,9 @@ class Book
     /**
      * Get printedPageCount
      *
-     * @return integer 
+     * @return integer
      */
-    public function getPrintedPageCount()
-    {
+    public function getPrintedPageCount(){
         return $this->printedPageCount;
     }
 
@@ -257,8 +248,7 @@ class Book
      * @param string $imageUrl
      * @return Book
      */
-    public function setImageUrl($imageUrl)
-    {
+    public function setImageUrl($imageUrl){
         $this->imageUrl = $imageUrl;
 
         return $this;
@@ -267,10 +257,9 @@ class Book
     /**
      * Get imageUrl
      *
-     * @return string 
+     * @return string
      */
-    public function getImageUrl()
-    {
+    public function getImageUrl(){
         return $this->imageUrl;
     }
 
@@ -280,8 +269,7 @@ class Book
      * @param string $language
      * @return Book
      */
-    public function setLanguage($language)
-    {
+    public function setLanguage($language){
         $this->language = $language;
 
         return $this;
@@ -290,10 +278,9 @@ class Book
     /**
      * Get language
      *
-     * @return string 
+     * @return string
      */
-    public function getLanguage()
-    {
+    public function getLanguage(){
         return $this->language;
     }
 
@@ -303,8 +290,7 @@ class Book
      * @param string $previewLink
      * @return Book
      */
-    public function setPreviewLink($previewLink)
-    {
+    public function setPreviewLink($previewLink){
         $this->previewLink = $previewLink;
 
         return $this;
@@ -313,10 +299,9 @@ class Book
     /**
      * Get previewLink
      *
-     * @return string 
+     * @return string
      */
-    public function getPreviewLink()
-    {
+    public function getPreviewLink(){
         return $this->previewLink;
     }
 
@@ -326,8 +311,7 @@ class Book
      * @param string $readerLink
      * @return Book
      */
-    public function setReaderLink($readerLink)
-    {
+    public function setReaderLink($readerLink){
         $this->readerLink = $readerLink;
 
         return $this;
@@ -336,10 +320,9 @@ class Book
     /**
      * Get readerLink
      *
-     * @return string 
+     * @return string
      */
-    public function getReaderLink()
-    {
+    public function getReaderLink(){
         return $this->readerLink;
     }
 
@@ -349,8 +332,7 @@ class Book
      * @param \Application\Sonata\MediaBundle\Entity\Media $image
      * @return Book
      */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
-    {
+    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null){
         $this->image = $image;
 
         return $this;
@@ -359,10 +341,46 @@ class Book
     /**
      * Get image
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return \Application\Sonata\MediaBundle\Entity\Media
      */
-    public function getImage()
-    {
+    public function getImage(){
         return $this->image;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct(){
+        $this->shelfs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add shelfs
+     *
+     * @param \BookBundle\Entity\Book $shelfs
+     * @return Book
+     */
+    public function addShelf(\BookBundle\Entity\Book $shelfs){
+        $this->shelfs[] = $shelfs;
+
+        return $this;
+    }
+
+    /**
+     * Remove shelfs
+     *
+     * @param \BookBundle\Entity\Book $shelfs
+     */
+    public function removeShelf(\BookBundle\Entity\Book $shelfs){
+        $this->shelfs->removeElement($shelfs);
+    }
+
+    /**
+     * Get shelfs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getShelfs(){
+        return $this->shelfs;
     }
 }

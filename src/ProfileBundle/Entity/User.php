@@ -12,8 +12,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="ProfileBundle\Repository\UserRepository")
  */
-class User extends BaseUser
-{
+class User extends BaseUser {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -56,9 +55,14 @@ class User extends BaseUser
      */
     private $avatar;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\Book", mappedBy="user")
+     * @ORM\OrderBy({"id" = "DESC"})
+     */
+    private $books;
 
-    public function __construct()
-    {
+
+    public function __construct(){
         parent::__construct();
         // your own logic
     }
@@ -69,8 +73,7 @@ class User extends BaseUser
      * @param string $about
      * @return User
      */
-    public function setAbout($about)
-    {
+    public function setAbout($about){
         $this->about = $about;
 
         return $this;
@@ -81,8 +84,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getAbout()
-    {
+    public function getAbout(){
         return $this->about;
     }
 
@@ -92,8 +94,7 @@ class User extends BaseUser
      * @param string $phone
      * @return User
      */
-    public function setPhone($phone)
-    {
+    public function setPhone($phone){
         $this->phone = $phone;
 
         return $this;
@@ -104,8 +105,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getPhone()
-    {
+    public function getPhone(){
         return $this->phone;
     }
 
@@ -115,8 +115,7 @@ class User extends BaseUser
      * @param string $skype
      * @return User
      */
-    public function setSkype($skype)
-    {
+    public function setSkype($skype){
         $this->skype = $skype;
 
         return $this;
@@ -127,8 +126,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getSkype()
-    {
+    public function getSkype(){
         return $this->skype;
     }
 
@@ -138,8 +136,7 @@ class User extends BaseUser
      * @param string $vk
      * @return User
      */
-    public function setVk($vk)
-    {
+    public function setVk($vk){
         $this->vk = $vk;
 
         return $this;
@@ -150,8 +147,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getVk()
-    {
+    public function getVk(){
         return $this->vk;
     }
 
@@ -161,8 +157,7 @@ class User extends BaseUser
      * @param string $facebook
      * @return User
      */
-    public function setFacebook($facebook)
-    {
+    public function setFacebook($facebook){
         $this->facebook = $facebook;
 
         return $this;
@@ -173,8 +168,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getFacebook()
-    {
+    public function getFacebook(){
         return $this->facebook;
     }
 
@@ -184,8 +178,7 @@ class User extends BaseUser
      * @param string $twitter
      * @return User
      */
-    public function setTwitter($twitter)
-    {
+    public function setTwitter($twitter){
         $this->twitter = $twitter;
 
         return $this;
@@ -196,8 +189,7 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getTwitter()
-    {
+    public function getTwitter(){
         return $this->twitter;
     }
 
@@ -207,8 +199,7 @@ class User extends BaseUser
      * @param \Application\Sonata\MediaBundle\Entity\Media $avatar
      * @return User
      */
-    public function setAvatar(\Application\Sonata\MediaBundle\Entity\Media $avatar = null)
-    {
+    public function setAvatar(\Application\Sonata\MediaBundle\Entity\Media $avatar = null){
         $this->avatar = $avatar;
 
         return $this;
@@ -219,9 +210,41 @@ class User extends BaseUser
      *
      * @return \Application\Sonata\MediaBundle\Entity\Media
      */
-    public function getAvatar()
-    {
+    public function getAvatar(){
         return $this->avatar;
     }
 
+
+    /**
+     * Add books
+     *
+     * @param \BookBundle\Entity\Book $books
+     * @return User
+     */
+    public function addBook(\BookBundle\Entity\Book $books)
+    {
+        $this->books[] = $books;
+
+        return $this;
+    }
+
+    /**
+     * Remove books
+     *
+     * @param \BookBundle\Entity\Book $books
+     */
+    public function removeBook(\BookBundle\Entity\Book $books)
+    {
+        $this->books->removeElement($books);
+    }
+
+    /**
+     * Get books
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBooks()
+    {
+        return $this->books;
+    }
 }

@@ -7,11 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Shelf
  *
- * @ORM\Table()
+ * @ORM\Table(name="shelf")
  * @ORM\Entity(repositoryClass="BookBundle\Entity\ShelfRepository")
  */
 class Shelf
 {
+
+    
+    const ACCESS_PRIVATE = 0;
+    const ACCESS_PUBLIC = 1;
+    const ACCESS_SHARED = 2;
+
+
     /**
      * @var integer
      *
@@ -40,7 +47,7 @@ class Shelf
      *
      * @ORM\Column(name="access", type="integer")
      */
-    private $access;
+    private $access = 0;
 
     /**
      * @var integer
