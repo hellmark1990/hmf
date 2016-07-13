@@ -106,6 +106,12 @@ class Book {
      **/
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\Read", mappedBy="book")
+     * @ORM\OrderBy({"id" = "DESC"})
+     */
+    private $reads;
+
 
     /**
      * Get id
@@ -390,8 +396,7 @@ class Book {
      * @param \ProfileBundle\Entity\User $user
      * @return Book
      */
-    public function setUser(\ProfileBundle\Entity\User $user = null)
-    {
+    public function setUser(\ProfileBundle\Entity\User $user = null){
         $this->user = $user;
 
         return $this;
@@ -400,10 +405,42 @@ class Book {
     /**
      * Get user
      *
-     * @return \ProfileBundle\Entity\User 
+     * @return \ProfileBundle\Entity\User
      */
-    public function getUser()
-    {
+    public function getUser(){
         return $this->user;
+    }
+
+    /**
+     * Add reads
+     *
+     * @param \BookBundle\Entity\Read $reads
+     * @return Book
+     */
+    public function addRead(\BookBundle\Entity\Read $reads)
+    {
+        $this->reads[] = $reads;
+
+        return $this;
+    }
+
+    /**
+     * Remove reads
+     *
+     * @param \BookBundle\Entity\Read $reads
+     */
+    public function removeRead(\BookBundle\Entity\Read $reads)
+    {
+        $this->reads->removeElement($reads);
+    }
+
+    /**
+     * Get reads
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReads()
+    {
+        return $this->reads;
     }
 }

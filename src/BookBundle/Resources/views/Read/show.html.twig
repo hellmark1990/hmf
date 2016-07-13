@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Shelf</h1>
+    <h1>Read</h1>
 
     <table class="record_properties">
         <tbody>
@@ -10,32 +10,36 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
+                <th>Place</th>
+                <td>{{ entity.place }}</td>
+            </tr>
+            <tr>
+                <th>Timestart</th>
+                <td>{{ entity.timeStart|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Timeend</th>
+                <td>{{ entity.timeEnd|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ entity.comment }}</td>
+            </tr>
+            <tr>
                 <th>Title</th>
                 <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>Access</th>
-                <td>{{ entity.access }}</td>
-            </tr>
-            <tr>
-                <th>Deleted</th>
-                <td>{{ entity.deleted }}</td>
             </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('shelf') }}">
+        <a href="{{ path('read') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('shelf_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('read_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>
