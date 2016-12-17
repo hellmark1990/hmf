@@ -133,3 +133,6 @@ sonata_media:
             resizer: sonata.media.resizer.square
             thumbnail:  sonata.media.thumbnail.format
             filesystem: sonata.media.filesystem.local
+
+parameters:
+    sonata.media.provider.image.class: Application\Sonata\MediaBundle\Provider\ImageProvider

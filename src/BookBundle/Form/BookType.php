@@ -2,8 +2,10 @@
 
 namespace BookBundle\Form;
 
+use Sonata\AdminBundle\Form\Type\ModelHiddenType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -16,29 +18,33 @@ class BookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('publisher')
-            ->add('publishedDate', DateType::class, array(
-                'widget' => 'single_text',
-                // do not render as type="date", to avoid HTML5 date pickers
-                'html5' => false,
-                // add a class that can eb selected in JavaScript
-                'attr' => ['class' => 'js-datepicker-publishedDate'],
-            ))
-            ->add('description')
-            ->add('pageCount')
-            ->add('printedPageCount')
-            ->add('imageUrl')
-            ->add('language')
-            ->add('previewLink')
-            ->add('readerLink')
             ->add('image', 'sonata_media_type', [
                 'required' => false,
                 'provider' => 'sonata.media.provider.image',
                 'context' => 'default',
                 'attr' => ['class' => 'form-book-image'],
-            ]);
+                'show_unlink' => false,
+                'label' => false
+            ])
+            ->add('name')
+            ->add('description', 'textarea',[
+                'attr' => ['rows' => 11]
+            ])
+            ->add('publishedDate', DateType::class, array(
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['class' => 'js-datepicker-publishedDate'],
+            ))
 
+            ->add('pageCount')
+            ->add('language')
+            ->add('publisher')
+            ->add('readerLink')
+            ->add('printedPageCount', HiddenType::class)
+            ->add('imageUrl', HiddenType::class)
+            ->add('previewLink', HiddenType::class)
+
+        ;
 
     }
 

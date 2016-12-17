@@ -1,13 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Book creation</h1>
-
-
-    {{ form(form) }}
-    {{ form_widget(form.name) }}
-    <p id="book_name_search_result"></p>
-
     <ul class="record_actions">
         <li>
             <a href="{{ path('book') }}">
@@ -15,10 +8,18 @@
             </a>
         </li>
     </ul>
+
+    <h1>Book creation</h1>
+
+    {{ form(form) }}
+    {{ form_widget(form.name) }}
+
+    <p id="book_name_search_result"></p>
+
 {% endblock %}
 
 {% block javascripts %}
     {% javascripts '@BookBundle/Resources/public/js/*' %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
