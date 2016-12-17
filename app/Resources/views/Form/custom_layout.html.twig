@@ -4,7 +4,9 @@
     <div class="span3 pull-left">
         {% if value is not empty and value.providerReference %}
             <div class="pull-left" style="margin-right: 5px">
-                {#{% thumbnail value, 'admin' with {'class': 'img-polaroid media-object'} %}#}
+                <a class="circle">
+                    {% thumbnail value, 'admin' with {'class': 'img-polaroid media-object'} %}
+                </a>
             </div>
 
             {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
@@ -13,8 +15,9 @@
             {% endif %}
         {% else %}
             <div class="pull-left" style="margin-right: 5px">
-                <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-polaroid media-object"
-                     style="width: 85px; height: 85px"/>
+                <a class="circle">
+                    <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-polaroid media-object" style="width: 85px; height: 85px"/>
+                </a>
             </div>
         {% endif %}
     </div>
