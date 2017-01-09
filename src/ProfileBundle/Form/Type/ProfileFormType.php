@@ -78,17 +78,17 @@ class ProfileFormType extends AbstractType
     protected function buildUserForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('avatar', 'sonata_media_type', [
+                'required' => false,
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'default',
+            ])
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
             ->add('about', 'text', ['required' => false])
             ->add('phone', 'text', ['required' => false])
             ->add('vk', 'text', ['required' => false])
             ->add('facebook', 'text', ['required' => false])
-            ->add('avatar', 'sonata_media_type', [
-                'required' => false,
-                'provider' => 'sonata.media.provider.image',
-                'context'  => 'default',
-            ])
             ->add('twitter', 'text', ['required' => false]);
     }
 }

@@ -73,4 +73,14 @@ jQuery(function ($) {
     $("a[rel^='prettyPhoto']").prettyPhoto({
         social_tools: false
     });
+
+    $('button.button-edit').on('click', function () {
+        $(this).closest('.form-group').find('input[type="file"]').click();
+    });
+
+    $('button.button-delete').on('click', function () {
+        $(this).closest('.form-group').find('input[type="checkbox"]').first().prop('checked', true);
+        var image = $(this).closest('.form-group').find('.image-container > img');
+        $(image).attr('src', $(image).data('default-src'));
+    });
 });

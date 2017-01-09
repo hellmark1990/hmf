@@ -9,6 +9,16 @@
 
 <br>
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+<div>
+    <div class="pull-left">
+        {{ form_row(form.avatar) }}
+    </div>
+    <div class="pull-right">
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+    </div>
+</div>
+
 {{ form_widget(form) }}
 
 <div>
