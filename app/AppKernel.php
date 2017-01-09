@@ -42,6 +42,7 @@ class AppKernel extends Kernel
             new \BookBundle\BookBundle()
         );
 
+
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();

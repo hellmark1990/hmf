@@ -12,3 +12,110 @@
     clear: both;
     height: 60px;
 }
+
+/*
+    Book creation page
+*/
+
+#bookbundle_book{
+    margin-bottom: -450px;
+}
+
+#bookbundle_book label{
+    text-align: left;
+}
+
+/* image field begin */
+#bookbundle_book .form-group:nth-child(1) img {
+    width: 150px !important;
+    height: 170px !important;
+    margin-left: -40px;
+}
+
+#bookbundle_book .form-group:nth-child(1) {
+    position: relative;
+    width: 300px;
+}
+/* image field end */
+
+#bookbundle_book .form-group:nth-child(2) {
+    position: relative;
+    top: -185px;
+    left: 195px;
+    width: 800px;
+}
+
+#bookbundle_book .form-group:nth-child(3) {
+    position: relative;
+    top: -185px;
+    left: 195px;
+    width: 800px;
+}
+
+#bookbundle_book .form-group:nth-child(4) {
+    position: relative;
+    top: -330px;
+    left: 10px;
+    width: 220px;
+}
+
+#bookbundle_book .form-group:nth-child(4) > .control-label {
+    width: 160px;
+    text-align: left;
+}
+
+#bookbundle_book .form-group:nth-child(5) {
+    position: relative;
+    top: -340px;
+    left: 10px;
+    width: 220px;
+}
+
+#bookbundle_book .form-group:nth-child(5) > .control-label {
+    width: 130px;
+    text-align: left;
+}
+
+#bookbundle_book .form-group:nth-child(6) {
+    position: relative;
+    top: -350px;
+    left: 10px;
+    width: 220px;
+}
+
+#bookbundle_book .form-group:nth-child(6) > .control-label {
+    width: 130px;
+    text-align: left;
+}
+
+#bookbundle_book .form-group:nth-child(7) {
+    position: relative;
+    top: -415px;
+    left: 195px;
+    width: 800px;
+}
+
+#bookbundle_book .form-group:nth-child(8) {
+    position: relative;
+    top: -410px;
+    left: 195px;
+    width: 800px;
+}
+
+#bookbundle_book .form-group:nth-child(12) {
+    position: relative;
+    top: -460px;
+    left: -122px;
+    width: 800px;
+}
+
+#bookbundle_book .form-group:nth-child(12)  button {
+    width: 150px!important;
+}
+
+
+
+
+
+
+
