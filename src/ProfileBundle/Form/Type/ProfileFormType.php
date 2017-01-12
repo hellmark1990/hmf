@@ -18,20 +18,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
-class ProfileFormType extends AbstractType
-{
+class ProfileFormType extends AbstractType {
     private $class;
 
     /**
      * @param string $class The User class name
      */
-    public function __construct($class)
-    {
+    public function __construct($class){
         $this->class = $class;
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options){
         $this->buildUserForm($builder, $options);
 
 //        $builder->add('current_password', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'), array(
@@ -42,8 +39,7 @@ class ProfileFormType extends AbstractType
 //        ));
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver){
         $resolver->setDefaults(array(
             'data_class' => $this->class,
             'csrf_token_id' => 'profile',
@@ -53,19 +49,16 @@ class ProfileFormType extends AbstractType
     }
 
     // BC for SF < 2.7
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
+    public function setDefaultOptions(OptionsResolverInterface $resolver){
         $this->configureOptions($resolver);
     }
 
     // BC for SF < 3.0
-    public function getName()
-    {
+    public function getName(){
         return $this->getBlockPrefix();
     }
 
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix(){
         return 'fos_user_profile';
     }
 
@@ -75,20 +68,20 @@ class ProfileFormType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    protected function buildUserForm(FormBuilderInterface $builder, array $options)
-    {
+    protected function buildUserForm(FormBuilderInterface $builder, array $options){
         $builder
             ->add('avatar', 'sonata_media_type', [
                 'required' => false,
                 'provider' => 'sonata.media.provider.image',
-                'context'  => 'default',
+                'context' => 'default',
+                'label' => false,
             ])
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-            ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-            ->add('about', 'text', ['required' => false])
+            ->add('email', \Nelmio\ApiDocBundle\Util\LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+            ->add('about', 'textarea', ['required' => false])
             ->add('phone', 'text', ['required' => false])
             ->add('vk', 'text', ['required' => false])
-            ->add('facebook', 'text', ['required' => false])
+            ->add('facebook', 'text', ['required' => false, 'label' => 'FB'])
             ->add('twitter', 'text', ['required' => false]);
     }
 }

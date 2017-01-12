@@ -1,8 +1,4 @@
-h1 {
-    color: #4e4e4e!important;
-}
-
-.clear-float {
+.clear-float{
     clear: both;
 }
 
@@ -19,7 +15,6 @@ h1 {
     /*display: inline-block;*/
     /*text-align: center;*/
 }
-
 /**
 Profile edit block start
  */
@@ -43,40 +38,34 @@ Profile edit block start
     opacity: 0.7;
 }
 
-.profile-edit-form-container > .form-container {
+.profile-edit-form-container > .form-container{
     clear: both;
 }
 
-.profile-edit-form-container > .pull-left {
+.profile-edit-form-container > .pull-left{
     width: 10%;
     padding-left: 17%;
 }
 
-.profile-edit-form-container > .pull-right {
+.profile-edit-form-container > .pull-right{
     width: 70%;
 }
 
-.profile-edit-form-container .social-container {
+.profile-edit-form-container  .social-container{
     margin-left: 8.3%;
 }
 
-.profile-edit-form-container .social-container > .social {
+.profile-edit-form-container  .social-container > .social{
     margin-left: 3%;
 }
 
-.profile-edit-form-container .social-container > .social input {
+.profile-edit-form-container  .social-container > .social input{
     margin-left: 5%;
 }
 
-.profile-edit-form-container .pull-left.social {
+.profile-edit-form-container  .pull-left.social{
     width: 30%;
 }
-
-.books-button-panel{
-    margin-top: 50px;
-    margin-bottom: 100px;
-}
-
 
 /**
 Profile edit block end
