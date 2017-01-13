@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    if ($("#bookbundle_book_name").length) {
+        if ($("#bookbundle_book_name").length) {
         $("#bookbundle_book_name").autocomplete({
             minLength: 0,
             source: PROJECT_URLS['book_search_google'],

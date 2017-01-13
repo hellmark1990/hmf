@@ -1,13 +1,7 @@
-{% extends '::base.html.twig' %}
+{% extends "BookBundle::layout.html.twig" %}
 
 {% block body -%}
-    <ul class="nav nav-pills">
-        <li class="active"><a href="{{ path('fos_user_profile_edit') }}">Profile</a></li>
-        <li><a href="{{ path('book') }}">Books</a></li>
-        <li><a href="{{ path('shelf') }}">Shelfs</a></li>
-        <li><a href="{{ path('read') }}">Reads</a></li>
-    </ul>
-    <br>
+    {{ parent() }}
     <h2>{% trans %}Your Books list{% endtrans %}</h2>
 
     <div class="books-button-panel">
@@ -26,29 +20,20 @@
                 <th><h4>Pagecount</h4></th>
                 <th><h4>Imageurl</h4></th>
                 <th><h4>Language</h4></th>
-                <th><h4>Actions</h4></th>
+                <th><h4>Delete</h4></th>
             </tr>
             </thead>
             <tbody>
-            {% if not entities %}
+            {% if entities %}
                 {% for entity in entities %}
                     <tr>
-                        <td><a href="{{ path('book_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                        <td><a href="{{ path('book_edit', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
                         <td>{{ entity.publisher }}</td>
                         <td>{% if entity.publishedDate %}{{ entity.publishedDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{{ entity.pageCount }}</td>
                         <td>{{ entity.imageUrl }}</td>
                         <td>{{ entity.language }}</td>
-                        <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('book_show', { 'id': entity.id }) }}">show</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('book_edit', { 'id': entity.id }) }}">edit</a>
-                                </li>
-                            </ul>
-                        </td>
+                        <td>{{ form(deleteForms[entity.id]) }}</td>
                     </tr>
                 {% endfor %}
             {% else %}

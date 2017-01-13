@@ -19,7 +19,6 @@ class ShelfType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
             ->add('title')
-            ->add('description')
             ->add('access', ChoiceType::class, array(
                 'choices' => [
                     'Private' => Shelf::ACCESS_PRIVATE,
@@ -28,7 +27,6 @@ class ShelfType extends AbstractType {
                 ],
                 'choices_as_values' => true,
             ))
-            ->add('deleted')
             ->add('books', EntityType::class, array(
                 'class' => 'BookBundle:Book',
                 'query_builder' => function (BookRepository $er){
@@ -36,7 +34,10 @@ class ShelfType extends AbstractType {
                         ->orderBy('b.id', 'ASC');
                 },
                 'choice_label' => 'name',
-            ));
+            ))
+            ->add('description', 'textarea', [
+                'required' => false,
+            ]);
     }
 
     /**

@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends "BookBundle::layout.html.twig" %}
 
-{% block body -%}
+{% block body -%}     {{ parent() }}
     <h2>{% trans %}Your Books Reads list{% endtrans %}</h2>
 
     <div class="books-button-panel">
@@ -22,7 +22,7 @@
             </tr>
             </thead>
             <tbody>
-            {% if not entities %}
+            {% if entities %}
                 {% for entity in entities %}
                     <tr>
                         <td><a href="{{ path('read_show', { 'id': entity.id }) }}">{{ entity.title }}</a></td>

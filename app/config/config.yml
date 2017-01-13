@@ -90,12 +90,17 @@ assetic:
     filters:
         cssrewrite: ~
     assets:
-         main_css:
-             inputs:
-                 - '%kernel.root_dir%/Resources/public/css/*'
-         main_js:
+        main_css:
             inputs:
-                 - '%kernel.root_dir%/Resources/public/js/*'
+                - '%kernel.root_dir%/Resources/public/css/*'
+        jquery_and_ui:
+            inputs:
+                - '%kernel.root_dir%/Resources/public/jquery/jquery.js'
+                - '%kernel.root_dir%/Resources/public/jquery/jquery-ui.js'
+        main_js:
+            inputs:
+                - '%kernel.root_dir%/Resources/public/js/*'
+                - '@BookBundle/Resources/public/js/*'
 
 sonata_block:
     default_contexts: [cms]

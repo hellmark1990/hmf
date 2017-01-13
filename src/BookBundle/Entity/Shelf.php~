@@ -38,7 +38,7 @@ class Shelf
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -57,9 +57,10 @@ class Shelf
     private $deleted;
 
     /**
-     * @var Book
-     * @ORM\ManyToMany(targetEntity="Book", inversedBy="shelfs")
-     * @ORM\JoinTable(name="book_shelfs")
+     * @ORM\ManyToMany(targetEntity="\BookBundle\Entity\Book")
+     * @ORM\JoinTable(name="book_shelfs",
+     *      joinColumns={@ORM\JoinColumn(name="book_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="shelf_id", referencedColumnName="id")})
      */
     private $books;
 
@@ -180,7 +181,7 @@ class Shelf
      * @param \BookBundle\Entity\Book $books
      * @return Shelf
      */
-    public function addBook(\BookBundle\Entity\Book $books)
+    public function addBook(Book $books)
     {
         $this->books[] = $books;
 
