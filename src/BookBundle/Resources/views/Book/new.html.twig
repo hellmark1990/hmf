@@ -1,19 +1,35 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('book') }}">
-                Back to the list
-            </a>
-        </li>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="{{ path('fos_user_profile_edit') }}">Profile</a></li>
+        <li><a href="{{ path('book') }}">Books</a></li>
+        <li><a href="{{ path('shelf') }}">Shelfs</a></li>
+        <li><a href="{{ path('read') }}">Reads</a></li>
     </ul>
 
-    <h1>Book creation</h1>
+    <br>
+    <h2>Book creation</h2>
 
-    {{ form(form) }}
-    {{ form_widget(form.name) }}
-
+    {{ form_start(form, { 'action': path('book_create') }) }}
+    <div class="book-create-form-container">
+        <div class="pull-left">
+            {{ form_row(form.image) }}
+        </div>
+        <div class="pull-right">
+            {{ form_row(form.name) }}
+            {{ form_row(form.publisher) }}
+            {{ form_row(form.readerLink) }}
+            {{ form_row(form.previewLink) }}
+        </div>
+        <div class="form-container">
+            {{ form_row(form.publishedDate) }}
+            {{ form_row(form.pageCount) }}
+            {{ form_row(form.language) }}
+        </div>
+        <div class="clear-float"></div>
+    </div>
+    {{ form_end(form) }}
     <p id="book_name_search_result"></p>
 
 {% endblock %}

@@ -1,6 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+    <ul class="nav nav-pills">
+        <li class="active"><a href="{{ path('fos_user_profile_edit') }}">Profile</a></li>
+        <li><a href="{{ path('book') }}">Books</a></li>
+        <li><a href="{{ path('shelf') }}">Shelfs</a></li>
+        <li><a href="{{ path('read') }}">Reads</a></li>
+    </ul>
+    <br>
     <h2>{% trans %}Your Books list{% endtrans %}</h2>
 
     <div class="books-button-panel">
