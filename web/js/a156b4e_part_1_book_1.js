@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     if ($("#bookbundle_book_name").length) {
         $("#bookbundle_book_name").autocomplete({
             minLength: 0,
@@ -56,7 +55,6 @@ $(document).ready(function () {
         });
     }
 
-
     if ($('div.location-map').length) {
 
         $('div.location-map').locationpicker({
@@ -70,6 +68,4 @@ $(document).ready(function () {
             enableAutocomplete: true,
         });
     }
-
-})
-;
+});

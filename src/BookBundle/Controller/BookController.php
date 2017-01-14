@@ -31,8 +31,14 @@ class BookController extends Controller {
 
         $entities = $this->getUser()->getBooks();
 
+        $deleteForms = [];
+        foreach ($entities as $entity) {
+            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
+        }
+
         return array(
             'entities' => $entities,
+            'deleteForms' => $deleteForms,
         );
     }
 
@@ -145,7 +151,7 @@ class BookController extends Controller {
 
         return array(
             'entity' => $entity,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }

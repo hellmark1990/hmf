@@ -58,7 +58,7 @@ class Book {
     /**
      * @var integer
      *
-     * @ORM\Column(name="printedPageCount", type="integer")
+     * @ORM\Column(name="printedPageCount", type="integer", nullable=true)
      */
     private $printedPageCount;
 
@@ -96,7 +96,7 @@ class Book {
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Book", mappedBy="books")
+     * @ORM\ManyToMany(targetEntity="BookBundle\Entity\Shelf", mappedBy="books")
      */
     private $shelfs;
 

@@ -81,3 +81,37 @@ Profile edit block start
 /**
 Profile edit block end
  */
+
+/**
+Book create block start
+ */
+.book-create-form-container > .form-container {
+    clear: both;
+}
+
+.book-create-form-container > .pull-left {
+    width: 12%;
+    padding-left: 17%;
+}
+
+.book-create-form-container > .pull-right {
+    width: 65%;
+}
+
+.book-create-form-container .small-container {
+    width: 100%;
+    margin-left: 2px;
+}
+
+.book-create-form-container .small-container label {
+    width: 200px;
+}
+
+.book-create-form-container .small-container .col-sm-10 {
+    width: 200px;
+}
+
+
+/**
+Book create block end
+ */

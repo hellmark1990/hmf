@@ -1,22 +1,25 @@
-{% extends '::base.html.twig' %}
+{% extends "BookBundle::layout.html.twig" %}
 
-{% block body -%}
-    <h1>Book edit</h1>
+{% block body -%}     {{ parent() }}
+    <h2>Book edit</h2>
 
-    {{ form(edit_form) }}
-
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('book') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
-{% endblock %}
-
-{% block javascripts %}
-    {% javascripts '@BookBundle/Resources/public/js/*' %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+    {{ form_start(form) }}
+    <div class="book-create-form-container">
+        <div class="pull-left">
+            {{ form_row(form.image) }}
+        </div>
+        <div class="pull-right">
+            {{ form_row(form.name) }}
+            {{ form_row(form.publisher) }}
+            {{ form_row(form.readerLink) }}
+            {{ form_row(form.previewLink) }}
+        </div>
+        <div class="form-container">
+            {{ form_row(form.publishedDate) }}
+            {{ form_row(form.pageCount) }}
+            {{ form_row(form.language) }}
+        </div>
+        <div class="clear-float"></div>
+    </div>
+    {{ form_end(form) }}
 {% endblock %}
