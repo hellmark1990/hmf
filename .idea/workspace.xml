@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e6b40d6c-223d-462c-8f48-c92b203fb95e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/public/css/books.css" afterPath="$PROJECT_DIR$/app/Resources/public/css/books.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/SymfonyRequirements.php" afterPath="$PROJECT_DIR$/app/SymfonyRequirements.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Book/index.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Book/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Read/index.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Read/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Shelf/index.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Shelf/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ProfileBundle/Controller/ProfileController.php" afterPath="$PROJECT_DIR$/src/ProfileBundle/Controller/ProfileController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ProfileBundle/Form/Type/ProfileFormType.php" afterPath="$PROJECT_DIR$/src/ProfileBundle/Form/Type/ProfileFormType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ProfileBundle/Resources/views/Profile/edit_content.html.twig" afterPath="$PROJECT_DIR$/src/ProfileBundle/Resources/views/Profile/edit_content.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/main_css" afterPath="$PROJECT_DIR$/web/assetic/main_css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/main_css_part_1_books_2" afterPath="$PROJECT_DIR$/web/assetic/main_css_part_1_books_2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/config.php" afterPath="$PROJECT_DIR$/web/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/49e9dec.css" afterPath="$PROJECT_DIR$/web/css/49e9dec.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/49e9dec_part_1.css" afterPath="$PROJECT_DIR$/web/css/49e9dec_part_1.css" />
-    </list>
+    <list default="true" id="e6b40d6c-223d-462c-8f48-c92b203fb95e" name="Default" comment="" />
     <ignored path="hmf.loc.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -71,8 +54,8 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BookBundle/Resources/views/Read/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-591">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="96">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -534,12 +517,12 @@
       <updated>1454281323928</updated>
       <workItem from="1484054156907" duration="743000" />
       <workItem from="1484055090737" duration="1937000" />
-      <workItem from="1484256970273" duration="4802000" />
+      <workItem from="1484256970273" duration="5402000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7482000" />
+    <option name="totallyTimeSpent" value="8082000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="24" width="1873" height="1056" extended-state="6" />
@@ -1680,8 +1663,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BookBundle/Resources/views/Read/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-591">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="96">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
