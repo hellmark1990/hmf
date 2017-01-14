@@ -2,7 +2,9 @@
 
 namespace BookBundle\Form;
 
+use BookBundle\Entity\ShelfRepository;
 use Sonata\AdminBundle\Form\Type\ModelHiddenType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -19,13 +21,22 @@ class BookType extends AbstractType {
             ->add('image', 'sonata_media_type', [
                 'required' => false,
                 'provider' => 'sonata.media.provider.image',
-                'context' => 'default',
+                'context' => 'book',
                 'attr' => ['class' => 'form-book-image'],
                 'show_unlink' => false,
                 'label' => false
             ])
             ->add('name', 'text')
             ->add('publisher', 'text')
+            ->add('shelfs', EntityType::class, array(
+                'class' => 'BookBundle:Shelf',
+                'query_builder' => function (ShelfRepository $er){
+                    return $er->createQueryBuilder('s')
+                        ->orderBy('s.title', 'ASC');
+                },
+                'choice_label' => 'title',
+                'multiple' => true
+            ))
             ->add('publishedDate', DateType::class, array(
                 'widget' => 'single_text',
                 'html5' => false,
@@ -38,7 +49,8 @@ class BookType extends AbstractType {
             ->add('imageUrl', HiddenType::class)
             ->add('previewLink')
             ->add('description', 'textarea', [
-                'attr' => ['rows' => 11]
+                'attr' => ['rows' => 11],
+                'required' => false
             ]);
 
     }

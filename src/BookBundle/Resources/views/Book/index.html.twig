@@ -2,54 +2,28 @@
 
 {% block body -%}
     {{ parent() }}
-    <h2>{% trans %}Your Books list{% endtrans %}</h2>
+    <h1 class="h1-title">{% trans %}Books{% endtrans %}</h1>
 
-    <div class="books-button-panel">
-        <a class="btn btn-success pull-left" href="{{ path('book_new') }}">
-            {% trans %}Add book{% endtrans %}
-        </a>
-    </div>
-
-    <div class="table-responsive">
-        <table class="table table-striped table-hover records_list">
-            <thead>
-            <tr>
-                <th><h4>Name</h4></th>
-                <th><h4>Publisher</h4></th>
-                <th><h4>Publisheddate</h4></th>
-                <th><h4>Pagecount</h4></th>
-                <th><h4>Imageurl</h4></th>
-                <th><h4>Language</h4></th>
-                <th><h4>Delete</h4></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% if entities %}
+    {% if entities %}
+        <div id="books-list-wrapper">
+            <div id="columns">
                 {% for entity in entities %}
-                    <tr>
-                        <td><a href="{{ path('book_edit', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
-                        <td>{{ entity.publisher }}</td>
-                        <td>{% if entity.publishedDate %}{{ entity.publishedDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ entity.pageCount }}</td>
-                        <td>{{ entity.imageUrl }}</td>
-                        <td>{{ entity.language }}</td>
-                        <td>{{ form(deleteForms[entity.id]) }}</td>
-                    </tr>
+                    <div class="pin">
+                        <a href="{{ path('book_edit', { 'id': entity.id }) }}">
+                            <img src="{{ entity.imageUrl }}"/>
+                            {{ entity.name }}
+                            <hr>
+                        </a>
+                        <p>
+                            {{ entity.description|truncate(100)|raw }}
+                        </p>
+                    </div>
                 {% endfor %}
-            {% else %}
-                <tr class="info">
-                    <td colspan="7">
-                        <br>
-                        <span>
-                            <h4>
-                                {% trans %} Your Books list is empty.{% endtrans %}
-                            </h4>
-                        </span>
-                        <br>
-                    </td>
-                </tr>
-            {% endif %}
-            </tbody>
-        </table>
-    </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            {% trans %} Your Books list is empty.{% endtrans %}
+        </div>
+    {% endif %}
 {% endblock %}

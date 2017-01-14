@@ -115,3 +115,8 @@ Book create block start
 /**
 Book create block end
  */
+
+.h1-title{
+    text-align: center;
+    margin-bottom: 50px;
+}

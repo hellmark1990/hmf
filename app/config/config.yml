@@ -123,6 +123,15 @@ sonata_media:
                 small: { width: 100 , quality: 70}
                 big:   { width: 500 , quality: 70}
 
+        book:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                admin: { width: 12, height: 10, quality: 95, constraint: false}
+                small: { width: 125, height: 190, quality: 95, constraint: false}
+
     cdn:
         server:
             path: /uploads/media # http://media.sonata-project.org/
@@ -135,7 +144,7 @@ sonata_media:
 
     providers:
         image:
-            resizer: sonata.media.resizer.square
+            resizer: sonata.media.resizer.fixedDimensions
             thumbnail:  sonata.media.thumbnail.format
             filesystem: sonata.media.filesystem.local
 

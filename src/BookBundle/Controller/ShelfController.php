@@ -15,8 +15,7 @@ use BookBundle\Form\ShelfType;
  *
  * @Route("/shelf")
  */
-class ShelfController extends Controller
-{
+class ShelfController extends Controller {
 
     /**
      * Lists all Shelf entities.
@@ -25,16 +24,22 @@ class ShelfController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
-    {        
+    public function indexAction(){
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('BookBundle:Shelf')->findAll();
 
+        $deleteForms = [];
+        foreach ($entities as $entity) {
+            $deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
+        }
+
         return array(
             'entities' => $entities,
+            'deleteForms' => $deleteForms,
         );
     }
+
     /**
      * Creates a new Shelf entity.
      *
@@ -42,8 +47,7 @@ class ShelfController extends Controller
      * @Method("POST")
      * @Template("BookBundle:Shelf:new.html.twig")
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request){
         $entity = new Shelf();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -53,12 +57,12 @@ class ShelfController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('shelf_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('shelf_edit', array('id' => $entity->getId())));
         }
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -69,8 +73,7 @@ class ShelfController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Shelf $entity)
-    {
+    private function createCreateForm(Shelf $entity){
         $form = $this->createForm(new ShelfType(), $entity, array(
             'action' => $this->generateUrl('shelf_create'),
             'method' => 'POST',
@@ -88,14 +91,13 @@ class ShelfController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
-    {
+    public function newAction(){
         $entity = new Shelf();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -106,8 +108,7 @@ class ShelfController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
-    {
+    public function showAction($id){
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BookBundle:Shelf')->find($id);
@@ -119,7 +120,7 @@ class ShelfController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -131,8 +132,7 @@ class ShelfController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
-    {
+    public function editAction($id){
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BookBundle:Shelf')->find($id);
@@ -145,21 +145,20 @@ class ShelfController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Shelf entity.
-    *
-    * @param Shelf $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Shelf $entity)
-    {
+     * Creates a form to edit a Shelf entity.
+     *
+     * @param Shelf $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Shelf $entity){
         $form = $this->createForm(new ShelfType(), $entity, array(
             'action' => $this->generateUrl('shelf_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -169,6 +168,7 @@ class ShelfController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Shelf entity.
      *
@@ -176,8 +176,7 @@ class ShelfController extends Controller
      * @Method("PUT")
      * @Template("BookBundle:Shelf:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id){
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BookBundle:Shelf')->find($id);
@@ -197,19 +196,19 @@ class ShelfController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Shelf entity.
      *
      * @Route("/{id}", name="shelf_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id){
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -235,13 +234,11 @@ class ShelfController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id){
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('shelf_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

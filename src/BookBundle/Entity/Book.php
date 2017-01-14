@@ -363,10 +363,10 @@ class Book {
     /**
      * Add shelfs
      *
-     * @param \BookBundle\Entity\Book $shelfs
+     * @param \BookBundle\Entity\Shelf $shelfs
      * @return Book
      */
-    public function addShelf(\BookBundle\Entity\Book $shelfs){
+    public function addShelf(\BookBundle\Entity\Shelf $shelfs){
         $this->shelfs[] = $shelfs;
 
         return $this;
@@ -377,7 +377,7 @@ class Book {
      *
      * @param \BookBundle\Entity\Book $shelfs
      */
-    public function removeShelf(\BookBundle\Entity\Book $shelfs){
+    public function removeShelf(\BookBundle\Entity\Shelf $shelfs){
         $this->shelfs->removeElement($shelfs);
     }
 
@@ -417,8 +417,7 @@ class Book {
      * @param \BookBundle\Entity\Read $reads
      * @return Book
      */
-    public function addRead(\BookBundle\Entity\Read $reads)
-    {
+    public function addRead(\BookBundle\Entity\Read $reads){
         $this->reads[] = $reads;
 
         return $this;
@@ -429,18 +428,16 @@ class Book {
      *
      * @param \BookBundle\Entity\Read $reads
      */
-    public function removeRead(\BookBundle\Entity\Read $reads)
-    {
+    public function removeRead(\BookBundle\Entity\Read $reads){
         $this->reads->removeElement($reads);
     }
 
     /**
      * Get reads
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getReads()
-    {
+    public function getReads(){
         return $this->reads;
     }
 }

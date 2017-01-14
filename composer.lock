@@ -4,9 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5c930e20c7b2bcc4822a325d4c5b43f0",
-    "content-hash": "5baf76133556e3975990580d32ba7205",
+    "hash": "16df523cefa1642f26a30f96d65f54b6",
+    "content-hash": "098dd13712c257ae5b37fdb0091343be",
     "packages": [
+        {
+            "name": "aivus/sonata-media-fixed-dimensions-resizer",
+            "version": "v1.0.0",
+            "target-dir": "Aivus/SonataMediaBundle/ResizerBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aivus/SonataMediaFixedDimensionsResizer.git",
+                "reference": "ca08e1375ddc9bce870a568144e6bc9dc5d73625"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aivus/SonataMediaFixedDimensionsResizer/zipball/ca08e1375ddc9bce870a568144e6bc9dc5d73625",
+                "reference": "ca08e1375ddc9bce870a568144e6bc9dc5d73625",
+                "shasum": ""
+            },
+            "require": {
+                "sonata-project/media-bundle": "*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Aivus\\SonataMediaBundle\\ResizerBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ilya Antipenko",
+                    "email": "ilya@antipenko.pp.ua"
+                },
+                {
+                    "name": "Nicolas Ricci"
+                }
+            ],
+            "description": "Sonata Media Bundle Resizer with fixed aspect ratio",
+            "keywords": [
+                "bundle",
+                "fixed aspect ration",
+                "sonata media bundle resizer"
+            ],
+            "time": "2015-01-08 18:44:22"
+        },
         {
             "name": "cocur/slugify",
             "version": "v1.4.1",
