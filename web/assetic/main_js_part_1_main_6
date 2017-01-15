@@ -55,8 +55,10 @@ jQuery(function ($) {
             if (data.success) {
                 location.href = data.redirect_url;
             }
-            form.prepend(form_status)
-            form_status.html('<p class="text-warning">' + data.message + '</p>');
+            if (data.message) {
+                form.prepend(form_status)
+                form_status.html('<p class="text-warning">' + data.message + '</p>');
+            }
         });
     });
 
