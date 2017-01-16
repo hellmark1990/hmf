@@ -141,7 +141,7 @@ class SecurityController extends \FOS\UserBundle\Controller\SecurityController
 
             return new \Symfony\Component\HttpFoundation\JsonResponse([
                 'success' => true,
-                'redirect_url' => $this->generateUrl('fos_user_profile_show'),
+                'redirect_url' => $this->generateUrl('fos_user_profile_edit'),
             ]);
         } else {
             return new \Symfony\Component\HttpFoundation\JsonResponse([

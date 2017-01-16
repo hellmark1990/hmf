@@ -1,13 +1,7 @@
 {% extends "BookBundle::layout.html.twig" %}
 
 {% block body -%}     {{ parent() }}
-    <h2>{% trans %}Your Books Reads list{% endtrans %}</h2>
-
-    <div class="books-button-panel">
-        <a class="btn btn-success pull-left" href="{{ path('read_new') }}">
-            {% trans %}Add book read{% endtrans %}
-        </a>
-    </div>
+    <h1 class="h1-title">{% trans %}Your Books Reads list{% endtrans %}</h1>
 
     <div class="table-responsive">
         <table class="table table-striped table-hover records_list">

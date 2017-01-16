@@ -5,7 +5,7 @@
         {% if value is not empty and value.providerReference %}
             <div class="pull-left" style="margin-right: 5px">
                 <a class="circle image-container">
-                    {% thumbnail value, 'admin' with {'class': 'img-polaroid media-object', 'data-default-src': asset('bundles/sonatamedia/grey.png')} %}
+                    {% thumbnail value, 'small' with {'class': 'img-polaroid media-object', 'data-default-src': asset('bundles/sonatamedia/grey.png')} %}
                     <button type="button" class="btn btn-default btn-small button button-edit">
                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                     </button>

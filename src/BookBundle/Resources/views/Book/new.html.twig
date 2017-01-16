@@ -1,7 +1,7 @@
 {% extends "BookBundle::layout.html.twig" %}
 
 {% block body -%}     {{ parent() }}
-    <h2>Book creation</h2>
+    <h1 class="h1-title">Book creation</h1>
 
     {{ form_start(form, { 'action': path('book_create') }) }}
     <div class="book-create-form-container">

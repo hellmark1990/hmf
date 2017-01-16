@@ -1,16 +1,10 @@
 {% extends "BookBundle::layout.html.twig" %}
 
-{% block body -%}     {{ parent() }}
-    <h1>Shelf edit</h1>
+{% block body -%}
+    {{ parent() }}
+
+    <h1 class="h1-title">Shelf edit</h1>
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('shelf') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
 {% endblock %}

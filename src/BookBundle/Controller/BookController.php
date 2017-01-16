@@ -2,6 +2,8 @@
 
 namespace BookBundle\Controller;
 
+use Gaufrette\File;
+use Sonata\MediaBundle\Model\Media;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -53,16 +55,34 @@ class BookController extends Controller {
         $entity = new Book();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+
+        foreach ($entity->getShelfs() as $shelf) {
+            $entity->addShelf($shelf);
+            if (!$shelf->getBooks()->contains($entity)) {
+                $shelf->addBook($entity);
+            }
+        }
+
+        if ($request->get('bookbundle_book')['imageUrl']) {
+            $tmpImagePath = $this->get('kernel')->getRootDir() . '/../web/uploads/tmp_image.jpg';
+            $imageData = file_get_contents($request->get('bookbundle_book')['imageUrl']);
+            file_put_contents($tmpImagePath, $imageData);
+
+            $image = new \Application\Sonata\MediaBundle\Entity\Media();
+            $image->setBinaryContent($tmpImagePath);
+            $image->setProviderName('sonata.media.provider.image');
+            $image->setContext('book');
+            $entity->setImage($image);
+        }
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-
             $entity->setUser($this->getUser());
 
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('book_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('book_edit', array('id' => $entity->getId())));
         }
 
         return array(
@@ -184,15 +204,44 @@ class BookController extends Controller {
     public function updateAction(Request $request, $id){
         $em = $this->getDoctrine()->getManager();
 
+        /**
+         * @var $entity Book
+         */
         $entity = $em->getRepository('BookBundle:Book')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Book entity.');
         }
 
+        foreach ($entity->getShelfs() as $shelf) {
+            if ($shelf->getBooks()->contains($entity)) {
+                $shelf->removeBook($entity);
+            }
+        }
+        $entity->getShelfs()->clear();
+        $em->flush();
+
+        $previousImageUrl = $entity->getImageUrl();
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
+
+        $entity->getImage()->setContext('book');
+
+        if ($previousImageUrl != $request->get('bookbundle_book')['imageUrl']) {
+            $tmpImagePath = $this->get('kernel')->getRootDir() . '/../web/uploads/tmp_image.jpg';
+            $image = file_get_contents($request->get('bookbundle_book')['imageUrl']);
+            file_put_contents($tmpImagePath, $image);
+            $entity->getImage()->setBinaryContent($tmpImagePath);
+        }
+
+        foreach ($entity->getShelfs() as $shelf) {
+            $entity->addShelf($shelf);
+            if (!$shelf->getBooks()->contains($entity)) {
+                $shelf->addBook($entity);
+            }
+        }
 
         if ($editForm->isValid()) {
             $em->flush();

@@ -34,6 +34,8 @@ class ShelfType extends AbstractType {
                         ->orderBy('b.id', 'ASC');
                 },
                 'choice_label' => 'name',
+                'multiple' => true,
+                'required' => false,
             ))
             ->add('description', 'textarea', [
                 'required' => false,

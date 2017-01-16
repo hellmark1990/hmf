@@ -1,14 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<ul class="nav nav-pills">
-    <li class="active"><a href="{{ path('fos_user_profile_edit') }}">Profile</a></li>
-    <li><a href="{{ path('book') }}">Books</a></li>
-    <li><a href="{{ path('shelf') }}">Shelfs</a></li>
-    <li><a href="{{ path('read') }}">Reads</a></li>
-</ul>
-
-<br>
-<h2>{% trans %}Your Profile{% endtrans %}</h2>
+<h1 class="h1-title">{% trans %}Profile{% endtrans %}</h1>
 
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 <div class="profile-edit-form-container">

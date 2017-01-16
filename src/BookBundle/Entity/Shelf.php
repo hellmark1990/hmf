@@ -10,13 +10,17 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="shelf")
  * @ORM\Entity(repositoryClass="BookBundle\Entity\ShelfRepository")
  */
-class Shelf
-{
+class Shelf {
 
-    
     const ACCESS_PRIVATE = 0;
     const ACCESS_PUBLIC = 1;
     const ACCESS_SHARED = 2;
+
+    static $ACCESS_NAMES = [
+        self::ACCESS_PRIVATE => 'Private',
+        self::ACCESS_PUBLIC => 'Public',
+        self::ACCESS_SHARED => 'Shared',
+    ];
 
 
     /**
@@ -54,25 +58,21 @@ class Shelf
      *
      * @ORM\Column(name="deleted", type="integer")
      */
-    private $deleted;
+    private $deleted = 0;
 
     /**
-     * @ORM\ManyToMany(targetEntity="\BookBundle\Entity\Book")
-     * @ORM\JoinTable(name="book_shelfs",
-     *      joinColumns={@ORM\JoinColumn(name="book_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="shelf_id", referencedColumnName="id")})
+     * @ORM\ManyToMany(targetEntity="BookBundle\Entity\Book", inversedBy="shelfs")
+     * @ORM\JoinTable(name="book_shelfs")
      */
     private $books;
-
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
-    public function getId()
-    {
+    public function getId(){
         return $this->id;
     }
 
@@ -82,8 +82,7 @@ class Shelf
      * @param string $title
      * @return Shelf
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title){
         $this->title = $title;
 
         return $this;
@@ -92,10 +91,9 @@ class Shelf
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
-    public function getTitle()
-    {
+    public function getTitle(){
         return $this->title;
     }
 
@@ -105,8 +103,7 @@ class Shelf
      * @param string $description
      * @return Shelf
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description){
         $this->description = $description;
 
         return $this;
@@ -115,10 +112,9 @@ class Shelf
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription(){
         return $this->description;
     }
 
@@ -128,8 +124,7 @@ class Shelf
      * @param integer $access
      * @return Shelf
      */
-    public function setAccess($access)
-    {
+    public function setAccess($access){
         $this->access = $access;
 
         return $this;
@@ -138,11 +133,19 @@ class Shelf
     /**
      * Get access
      *
-     * @return integer 
+     * @return integer
      */
-    public function getAccess()
-    {
+    public function getAccess(){
         return $this->access;
+    }
+
+    /**
+     * Get Access name
+     *
+     * @return mixed
+     */
+    public function getAccessName(){
+        return self::$ACCESS_NAMES[$this->access];
     }
 
     /**
@@ -151,8 +154,7 @@ class Shelf
      * @param integer $deleted
      * @return Shelf
      */
-    public function setDeleted($deleted)
-    {
+    public function setDeleted($deleted){
         $this->deleted = $deleted;
 
         return $this;
@@ -161,17 +163,16 @@ class Shelf
     /**
      * Get deleted
      *
-     * @return integer 
+     * @return integer
      */
-    public function getDeleted()
-    {
+    public function getDeleted(){
         return $this->deleted;
     }
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct(){
         $this->books = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -181,8 +182,7 @@ class Shelf
      * @param \BookBundle\Entity\Book $books
      * @return Shelf
      */
-    public function addBook(Book $books)
-    {
+    public function addBook(Book $books){
         $this->books[] = $books;
 
         return $this;
@@ -193,18 +193,16 @@ class Shelf
      *
      * @param \BookBundle\Entity\Book $books
      */
-    public function removeBook(\BookBundle\Entity\Book $books)
-    {
+    public function removeBook(\BookBundle\Entity\Book $books){
         $this->books->removeElement($books);
     }
 
     /**
      * Get books
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBooks()
-    {
+    public function getBooks(){
         return $this->books;
     }
 }

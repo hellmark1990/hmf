@@ -1,0 +1,61 @@
+<ul class="nav navbar-nav">
+    {% if app.user is null %}
+        <li class="{% if app.request.attributes.get('_route') in ['fos_user_security_login'] %}active{% endif %}">
+            <a href="{{ path('fos_user_security_login') }}">{% trans %}Sign in{% endtrans %}</a>
+        </li>
+        <li class="{% if app.request.attributes.get('_route') in ['fos_user_registration_register'] %}active{% endif %}">
+            <a href="{{ path('fos_user_registration_register') }}">{% trans %}Sign up{% endtrans %}</a>
+        </li>
+    {% endif %}
+    
+    {% if app.user %}
+        <li class="{% if app.request.attributes.get('_route') in ['fos_user_security_logout'] %}active{% endif %}">
+            <a href="{{ path('fos_user_security_logout') }}">{% trans %}Sign out{% endtrans %}</a>
+        </li>
+        <li class="{% if app.request.attributes.get('_route') in ['fos_user_profile_edit'] %}active{% endif %}">
+            <a href="{{ path('fos_user_profile_edit') }}">{% trans %}My Profile{% endtrans %}</a>
+        </li>
+        <li class="dropdown {% if app.request.attributes.get('_route') in ['book', 'book_new'] %}active{% endif %}">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans %}My Books{% endtrans %}
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="{% if app.request.attributes.get('_route') == 'book' %}active{% endif %}">
+                    <a href="{{ path('book') }}">{% trans %}All books{% endtrans %}</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'book_new' %}active{% endif %}">
+                    <a href="{{ path('book_new') }}">{% trans %}Add Book{% endtrans %}</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown {% if app.request.attributes.get('_route')  in ['shelf', 'shelf_new'] %}active{% endif %}">
+            <a href="{{ path('book') }}" class="dropdown-toggle" data-toggle="dropdown">{% trans %}Shelfs{% endtrans %}
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="{% if app.request.attributes.get('_route') == 'shelf' %}active{% endif %}">
+                    <a href="{{ path('shelf') }}">{% trans %}All shelfs{% endtrans %}</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'shelf_new' %}active{% endif %}">
+                    <a href="{{ path('shelf_new') }}">{% trans %}Add shelf{% endtrans %}</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown {% if app.request.attributes.get('_route')  in ['read', 'read_new'] %}active{% endif %}">
+            <a href="{{ path('read') }}" class="dropdown-toggle" data-toggle="dropdown">{% trans %}Reads{% endtrans %}
+                <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="{% if app.request.attributes.get('_route') == 'read' %}active{% endif %}">
+                    <a href="{{ path('read') }}">{% trans %}All reeds{% endtrans %}</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'read_new' %}active{% endif %}">
+                    <a href="{{ path('read_new') }}">{% trans %}Add new reed{% endtrans %}</a>
+                </li>
+            </ul>
+        </li>
+    {% endif %}
+    {% block nav_bar %}{% endblock %}
+</ul>
