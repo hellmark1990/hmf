@@ -85,4 +85,15 @@ jQuery(function ($) {
         var image = $(this).closest('.form-group').find('.image-container > img');
         $(image).attr('src', $(image).data('default-src'));
     });
+
+    $('#list').click(function (event) {
+        event.preventDefault();
+        $('#products .item').addClass('list-group-item');
+    });
+
+    $('#grid').click(function (event) {
+        event.preventDefault();
+        $('#products .item').removeClass('list-group-item');
+        $('#products .item').addClass('grid-group-item');
+    });
 });

@@ -4,26 +4,51 @@
     {{ parent() }}
     <h1 class="h1-title">{% trans %}Books{% endtrans %}</h1>
 
-    {% if entities %}
-        <div id="books-list-wrapper">
-            <div id="columns">
-                {% for entity in entities %}
-                    <div class="pin">
-                        <a href="{{ path('book_edit', { 'id': entity.id }) }}">
-                            <img src="{{ entity.imageUrl }}"/>
-                            {{ entity.name }}
-                            <hr>
-                        </a>
-                        <p>
-                            {{ entity.description|truncate(100)|raw }}
-                        </p>
-                    </div>
-                {% endfor %}
+    <div class="grid-list-view container">
+        <div class="well well-sm">
+            <strong>Display</strong>
+
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th-list"></span>List
+                </a>
+                <a href="#" id="grid" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th"></span>Grid
+                </a>
             </div>
         </div>
-    {% else %}
-        <div class="alert alert-info">
-            {% trans %} Your Books list is empty.{% endtrans %}
+        <div id="products" class="row list-group">
+            {% if entities %}
+                {% for entity in entities %}
+                    <div class="item  col-xs-4 col-lg-4">
+                        <div class="thumbnail">
+                            <img class="group list-group-image" src="{{ entity.imageUrl }}" alt=""/>
+
+                            <div class="caption">
+                                <h4 class="group inner list-group-item-heading">{{ entity.name }}</h4>
+
+                                <p class="group inner list-group-item-text">{{ entity.description|truncate(100)|raw }}</p>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                        <p class="lead">
+                                            $21.000</p>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <a class="btn btn-success" href="{{ path('book_edit', { 'id': entity.id }) }}">{% trans %}
+                                            Edit{% endtrans %}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">
+                    {% trans %} Your Books list is empty.{% endtrans %}
+                </div>
+            {% endif %}
         </div>
-    {% endif %}
+    </div>
+
 {% endblock %}

@@ -30,28 +30,28 @@ class Book {
     /**
      * @var string
      *
-     * @ORM\Column(name="publisher", type="text")
+     * @ORM\Column(name="publisher", type="text",  nullable=true)
      */
     private $publisher;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="publishedDate", type="datetime")
+     * @ORM\Column(name="publishedDate", type="datetime",  nullable=true)
      */
     private $publishedDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text",  nullable=true)
      */
     private $description;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="pageCount", type="integer")
+     * @ORM\Column(name="pageCount", type="integer",  nullable=true)
      */
     private $pageCount;
 
@@ -65,28 +65,28 @@ class Book {
     /**
      * @var string
      *
-     * @ORM\Column(name="imageUrl", type="text")
+     * @ORM\Column(name="imageUrl", type="text",  nullable=true)
      */
     private $imageUrl;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="language", type="string", length=255)
+     * @ORM\Column(name="language", type="string", length=255,  nullable=true)
      */
     private $language;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="previewLink", type="string", length=255)
+     * @ORM\Column(name="previewLink", type="string", length=255,  nullable=true)
      */
     private $previewLink;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="readerLink", type="string", length=255)
+     * @ORM\Column(name="readerLink", type="string", length=255,  nullable=true)
      */
     private $readerLink;
 
@@ -363,10 +363,10 @@ class Book {
     /**
      * Add shelfs
      *
-     * @param \BookBundle\Entity\Book $shelfs
+     * @param \BookBundle\Entity\Shelf $shelfs
      * @return Book
      */
-    public function addShelf(\BookBundle\Entity\Book $shelfs){
+    public function addShelf(\BookBundle\Entity\Shelf $shelfs){
         $this->shelfs[] = $shelfs;
 
         return $this;
@@ -377,7 +377,7 @@ class Book {
      *
      * @param \BookBundle\Entity\Book $shelfs
      */
-    public function removeShelf(\BookBundle\Entity\Book $shelfs){
+    public function removeShelf(\BookBundle\Entity\Shelf $shelfs){
         $this->shelfs->removeElement($shelfs);
     }
 
@@ -417,8 +417,7 @@ class Book {
      * @param \BookBundle\Entity\Read $reads
      * @return Book
      */
-    public function addRead(\BookBundle\Entity\Read $reads)
-    {
+    public function addRead(\BookBundle\Entity\Read $reads){
         $this->reads[] = $reads;
 
         return $this;
@@ -429,18 +428,16 @@ class Book {
      *
      * @param \BookBundle\Entity\Read $reads
      */
-    public function removeRead(\BookBundle\Entity\Read $reads)
-    {
+    public function removeRead(\BookBundle\Entity\Read $reads){
         $this->reads->removeElement($reads);
     }
 
     /**
      * Get reads
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getReads()
-    {
+    public function getReads(){
         return $this->reads;
     }
 }

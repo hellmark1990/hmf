@@ -2525,6 +2525,9 @@ shortcodes page css
   margin-left: 15px;
 }
 
+.form-horizontal{
+  clear: both;
+}
 
 
 

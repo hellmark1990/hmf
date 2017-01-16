@@ -1,7 +1,15 @@
 {% extends "BookBundle::layout.html.twig" %}
 
-{% block body -%}     {{ parent() }}
+{% block body -%}
+    {{ parent() }}
+
     <h1 class="h1-title">Book edit</h1>
+
+    <div clapull-right book-top-controls">
+        <a href="{{ path('book_reading', {'id': entity.id}) }}" class="btn btn-default">
+            {% trans %}Reading{% endtrans %}
+        </a>
+    </div>
 
     {{ form_start(form) }}
     <div class="book-create-form-container">

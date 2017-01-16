@@ -30,28 +30,28 @@ class Book {
     /**
      * @var string
      *
-     * @ORM\Column(name="publisher", type="text")
+     * @ORM\Column(name="publisher", type="text",  nullable=true)
      */
     private $publisher;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="publishedDate", type="datetime")
+     * @ORM\Column(name="publishedDate", type="datetime",  nullable=true)
      */
     private $publishedDate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text",  nullable=true)
      */
     private $description;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="pageCount", type="integer")
+     * @ORM\Column(name="pageCount", type="integer",  nullable=true)
      */
     private $pageCount;
 
@@ -65,28 +65,28 @@ class Book {
     /**
      * @var string
      *
-     * @ORM\Column(name="imageUrl", type="text")
+     * @ORM\Column(name="imageUrl", type="text",  nullable=true)
      */
     private $imageUrl;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="language", type="string", length=255)
+     * @ORM\Column(name="language", type="string", length=255,  nullable=true)
      */
     private $language;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="previewLink", type="string", length=255)
+     * @ORM\Column(name="previewLink", type="string", length=255,  nullable=true)
      */
     private $previewLink;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="readerLink", type="string", length=255)
+     * @ORM\Column(name="readerLink", type="string", length=255,  nullable=true)
      */
     private $readerLink;
 

@@ -111,6 +111,9 @@ Book create block start
     width: 200px;
 }
 
+.book-top-controls{
+    margin-bottom: 30px;
+}
 
 /**
 Book create block end

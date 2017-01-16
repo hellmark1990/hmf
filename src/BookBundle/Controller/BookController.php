@@ -45,6 +45,31 @@ class BookController extends Controller {
     }
 
     /**
+     * Finds and displays a Book Reads.
+     *
+     * @Route("/{id}/reading/", name="book_reading")
+     * @Method("GET")
+     * @Template()
+     */
+    public function readingAction($id){
+        $em = $this->getDoctrine()->getManager();
+
+        /**
+         * @var $entity Book
+         */
+        $entity = $em->getRepository('BookBundle:Book')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Book entity.');
+        }
+
+        return array(
+            'entity' => $entity,
+            'reads' => $entity->getReads(),
+        );
+    }
+
+    /**
      * Creates a new Book entity.
      *
      * @Route("/", name="book_create")

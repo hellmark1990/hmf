@@ -26,8 +26,12 @@ class BookType extends AbstractType {
                 'show_unlink' => false,
                 'label' => false
             ])
-            ->add('name', 'text')
-            ->add('publisher', 'text')
+            ->add('name', 'text', [
+                'required' => false
+            ])
+            ->add('publisher', 'text', [
+                'required' => false
+            ])
             ->add('shelfs', EntityType::class, array(
                 'class' => 'BookBundle:Shelf',
                 'query_builder' => function (ShelfRepository $er){
@@ -35,19 +39,29 @@ class BookType extends AbstractType {
                         ->orderBy('s.title', 'ASC');
                 },
                 'choice_label' => 'title',
-                'multiple' => true
+                'multiple' => true,
+                'required' => false
             ))
             ->add('publishedDate', DateType::class, array(
                 'widget' => 'single_text',
                 'html5' => false,
                 'attr' => ['class' => 'js-datepicker-publishedDate'],
+                'required' => false,
             ))
-            ->add('pageCount')
-            ->add('language', 'text')
-            ->add('readerLink')
+            ->add('pageCount', 'text', [
+                'required' => false
+            ])
+            ->add('language', 'text', [
+                'required' => false,
+            ])
+            ->add('readerLink', 'text', [
+                'required' => false
+            ])
             ->add('printedPageCount', HiddenType::class)
             ->add('imageUrl', HiddenType::class)
-            ->add('previewLink')
+            ->add('previewLink', 'text', [
+                'required' => false
+            ])
             ->add('description', 'textarea', [
                 'attr' => ['rows' => 11],
                 'required' => false

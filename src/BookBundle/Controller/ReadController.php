@@ -35,6 +35,7 @@ class ReadController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Read entity.
      *
