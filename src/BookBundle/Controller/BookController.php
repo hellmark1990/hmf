@@ -243,6 +243,7 @@ class BookController extends Controller {
                 $shelf->removeBook($entity);
             }
         }
+
         $entity->getShelfs()->clear();
         $em->flush();
 
@@ -252,14 +253,21 @@ class BookController extends Controller {
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
-        $entity->getImage()->setContext('book');
 
-        if ($previousImageUrl != $request->get('bookbundle_book')['imageUrl']) {
+        if ($previousImageUrl != $request->get('bookbundle_book')['imageUrl'] && $request->get('bookbundle_book')['imageUrl']) {
+            if (!$entity->getImage()) {
+                $image = new \Application\Sonata\MediaBundle\Entity\Media();
+                $image->setProviderName('sonata.media.provider.image');
+                $image->setContext('book');
+                $entity->setImage($image);
+            }
+
             $tmpImagePath = $this->get('kernel')->getRootDir() . '/../web/uploads/tmp_image.jpg';
-            $image = file_get_contents($request->get('bookbundle_book')['imageUrl']);
-            file_put_contents($tmpImagePath, $image);
+            $imageContent = file_get_contents($request->get('bookbundle_book')['imageUrl']);
+            file_put_contents($tmpImagePath, $imageContent);
             $entity->getImage()->setBinaryContent($tmpImagePath);
         }
+
 
         foreach ($entity->getShelfs() as $shelf) {
             $entity->addShelf($shelf);

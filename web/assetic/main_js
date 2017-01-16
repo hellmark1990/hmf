@@ -816,23 +816,6 @@ jQuery(function ($) {
     //Initiat WOW JS
     new WOW().init();
 
-    // portfolio filter
-    //$(window).load(function(){'use strict';
-    //	var $portfolio_selectors = $('.portfolio-filter >li>a');
-    //	var $portfolio = $('.portfolio-items');
-    //	$portfolio.isotope({
-    //		itemSelector : '.portfolio-item',
-    //		layoutMode : 'fitRows'
-    //	});
-    //
-    //	$portfolio_selectors.on('click', function(){
-    //		$portfolio_selectors.removeClass('active');
-    //		$(this).addClass('active');
-    //		var selector = $(this).attr('data-filter');
-    //		$portfolio.isotope({ filter: selector });
-    //		return false;
-    //	});
-    //});
 
     // Contact form
     var form = $('#main-contact-form');
@@ -876,7 +859,7 @@ jQuery(function ($) {
     });
 
     $('button.button-delete').on('click', function () {
-        $(this).closest('.form-group').find('input[type="checkbox"]').first().prop('checked', true);
+        $('#bookbundle_book_image_unlink').val(1);
         var image = $(this).closest('.form-group').find('.image-container > img');
         $(image).attr('src', $(image).data('default-src'));
     });
@@ -891,6 +874,11 @@ jQuery(function ($) {
         $('#products .item').removeClass('list-group-item');
         $('#products .item').addClass('grid-group-item');
     });
+
+    $('form[name="bookbundle_book"]').find('.form-book-image input[type="file"]').on('change', function () {
+        $('#bookbundle_book_imageUrl').val('');
+        $('.img-polaroid.media-object').attr('src', URL.createObjectURL($(this)[0].files[0]));
+    })
 });
 /*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas. Dual MIT/BSD license */
 /*! NOTE: If you're already including a window.matchMedia polyfill via Modernizr or otherwise, you don't need this part */
