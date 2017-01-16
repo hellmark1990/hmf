@@ -2,41 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6b40d6c-223d-462c-8f48-c92b203fb95e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/public/js/html5shiv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/public/js/jquery.googlemap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/public/js/jquery.isotope.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/public/js/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/public/js/jquery.prettyPhoto.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/public/js/locationpicker.jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/public/js/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/public/js/respond.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/public/js/wow.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Resources/public/js/z-bootstrap.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/222fa77.js" afterPath="$PROJECT_DIR$/web/js/222fa77.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/222fa77_part_1.js" afterPath="$PROJECT_DIR$/web/js/222fa77_part_1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Entity/Book.php" afterPath="$PROJECT_DIR$/src/BookBundle/Entity/Book.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Controller/BookController.php" afterPath="$PROJECT_DIR$/src/BookBundle/Controller/BookController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Entity/Shelf.php" afterPath="$PROJECT_DIR$/src/BookBundle/Entity/Shelf.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Form/ShelfType.php" afterPath="$PROJECT_DIR$/src/BookBundle/Form/ShelfType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/a156b4e.js" afterPath="$PROJECT_DIR$/web/js/a156b4e.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/a156b4e_part_1_book_1.js" afterPath="$PROJECT_DIR$/web/js/a156b4e_part_1_book_1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/public/js/book.js" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/public/js/book.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Book/edit.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Book/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Read/edit.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Read/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Shelf/edit.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Shelf/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Book/index.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Book/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Read/index.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Read/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Shelf/index.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Shelf/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/main_js" afterPath="$PROJECT_DIR$/web/assetic/main_js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assetic/main_js_part_1_main_6" afterPath="$PROJECT_DIR$/web/assetic/main_js_part_1_main_6" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Book/new.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Book/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Read/new.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Read/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Shelf/new.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Shelf/new.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Book/show.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Book/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Read/show.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Read/show.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BookBundle/Resources/views/Shelf/show.html.twig" afterPath="$PROJECT_DIR$/src/BookBundle/Resources/views/Shelf/show.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hmf.loc.iws" />
@@ -104,7 +69,7 @@
       <file leaf-file-name="Shelf.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BookBundle/Entity/Shelf.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43808532">
+            <state vertical-scroll-proportion="0.0">
               <caret line="59" column="62" selection-start-line="59" selection-start-column="62" selection-end-line="59" selection-end-column="62" />
               <folding />
             </state>
@@ -256,7 +221,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -729,7 +694,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -796,16 +761,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="21" width="1879" height="1059" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20542842" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20542842" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53993934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -816,6 +780,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53993934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1071,7 +1036,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="171" column="3" selection-start-line="171" selection-start-column="3" selection-end-line="171" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1086,7 +1050,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1094,7 +1057,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1102,7 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1110,7 +1071,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1118,7 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1126,7 +1085,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1134,7 +1092,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1150,7 +1107,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.017689906">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1158,7 +1114,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.035379812">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1166,7 +1121,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05306972">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1182,7 +1136,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1230,7 +1183,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BookBundle/Entity/Shelf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43808532">
+        <state vertical-scroll-proportion="0.0">
           <caret line="59" column="62" selection-start-line="59" selection-start-column="62" selection-end-line="59" selection-end-column="62" />
           <folding />
         </state>
