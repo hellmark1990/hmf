@@ -5,7 +5,7 @@
 
     <h1 class="h1-title">{% trans %}Reading{% endtrans %}</h1>
 
-    <div class="grid-list-view container">
+    <div class="grid-list-view container container-read-list">
         <div class="well well-sm">
             <strong>Display</strong>
 
@@ -30,23 +30,19 @@
             {% for read in reads %}
                 <div class="item  col-xs-4 col-lg-4">
                     <div class="thumbnail">
-                        <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt=""/>
+                        <div class="read-location-map location-map location-map-read-list" data-latitude="{{ read.latitude }}" data-longitude="{{ read.longitude }}"></div>
 
                         <div class="caption">
-                            <h4 class="group inner list-group-item-heading">{{ read.title }}</h4>
+                            <h4 class="group inner list-group-item-heading">
+                                <a href="{{ path('read_book_edit', {'id': read.id, 'bookId': read.book.id  }) }}">
+                                    {{ read.title }}
+                                </a>
+                            </h4>
 
-                            <p class="group inner list-group-item-text">{{ read.comment|striptags|truncate(100) }}</p>
-
-                            <p class="group inner list-group-item-text">
-                                <b>{% trans %}Book: {% endtrans %}</b>
-                                {{ read.book.name }}
-                            </p>
+                            <p class="group inner list-group-item-text read-comment">{{ read.comment|striptags|truncate(120) }}</p>
 
                             <div class="row">
                                 <div class="col-xs-12 col-md-6">
-                                    <a class="btn btn-success" href="{{ path('read_book_edit', {'id': read.id, 'bookId': read.book.id  }) }}">
-                                        {% trans %}Edit{% endtrans %}
-                                    </a>
                                 </div>
                             </div>
                         </div>

@@ -1781,32 +1781,45 @@ $(document).ready(function () {
     }
 
     if ($('div.location-map').length) {
+        var mapSettings = {
+            location: {
+                latitude: $('#bookbundle_read_latitude').val(),
+                longitude: $('#bookbundle_read_longitude').val()
+            },
+            inputBinding: {
+                latitudeInput: $('#bookbundle_read_latitude'),
+                longitudeInput: $('#bookbundle_read_longitude'),
+                locationNameInput: $('#bookbundle_read_place')
+            },
+            enableAutocomplete: true,
+            radius: 30,
+        };
 
         if ($('.location-map-edit').length) {
-            $('div.location-map').locationpicker({
-                location: {latitude: $('#bookbundle_read_latitude').val(), longitude: $('#bookbundle_read_longitude').val()},
-                radius: 30,
-                inputBinding: {
-                    latitudeInput: $('#bookbundle_read_latitude'),
-                    longitudeInput: $('#bookbundle_read_longitude'),
-                    locationNameInput: $('#bookbundle_read_place')
-                },
-                enableAutocomplete: true,
+            mapSettings.location = {
+                latitude: $('#bookbundle_read_latitude').val(),
+                longitude: $('#bookbundle_read_longitude').val()
+            }
+            $('div.location-map').locationpicker(mapSettings);
+        } else if ($('.location-map-read-list').length) {
+            $('.location-map-read-list').each(function () {
+                mapSettings.location = {
+                    latitude: $(this).data('latitude'),
+                    longitude: $(this).data('longitude')
+                }
+                mapSettings.inputBinding = {};
+                mapSettings.draggable = false;
+                mapSettings.zoom = 12;
+
+                $(this).locationpicker(mapSettings);
             });
         } else {
-            $('div.location-map').locationpicker({
-                location: {latitude: 46.15242437752303, longitude: 2.7470703125},
-                radius: 30,
-                inputBinding: {
-                    latitudeInput: $('#bookbundle_read_latitude'),
-                    longitudeInput: $('#bookbundle_read_longitude'),
-                    locationNameInput: $('#bookbundle_read_place')
-                },
-                enableAutocomplete: true,
-            });
+            mapSettings.location = {
+                latitude: 46.15242437752303,
+                longitude: 2.7470703125
+            }
+            $('div.location-map').locationpicker(mapSettings);
         }
-
-
     }
 
     $('#datetimepicker6').datetimepicker(
