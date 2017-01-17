@@ -16,6 +16,7 @@ use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
+use ProfileBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -26,13 +27,11 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ProfileController extends Controller
-{
+class ProfileController extends Controller {
     /**
      * Show the user
      */
-    public function showAction()
-    {
+    public function showAction(){
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -46,8 +45,10 @@ class ProfileController extends Controller
     /**
      * Edit the user
      */
-    public function editAction(Request $request)
-    {
+    public function editAction(Request $request){
+        /**
+         * @var $user User
+         */
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -70,6 +71,9 @@ class ProfileController extends Controller
         $form->setData($user);
 
         $form->handleRequest($request);
+        if ($user->getAvatar()) {
+            $user->getAvatar()->setContext('profile_avatar');
+        }
 
         if ($form->isValid()) {
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */

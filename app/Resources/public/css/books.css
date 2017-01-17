@@ -13,6 +13,7 @@ h1 {
 }
 
 .image-container {
+    display: block;
     /*position: relative;*/
     /*display: inline-block;*/
     /*text-align: center;*/
@@ -23,7 +24,7 @@ Profile edit block start
  */
 .image-container > .button.button-edit {
     position: relative;
-    bottom: 222px;
+    bottom: 230px;
     left: 40px;
     width: 30px;
     height: 26px;
@@ -33,7 +34,7 @@ Profile edit block start
 
 .image-container > .button.button-delete {
     position: relative;
-    bottom: 222px;
+    bottom: 230px;
     left: 40px;
     width: 30px;
     height: 26px;
@@ -51,23 +52,7 @@ Profile edit block start
 }
 
 .profile-edit-form-container > .pull-right {
-    width: 70%;
-}
-
-.profile-edit-form-container .social-container {
-    margin-left: 8.3%;
-}
-
-.profile-edit-form-container .social-container > .social {
-    margin-left: 3%;
-}
-
-.profile-edit-form-container .social-container > .social input {
-    margin-left: 5%;
-}
-
-.profile-edit-form-container .pull-left.social {
-    width: 30%;
+    width: 60%;
 }
 
 .books-button-panel {
@@ -134,6 +119,8 @@ form[name="bookbundle_book"] .circle.image-container {
 
 form[name="bookbundle_book"] .circle.image-container > img {
     margin: 0 auto;
+    width: 135px;
+    height: 200px;
 }
 
 .form-group .form-control {

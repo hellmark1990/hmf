@@ -96,6 +96,7 @@ h1 {
 }
 
 .image-container {
+    display: block;
     /*position: relative;*/
     /*display: inline-block;*/
     /*text-align: center;*/
@@ -106,7 +107,7 @@ Profile edit block start
  */
 .image-container > .button.button-edit {
     position: relative;
-    bottom: 222px;
+    bottom: 230px;
     left: 40px;
     width: 30px;
     height: 26px;
@@ -116,7 +117,7 @@ Profile edit block start
 
 .image-container > .button.button-delete {
     position: relative;
-    bottom: 222px;
+    bottom: 230px;
     left: 40px;
     width: 30px;
     height: 26px;
@@ -134,23 +135,7 @@ Profile edit block start
 }
 
 .profile-edit-form-container > .pull-right {
-    width: 70%;
-}
-
-.profile-edit-form-container .social-container {
-    margin-left: 8.3%;
-}
-
-.profile-edit-form-container .social-container > .social {
-    margin-left: 3%;
-}
-
-.profile-edit-form-container .social-container > .social input {
-    margin-left: 5%;
-}
-
-.profile-edit-form-container .pull-left.social {
-    width: 30%;
+    width: 60%;
 }
 
 .books-button-panel {
@@ -217,6 +202,8 @@ form[name="bookbundle_book"] .circle.image-container {
 
 form[name="bookbundle_book"] .circle.image-container > img {
     margin: 0 auto;
+    width: 135px;
+    height: 200px;
 }
 
 .form-group .form-control {
@@ -4400,6 +4387,30 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 * html .pp_top .pp_middle,* html .pp_bottom .pp_middle{left:0;position:static}
 .pp_top .pp_right,.pp_bottom .pp_right{height:20px;left:auto;position:absolute;right:0;top:0;width:20px}
 .pp_fade,.pp_gallery li.default a img{display:none}
+.profile-avatar .image-container {
+    width: 250px;
+    height: 270px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 2px solid #f3f3f3;
+    padding: 25px;
+    padding-top: 35px;
+}
+
+.profile-avatar .circle.image-container > img {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+}
+
+.profile-avatar .button-edit{
+    left: 70px!important;
+}
+
+.profile-avatar .button-delete{
+    left: 70px!important;
+}
 .read-location-map{
     height: 300px;
     /*-webkit-border-radius: 4px;*/

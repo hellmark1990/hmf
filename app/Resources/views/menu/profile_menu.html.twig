@@ -42,20 +42,6 @@
                 </li>
             </ul>
         </li>
-
-        <li class="dropdown {% if app.request.attributes.get('_route')  in ['read', 'read_new'] %}active{% endif %}">
-            <a href="{{ path('read') }}" class="dropdown-toggle" data-toggle="dropdown">{% trans %}Reads{% endtrans %}
-                <i class="fa fa-angle-down"></i>
-            </a>
-            <ul class="dropdown-menu">
-                <li class="{% if app.request.attributes.get('_route') == 'read' %}active{% endif %}">
-                    <a href="{{ path('read') }}">{% trans %}All reeds{% endtrans %}</a>
-                </li>
-                <li class="{% if app.request.attributes.get('_route') == 'read_new' %}active{% endif %}">
-                    <a href="{{ path('read_new') }}">{% trans %}Add new reed{% endtrans %}</a>
-                </li>
-            </ul>
-        </li>
     {% endif %}
     {% block nav_bar %}{% endblock %}
 </ul>

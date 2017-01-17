@@ -16,8 +16,7 @@ use BookBundle\Form\ReadType;
  *
  * @Route("/read")
  */
-class ReadController extends Controller
-{
+class ReadController extends Controller {
 
     /**
      * Lists all Read entities.
@@ -26,8 +25,7 @@ class ReadController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
-    {
+    public function indexAction(){
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('BookBundle:Read')->findAll();
@@ -44,8 +42,7 @@ class ReadController extends Controller
      * @Method("POST")
      * @Template("BookBundle:Read:new.html.twig")
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request){
         $entity = new Read();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -55,12 +52,12 @@ class ReadController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('read_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('read_book_edit', array('id' => $entity->getId(), 'bookId' => $entity->getBook()->getId())));
         }
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -71,8 +68,7 @@ class ReadController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Read $entity)
-    {
+    private function createCreateForm(Read $entity){
         $form = $this->createForm(new ReadType(), $entity, array(
             'action' => $this->generateUrl('read_create'),
             'method' => 'POST',
@@ -90,14 +86,13 @@ class ReadController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
-    {
+    public function newAction(){
         $entity = new Read();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -108,15 +103,14 @@ class ReadController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newBookAction(Book $book)
-    {
+    public function newBookAction(Book $book){
         $entity = new Read();
         $entity->setBook($book);
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -127,8 +121,7 @@ class ReadController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
-    {
+    public function showAction($id){
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BookBundle:Read')->find($id);
@@ -140,7 +133,7 @@ class ReadController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -152,8 +145,7 @@ class ReadController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
-    {
+    public function editAction($id){
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BookBundle:Read')->find($id);
@@ -166,21 +158,48 @@ class ReadController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Read entity.
-    *
-    * @param Read $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Read $entity)
-    {
+     * Displays a form to create a new Read entity.
+     *
+     * @Route("{id}/edit/{bookId}/book", name="read_book_edit")
+     * @Method("GET")
+     * @Template()
+     */
+    public function editBookAction($id, $bookId){
+        $em = $this->getDoctrine()->getManager();
+
+        $book = $em->getRepository('BookBundle:Book')->find($bookId);
+        $entity = $em->getRepository('BookBundle:Read')->getByBook($id, $book);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Read entity.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return array(
+            'entity' => $entity,
+            'form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
+
+    }
+
+    /**
+     * Creates a form to edit a Read entity.
+     *
+     * @param Read $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Read $entity){
         $form = $this->createForm(new ReadType(), $entity, array(
             'action' => $this->generateUrl('read_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -190,6 +209,7 @@ class ReadController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Read entity.
      *
@@ -197,8 +217,7 @@ class ReadController extends Controller
      * @Method("PUT")
      * @Template("BookBundle:Read:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id){
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BookBundle:Read')->find($id);
@@ -218,19 +237,54 @@ class ReadController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
+
+
+    /**
+     * Edits an existing Read entity.
+     *
+     * @Route("/{id}/book/{bookId}", name="read_book_update")
+     * @Method("PUT")
+     * @Template("BookBundle:Read:edit.html.twig")
+     */
+    public function updateBookAction(Request $request, $id, $bookId){
+        $em = $this->getDoctrine()->getManager();
+
+        $book = $em->getRepository('BookBundle:Book')->find($bookId);
+        $entity = $em->getRepository('BookBundle:Read')->getByBook($id, $book);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Read entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('read_book_edit', array('id' => $id, 'bookId' => $bookId)));
+        }
+
+        return array(
+            'entity' => $entity,
+            'form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
     /**
      * Deletes a Read entity.
      *
      * @Route("/{id}", name="read_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id){
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -256,13 +310,11 @@ class ReadController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id){
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('read_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

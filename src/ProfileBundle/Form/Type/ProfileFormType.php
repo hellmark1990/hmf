@@ -73,7 +73,7 @@ class ProfileFormType extends AbstractType {
             ->add('avatar', 'sonata_media_type', [
                 'required' => false,
                 'provider' => 'sonata.media.provider.image',
-                'context' => 'default',
+                'context' => 'profile_avatar',
                 'label' => false,
             ])
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))

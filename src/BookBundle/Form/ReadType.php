@@ -34,8 +34,7 @@ class ReadType extends AbstractType {
         $builder->get('timeStart')
             ->addModelTransformer(new CallbackTransformer(
                 function ($date){
-                    // transform the array to a string
-                    return $date->format('Y-m-d H:i:s');
+                    return $date ? $date->format('Y-m-d H:i:s') : null;
                 },
                 function ($date){
                     return \DateTime::createFromFormat('Y-m-d H:i', $date);
@@ -46,8 +45,7 @@ class ReadType extends AbstractType {
         $builder->get('timeEnd')
             ->addModelTransformer(new CallbackTransformer(
                 function ($date){
-                    // transform the array to a string
-                    return $date->format('Y-m-d H:i:s');
+                    return $date ? $date->format('Y-m-d H:i:s') : null;
                 },
                 function ($date){
                     return \DateTime::createFromFormat('Y-m-d H:i', $date);

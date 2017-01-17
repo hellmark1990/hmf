@@ -1782,16 +1782,31 @@ $(document).ready(function () {
 
     if ($('div.location-map').length) {
 
-        $('div.location-map').locationpicker({
-            location: {latitude: 46.15242437752303, longitude: 2.7470703125},
-            radius: 30,
-            inputBinding: {
-                latitudeInput: $('#bookbundle_read_latitude'),
-                longitudeInput: $('#bookbundle_read_longitude'),
-                locationNameInput: $('#bookbundle_read_place')
-            },
-            enableAutocomplete: true,
-        });
+        if ($('.location-map-edit').length) {
+            $('div.location-map').locationpicker({
+                location: {latitude: $('#bookbundle_read_latitude').val(), longitude: $('#bookbundle_read_longitude').val()},
+                radius: 30,
+                inputBinding: {
+                    latitudeInput: $('#bookbundle_read_latitude'),
+                    longitudeInput: $('#bookbundle_read_longitude'),
+                    locationNameInput: $('#bookbundle_read_place')
+                },
+                enableAutocomplete: true,
+            });
+        } else {
+            $('div.location-map').locationpicker({
+                location: {latitude: 46.15242437752303, longitude: 2.7470703125},
+                radius: 30,
+                inputBinding: {
+                    latitudeInput: $('#bookbundle_read_latitude'),
+                    longitudeInput: $('#bookbundle_read_longitude'),
+                    locationNameInput: $('#bookbundle_read_place')
+                },
+                enableAutocomplete: true,
+            });
+        }
+
+
     }
 
     $('#datetimepicker6').datetimepicker(
