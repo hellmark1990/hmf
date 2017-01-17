@@ -292,17 +292,17 @@ class BookController extends Controller {
     /**
      * Deletes a Book entity.
      *
-     * @Route("/{id}", name="book_delete")
-     * @Method("DELETE")
+     * @Route("/delete/{id}", name="book_delete")
      */
     public function deleteAction(Request $request, $id){
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('BookBundle:Book')->find($id);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('BookBundle:Book')->find($id);
+        if($entity->getUser()->getId() != $this->getUser()->getId()){
+            throw $this->createNotFoundException('Unable to delete Book entity.');
+        }
 
+        if ($entity) {
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Book entity.');
             }

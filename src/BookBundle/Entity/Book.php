@@ -35,6 +35,13 @@ class Book {
     private $publisher;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="authors", type="text",  nullable=true)
+     */
+    private $authors;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="publishedDate", type="datetime",  nullable=true)
@@ -439,5 +446,28 @@ class Book {
      */
     public function getReads(){
         return $this->reads;
+    }
+
+    /**
+     * Set authors
+     *
+     * @param string $authors
+     * @return Book
+     */
+    public function setAuthors($authors)
+    {
+        $this->authors = $authors;
+
+        return $this;
+    }
+
+    /**
+     * Get authors
+     *
+     * @return string 
+     */
+    public function getAuthors()
+    {
+        return $this->authors;
     }
 }

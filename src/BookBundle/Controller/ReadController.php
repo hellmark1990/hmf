@@ -2,6 +2,7 @@
 
 namespace BookBundle\Controller;
 
+use BookBundle\Entity\Book;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -92,6 +93,25 @@ class ReadController extends Controller
     public function newAction()
     {
         $entity = new Read();
+        $form   = $this->createCreateForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        );
+    }
+
+    /**
+     * Displays a form to create a new Read entity.
+     *
+     * @Route("/new/{id}/book", name="read_new_book")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newBookAction(Book $book)
+    {
+        $entity = new Read();
+        $entity->setBook($book);
         $form   = $this->createCreateForm($entity);
 
         return array(

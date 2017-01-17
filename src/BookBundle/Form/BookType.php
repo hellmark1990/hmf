@@ -29,6 +29,9 @@ class BookType extends AbstractType {
             ->add('name', 'text', [
                 'required' => false
             ])
+            ->add('authors', 'text', [
+                'required' => false
+            ])
             ->add('publisher', 'text', [
                 'required' => false
             ])

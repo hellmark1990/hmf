@@ -4,7 +4,7 @@
     <div class="span3 pull-left">
         {% if value is not empty and value.providerReference %}
             <div class="pull-left" style="margin-right: 5px">
-                <a class="circle image-container">
+                <div class="circle image-container">
                     {% thumbnail value, 'small' with {'class': 'img-polaroid media-object', 'data-default-src': asset('bundles/sonatamedia/grey.png')} %}
                     <button type="button" class="btn btn-default btn-small button button-edit">
                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -12,7 +12,7 @@
                     <button type="button" class="btn btn-default btn-small button button-delete">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
-                </a>
+                </div>
             </div>
 
             {% if sonata_admin_enabled is defined and sonata_admin_enabled %}

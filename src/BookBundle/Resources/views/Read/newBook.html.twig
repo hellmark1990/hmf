@@ -1,0 +1,54 @@
+{% extends "BookBundle::layout.html.twig" %}
+
+{% block body -%}
+    {{ parent() }}
+    <h1 class="h1-title">Read creation</h1>
+
+    <br>
+
+    {{ form_start(form) }}
+    <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+            <div class="read-location-map location-map"></div>
+        </div>
+    </div>
+
+    {{ form_row(form.title) }}
+    {{ form_row(form.place) }}
+
+    <div class="datepicker-container form-group">
+        {{ form_label(form.timeStart) }}
+        <div class="col-sm-4">
+            {{ form_errors(form.timeStart) }}
+            <div class='input-group date' id='datetimepicker6'>
+                {{ form_widget(form.timeStart) }}
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+
+        {{ form_label(form.timeEnd) }}
+        <div class="col-sm-4">
+            {{ form_errors(form.timeEnd) }}
+            <div class='input-group date ' id='datetimepicker7'>
+                {{ form_widget(form.timeEnd) }}
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@BookBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

@@ -20,23 +20,39 @@
         <div id="products" class="row list-group">
             {% if entities %}
                 {% for entity in entities %}
-                    <div class="item  col-xs-4 col-lg-4">
+                    <div class="item  col-xs-3 col-lg-3">
                         <div class="thumbnail">
-                            <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
+                            <div class="btn-delete">
+                                <a class="btn btn-danger btn-sm" href="{{ path('book_delete', { 'id': entity.id }) }}">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </a>
+                            </div>
+
+                            <a href="{{ path('book_edit', { 'id': entity.id }) }}">
+                                <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
+                            </a>
 
                             <div class="caption">
-                                <h4 class="group inner list-group-item-heading">{{ entity.name }}</h4>
+                                <a href="{{ path('book_edit', { 'id': entity.id }) }}">
+                                    <h5 class="group inner list-group-item-heading">{{ entity.name }}</h5>
+                                </a>
 
-                                <p class="group inner list-group-item-text">{{ entity.description|truncate(100)|raw }}</p>
+                                <p class="group inner list-group-item-text">
+                                    {% if entity.authors %}
+                                        <b>{% trans %}Author:{% endtrans %}</b>
+                                        {{ entity.authors|truncate(200) }}
+                                    {% endif %}
+                                </p>
+
+                                <p class="group inner list-group-item-text">
+                                    {% if entity.authors %}
+                                        <b>{% trans %}Pages:{% endtrans %}</b>
+                                        {{ entity.pageCount|truncate(200) }}
+                                    {% endif %}
+                                </p>
 
                                 <div class="row">
                                     <div class="col-xs-12 col-md-6">
-                                        <p class="lead">
-                                            $21.000</p>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6">
-                                        <a class="btn btn-success" href="{{ path('book_edit', { 'id': entity.id }) }}">{% trans %}
-                                            Edit{% endtrans %}</a>
                                     </div>
                                 </div>
                             </div>

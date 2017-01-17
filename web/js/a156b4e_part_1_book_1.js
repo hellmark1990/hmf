@@ -19,6 +19,7 @@ $(document).ready(function () {
                 $('form[name="bookbundle_book"]').find('[name="bookbundle_book[language]"]').val(ui.item.language);
                 $('form[name="bookbundle_book"]').find('[name="bookbundle_book[previewLink]"]').val(ui.item.previewLink);
                 $('form[name="bookbundle_book"]').find('[name="bookbundle_book[previewLink]"]').val(ui.item.previewLink);
+                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[authors]"]').val(ui.item.authors);
 
                 $(".js-datepicker-publishedDate").datepicker('setDate', ui.item.publishedDate);
                 console.log(ui.item.publishedDate)
@@ -68,4 +69,21 @@ $(document).ready(function () {
             enableAutocomplete: true,
         });
     }
-});
+
+    $('#datetimepicker6').datetimepicker(
+        {
+            format: 'Y-MM-DD HH:mm'
+        }
+    );
+    $('#datetimepicker7').datetimepicker({
+        useCurrent: false, //Important! See issue #1075
+        format: 'Y-MM-DD HH:mm'
+    });
+    $("#datetimepicker6").on("dp.change", function (e) {
+        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+    });
+    $("#datetimepicker7").on("dp.change", function (e) {
+        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+    });
+})
+;

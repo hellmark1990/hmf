@@ -97,6 +97,14 @@ assetic:
             inputs:
                 - '%kernel.root_dir%/Resources/public/jquery/jquery.js'
                 - '%kernel.root_dir%/Resources/public/jquery/jquery-ui.js'
+
+        bootstrap:
+            inputs:
+                - '%kernel.root_dir%/Resources/public/js/moment.min.js'
+                - '%kernel.root_dir%/Resources/public/js/transition.js'
+                - '%kernel.root_dir%/Resources/public/js/collapse.js'
+                - '%kernel.root_dir%/Resources/public/js/z-bootstrap.min.js'
+                - '%kernel.root_dir%/Resources/public/js/bootstrap-datetimepicker.min.js'
         main_js:
             inputs:
                 - '%kernel.root_dir%/Resources/public/js/*'

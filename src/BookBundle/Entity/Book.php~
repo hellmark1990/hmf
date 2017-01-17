@@ -35,6 +35,13 @@ class Book {
     private $publisher;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="authors", type="text",  nullable=true)
+     */
+    private $authors;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="publishedDate", type="datetime",  nullable=true)

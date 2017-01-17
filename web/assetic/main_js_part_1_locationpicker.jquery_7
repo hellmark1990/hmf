@@ -253,7 +253,7 @@
             latOld = gmapContext.settings.location.latitude,
             lngOld = gmapContext.settings.location.longitude,
             radiusOld = gmapContext.settings.radius;
-
+        
         if (latNew == latOld && lngNew == lngOld && radiusNew == radiusOld)
         return;
 
@@ -346,8 +346,8 @@
             // If plug-in hasn't been applied before - initialize, otherwise - skip
             if (isPluginApplied(this)){
               updateMap(getContextForElement(this), $(this), options);
-              return;
-            }
+              return;  
+            } 
             // Plug-in initialization is required
             // Defaults
             var settings = $.extend({}, $.fn.locationpicker.defaults, options );

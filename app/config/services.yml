@@ -23,3 +23,15 @@ services:
             arguments: [ @service_container]
             tags:
                 - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    app.form.data_transformer.book_to_number_transformer:
+        class: AppBundle\Form\DataTransformer\BookToNumberTransformer
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+
+    app.form.type.entity_hidden:
+        class: AppBundle\Form\Extension\Type\EntityHiddenType
+        arguments: ["@app.form.data_transformer.book_to_number_transformer"]
+        tags:
+            - { name: form.type }
