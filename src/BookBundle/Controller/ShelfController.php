@@ -27,7 +27,7 @@ class ShelfController extends Controller {
     public function indexAction(){
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BookBundle:Shelf')->findAll();
+        $entities = $this->getUser()->getShelfs();
 
         $deleteForms = [];
         foreach ($entities as $entity) {
@@ -53,6 +53,8 @@ class ShelfController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $entity->setUser($this->getUser());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -205,24 +207,22 @@ class ShelfController extends Controller {
     /**
      * Deletes a Shelf entity.
      *
-     * @Route("/{id}", name="shelf_delete")
-     * @Method("DELETE")
+     * @Route("/delete/{id}", name="shelf_delete")
      */
     public function deleteAction(Request $request, $id){
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('BookBundle:Shelf')->find($id);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('BookBundle:Shelf')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Shelf entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if ($entity->getUser()->getId() != $this->getUser()->getId()) {
+            throw $this->createNotFoundException('Unable to delete Shelf entity.');
         }
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Shelf entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('shelf'));
     }

@@ -9,31 +9,39 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form id="main-contact-form" class="contact-form" name="contact-form" method="post"
+    <form id="main-contact-form" class="login-form col-sm-5 form-horizontal" name="contact-form" method="post"
           action="{{ path("fos_user_security_check") }}">
-        <div class="col-sm-5 col-sm-offset-1">
 
-            <div class="form-group">
-                <label>Email *</label>
+        <div class="form-group">
+            <label class="col-sm-3 control-label required" for="bookbundle_shelf_title">Email</label>
+            <div class="col-sm-9">
                 <input type="text" name="_username" class="form-control" required="required"
                        value="{{ last_username }}">
             </div>
+        </div>
 
-            <div class="form-group">
-                <label>Password *</label>
+        <div class="form-group">
+            <label class="col-sm-3 control-label required" for="bookbundle_shelf_title">Password</label>
+            <div class="col-sm-9">
                 <input type="password" name="_password" class="form-control">
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-                <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+        <div class="form-group">
+            <label class="col-sm-3 control-label required" for="bookbundle_shelf_title">{{ 'security.login.remember_me'|trans }}</label>
+            <div class="col-sm-2">
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" class="form-control"/>
             </div>
+        </div>
 
-            <div class="form-group">
-                <button type="submit" name="_submit" class="btn btn-primary btn-lg" required="required">{% trans %}Sign in{% endtrans %}</button>
+        <div class="form-group">
+            <label class="col-sm-3 control-label"></label>
+            <div class="col-sm-3">
+                <input type="submit" name="_submit" class="btn btn-default" value="{% trans %}Sign in{% endtrans %}">
             </div>
+        </div>
 
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
         </div>
     </form>
 {% endblock %}

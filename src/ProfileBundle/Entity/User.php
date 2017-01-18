@@ -52,7 +52,6 @@ class User extends BaseUser {
     private $twitter;
 
     /**
-     * @Assert\File(maxSize="5M")
      * @ORM\OneToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
      */
     private $avatar;
@@ -63,6 +62,12 @@ class User extends BaseUser {
      */
     private $books;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\Shelf", mappedBy="user")
+     * @ORM\OrderBy({"id" = "DESC"})
+     */
+    private $shelfs;
 
     public function __construct(){
         parent::__construct();
@@ -245,5 +250,38 @@ class User extends BaseUser {
      */
     public function getBooks(){
         return $this->books;
+    }
+
+    /**
+     * Add shelfs
+     *
+     * @param \BookBundle\Entity\Shelf $shelfs
+     * @return User
+     */
+    public function addShelf(\BookBundle\Entity\Shelf $shelfs)
+    {
+        $this->shelfs[] = $shelfs;
+
+        return $this;
+    }
+
+    /**
+     * Remove shelfs
+     *
+     * @param \BookBundle\Entity\Shelf $shelfs
+     */
+    public function removeShelf(\BookBundle\Entity\Shelf $shelfs)
+    {
+        $this->shelfs->removeElement($shelfs);
+    }
+
+    /**
+     * Get shelfs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getShelfs()
+    {
+        return $this->shelfs;
     }
 }

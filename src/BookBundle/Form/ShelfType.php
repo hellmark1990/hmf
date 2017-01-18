@@ -18,6 +18,14 @@ class ShelfType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
+            ->add('image', 'sonata_media_type', [
+                'required' => false,
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'shelf',
+                'attr' => ['class' => 'form-shelf-image'],
+                'show_unlink' => false,
+                'label' => false
+            ])
             ->add('title')
             ->add('access', ChoiceType::class, array(
                 'choices' => [

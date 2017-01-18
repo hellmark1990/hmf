@@ -68,6 +68,7 @@ class ProfileFormType extends AbstractType {
                 'provider' => 'sonata.media.provider.image',
                 'context' => 'profile_avatar',
                 'label' => false,
+                'show_unlink' => false,
             ])
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', \Nelmio\ApiDocBundle\Util\LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))

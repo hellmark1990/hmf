@@ -66,6 +66,17 @@ class Shelf {
      */
     private $books;
 
+    /**
+     * @ORM\OneToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     */
+    private $image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ProfileBundle\Entity\User", inversedBy="shelfs")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $user;
+
 
     /**
      * Get id
@@ -204,5 +215,51 @@ class Shelf {
      */
     public function getBooks(){
         return $this->books;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $image
+     * @return Shelf
+     */
+    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ProfileBundle\Entity\User $user
+     * @return Shelf
+     */
+    public function setUser(\ProfileBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ProfileBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

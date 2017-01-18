@@ -64,7 +64,7 @@ jQuery(function ($) {
     });
 
     $('button.button-delete').on('click', function () {
-        $('#bookbundle_book_image_unlink').val(1);
+        $(this).closest('.form-group').find('input[type="hidden"]').val(1);
         var image = $(this).closest('.form-group').find('.image-container > img');
         $(image).attr('src', $(image).data('default-src'));
     });
@@ -80,8 +80,8 @@ jQuery(function ($) {
         $('#products .item').addClass('grid-group-item');
     });
 
-    $('form[name="bookbundle_book"]').find('.form-book-image input[type="file"]').on('change', function () {
-        $('#bookbundle_book_imageUrl').val('');
-        $('.img-polaroid.media-object').attr('src', URL.createObjectURL($(this)[0].files[0]));
+    $('input[type="file"]').on('change', function () {
+        $('img.media-object').val('');
+        $('img.media-object').attr('src', URL.createObjectURL($(this)[0].files[0]));
     })
 });

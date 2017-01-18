@@ -3,7 +3,7 @@
 {% block body -%}     {{ parent() }}
     <h1 class="h1-title">{% trans %}Your Books Shelf list{% endtrans %}</h1>
 
-    <div class="grid-list-view container container-read-list">
+    <div class="grid-list-view container container-shelf-list">
         <div class="well well-sm">
             <strong>Display</strong>
 
@@ -23,6 +23,18 @@
                 {% for entity in entities %}
                     <div class="item  col-xs-4 col-lg-4">
                         <div class="thumbnail">
+                            <div class="btn-delete">
+                                <a class="btn btn-danger btn-sm" href="{{ path('shelf_delete', { 'id': entity.id }) }}">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                            <a href="{{ path('shelf_edit', { 'id': entity.id }) }}" class="img-link">
+                                {% if entity.image %}
+                                    <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
+                                {% else %}
+                                    <img class="group list-group-image no-image" src="/uploads/no-image.png" alt=""/>
+                                {% endif %}
+                            </a>
                             <div class="caption">
                                 <h4 class="group inner list-group-item-heading">
                                     <a href="{{ path('shelf_edit', {'id': entity.id }) }}">

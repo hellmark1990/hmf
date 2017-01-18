@@ -253,7 +253,6 @@ class BookController extends Controller {
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
-
         if ($previousImageUrl != $request->get('bookbundle_book')['imageUrl'] && $request->get('bookbundle_book')['imageUrl']) {
             if (!$entity->getImage()) {
                 $image = new \Application\Sonata\MediaBundle\Entity\Media();
@@ -298,18 +297,16 @@ class BookController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('BookBundle:Book')->find($id);
 
-        if($entity->getUser()->getId() != $this->getUser()->getId()){
+        if ($entity->getUser()->getId() != $this->getUser()->getId()) {
             throw $this->createNotFoundException('Unable to delete Book entity.');
         }
 
-        if ($entity) {
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Book entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Book entity.');
         }
+
+        $em->remove($entity);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('book'));
     }

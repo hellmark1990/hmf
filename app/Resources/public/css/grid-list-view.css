@@ -37,7 +37,7 @@
 }
 
 .grid-list-view .item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
-    background: #428bca;
+    background: #f5f5f5;
 }
 
 .grid-list-view .item.list-group-item .list-group-image {

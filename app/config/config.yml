@@ -130,13 +130,20 @@ sonata_media:
             formats:
                 small: { width: 100 , quality: 70}
                 big:   { width: 500 , quality: 70}
+
+        shelf:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                small: { width: 350, height: 200, quality: 95, constraint: false}
         profile_avatar:
             providers:
                 - sonata.media.provider.image
                 - sonata.media.provider.file
 
             formats:
-                admin: { width: 12, height: 10, quality: 95, constraint: false}
                 small: { width: 200, height: 200, quality: 95, constraint: false}
         book:
             providers:
@@ -144,7 +151,6 @@ sonata_media:
                 - sonata.media.provider.file
 
             formats:
-                admin: { width: 12, height: 10, quality: 95, constraint: false}
                 small: { width: 125, height: 190, quality: 95, constraint: false}
 
     cdn:

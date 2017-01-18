@@ -72,16 +72,13 @@ class ProfileController extends Controller {
 
         $form->handleRequest($request);
 
-        if ($user->getAvatar()) {
-            $user->getAvatar()->setContext('profile_avatar');
-        }
-
         if ($form->isValid()) {
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
             $userManager = $this->get('fos_user.user_manager');
 
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::PROFILE_EDIT_SUCCESS, $event);
+
 
             $userManager->updateUser($user);
 
