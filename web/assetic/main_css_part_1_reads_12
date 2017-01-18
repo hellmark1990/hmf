@@ -12,3 +12,17 @@
     display: block;
     margin-top: 10px;
 }
+
+.container-read-list .list-group-item .location-map-read-list {
+    height: 198px!important;
+    width: 400px;
+    float: left;
+}
+
+.container-read-list .list-group-item .caption {
+    padding: 20px 9px 0px 410px!important;
+}
+
+.container-read-list .list-group-item > .thumbnail {
+    height: 200px;
+}

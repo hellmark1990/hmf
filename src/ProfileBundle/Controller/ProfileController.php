@@ -71,6 +71,7 @@ class ProfileController extends Controller {
         $form->setData($user);
 
         $form->handleRequest($request);
+
         if ($user->getAvatar()) {
             $user->getAvatar()->setContext('profile_avatar');
         }

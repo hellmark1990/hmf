@@ -5,6 +5,7 @@ namespace ProfileBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -51,6 +52,7 @@ class User extends BaseUser {
     private $twitter;
 
     /**
+     * @Assert\File(maxSize="5M")
      * @ORM\OneToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
      */
     private $avatar;
@@ -221,8 +223,7 @@ class User extends BaseUser {
      * @param \BookBundle\Entity\Book $books
      * @return User
      */
-    public function addBook(\BookBundle\Entity\Book $books)
-    {
+    public function addBook(\BookBundle\Entity\Book $books){
         $this->books[] = $books;
 
         return $this;
@@ -233,18 +234,16 @@ class User extends BaseUser {
      *
      * @param \BookBundle\Entity\Book $books
      */
-    public function removeBook(\BookBundle\Entity\Book $books)
-    {
+    public function removeBook(\BookBundle\Entity\Book $books){
         $this->books->removeElement($books);
     }
 
     /**
      * Get books
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBooks()
-    {
+    public function getBooks(){
         return $this->books;
     }
 }

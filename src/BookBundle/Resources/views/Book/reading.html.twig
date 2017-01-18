@@ -25,31 +25,33 @@
                 </a>
             </div>
         </div>
+        {% if reads.count %}
+            <div id="products" class="row list-group">
+                {% for read in reads %}
+                    <div class="item  col-xs-4 col-lg-4">
+                        <div class="thumbnail">
+                            <div class="read-location-map location-map location-map-read-list" data-latitude="{{ read.latitude }}" data-longitude="{{ read.longitude }}"></div>
+                            <div class="caption">
+                                <h4 class="group inner list-group-item-heading">
+                                    <a href="{{ path('read_book_edit', {'id': read.id, 'bookId': read.book.id  }) }}">
+                                        {{ read.title }}
+                                    </a>
+                                </h4>
 
-        <div id="products" class="row list-group">
-            {% for read in reads %}
-                <div class="item  col-xs-4 col-lg-4">
-                    <div class="thumbnail">
-                        <div class="read-location-map location-map location-map-read-list" data-latitude="{{ read.latitude }}" data-longitude="{{ read.longitude }}"></div>
+                                <p class="group inner list-group-item-text read-comment">{{ read.comment|striptags|truncate(120) }}</p>
 
-                        <div class="caption">
-                            <h4 class="group inner list-group-item-heading">
-                                <a href="{{ path('read_book_edit', {'id': read.id, 'bookId': read.book.id  }) }}">
-                                    {{ read.title }}
-                                </a>
-                            </h4>
-
-                            <p class="group inner list-group-item-text read-comment">{{ read.comment|striptags|truncate(120) }}</p>
-
-                            <div class="row">
-                                <div class="col-xs-12 col-md-6">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">{% trans %}Your Reading list is empty.{% endtrans %}</div>
+        {% endif %}
     </div>
 
 {% endblock %}

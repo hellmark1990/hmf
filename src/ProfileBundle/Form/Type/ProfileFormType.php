@@ -30,13 +30,6 @@ class ProfileFormType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options){
         $this->buildUserForm($builder, $options);
-
-//        $builder->add('current_password', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'), array(
-//            'label' => 'form.current_password',
-//            'translation_domain' => 'FOSUserBundle',
-//            'mapped' => false,
-//            'constraints' => new UserPassword(),
-//        ));
     }
 
     public function configureOptions(OptionsResolver $resolver){
