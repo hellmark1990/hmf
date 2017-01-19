@@ -281,26 +281,26 @@ class ReadController extends Controller {
     /**
      * Deletes a Read entity.
      *
-     * @Route("/{id}", name="read_delete")
-     * @Method("DELETE")
+     * @Route("/delete/{id}", name="read_delete")
      */
     public function deleteAction(Request $request, $id){
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('BookBundle:Read')->find($id);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('BookBundle:Read')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Read entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Read entity.');
         }
 
-        return $this->redirect($this->generateUrl('read'));
+        if ($entity->getBook()->getUser()->getId() != $this->getUser()->getId()) {
+            throw $this->createNotFoundException('Unable to delete Read entity.');
+        }
+
+        $book = $entity->getBook();
+
+        $em->remove($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('book_reading', ['id' => $book->getId()]));
     }
 
     /**

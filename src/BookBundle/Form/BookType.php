@@ -3,6 +3,7 @@
 namespace BookBundle\Form;
 
 use BookBundle\Entity\ShelfRepository;
+use ProfileBundle\Entity\User;
 use Sonata\AdminBundle\Form\Type\ModelHiddenType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -10,13 +11,20 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class BookType extends AbstractType {
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options){
+        /**
+         * @var User $user
+         */
+        $user = $options['user'];
+
         $builder
             ->add('image', 'sonata_media_type', [
                 'required' => false,
@@ -37,13 +45,16 @@ class BookType extends AbstractType {
             ])
             ->add('shelfs', EntityType::class, array(
                 'class' => 'BookBundle:Shelf',
-                'query_builder' => function (ShelfRepository $er){
-                    return $er->createQueryBuilder('s')
+                'query_builder' => function (ShelfRepository $er) use($user){
+                    $qb = $er->createQueryBuilder('s');
+                    return $qb
+                        ->where($qb->expr()->eq('s.user', $user->getId()))
                         ->orderBy('s.title', 'ASC');
                 },
                 'choice_label' => 'title',
                 'multiple' => true,
-                'required' => false
+                'required' => false,
+                'attr' => ['class' => 'chosen-select']
             ))
             ->add('publishedDate', DateType::class, array(
                 'widget' => 'single_text',
@@ -77,7 +88,8 @@ class BookType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver){
         $resolver->setDefaults(array(
-            'data_class' => 'BookBundle\Entity\Book'
+            'data_class' => 'BookBundle\Entity\Book',
+            'user' => null
         ));
     }
 

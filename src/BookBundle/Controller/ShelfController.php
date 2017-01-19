@@ -79,6 +79,7 @@ class ShelfController extends Controller {
         $form = $this->createForm(new ShelfType(), $entity, array(
             'action' => $this->generateUrl('shelf_create'),
             'method' => 'POST',
+            'user' => $this->getUser(),
         ));
 
         $form->add('submit', 'submit', array('label' => 'Create'));
@@ -164,6 +165,7 @@ class ShelfController extends Controller {
         $form = $this->createForm(new ShelfType(), $entity, array(
             'action' => $this->generateUrl('shelf_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'user' => $this->getUser(),
         ));
 
         $form->add('submit', 'submit', array('label' => 'Update'));

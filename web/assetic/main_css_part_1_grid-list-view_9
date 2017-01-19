@@ -1,0 +1,116 @@
+.grid-list-view .glyphicon {
+    margin-right: 5px;
+}
+
+.grid-list-view .thumbnail {
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    height: 330px;
+}
+
+.grid-list-view .thumbnail img {
+    padding: 15px;
+    padding-top: 0px;
+    height: 190px;
+}
+
+.grid-list-view .thumbnail a {
+    cursor: pointer;
+}
+
+.grid-list-view .item.list-group-item {
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.grid-list-view .list-group-item-heading {
+    padding-right: 10px;
+    padding-left: 10px;
+    min-height: 30px;
+    max-height: 50px;
+    text-align: center;
+}
+
+.grid-list-view .item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
+    background: #f5f5f5;
+}
+
+.grid-list-view .item.list-group-item .list-group-image {
+    margin-right: 10px;
+}
+
+.grid-list-view .item.list-group-item .thumbnail {
+    margin-bottom: 0px;
+}
+
+.grid-list-view .item.list-group-item .caption {
+    padding: 9px 9px 0px 9px;
+}
+
+.grid-list-view .item.list-group-item:nth-of-type(odd) {
+    background: #eeeeee;
+}
+
+.grid-list-view .item.list-group-item:before, .item.list-group-item:after {
+    display: table;
+    content: " ";
+}
+
+.grid-list-view .item.list-group-item img {
+    float: left;
+}
+
+.grid-list-view .item.list-group-item:after {
+    clear: both;
+}
+
+.grid-list-view .list-group-item-text {
+    margin: 0 0 5px;
+    height: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.grid-list-view .list-group-item-text > b {
+    width: 60px;
+    display: inline-block;
+}
+
+.grid-list-view .btn-delete {
+    position: relative;
+    top: 1%;
+    left: 83%;
+    margin-bottom: -10px;
+}
+
+.grid-list-view .list-group-item > .thumbnail {
+    height: 130px;
+}
+.grid-list-view .list-group-item > .thumbnail  img {
+    height: 100px;
+}
+
+.grid-list-view .list-group-item {
+    padding: 3px 3px;
+}
+
+.grid-list-view .list-group-item .btn-delete {
+    top: 2%;
+    left: 96%;
+}
+
+.grid-list-view .list-group-item .list-group-item-heading{
+    height: 25px;
+    text-align: left;
+}
+
+.grid-list-view .row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+

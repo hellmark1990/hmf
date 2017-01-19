@@ -17,6 +17,11 @@ class ShelfType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options){
+        /**
+         * @var User $user
+         */
+        $user = $options['user'];
+
         $builder
             ->add('image', 'sonata_media_type', [
                 'required' => false,
@@ -37,13 +42,16 @@ class ShelfType extends AbstractType {
             ))
             ->add('books', EntityType::class, array(
                 'class' => 'BookBundle:Book',
-                'query_builder' => function (BookRepository $er){
-                    return $er->createQueryBuilder('b')
+                'query_builder' => function (BookRepository $er) use($user){
+                    $qb = $er->createQueryBuilder('b');
+                    return $qb
+                        ->where($qb->expr()->eq('b.user', $user->getId()))
                         ->orderBy('b.id', 'ASC');
                 },
                 'choice_label' => 'name',
                 'multiple' => true,
                 'required' => false,
+                'attr' => ['class' => 'chosen-select']
             ))
             ->add('description', 'textarea', [
                 'required' => false,
@@ -55,7 +63,8 @@ class ShelfType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver){
         $resolver->setDefaults(array(
-            'data_class' => 'BookBundle\Entity\Shelf'
+            'data_class' => 'BookBundle\Entity\Shelf',
+            'user' => null
         ));
     }
 

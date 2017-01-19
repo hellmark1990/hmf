@@ -1094,6 +1094,13 @@ jQuery(function ($) {
         $('img.media-object').val('');
         $('img.media-object').attr('src', URL.createObjectURL($(this)[0].files[0]));
     })
+
+    if ($(".chosen-select").length) {
+        $(".chosen-select").chosen({
+            disable_search_threshold: 10,
+            placeholder_text_multiple: "Select from list..",
+        });
+    }
 });
 //! moment.js
 //! version : 2.17.1

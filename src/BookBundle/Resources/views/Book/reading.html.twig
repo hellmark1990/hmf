@@ -30,6 +30,11 @@
                 {% for read in reads %}
                     <div class="item  col-xs-4 col-lg-4">
                         <div class="thumbnail">
+                            <div class="btn-delete">
+                                <a class="btn btn-danger btn-sm" href="{{ path('read_delete', { 'id': read.id }) }}">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </a>
+                            </div>
                             <div class="read-location-map location-map location-map-read-list" data-latitude="{{ read.latitude }}" data-longitude="{{ read.longitude }}"></div>
                             <div class="caption">
                                 <h4 class="group inner list-group-item-heading">

@@ -9,7 +9,7 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form id="main-contact-form" class="login-form col-sm-5 form-horizontal" name="contact-form" method="post"
+    <form id="main-contact-form" class="login-form col-sm-5 form-horizontal" method="post"
           action="{{ path("fos_user_security_check") }}">
 
         <div class="form-group">
@@ -27,12 +27,14 @@
             </div>
         </div>
 
+        <!--
         <div class="form-group">
             <label class="col-sm-3 control-label required" for="bookbundle_shelf_title">{{ 'security.login.remember_me'|trans }}</label>
             <div class="col-sm-2">
-                <input type="checkbox" id="remember_me" name="_remember_me" value="on" class="form-control"/>
+                <input type="checkbox" id="remember_me" name="_remember_me" checked value="1" class="form-control"/>
             </div>
         </div>
+        -->
 
         <div class="form-group">
             <label class="col-sm-3 control-label"></label>

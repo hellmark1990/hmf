@@ -15,14 +15,15 @@
     height: 200px;
 }
 
-.profile-avatar .button-edit{
-    left: 70px!important;
+.profile-avatar .button-edit {
+    left: 70px !important;
 }
 
-.profile-avatar .button-delete{
-    left: 70px!important;
+.profile-avatar .button-delete {
+    left: 70px !important;
 }
 
-.login-form{
+.login-form, .registration-form {
     margin-left: 25%;
 }
+

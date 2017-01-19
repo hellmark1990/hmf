@@ -127,6 +127,7 @@ class BookController extends Controller {
         $form = $this->createForm(new BookType(), $entity, array(
             'action' => $this->generateUrl('book_create'),
             'method' => 'POST',
+            'user' => $this->getUser(),
         ));
 
         $form->add('submit', 'submit', array('label' => 'Create'));
@@ -212,6 +213,7 @@ class BookController extends Controller {
         $form = $this->createForm(new BookType(), $entity, array(
             'action' => $this->generateUrl('book_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'user' => $this->getUser(),
         ));
 
         $form->add('submit', 'submit', array('label' => 'Update'));

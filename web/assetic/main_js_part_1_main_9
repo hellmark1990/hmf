@@ -80,8 +80,15 @@ jQuery(function ($) {
         $('#products .item').addClass('grid-group-item');
     });
 
-    $('form[name="bookbundle_book"]').find('.form-book-image input[type="file"]').on('change', function () {
-        $('#bookbundle_book_imageUrl').val('');
-        $('.img-polaroid.media-object').attr('src', URL.createObjectURL($(this)[0].files[0]));
+    $('input[type="file"]').on('change', function () {
+        $('img.media-object').val('');
+        $('img.media-object').attr('src', URL.createObjectURL($(this)[0].files[0]));
     })
+
+    if ($(".chosen-select").length) {
+        $(".chosen-select").chosen({
+            disable_search_threshold: 10,
+            placeholder_text_multiple: "",
+        });
+    }
 });

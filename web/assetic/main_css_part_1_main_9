@@ -2530,7 +2530,9 @@ shortcodes page css
   clear: both;
 }
 
-
+section#content{
+  min-height: 500px!important;
+}
 
 
 
