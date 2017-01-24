@@ -30,6 +30,24 @@ services:
         tags:
             - { name: form.type }
 
+    app.form.data_transformer.shelf_to_number_transformer:
+        class: AppBundle\Form\DataTransformer\ShelfToNumberTransformer
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+
+    app.form.data_transformer.user_to_number_transformer:
+        class: AppBundle\Form\DataTransformer\UserToNumberTransformer
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+
+    app.form.type.share_shelf:
+        class: BookBundle\Form\SharedShelfType
+        arguments: ['@service_container']
+        tags:
+            - { name: form.type }
+
     app.form.type.entity_hidden:
         class: AppBundle\Form\Extension\Type\EntityHiddenType
         arguments: ["@app.form.data_transformer.book_to_number_transformer"]

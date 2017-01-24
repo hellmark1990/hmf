@@ -91,4 +91,8 @@ jQuery(function ($) {
             placeholder_text_multiple: "Select from list..",
         });
     }
+
+    $('.btn-modal-submit').on('click', function () {
+        $(this).closest('.modal').find('form').submit();
+    });
 });

@@ -11,6 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="BookBundle\Entity\SharedShelfRepository")
  */
 class SharedShelf {
+    const ACCESS_VIEW = 0;
+    const ACCESS_EDIT = 1;
+
     /**
      * @var integer
      *
@@ -81,8 +84,7 @@ class SharedShelf {
      * @param \ProfileBundle\Entity\User $userOwner
      * @return SharedShelf
      */
-    public function setUserOwner(\ProfileBundle\Entity\User $userOwner = null)
-    {
+    public function setUserOwner(\ProfileBundle\Entity\User $userOwner = null){
         $this->userOwner = $userOwner;
 
         return $this;
@@ -91,10 +93,9 @@ class SharedShelf {
     /**
      * Get userOwner
      *
-     * @return \ProfileBundle\Entity\User 
+     * @return \ProfileBundle\Entity\User
      */
-    public function getUserOwner()
-    {
+    public function getUserOwner(){
         return $this->userOwner;
     }
 
@@ -104,8 +105,7 @@ class SharedShelf {
      * @param \ProfileBundle\Entity\User $userToShare
      * @return SharedShelf
      */
-    public function setUserToShare(\ProfileBundle\Entity\User $userToShare = null)
-    {
+    public function setUserToShare(\ProfileBundle\Entity\User $userToShare = null){
         $this->userToShare = $userToShare;
 
         return $this;
@@ -114,10 +114,9 @@ class SharedShelf {
     /**
      * Get userToShare
      *
-     * @return \ProfileBundle\Entity\User 
+     * @return \ProfileBundle\Entity\User
      */
-    public function getUserToShare()
-    {
+    public function getUserToShare(){
         return $this->userToShare;
     }
 
@@ -127,8 +126,7 @@ class SharedShelf {
      * @param \BookBundle\Entity\Shelf $shelf
      * @return SharedShelf
      */
-    public function setShelf(\BookBundle\Entity\Shelf $shelf = null)
-    {
+    public function setShelf(\BookBundle\Entity\Shelf $shelf = null){
         $this->shelf = $shelf;
 
         return $this;
@@ -137,10 +135,9 @@ class SharedShelf {
     /**
      * Get shelf
      *
-     * @return \BookBundle\Entity\Shelf 
+     * @return \BookBundle\Entity\Shelf
      */
-    public function getShelf()
-    {
+    public function getShelf(){
         return $this->shelf;
     }
 }

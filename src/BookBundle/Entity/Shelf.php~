@@ -49,13 +49,6 @@ class Shelf {
     /**
      * @var integer
      *
-     * @ORM\Column(name="pagesCount", type="integer")
-     */
-    private $pagesCount;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="access", type="integer")
      */
     private $access = 0;

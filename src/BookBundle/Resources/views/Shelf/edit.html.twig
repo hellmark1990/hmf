@@ -5,6 +5,17 @@
 
     <h1 class="h1-title">Shelf edit</h1>
 
+    <div class="pull-right book-top-controls">
+        <a href="{{ path('shared_shelf_users', {'shelfId': entity.id}) }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+            {% trans %}Share{% endtrans %}
+        </a>
+        <a href="{{ path('shelf_delete', {'id': entity.id}) }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {% trans %}Delete{% endtrans %}
+        </a>
+    </div>
+
     {{ form(edit_form) }}
 
 {% endblock %}

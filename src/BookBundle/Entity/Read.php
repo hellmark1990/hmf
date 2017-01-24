@@ -28,6 +28,13 @@ class Read {
     private $place;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="pagesCount", type="integer")
+     */
+    private $pagesCount;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="time_start", type="datetime")
@@ -255,5 +262,28 @@ class Read {
     public function getLongitude()
     {
         return $this->longitude;
+    }
+
+    /**
+     * Set pagesCount
+     *
+     * @param integer $pagesCount
+     * @return Read
+     */
+    public function setPagesCount($pagesCount)
+    {
+        $this->pagesCount = $pagesCount;
+
+        return $this;
+    }
+
+    /**
+     * Get pagesCount
+     *
+     * @return integer 
+     */
+    public function getPagesCount()
+    {
+        return $this->pagesCount;
     }
 }

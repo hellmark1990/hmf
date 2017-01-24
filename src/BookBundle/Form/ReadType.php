@@ -21,6 +21,7 @@ class ReadType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
             ->add('title')
+            ->add('pagesCount')
             ->add('place', TextType::class)
             ->add('timeStart', TextType::class)
             ->add('timeEnd', TextType::class)

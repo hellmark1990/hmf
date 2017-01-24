@@ -28,6 +28,13 @@ class Read {
     private $place;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="pagesCount", type="integer")
+     */
+    private $pagesCount;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="time_start", type="datetime")

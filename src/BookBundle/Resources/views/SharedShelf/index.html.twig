@@ -1,41 +1,78 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>SharedShelf list</h1>
+    <h1 class="h1-title">{% trans %}Shared shelf list{% endtrans %}</h1>
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Type</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('shared_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.type }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('shared_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('shared_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="grid-list-view container container-read-list">
+        <div class="well well-sm">
+            <strong>Display</strong>
 
-        <ul>
-        <li>
-            <a href="{{ path('shared_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th-list"></span>List
+                </a>
+                <a href="#" id="grid" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th"></span>Grid
+                </a>
+            </div>
+
+            <div class="btn-group pull-right">
+                <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#shelfShareModal">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{% trans %}Share to user{% endtrans %}
+                </button>
+            </div>
+        </div>
+
+        <div id="products" class="row list-group">
+            {% if shelf.shareUsers.count %}
+                {% for shareUser in shelf.shareUsers %}
+                    <div class="item  col-xs-4 col-lg-4">
+                        <div class="thumbnail">
+                            <div class="btn-delete">
+                                <a class="btn btn-danger btn-sm" href="{{ path('shared_delete_user', { 'shelfId': shelf.id, 'userToShareId': shareUser.id }) }}">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                            {% if shareUser.avatar %}
+                                <img class="group list-group-image" src="{% path shareUser.avatar, 'small' %}" alt=""/>
+                            {% else %}
+                                <img class="group list-group-image no-image" src="/uploads/no-image.png" alt=""/>
+                            {% endif %}
+                            <div class="caption">
+                                <h4 class="group inner list-group-item-heading">
+                                    {{ shareUser.username }}
+                                </h4>
+
+                                <p class="group inner list-group-item-text read-comment">{{ shareUser.about|striptags|truncate(120) }}</p>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="shelfShareModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{% trans %}Share shelf to user{% endtrans %}</h4>
+                </div>
+                <div class="modal-body">
+                    {{ form(form) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans %}Close{% endtrans %}</button>
+                    <button type="button" class="btn btn-default btn-modal-submit">{% trans %}Share{% endtrans %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

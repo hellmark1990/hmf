@@ -49,13 +49,6 @@ class Shelf {
     /**
      * @var integer
      *
-     * @ORM\Column(name="pagesCount", type="integer")
-     */
-    private $pagesCount;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="access", type="integer")
      */
     private $access = 0;
@@ -235,8 +228,7 @@ class Shelf {
      * @param \Application\Sonata\MediaBundle\Entity\Media $image
      * @return Shelf
      */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
-    {
+    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null){
         $this->image = $image;
 
         return $this;
@@ -245,10 +237,9 @@ class Shelf {
     /**
      * Get image
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return \Application\Sonata\MediaBundle\Entity\Media
      */
-    public function getImage()
-    {
+    public function getImage(){
         return $this->image;
     }
 
@@ -258,8 +249,7 @@ class Shelf {
      * @param \ProfileBundle\Entity\User $user
      * @return Shelf
      */
-    public function setUser(\ProfileBundle\Entity\User $user = null)
-    {
+    public function setUser(\ProfileBundle\Entity\User $user = null){
         $this->user = $user;
 
         return $this;
@@ -268,34 +258,10 @@ class Shelf {
     /**
      * Get user
      *
-     * @return \ProfileBundle\Entity\User 
+     * @return \ProfileBundle\Entity\User
      */
-    public function getUser()
-    {
+    public function getUser(){
         return $this->user;
-    }
-
-    /**
-     * Set pagesCount
-     *
-     * @param integer $pagesCount
-     * @return Shelf
-     */
-    public function setPagesCount($pagesCount)
-    {
-        $this->pagesCount = $pagesCount;
-
-        return $this;
-    }
-
-    /**
-     * Get pagesCount
-     *
-     * @return integer 
-     */
-    public function getPagesCount()
-    {
-        return $this->pagesCount;
     }
 
     /**
@@ -304,9 +270,13 @@ class Shelf {
      * @param \BookBundle\Entity\SharedShelf $shareUsers
      * @return Shelf
      */
-    public function addShareUser(\BookBundle\Entity\SharedShelf $shareUsers)
-    {
-        $this->shareUsers[] = $shareUsers;
+    public function addShareUser($userOwner, $userToShare){
+        $sharedShelf = new SharedShelf();
+        $sharedShelf->setUserOwner($userOwner);
+        $sharedShelf->setUserToShare($userToShare);
+        $sharedShelf->setShelf($this);
+
+        $this->shareUsers[] = $sharedShelf;
 
         return $this;
     }
@@ -316,18 +286,18 @@ class Shelf {
      *
      * @param \BookBundle\Entity\SharedShelf $shareUsers
      */
-    public function removeShareUser(\BookBundle\Entity\SharedShelf $shareUsers)
-    {
+    public function removeShareUser(\BookBundle\Entity\SharedShelf $shareUsers){
         $this->shareUsers->removeElement($shareUsers);
     }
 
     /**
      * Get shareUsers
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getShareUsers()
-    {
-        return $this->shareUsers;
+    public function getShareUsers(){
+        return $this->shareUsers->map(function ($item){
+            return $item->getUserToShare();
+        });
     }
 }

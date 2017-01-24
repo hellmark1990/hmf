@@ -2,6 +2,7 @@
 
 namespace BookBundle\Controller;
 
+use BookBundle\Entity\Shelf;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -15,26 +16,35 @@ use BookBundle\Form\SharedShelfType;
  *
  * @Route("/shared")
  */
-class SharedShelfController extends Controller
-{
+class SharedShelfController extends Controller {
 
     /**
      * Lists all SharedShelf entities.
      *
-     * @Route("/", name="shared")
+     * @Route("/shelf/{shelfId}", name="shared_shelf_users")
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
-    {
+    public function indexAction($shelfId){
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BookBundle:SharedShelf')->findAll();
+        /**
+         * @var Shelf $shelf
+         */
+        $shelf = $em->getRepository('BookBundle:Shelf')->find($shelfId);
+
+        $entity = new SharedShelf();
+        $entity->setUserOwner($this->getUser());
+        $entity->setShelf($shelf);
+
+        $form = $this->createCreateForm($entity);
 
         return array(
-            'entities' => $entities,
+            'shelf' => $shelf,
+            'form' => $form->createView(),
         );
     }
+
     /**
      * Creates a new SharedShelf entity.
      *
@@ -42,8 +52,7 @@ class SharedShelfController extends Controller
      * @Method("POST")
      * @Template("BookBundle:SharedShelf:new.html.twig")
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request){
         $entity = new SharedShelf();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -53,12 +62,12 @@ class SharedShelfController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('shared_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('shared_shelf_users', array('shelfId' => $entity->getShelf()->getId())));
         }
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -69,14 +78,11 @@ class SharedShelfController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(SharedShelf $entity)
-    {
-        $form = $this->createForm(new SharedShelfType(), $entity, array(
+    private function createCreateForm(SharedShelf $entity){
+        $form = $this->createForm($this->get('app.form.type.share_shelf'), $entity, array(
             'action' => $this->generateUrl('shared_create'),
             'method' => 'POST',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -88,14 +94,13 @@ class SharedShelfController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
-    {
+    public function newAction(){
         $entity = new SharedShelf();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -106,8 +111,7 @@ class SharedShelfController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
-    {
+    public function showAction($id){
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BookBundle:SharedShelf')->find($id);
@@ -119,7 +123,7 @@ class SharedShelfController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -131,8 +135,7 @@ class SharedShelfController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id)
-    {
+    public function editAction($id){
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BookBundle:SharedShelf')->find($id);
@@ -145,21 +148,20 @@ class SharedShelfController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a SharedShelf entity.
-    *
-    * @param SharedShelf $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(SharedShelf $entity)
-    {
+     * Creates a form to edit a SharedShelf entity.
+     *
+     * @param SharedShelf $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(SharedShelf $entity){
         $form = $this->createForm(new SharedShelfType(), $entity, array(
             'action' => $this->generateUrl('shared_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -169,6 +171,7 @@ class SharedShelfController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing SharedShelf entity.
      *
@@ -176,8 +179,7 @@ class SharedShelfController extends Controller
      * @Method("PUT")
      * @Template("BookBundle:SharedShelf:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id){
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BookBundle:SharedShelf')->find($id);
@@ -197,35 +199,36 @@ class SharedShelfController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a SharedShelf entity.
      *
-     * @Route("/{id}", name="shared_delete")
-     * @Method("DELETE")
+     * @Route("/delete/{shelfId}/{userToShareId}", name="shared_delete_user")
      */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+    public function deleteAction(Request $request, $shelfId, $userToShareId){
+        $em = $this->getDoctrine()->getManager();
+        $shelf = $em->getRepository('BookBundle:Shelf')->find($shelfId);
+        $userToShare = $em->getRepository('ProfileBundle:User')->find($userToShareId);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('BookBundle:SharedShelf')->find($id);
+        $entity = $em->getRepository('BookBundle:SharedShelf')->findOneBy([
+            'shelf' => $shelf,
+            'userToShare' => $userToShare,
+            'userOwner' => $this->getUser(),
+        ]);
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find SharedShelf entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find SharedShelf entity.');
         }
 
-        return $this->redirect($this->generateUrl('shared'));
+        $em->remove($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('shared_shelf_users', ['shelfId' => $shelfId]));
     }
 
     /**
@@ -235,13 +238,11 @@ class SharedShelfController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id){
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('shared_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
