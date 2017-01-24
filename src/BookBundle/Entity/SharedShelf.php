@@ -3,12 +3,18 @@
 namespace BookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * SharedShelf
  *
  * @ORM\Table(name="shelf_shared")
  * @ORM\Entity(repositoryClass="BookBundle\Entity\SharedShelfRepository")
+ * @UniqueEntity(
+ *     fields={"userToShare", "shelf"},
+ *     errorPath="userToShare",
+ *     message="Shelf is already shared to this user."
+ * )
  */
 class SharedShelf {
     const ACCESS_VIEW = 0;

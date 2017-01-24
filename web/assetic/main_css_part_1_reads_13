@@ -13,8 +13,23 @@
     margin-top: 10px;
 }
 
-.container-read-list .list-group-item .location-map-read-list {
+.container-read-list .item{
+    width: 365px!important;
+}
+
+.container-read-list .item.list-group-item {
     height: 198px!important;
+    width: 100%;
+    float: left;
+    margin-bottom: 15px!important;
+}
+
+.container-read-list .read-location-map{
+    border: 0;
+}
+
+.container-read-list .list-group-item .location-map-read-list {
+    height: 200px!important;
     width: 400px;
     float: left;
 }

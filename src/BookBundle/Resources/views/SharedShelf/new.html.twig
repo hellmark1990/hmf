@@ -1,15 +1,6 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>SharedShelf creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('shared') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
-{% endblock %}
+{% if status %}
+    <div class="alert alert-success" role="alert">
+        {% trans %}Now user have access to this shelf.{% endtrans %}
+    </div>
+{% endif %}
+{{ form(form) }}

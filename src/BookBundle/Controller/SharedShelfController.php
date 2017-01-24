@@ -3,6 +3,7 @@
 namespace BookBundle\Controller;
 
 use BookBundle\Entity\Shelf;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -57,16 +58,17 @@ class SharedShelfController extends Controller {
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
+        $status = false;
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('shared_shelf_users', array('shelfId' => $entity->getShelf()->getId())));
+            $status = true;
         }
 
         return array(
             'entity' => $entity,
+            'status' => $status,
             'form' => $form->createView(),
         );
     }

@@ -88,7 +88,22 @@ jQuery(function ($) {
     if ($(".chosen-select").length) {
         $(".chosen-select").chosen({
             disable_search_threshold: 10,
-            placeholder_text_multiple: "",
+            placeholder_text_multiple: "Select from list..",
         });
     }
+
+    $('.btn-modal-submit').on('click', function () {
+        var modal = $(this).closest('.modal');
+        var form = $(modal).find('form');
+        var formData = new FormData(form);
+        console.log(formData)
+
+        $.ajax({
+            url: $(form).attr('action'),
+            data: formData,
+            success: function (content) {
+                $(modal).find('.modal-body').html(content)
+            }
+        });
+    });
 });

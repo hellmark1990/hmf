@@ -1103,7 +1103,24 @@ jQuery(function ($) {
     }
 
     $('.btn-modal-submit').on('click', function () {
-        $(this).closest('.modal').find('form').submit();
+        var modal = $(this).closest('.modal');
+        var form = $(modal).find('form');
+        var formData = new FormData(form[0]);
+        $.ajax({
+            url: $(form).attr('action'),
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (content) {
+                $(modal).find('.modal-body').html(content)
+                if (content.search("alert-success") !== -1) {
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 300);
+                }
+            }
+        });
     });
 });
 //! moment.js

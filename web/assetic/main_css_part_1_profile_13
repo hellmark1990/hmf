@@ -1,0 +1,29 @@
+.profile-avatar .image-container {
+    width: 250px;
+    height: 270px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 2px solid #f3f3f3;
+    padding: 25px;
+    padding-top: 35px;
+}
+
+.profile-avatar .circle.image-container > img {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+}
+
+.profile-avatar .button-edit {
+    left: 70px !important;
+}
+
+.profile-avatar .button-delete {
+    left: 70px !important;
+}
+
+.login-form, .registration-form {
+    margin-left: 25%;
+}
+

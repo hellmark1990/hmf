@@ -4,6 +4,7 @@ namespace BookBundle\Form;
 
 use AppBundle\Form\Extension\Type\EntityHiddenType;
 use BookBundle\Entity\SharedShelf;
+use ProfileBundle\Repository\UserRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
@@ -28,6 +29,10 @@ class SharedShelfType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options){
+        $user = $this->container->get('security.context')
+            ->getToken()
+            ->getUser();
+
         $builder
             ->add('type', ChoiceType::class, array(
                 'choices' => [
@@ -38,7 +43,15 @@ class SharedShelfType extends AbstractType {
             ))
             ->add('userToShare', EntityType::class, [
                 'class' => 'ProfileBundle:User',
-                'label' => $this->translator->trans('User')
+                'label' => $this->translator->trans('User'),
+                'query_builder' => function (UserRepository $er) use ($user){
+                    $qb = $er->createQueryBuilder('u');
+                    return $qb
+                        ->where($qb->expr()->neq('u.id', $user->getId()))
+                        ->orderBy('u.username', 'ASC');
+                },
+                'choice_label' => 'username',
+                'required' => false,
             ]);
 
         $builder->add(

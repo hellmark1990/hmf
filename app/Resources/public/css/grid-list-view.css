@@ -2,6 +2,27 @@
     margin-right: 5px;
 }
 
+.grid-list-view .item {
+    -webkit-box-shadow: 0 8px 13px 0 rgba(0, 0, 2, 0.2);
+    box-shadow: 0 8px 13px 0 rgba(0, 0, 2, 0.2);
+    padding: 0;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    height: 330px;
+    width: 272px!important;
+    border: none!important;
+}
+
+.grid-list-view .item.list-group-item  {
+    -webkit-box-shadow: 0 8px 13px 0 rgba(0, 0, 2, 0.2);
+    box-shadow: 0 8px 13px 0 rgba(0, 0, 2, 0.2);
+    padding: 0;
+    margin-left: 0px;
+    margin-bottom: 15px;
+    width: 100%!important;
+    height: 130px;
+}
+
 .grid-list-view .thumbnail {
     margin-bottom: 20px;
     padding: 0px;
@@ -83,15 +104,20 @@
 
 .grid-list-view .btn-delete {
     position: relative;
-    top: 1%;
-    left: 83%;
+    left: 233px;
     margin-bottom: -10px;
+}
+
+.grid-list-view .btn-delete >a {
+    border-radius: 0px!important;
+    border: none!important;
 }
 
 .grid-list-view .list-group-item > .thumbnail {
     height: 130px;
 }
-.grid-list-view .list-group-item > .thumbnail  img {
+
+.grid-list-view .list-group-item > .thumbnail img {
     height: 100px;
 }
 
@@ -100,11 +126,11 @@
 }
 
 .grid-list-view .list-group-item .btn-delete {
-    top: 2%;
-    left: 96%;
+    top: 0;
+    left: 1101px;
 }
 
-.grid-list-view .list-group-item .list-group-item-heading{
+.grid-list-view .list-group-item .list-group-item-heading {
     height: 25px;
     text-align: left;
 }
