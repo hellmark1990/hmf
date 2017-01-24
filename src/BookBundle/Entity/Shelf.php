@@ -49,6 +49,13 @@ class Shelf {
     /**
      * @var integer
      *
+     * @ORM\Column(name="pagesCount", type="integer")
+     */
+    private $pagesCount;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="access", type="integer")
      */
     private $access = 0;
@@ -76,6 +83,11 @@ class Shelf {
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      **/
     private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedShelf", mappedBy="shelf")
+     */
+    private $shareUsers;
 
 
     /**
@@ -261,5 +273,61 @@ class Shelf {
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set pagesCount
+     *
+     * @param integer $pagesCount
+     * @return Shelf
+     */
+    public function setPagesCount($pagesCount)
+    {
+        $this->pagesCount = $pagesCount;
+
+        return $this;
+    }
+
+    /**
+     * Get pagesCount
+     *
+     * @return integer 
+     */
+    public function getPagesCount()
+    {
+        return $this->pagesCount;
+    }
+
+    /**
+     * Add shareUsers
+     *
+     * @param \BookBundle\Entity\SharedShelf $shareUsers
+     * @return Shelf
+     */
+    public function addShareUser(\BookBundle\Entity\SharedShelf $shareUsers)
+    {
+        $this->shareUsers[] = $shareUsers;
+
+        return $this;
+    }
+
+    /**
+     * Remove shareUsers
+     *
+     * @param \BookBundle\Entity\SharedShelf $shareUsers
+     */
+    public function removeShareUser(\BookBundle\Entity\SharedShelf $shareUsers)
+    {
+        $this->shareUsers->removeElement($shareUsers);
+    }
+
+    /**
+     * Get shareUsers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getShareUsers()
+    {
+        return $this->shareUsers;
     }
 }

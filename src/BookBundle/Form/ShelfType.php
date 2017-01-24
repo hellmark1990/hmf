@@ -32,6 +32,7 @@ class ShelfType extends AbstractType {
                 'label' => false
             ])
             ->add('title')
+            ->add('pagesCount')
             ->add('access', ChoiceType::class, array(
                 'choices' => [
                     'Private' => Shelf::ACCESS_PRIVATE,

@@ -62,12 +62,21 @@ class User extends BaseUser {
      */
     private $books;
 
-
     /**
      * @ORM\OneToMany(targetEntity="BookBundle\Entity\Shelf", mappedBy="user")
      * @ORM\OrderBy({"id" = "DESC"})
      */
     private $shelfs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedShelf", mappedBy="userOwner")
+     */
+    private $sharedShelfsByMe;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedShelf", mappedBy="userToShare")
+     */
+    private $sharedShelfsToMe;
 
     public function __construct(){
         parent::__construct();
