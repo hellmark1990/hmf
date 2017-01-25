@@ -39,10 +39,12 @@ class SharedShelfController extends Controller {
         $entity->setShelf($shelf);
 
         $form = $this->createCreateForm($entity);
+        $formEmail = $this->createCreateEmailForm($shelf);
 
         return array(
             'shelf' => $shelf,
             'form' => $form->createView(),
+            'formEmail' => $formEmail->createView(),
         );
     }
 
@@ -83,6 +85,70 @@ class SharedShelfController extends Controller {
     private function createCreateForm(SharedShelf $entity){
         $form = $this->createForm($this->get('app.form.type.share_shelf'), $entity, array(
             'action' => $this->generateUrl('shared_create'),
+            'method' => 'POST',
+        ));
+
+        return $form;
+    }
+
+
+    /**
+     * Creates a new SharedShelf entity by email.
+     *
+     * @Route("/{shelfId}/email", name="shared_create_email")
+     * @Method("POST")
+     * @Template("BookBundle:SharedShelf:new_email.html.twig")
+     */
+    public function createEmailAction(Request $request, $shelfId){
+        $em = $this->getDoctrine()->getManager();
+        $shelf = $em->getRepository('BookBundle:Shelf')->find($shelfId);
+
+        if (!$shelf) {
+            throw $this->createNotFoundException('Unable to find Shelf.');
+        }
+
+        $entity = new SharedShelf();
+
+        $form = $this->createCreateEmailForm($shelf);
+        $form->handleRequest($request);
+
+        $status = false;
+        if ($form->isValid()) {
+            $formData = $form->getData();
+            $userToShare = $this->get('profile.user_creator_api')->createUserByEmail($formData['email']);
+
+            if($userToShare){
+                throw $this->createNotFoundException('Unable to share.');
+            }
+
+            $entity->setUserOwner($this->getUser());
+            $entity->setUserToShare($userToShare);
+            $entity->setShelf($shelf);
+            $entity->setType($formData['type']);
+
+            $em->persist($entity);
+            $em->flush();
+            $status = true;
+        }
+
+        return array(
+            'entity' => $entity,
+            'status' => $status,
+            'form' => $form->createView(),
+        );
+    }
+
+
+    /**
+     * Creates a form to create a SharedShelf entity by email.
+     *
+     * @param SharedShelf $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateEmailForm(Shelf $entity){
+        $form = $this->createForm($this->get('app.form.type.share_shelf_email'), [], array(
+            'action' => $this->generateUrl('shared_create_email', ['shelfId' => $entity->getId()]),
             'method' => 'POST',
         ));
 

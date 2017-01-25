@@ -8,3 +8,7 @@ services:
       arguments: ["%fos_user.model.user.class%"]
       tags:
           - { name: form.type, alias: fos_user_profile }
+
+  profile.user_creator_api:
+      class: ProfileBundle\Services\UserCreatorApi
+      arguments: ['@service_container', "@doctrine.orm.entity_manager"]
