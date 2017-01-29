@@ -1865,5 +1865,20 @@ $(document).ready(function () {
     $("#datetimepicker7").on("dp.change", function (e) {
         $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
     });
+
+    $('.share-link-button').on('click', function () {
+        var url = $(this).data('shared-link-url');
+        var linkElement = $($(this).data('target')).find('input.share-link');
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function (data) {
+                if (data.success) {
+                    linkElement.val(data.shareLink);
+                }
+            }
+        });
+    });
 })
 ;

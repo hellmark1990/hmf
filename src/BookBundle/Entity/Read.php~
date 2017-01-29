@@ -263,4 +263,27 @@ class Read {
     {
         return $this->longitude;
     }
+
+    /**
+     * Set pagesCount
+     *
+     * @param integer $pagesCount
+     * @return Read
+     */
+    public function setPagesCount($pagesCount)
+    {
+        $this->pagesCount = $pagesCount;
+
+        return $this;
+    }
+
+    /**
+     * Get pagesCount
+     *
+     * @return integer 
+     */
+    public function getPagesCount()
+    {
+        return $this->pagesCount;
+    }
 }

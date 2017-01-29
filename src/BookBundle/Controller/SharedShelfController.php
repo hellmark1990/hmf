@@ -2,6 +2,7 @@
 
 namespace BookBundle\Controller;
 
+use BookBundle\Entity\SharedShelfLink;
 use BookBundle\Entity\Shelf;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use BookBundle\Entity\SharedShelf;
 use BookBundle\Form\SharedShelfType;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * SharedShelf controller.
@@ -117,7 +119,7 @@ class SharedShelfController extends Controller {
             $formData = $form->getData();
             $userToShare = $this->get('profile.user_creator_api')->createUserByEmail($formData['email']);
 
-            if($userToShare){
+            if (!$userToShare) {
                 throw $this->createNotFoundException('Unable to share.');
             }
 
@@ -128,6 +130,9 @@ class SharedShelfController extends Controller {
 
             $em->persist($entity);
             $em->flush();
+
+            $this->get('book.shared_shelf_messenger')->sendSharedEmail($entity);
+
             $status = true;
         }
 
@@ -313,4 +318,57 @@ class SharedShelfController extends Controller {
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm();
     }
+
+    /**
+     * Get shared shelf link.
+     *
+     * @Route("/share-link/{shelfId}", name="shared_shelf_link")
+     */
+    public function sharedLinkAction(Request $request, $shelfId){
+        $em = $this->getDoctrine()->getManager();
+        $shelf = $em->getRepository('BookBundle:Shelf')->find($shelfId);
+
+        if (!$shelf) {
+            return new JsonResponse([
+                'success' => false,
+            ]);
+        }
+
+        /**
+         * @var  SharedShelfLink $sharedLink
+         */
+        $sharedLink = $em->getRepository('BookBundle:SharedShelfLink')->findOneBy([
+            'shelf' => $shelf,
+            'userOwner' => $this->getUser(),
+        ]);
+
+        if (!$sharedLink) {
+            $tokenGenerator = $this->get('fos_user.util.token_generator');
+
+            $sharedLink = new SharedShelfLink();
+            $sharedLink->setUserOwner($this->getUser());
+            $sharedLink->setShelf($shelf);
+            $sharedLink->setSalt(substr($tokenGenerator->generateToken(), 0, 20));
+
+            $em->persist($sharedLink);
+            $em->flush();
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'shareLink' => $this->generateUrl('shared_shelf_by_salt', ['salt' => $sharedLink->getSalt()], UrlGeneratorInterface::ABSOLUTE_URL)
+        ]);
+
+    }
+
+    /**
+     * Get shared shelf link.
+     *
+     * @Route("/shelf/{salt}", name="shared_shelf_by_salt")
+     */
+    public function sharedShelfAction(Request $request, $salt){
+
+    }
+
+
 }

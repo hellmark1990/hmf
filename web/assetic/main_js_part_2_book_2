@@ -116,15 +116,12 @@ $(document).ready(function () {
 
     $('.share-link-button').on('click', function () {
         var url = $(this).data('shared-link-url');
-        var linkElement = $($(this).data('target')).find('input.share-link');
 
         $.ajax({
             url: url,
             type: 'GET',
             success: function (data) {
-                if (data.success) {
-                    linkElement.val(data.shareLink);
-                }
+                
             }
         });
     });

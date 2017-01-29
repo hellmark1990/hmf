@@ -78,6 +78,11 @@ class User extends BaseUser {
      */
     private $sharedShelfsToMe;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedShelfLink", mappedBy="userOwner")
+     */
+    private $sharedShelfLinks;
+
     public function __construct(){
         parent::__construct();
         // your own logic
@@ -292,5 +297,104 @@ class User extends BaseUser {
     public function getShelfs()
     {
         return $this->shelfs;
+    }
+
+    /**
+     * Add sharedShelfsByMe
+     *
+     * @param \BookBundle\Entity\SharedShelf $sharedShelfsByMe
+     * @return User
+     */
+    public function addSharedShelfsByMe(\BookBundle\Entity\SharedShelf $sharedShelfsByMe)
+    {
+        $this->sharedShelfsByMe[] = $sharedShelfsByMe;
+
+        return $this;
+    }
+
+    /**
+     * Remove sharedShelfsByMe
+     *
+     * @param \BookBundle\Entity\SharedShelf $sharedShelfsByMe
+     */
+    public function removeSharedShelfsByMe(\BookBundle\Entity\SharedShelf $sharedShelfsByMe)
+    {
+        $this->sharedShelfsByMe->removeElement($sharedShelfsByMe);
+    }
+
+    /**
+     * Get sharedShelfsByMe
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSharedShelfsByMe()
+    {
+        return $this->sharedShelfsByMe;
+    }
+
+    /**
+     * Add sharedShelfsToMe
+     *
+     * @param \BookBundle\Entity\SharedShelf $sharedShelfsToMe
+     * @return User
+     */
+    public function addSharedShelfsToMe(\BookBundle\Entity\SharedShelf $sharedShelfsToMe)
+    {
+        $this->sharedShelfsToMe[] = $sharedShelfsToMe;
+
+        return $this;
+    }
+
+    /**
+     * Remove sharedShelfsToMe
+     *
+     * @param \BookBundle\Entity\SharedShelf $sharedShelfsToMe
+     */
+    public function removeSharedShelfsToMe(\BookBundle\Entity\SharedShelf $sharedShelfsToMe)
+    {
+        $this->sharedShelfsToMe->removeElement($sharedShelfsToMe);
+    }
+
+    /**
+     * Get sharedShelfsToMe
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSharedShelfsToMe()
+    {
+        return $this->sharedShelfsToMe;
+    }
+
+    /**
+     * Add sharedShelfLinks
+     *
+     * @param \BookBundle\Entity\SharedShelfLink $sharedShelfLinks
+     * @return User
+     */
+    public function addSharedShelfLink(\BookBundle\Entity\SharedShelfLink $sharedShelfLinks)
+    {
+        $this->sharedShelfLinks[] = $sharedShelfLinks;
+
+        return $this;
+    }
+
+    /**
+     * Remove sharedShelfLinks
+     *
+     * @param \BookBundle\Entity\SharedShelfLink $sharedShelfLinks
+     */
+    public function removeSharedShelfLink(\BookBundle\Entity\SharedShelfLink $sharedShelfLinks)
+    {
+        $this->sharedShelfLinks->removeElement($sharedShelfLinks);
+    }
+
+    /**
+     * Get sharedShelfLinks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSharedShelfLinks()
+    {
+        return $this->sharedShelfLinks;
     }
 }

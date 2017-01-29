@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SharedShelfEmailType extends AbstractType {
 
@@ -39,8 +40,14 @@ class SharedShelfEmailType extends AbstractType {
                 ],
                 'choices_as_values' => true,
             ))
-            ->add('email', EmailType::class, [
-                'constraints' => new Email(),
+            ->add('email', TextType::class, [
+                'constraints' => [
+                    new NotBlank(),
+                    new Email(),
+                ],
+                'attr' => [
+                    'placeholder' => $this->translator->trans('Enter shared user email...')
+                ]
             ]);
 
         $builder->add(

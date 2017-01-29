@@ -82,6 +82,13 @@ class Shelf {
      */
     private $shareUsers;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedShelfLink", mappedBy="shelf")
+     */
+    private $shareLinks;
+
+
+
 
     /**
      * Get id
@@ -299,5 +306,38 @@ class Shelf {
         return $this->shareUsers->map(function ($item){
             return $item->getUserToShare();
         });
+    }
+
+    /**
+     * Add shareLinks
+     *
+     * @param \BookBundle\Entity\SharedShelfLink $shareLinks
+     * @return Shelf
+     */
+    public function addShareLink(\BookBundle\Entity\SharedShelfLink $shareLinks)
+    {
+        $this->shareLinks[] = $shareLinks;
+
+        return $this;
+    }
+
+    /**
+     * Remove shareLinks
+     *
+     * @param \BookBundle\Entity\SharedShelfLink $shareLinks
+     */
+    public function removeShareLink(\BookBundle\Entity\SharedShelfLink $shareLinks)
+    {
+        $this->shareLinks->removeElement($shareLinks);
+    }
+
+    /**
+     * Get shareLinks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getShareLinks()
+    {
+        return $this->shareLinks;
     }
 }

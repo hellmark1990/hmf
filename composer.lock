@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "16df523cefa1642f26a30f96d65f54b6",
-    "content-hash": "098dd13712c257ae5b37fdb0091343be",
+    "hash": "29656f8ce84537e4c46e58dac24001b4",
+    "content-hash": "01e7da1476ec8a212ecf5b57c243a5d9",
     "packages": [
         {
             "name": "aivus/sonata-media-fixed-dimensions-resizer",
@@ -394,16 +394,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.9",
+            "version": "v2.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "0d2f8187d4b4c7b72d8e2acba359e25c36feaf5e"
+                "reference": "fc376f7a61498e18520cd6fa083752a4ca08072b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0d2f8187d4b4c7b72d8e2acba359e25c36feaf5e",
-                "reference": "0d2f8187d4b4c7b72d8e2acba359e25c36feaf5e",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/fc376f7a61498e18520cd6fa083752a4ca08072b",
+                "reference": "fc376f7a61498e18520cd6fa083752a4ca08072b",
                 "shasum": ""
             },
             "require": {
@@ -461,7 +461,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-01-19 13:27:33"
+            "time": "2017-01-23 23:17:10"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -1023,6 +1023,58 @@
                 "google"
             ],
             "time": "2014-09-30 19:33:59"
+        },
+        {
+            "name": "hipaway-travel/mandrill-bundle",
+            "version": "dev-master",
+            "target-dir": "Hip/MandrillBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Hipaway-Travel/HipMandrillBundle.git",
+                "reference": "795bcb6231ea19265849a16eea13827db8d11d87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Hipaway-Travel/HipMandrillBundle/zipball/795bcb6231ea19265849a16eea13827db8d11d87",
+                "reference": "795bcb6231ea19265849a16eea13827db8d11d87",
+                "shasum": ""
+            },
+            "require": {
+                "mandrill/mandrill": "1.*",
+                "symfony/config": ">=2.1",
+                "symfony/http-foundation": ">=2.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Hip\\MandrillBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sven Loth",
+                    "email": "sven@hipaway.com",
+                    "homepage": "http://hipaway.com"
+                },
+                {
+                    "name": "Github Community",
+                    "homepage": "https://github.com/Hipaway-Travel/HipMandrillBundle/contributors"
+                }
+            ],
+            "description": "Symfony HipMandrillBundle",
+            "homepage": "https://github.com/Hipaway-Travel/HipMandrillBundle",
+            "keywords": [
+                "email",
+                "mandrill",
+                "messages",
+                "transaction mail",
+                "transactional"
+            ],
+            "time": "2016-03-22 11:24:15"
         },
         {
             "name": "imagine/imagine",
@@ -1781,6 +1833,49 @@
                 "http client"
             ],
             "time": "2015-06-25 17:26:56"
+        },
+        {
+            "name": "mandrill/mandrill",
+            "version": "1.0.55",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mandrill": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mandrill Devs",
+                    "email": "community@mandrill.com",
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "API client library for the Mandrill email as a service platform",
+            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
+            "keywords": [
+                "api",
+                "email"
+            ],
+            "time": "2015-09-22 13:58:03"
         },
         {
             "name": "michelf/php-markdown",
@@ -4452,7 +4547,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
-        "google/apiclient": 10
+        "google/apiclient": 10,
+        "hipaway-travel/mandrill-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -83,7 +83,8 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    spool:     { type: memory }
+    port:      "%mailer_port%"
+    disable_delivery: false
 
 assetic:
     debug:          '%kernel.debug%'
