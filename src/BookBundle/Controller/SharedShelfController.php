@@ -364,9 +364,18 @@ class SharedShelfController extends Controller {
     /**
      * Get shared shelf link.
      *
-     * @Route("/shelf/{salt}", name="shared_shelf_by_salt")
+     * @Route("/shelf/{salt}/books", name="shared_shelf_by_salt")
      */
-    public function sharedShelfAction(Request $request, $salt){
+    public function sharedShelfBySaltAction(Request $request, $salt){
+
+    }
+
+    /**
+     * Get shared shelf link.
+     *
+     * @Route("/shelf/{id}/books", name="shared_shelf_by_id")
+     */
+    public function sharedShelfAction(Request $request, $id){
 
     }
 

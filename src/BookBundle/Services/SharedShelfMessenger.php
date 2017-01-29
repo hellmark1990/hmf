@@ -43,7 +43,9 @@ class SharedShelfMessenger {
             ->setBody(
                 $this->service_container->get('templating')->render(
                     'BookBundle:SharedShelf:mails\share_user_by_email.html.twig',
-                    []
+                    [
+                        'shareShelf' => $shareShelf
+                    ]
                 ),
                 'text/html'
             );

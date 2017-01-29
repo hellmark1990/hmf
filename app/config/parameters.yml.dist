@@ -23,3 +23,5 @@ parameters:
     # Google
     google_api_key: AIzaSyCmWmxHHOZTWL6qpA04If7xtfzVa8NzMJM
     google_project_name: ibooker
+
+    host: http://127.0.0.1:8000

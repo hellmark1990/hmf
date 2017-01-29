@@ -45,6 +45,7 @@ twig:
     globals:
         parameters:
             google_api_key: '%google_api_key%'
+            site_host: '%host%'
 
 # Doctrine Configuration
 doctrine:

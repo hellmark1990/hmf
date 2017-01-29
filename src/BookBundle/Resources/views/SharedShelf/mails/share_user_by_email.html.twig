@@ -140,43 +140,36 @@
 <table class="body-wrap">
     <tr>
         <td class="container">
-
             <!-- Message start -->
             <table>
                 <tr>
                     <td align="center" class="masthead">
-
-                        <h1>Something Big...</h1>
-
+                        <h1>{% trans %}BookSHelf{% endtrans %}</h1>
                     </td>
                 </tr>
                 <tr>
                     <td class="content">
-
-                        <h2>Hi Stranger,</h2>
-
-                        <p>Kielbasa venison ball tip shankle. Boudin prosciutto landjaeger, pancetta jowl turkey tri-tip
-                            porchetta beef pork loin drumstick. Frankfurter short ribs kevin pig ribeye drumstick bacon
-                            kielbasa. Pork loin brisket biltong, pork belly filet mignon ribeye pig ground round
-                            porchetta turducken turkey. Pork belly beef ribs sausage ham hock, ham doner frankfurter
-                            pork chop tail meatball beef pig meatloaf short ribs shoulder. Filet mignon ham hock
-                            kielbasa beef ribs shank. Venison swine beef ribs sausage pastrami shoulder.</p>
+                        <h2>Hi,</h2>
+                        <p>
+                            {{ shareShelf.userOwner.username }} {% trans %}share books shelf with you.{% endtrans %}
+                        </p>
 
                         <table>
                             <tr>
                                 <td align="center">
                                     <p>
-                                        <a href="#" class="button">Share the Awesomeness</a>
                                     </p>
                                 </td>
                             </tr>
+                            <tr>
+                                <td align="center">
+                                    <p>
+                                        <a href="{{ url('shared_shelf_by_id', {'id': shareShelf.id} ) }}" class="button">{% trans %}Go to shelf{% endtrans %}</a>
+                                    </p>
+                                </td>
+                            </tr>
+
                         </table>
-
-                        <p>By the way, if you're wondering where you can find more of this fine meaty filler, visit
-                            <a href="http://baconipsum.com">Bacon Ipsum</a>.</p>
-
-                        <p><em>– Mr. Pen</em></p>
-
                     </td>
                 </tr>
             </table>
@@ -190,8 +183,7 @@
             <table>
                 <tr>
                     <td class="content footer" align="center">
-                        <p>Sent by <a href="#">Company Name</a>, 1234 Yellow Brick Road, OZ, 99999</p>
-                        <p><a href="mailto:">hello@company.com</a> | <a href="#">Unsubscribe</a></p>
+                        <p>{% trans %}Sent by {% endtrans %}<a href="{{ app.request.getBaseURL() }}"> {% trans %}BookShelf{% endtrans %}</a>, {% trans %}Ukraine, Lviv{% endtrans %}</p>
                     </td>
                 </tr>
             </table>
