@@ -207,7 +207,16 @@ form[name="bookbundle_book"] .circle.image-container > img {
 }
 
 .form-group .form-control {
-    border-color: #d8d8d8!important;
+    border-color: #d8d8d8 !important;
+}
+
+.grid-list-view .btn-group {
+    margin-right: 10px;
+}
+
+.grid-list-view .profile-avatar .image-container {
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 /*!
@@ -1886,6 +1895,10 @@ body > section {
 /*************************
 *******Header******
 **************************/
+
+#header .navbar.navbar-inverse{
+  height: 90px;
+}
 
 #header .search{
   display: inline-block;
@@ -4421,32 +4434,69 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 .pp_top .pp_right,.pp_bottom .pp_right{height:20px;left:auto;position:absolute;right:0;top:0;width:20px}
 .pp_fade,.pp_gallery li.default a img{display:none}
 .profile-avatar .image-container {
-    width: 250px;
-    height: 270px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    border: 2px solid #f3f3f3;
-    padding: 25px;
-    padding-top: 35px;
+    width: 200px;
+    height: 200px;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    overflow: hidden;
 }
 
 .profile-avatar .circle.image-container > img {
+    border: none;
     margin: 0 auto;
     width: 200px;
     height: 200px;
+    padding: 0px;
 }
 
 .profile-avatar .button-edit {
     left: 70px !important;
+    bottom: 40px!important;
+    opacity: 0.9!important;
 }
 
 .profile-avatar .button-delete {
     left: 70px !important;
+    bottom: 40px!important;
+    opacity: 0.9!important;
 }
 
 .login-form, .registration-form {
     margin-left: 25%;
+}
+
+.image-container > .pseudo-letters{
+    display: none;
+}
+
+.image-container.no-image > .pseudo-letters{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: #c52d2f;
+    font-size: 0;
+    white-space: normal;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.image-container.no-image > img{
+    display: none;
+}
+
+.image-container.no-image > .pseudo-letters .s-t {
+    display: block;
+    width: 50px;
+    margin: 0 auto;
+    margin-top: 80px;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #efefef;
+    line-height: 1;
+    white-space: normal;
 }
 
 
@@ -4805,6 +4855,68 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 
 }
 
+
+.share-folder-users-list item{
+    width: 273px!important;
+}
+
+.share-folder-users-list .item.list-group-item .circle.image-container{
+    margin: 0;
+    overflow: inherit;
+    margin-top: -2px;
+    margin-left: 20px;
+    margin-right: 50px;
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+.share-folder-users-list .item.list-group-item .circle.image-container > img{
+    width: 100px;
+    height: 100px;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.share-folder-users-list .item.list-group-item .circle.image-container.no-image > .pseudo-letters > .s-t{
+    margin-top: 35px;
+}
+
+.share-folder-users-list .image-container{
+    width: 150px;
+    height: 150px;
+}
+
+.share-folder-users-list .profile-avatar .circle.image-container > img {
+    width: 150px;
+    height: 150px;
+}
+
+.share-folder-users-list .image-container.no-image > .pseudo-letters > .s-t{
+    margin-top: 60px;
+}
+
+.share-books-list .thumbnail{
+    margin-bottom: 0px;
+    height: 400px;
+}
+
+.share-books-list .thumbnail > img{
+    margin-top: 20px;
+}
+
+.share-books-list .thumbnail > .caption{
+    height: 400px;
+}
+
+.share-books-list .list-group-item-text{
+    margin-top: 10px;
+}
+
+.share-books-list .list-group-item > .thumbnail > .caption{
+    padding: 24px 9px 0px 9px;
+}
 
 form[name="bookbundle_shelf"] img {
     width: 350px;

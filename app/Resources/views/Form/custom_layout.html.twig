@@ -21,7 +21,11 @@
             {% endif %}
         {% else %}
             <div class="pull-left" style="margin-right: 5px">
-                <a class="circle image-container">
+                <a class="circle image-container no-image">
+                    <span class="pseudo-letters">
+                        <span class="helper"></span>
+                        <span class="s-t">{{ app.user.avatarLetters }}</span>
+                    </span>
                     <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-polaroid media-object"/>
                     <button type="button" class="btn btn-default btn-small button button-edit">
                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>

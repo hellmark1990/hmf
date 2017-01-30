@@ -124,5 +124,14 @@ form[name="bookbundle_book"] .circle.image-container > img {
 }
 
 .form-group .form-control {
-    border-color: #d8d8d8!important;
+    border-color: #d8d8d8 !important;
+}
+
+.grid-list-view .btn-group {
+    margin-right: 10px;
+}
+
+.grid-list-view .profile-avatar .image-container {
+    margin: 0 auto;
+    margin-top: 20px;
 }

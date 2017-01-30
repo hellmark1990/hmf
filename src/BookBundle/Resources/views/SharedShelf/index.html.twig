@@ -3,7 +3,7 @@
 {% block body -%}
     <h1 class="h1-title">{% trans %}Shared shelf list{% endtrans %}</h1>
 
-    <div class="grid-list-view container container-read-list">
+    <div class="grid-list-view container share-folder-users-list">
         <div class="well well-sm">
             <strong>Display</strong>
 
@@ -42,17 +42,23 @@
             {% if shelf.shareUsers.count %}
                 {% for shareUser in shelf.shareUsers %}
                     <div class="item  col-xs-4 col-lg-4">
-                        <div class="thumbnail">
+                        <div class="thumbnail profile-avatar">
                             <div class="btn-delete">
                                 <a class="btn btn-danger btn-sm" href="{{ path('shared_delete_user', { 'shelfId': shelf.id, 'userToShareId': shareUser.id }) }}">
                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                 </a>
                             </div>
-                            {% if shareUser.avatar %}
-                                <img class="group list-group-image" src="{% path shareUser.avatar, 'small' %}" alt=""/>
-                            {% else %}
-                                <img class="group list-group-image no-image" src="/uploads/no-image.png" alt=""/>
-                            {% endif %}
+
+                            <div class="circle image-container {% if not shareUser.avatar %}no-image{% endif %}">
+                                <span class="pseudo-letters">
+                                    <span class="helper"></span>
+                                    <span class="s-t">{{ shareUser.avatarLetters }}</span>
+                                </span>
+                                {% if shareUser.avatar %}
+                                    <img class="group list-group-image img-polaroid media-object" src="{% path shareUser.avatar, 'small' %}" alt=""/>
+                                {% endif %}
+                            </div>
+
                             <div class="caption">
                                 <h4 class="group inner list-group-item-heading">
                                     {{ shareUser.username }}
@@ -129,8 +135,7 @@
                     <form class="form-horizontal">
                         <div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label required">{% trans %}Link{% endtrans %}</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-12">
                                     <input type="text" class="form-control share-link">
                                 </div>
                             </div>

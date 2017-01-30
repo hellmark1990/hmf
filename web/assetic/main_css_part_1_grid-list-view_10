@@ -126,8 +126,8 @@
 }
 
 .grid-list-view .list-group-item .btn-delete {
-    top: 2%;
-    left: 96%;
+    top: 0;
+    left: 1101px;
 }
 
 .grid-list-view .list-group-item .list-group-item-heading {

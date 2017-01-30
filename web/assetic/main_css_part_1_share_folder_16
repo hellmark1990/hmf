@@ -1,0 +1,62 @@
+.share-folder-users-list item{
+    width: 273px!important;
+}
+
+.share-folder-users-list .item.list-group-item .circle.image-container{
+    margin: 0;
+    overflow: inherit;
+    margin-top: -2px;
+    margin-left: 20px;
+    margin-right: 50px;
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+.share-folder-users-list .item.list-group-item .circle.image-container > img{
+    width: 100px;
+    height: 100px;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.share-folder-users-list .item.list-group-item .circle.image-container.no-image > .pseudo-letters > .s-t{
+    margin-top: 35px;
+}
+
+.share-folder-users-list .image-container{
+    width: 150px;
+    height: 150px;
+}
+
+.share-folder-users-list .profile-avatar .circle.image-container > img {
+    width: 150px;
+    height: 150px;
+}
+
+.share-folder-users-list .image-container.no-image > .pseudo-letters > .s-t{
+    margin-top: 60px;
+}
+
+.share-books-list .thumbnail{
+    margin-bottom: 0px;
+    height: 400px;
+}
+
+.share-books-list .thumbnail > img{
+    margin-top: 20px;
+}
+
+.share-books-list .thumbnail > .caption{
+    height: 400px;
+}
+
+.share-books-list .list-group-item-text{
+    margin-top: 10px;
+}
+
+.share-books-list .thumbnail > .caption{
+    height: 400px;
+}
+padding: 24px 9px 0px 9px;

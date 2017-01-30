@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SharedShelfType extends AbstractType {
 
@@ -52,6 +53,9 @@ class SharedShelfType extends AbstractType {
                 },
                 'choice_label' => 'username',
                 'required' => false,
+                'constraints' => [
+                    new NotBlank(),
+                ],
             ]);
 
         $builder->add(
