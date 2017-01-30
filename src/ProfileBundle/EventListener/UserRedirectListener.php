@@ -34,6 +34,7 @@ class UserRedirectListener {
                 self::REGISTRATION_ROUTE,
                 self::LOGIN_API_ROUTE,
             ])
+            && $event->getRequest()->get('autologin') != 1
         ) {
             $response = new RedirectResponse($this->container->get('router')->generate(self::LOGIN_ROUTE));
             $event->setResponse($response);

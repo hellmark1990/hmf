@@ -15,6 +15,7 @@ parameters:
     mailer_user: sheme4ko@gmail.com
     mailer_password: 64inupiradminhell
     my_email: sheme4ko@gmail.com
+    mailer_port: 465
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt

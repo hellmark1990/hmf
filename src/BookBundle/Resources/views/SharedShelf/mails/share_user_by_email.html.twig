@@ -164,7 +164,7 @@
                             <tr>
                                 <td align="center">
                                     <p>
-                                        <a href="{{ url('shared_shelf_by_id', {'id': shareShelf.id} ) }}" class="button">{% trans %}Go to shelf{% endtrans %}</a>
+                                        <a href="{{ url('shared_shelf_by_id', {'id': shareShelf.id, 'autologin': true, 'salt': shareShelf.userToShare.salt} ) }}" class="button">{% trans %}Go to shelf{% endtrans %}</a>
                                     </p>
                                 </td>
                             </tr>

@@ -364,19 +364,56 @@ class SharedShelfController extends Controller {
     /**
      * Get shared shelf link.
      *
-     * @Route("/shelf/{salt}/books", name="shared_shelf_by_salt")
+     * @Route("/shelf/salt-{salt}/books", name="shared_shelf_by_salt")
+     * @Template()
      */
     public function sharedShelfBySaltAction(Request $request, $salt){
+        /**
+         * @var $shareLink SharedShelfLink
+         */
+        $em = $this->getDoctrine()->getManager();
+        $sharedLink = $em->getRepository('BookBundle:SharedShelfLink')->findOneBy([
+            'salt' => $salt
+        ]);
+
+        if (!$sharedLink) {
+            throw $this->createNotFoundException('Unable to find Shelf.');
+        }
+
+        if (!$sharedLink->getShelf()) {
+            throw $this->createNotFoundException('Unable to find Shelf.');
+        }
+
+        return array(
+            'shelf' => $sharedLink->getShelf()
+        );
 
     }
 
     /**
      * Get shared shelf link.
      *
-     * @Route("/shelf/{id}/books", name="shared_shelf_by_id")
+     * @Route("/shelf/{id}/books", name="shared_shelf_by_id", requirements={"id": "\d+"})
+     * @Template("BookBundle:SharedShelf:sharedShelfBySalt.html.twig")
      */
     public function sharedShelfAction(Request $request, $id){
+        /**
+         * @var $shareLink SharedShelfLink
+         */
+        $em = $this->getDoctrine()->getManager();
+        $sharedShelf = $em->getRepository('BookBundle:SharedShelf')->find($id);
 
+        if (!$sharedShelf) {
+            throw $this->createNotFoundException('Unable to find Shelf.');
+        }
+
+        if (!$sharedShelf->getShelf()) {
+            throw $this->createNotFoundException('Unable to find Shelf.');
+        }
+
+        return array(
+            'shelf' => $sharedShelf->getShelf()
+        );
     }
 
 

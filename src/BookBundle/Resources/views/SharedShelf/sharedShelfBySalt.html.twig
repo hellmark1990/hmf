@@ -1,0 +1,61 @@
+{% extends "BookBundle::layout.html.twig" %}
+
+{% block body -%}
+    {{ parent() }}
+    <h1 class="h1-title">{% trans %}Shared Shelf{% endtrans %}: "{{ shelf.title }}"</h1>
+    <h2 class="h1-title">{% trans %}By{% endtrans %} {{ shelf.user.username }}</h2>
+
+    <div class="grid-list-view container">
+        <div class="well well-sm">
+            <strong>Display</strong>
+
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th-list"></span>List
+                </a>
+                <a href="#" id="grid" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-th"></span>Grid
+                </a>
+            </div>
+        </div>
+        <div id="products" class="row list-group">
+            {% if shelf.books %}
+                {% for entity in shelf.books %}
+                    <div class="item  col-xs-3 col-lg-3">
+                        <div class="thumbnail">
+                            <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
+
+                            <div class="caption">
+                                <h5 class="group inner list-group-item-heading">{{ entity.name }}</h5>
+
+                                <p class="group inner list-group-item-text">
+                                    {% if entity.authors %}
+                                        <b>{% trans %}Author:{% endtrans %}</b>
+                                        {{ entity.authors|truncate(200) }}
+                                    {% endif %}
+                                </p>
+
+                                <p class="group inner list-group-item-text">
+                                    {% if entity.authors %}
+                                        <b>{% trans %}Pages:{% endtrans %}</b>
+                                        {{ entity.pageCount|truncate(200) }}
+                                    {% endif %}
+                                </p>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">
+                    {% trans %} Shelf books list is empty.{% endtrans %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

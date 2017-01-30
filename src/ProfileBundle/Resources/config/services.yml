@@ -12,3 +12,13 @@ services:
   profile.user_creator_api:
       class: ProfileBundle\Services\UserCreatorApi
       arguments: ['@service_container', "@doctrine.orm.entity_manager"]
+
+  profile.listener.request:
+      class: ProfileBundle\EventListener\RequestListener
+      arguments: [ @service_container ]
+      tags:
+        - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+  profile.user_auto_login:
+    class: ProfileBundle\Services\UserAutoLogin
+    arguments: ['@service_container', "@doctrine.orm.entity_manager"]
