@@ -56,7 +56,6 @@
     margin-top: 10px;
 }
 
-.share-books-list .thumbnail > .caption{
-    height: 400px;
+.share-books-list .list-group-item > .thumbnail > .caption{
+    padding: 24px 9px 0px 9px;
 }
-padding: 24px 9px 0px 9px;

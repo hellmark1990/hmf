@@ -81,12 +81,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #books-list-wrapper > #columns:hover .pin:not(:hover) {
     opacity: 0.4;
 }
+
+
 h1 {
     color: #4e4e4e !important;
 }
 
 .clear-float {
     clear: both;
+}
+
+.pseudo-letters{
+    display: none;
 }
 
 .img-polaroid {
@@ -1890,7 +1896,6 @@ body > section {
     transform: scale(1);
   }
 }
-
 
 /*************************
 *******Header******
@@ -4466,11 +4471,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     margin-left: 25%;
 }
 
-.image-container > .pseudo-letters{
-    display: none;
-}
-
-.image-container.no-image > .pseudo-letters{
+.profile-avatar .image-container.no-image > .pseudo-letters{
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -4482,11 +4483,11 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     border-radius: 100%;
 }
 
-.image-container.no-image > img{
+.profile-avatar .image-container.no-image > img{
     display: none;
 }
 
-.image-container.no-image > .pseudo-letters .s-t {
+.profile-avatar .image-container.no-image > .pseudo-letters .s-t {
     display: block;
     width: 50px;
     margin: 0 auto;
@@ -4552,7 +4553,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     z-index: 1;
 }
 
-/* lg */ 
+/* lg */
 @media (min-width: 1200px) {
  /* Make Navigation Toggle on Desktop Hover */
   .dropdown:hover .dropdown-menu {
@@ -4566,13 +4567,13 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     margin-right: -10px;
   }
 
-  
+
 
 }
 
 /* md */
 @media (min-width: 992px) and (max-width: 1199px) {
-  
+
  /* Make Navigation Toggle on Desktop Hover */
   .dropdown:hover .dropdown-menu {
       display: block;
@@ -4601,12 +4602,12 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     padding: 40px 10px 40px 30px;
   }
 
-  .feature-wrap h2, 
+  .feature-wrap h2,
   .single-services h2 {
     font-size: 18px;
   }
 
-  .feature-wrap h3, 
+  .feature-wrap h3,
   .single-services h3{
     font-size: 14px;
   }
@@ -4678,13 +4679,13 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     font-size: 20px;
   }
 
-  .tab-wrap .media .parrent.pull-left, 
+  .tab-wrap .media .parrent.pull-left,
   .media.accordion-inner .pull-left{
     clear: both;
     width: 100%;
   }
 
-  .tab-wrap .media .parrent.media-body, 
+  .tab-wrap .media .parrent.media-body,
   .media.accordion-inner .media-body{
     clear: both;
   }
@@ -4704,7 +4705,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
   .sinlge-skill{
     width: 150px;
     height: 150px;
-  } 
+  }
 
   .sinlge-skill p em {
     font-size: 25px;
@@ -4765,18 +4766,18 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     font-size: 16px;
   }
 
-  .feature-wrap h2, 
+  .feature-wrap h2,
   .single-services h2 {
     font-size: 18px;
   }
 
-  .feature-wrap h3, 
+  .feature-wrap h3,
   .single-services h3{
     font-size: 14px;
   }
 
 
-  .media.accordion-inner .pull-left, 
+  .media.accordion-inner .pull-left,
   .media.accordion-inner .media-body{
     clear: both;
   }
@@ -4801,7 +4802,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
   #footer .col-sm-6{
       text-align:center;
   }
-  
+
    #footer .pull-right{
       float: none !important;
   }
@@ -4812,7 +4813,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     margin-bottom: 30px;
   }
 
-  .team .single-profile-top, 
+  .team .single-profile-top,
   .team .single-profile-bottom {
     margin-bottom: 30px;
   }
@@ -4825,7 +4826,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     font-size: 25px;
   }
 
-  .portfolio-item, 
+  .portfolio-item,
   #recent-works .col-xs-12.col-sm-4.col-md-3{
     padding:0 15px;
   }
@@ -4845,7 +4846,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
   .post_reply_comments {
     padding-left: 20px;
   }
-    
+
 
 }
 

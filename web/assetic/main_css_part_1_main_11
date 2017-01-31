@@ -169,6 +169,9 @@ body > section {
   }
 }
 
+.navbar-right{    right: 100px;
+  position: relative;
+}
 
 /*************************
 *******Header******

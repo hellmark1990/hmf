@@ -92,7 +92,9 @@
     <nav class="navbar navbar-inverse" role="banner">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/"><img width="60px" src="/uploads/logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="{% if app.user %}{{ path('fos_user_profile_edit') }}{% else %}{{ path('fos_user_security_login') }}{% endif %}">
+                    <img width="60px" height="60px" src="/uploads/logo.png" alt="logo">
+                </a>
             </div>
 
             <div class="collapse navbar-collapse navbar-right">

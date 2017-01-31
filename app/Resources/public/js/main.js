@@ -59,13 +59,14 @@ jQuery(function ($) {
         social_tools: false
     });
 
-    $('button.button-edit').on('click', function () {
+    $('form button.button-edit').on('click', function () {
         $(this).closest('.form-group').find('input[type="file"]').click();
     });
 
-    $('button.button-delete').on('click', function () {
+    $('form button.button-delete').on('click', function () {
         $(this).closest('.form-group').find('input[type="hidden"]').val(1);
         var image = $(this).closest('.form-group').find('.image-container > img');
+        var newSrc = $(image).data('default-src') ? $(image).data('default-src') : '';
         $(image).attr('src', $(image).data('default-src'));
     });
 
