@@ -7,7 +7,7 @@
             <a href="{{ path('fos_user_registration_register') }}">{% trans %}Sign up{% endtrans %}</a>
         </li>
     {% endif %}
-    
+
     {% if app.user %}
         <li class="{% if app.request.attributes.get('_route') in ['fos_user_security_logout'] %}active{% endif %}">
             <a href="{{ path('fos_user_security_logout') }}">{% trans %}Sign out{% endtrans %}</a>
@@ -40,6 +40,12 @@
                 <li class="{% if app.request.attributes.get('_route') == 'shelf_new' %}active{% endif %}">
                     <a href="{{ path('shelf_new') }}">{% trans %}Add shelf{% endtrans %}</a>
                 </li>
+                {% if app.user.sharedShelfsToMe.count %}
+                    <li class="{% if app.request.attributes.get('_route') == 'shared_to_user_shelves' %}active{% endif %}">
+                        <a href="{{ path('shared_to_user_shelves') }}">{% trans %}Shared Shelves{% endtrans %}</a>
+                    </li>
+                {% endif %}
+
             </ul>
         </li>
     {% endif %}

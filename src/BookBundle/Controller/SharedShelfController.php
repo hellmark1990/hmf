@@ -178,55 +178,6 @@ class SharedShelfController extends Controller {
         );
     }
 
-    /**
-     * Finds and displays a SharedShelf entity.
-     *
-     * @Route("/{id}", name="shared_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id){
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('BookBundle:SharedShelf')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find SharedShelf entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity' => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
-     * Displays a form to edit an existing SharedShelf entity.
-     *
-     * @Route("/{id}/edit", name="shared_edit")
-     * @Method("GET")
-     * @Template()
-     */
-    public function editAction($id){
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('BookBundle:SharedShelf')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find SharedShelf entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
 
     /**
      * Creates a form to edit a SharedShelf entity.
@@ -244,39 +195,6 @@ class SharedShelfController extends Controller {
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
-    }
-
-    /**
-     * Edits an existing SharedShelf entity.
-     *
-     * @Route("/{id}", name="shared_update")
-     * @Method("PUT")
-     * @Template("BookBundle:SharedShelf:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id){
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('BookBundle:SharedShelf')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find SharedShelf entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('shared_edit', array('id' => $id)));
-        }
-
-        return array(
-            'entity' => $entity,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
     }
 
     /**
@@ -306,19 +224,29 @@ class SharedShelfController extends Controller {
     }
 
     /**
-     * Creates a form to delete a SharedShelf entity by id.
+     * Deletes a SharedShelf entity.
      *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
+     * @Route("/delete/share-to-me/shelf/{id}", name="shared_share_to_me_shelf")
      */
-    private function createDeleteForm($id){
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('shared_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm();
+    public function deleteShareToMeAction(Request $request, $id){
+        $em = $this->getDoctrine()->getManager();
+        $shelf = $em->getRepository('BookBundle:Shelf')->find($id);
+
+        $entity = $em->getRepository('BookBundle:SharedShelf')->findOneBy([
+            'shelf' => $shelf,
+            'userToShare' => $this->getUser(),
+        ]);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find shelf entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('shared_to_user_shelves'));
     }
+
 
     /**
      * Get shared shelf link.
@@ -402,7 +330,11 @@ class SharedShelfController extends Controller {
          * @var $shareLink SharedShelfLink
          */
         $em = $this->getDoctrine()->getManager();
-        $sharedShelf = $em->getRepository('BookBundle:SharedShelf')->find($id);
+        $shelf = $em->getRepository('BookBundle:Shelf')->find($id);
+        $sharedShelf = $em->getRepository('BookBundle:SharedShelf')->findOneBy([
+            'shelf' => $shelf,
+            'userToShare' => $this->getUser(),
+        ]);
 
         if (!$sharedShelf) {
             throw $this->createNotFoundException('Unable to find Shelf.');
@@ -413,8 +345,22 @@ class SharedShelfController extends Controller {
         }
 
         return array(
-            'shelf' => $sharedShelf->getShelf()
+            'shelf' => $shelf
         );
+    }
+
+    /**
+     * Get shared shelf link.
+     *
+     * @Route("/shelves", name="shared_to_user_shelves")
+     * @Template()
+     */
+    public function sharedToUserShelvesAction(Request $request){
+        $sharedShelves = $this->getUser()->getSharedShelfsToMe();
+
+        return [
+            'entities' => $sharedShelves
+        ];
     }
 
 

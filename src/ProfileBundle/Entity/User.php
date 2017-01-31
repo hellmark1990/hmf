@@ -74,7 +74,7 @@ class User extends BaseUser {
     private $sharedShelfsByMe;
 
     /**
-     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedShelf", mappedBy="userToShare")
+     * @ORM\OneToMany(targetEntity="\BookBundle\Entity\SharedShelf", mappedBy="userToShare")
      */
     private $sharedShelfsToMe;
 
@@ -353,7 +353,9 @@ class User extends BaseUser {
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getSharedShelfsToMe(){
-        return $this->sharedShelfsToMe;
+        return $this->sharedShelfsToMe->map(function ($item){
+            return $item->getShelf();
+        });
     }
 
     /**
