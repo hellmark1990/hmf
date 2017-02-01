@@ -51,6 +51,9 @@
                 <li class="{% if app.request.attributes.get('_route') in ['fos_user_profile_edit'] %}active{% endif %}">
                     <a href="{{ path('fos_user_profile_edit') }}">{% trans %}Personal profile{% endtrans %}</a>
                 </li>
+                <li class="{% if app.request.attributes.get('_route') in ['fos_user_change_password'] %}active{% endif %}">
+                    <a href="{{ path('fos_user_change_password') }}">{% trans %}Change Password{% endtrans %}</a>
+                </li>
                 <li class="{% if app.request.attributes.get('_route') in ['fos_user_security_logout'] %}active{% endif %}">
                     <a href="{{ path('fos_user_security_logout') }}">{% trans %}Log out{% endtrans %}</a>
                 </li>

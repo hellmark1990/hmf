@@ -60,3 +60,23 @@
     white-space: normal;
 }
 
+/** Change password Start **/
+
+form.fos_user_change_password{
+    width: 600px;
+    margin: 0 auto;
+}
+
+form.fos_user_change_password  .col-sm-10{
+    width: 50%;
+}
+
+form.fos_user_change_password .form-group > .col-sm-10{
+    width: 50%;
+}
+
+form.fos_user_change_password .form-group > .col-sm-2.control-label{
+    width: 30%;
+}
+
+/** Change password END **/
