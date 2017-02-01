@@ -17,21 +17,21 @@
 
 .profile-avatar .button-edit {
     left: 70px !important;
-    bottom: 40px!important;
-    opacity: 0.9!important;
+    bottom: 40px !important;
+    opacity: 0.9 !important;
 }
 
 .profile-avatar .button-delete {
     left: 70px !important;
-    bottom: 40px!important;
-    opacity: 0.9!important;
+    bottom: 40px !important;
+    opacity: 0.9 !important;
 }
 
 .login-form, .registration-form {
     margin-left: 25%;
 }
 
-.profile-avatar .image-container.no-image > .pseudo-letters{
+.profile-avatar .image-container.no-image > .pseudo-letters {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -43,7 +43,7 @@
     border-radius: 100%;
 }
 
-.profile-avatar .image-container.no-image > img{
+.profile-avatar .image-container.no-image > img {
     display: none;
 }
 
@@ -62,21 +62,43 @@
 
 /** Change password Start **/
 
-form.fos_user_change_password{
+form.fos_user_change_password {
     width: 600px;
     margin: 0 auto;
 }
 
-form.fos_user_change_password  .col-sm-10{
+form.fos_user_change_password .col-sm-10 {
     width: 50%;
 }
 
-form.fos_user_change_password .form-group > .col-sm-10{
+form.fos_user_change_password .form-group > .col-sm-10 {
     width: 50%;
 }
 
-form.fos_user_change_password .form-group > .col-sm-2.control-label{
+form.fos_user_change_password .form-group > .col-sm-2.control-label {
     width: 30%;
 }
 
 /** Change password END **/
+
+/** Request onm reset password form Start **/
+
+form.fos_user_resetting_request {
+    width: 600px;
+    margin: 0 auto;
+}
+
+form.fos_user_resetting_request .form-group > .col-sm-9 {
+    width: 50%;
+}
+
+/** Request onm reset password form END **/
+
+/** Login form **/
+a.forgot-password-link {
+    display: inline-block;
+    margin-top: 5px;
+    border-bottom: 1px dashed;
+}
+
+/** Login form **/
