@@ -16,6 +16,13 @@
                     <span class="glyphicon glyphicon-th"></span>Grid
                 </a>
             </div>
+
+            <div class="btn-group pull-right">
+                <a class="btn btn-default btn-sm" href="{{ path('book_new') }}">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>{% trans %}Add
+                    book{% endtrans %}
+                </a>
+            </div>
         </div>
         <div id="products" class="row list-group">
             {% if entities %}

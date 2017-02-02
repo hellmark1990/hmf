@@ -3,7 +3,6 @@
 <h1 class="h1-title">{% trans %}Reset password{% endtrans %}</h1>
 
 
-
 <form class="fos_user_resetting_request form-horizontal" method="post" action="{{ path('fos_user_resetting_send_email') }}">
     <div class="form-container">
         {% if invalid_username is defined %}

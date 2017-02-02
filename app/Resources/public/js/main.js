@@ -26,7 +26,7 @@ jQuery(function ($) {
     var form = $('#main-contact-form');
     form.submit(function (event) {
         event.preventDefault();
-        var form_status = $('<div class="form_status"></div>');
+        var form_status = $('<div class="form-group errors"><label class="col-sm-3 control-label"></label><div class="col-sm-9"><div class="alert alert-danger" role="alert"><center></center></div></div></div></div>');
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
@@ -39,8 +39,9 @@ jQuery(function ($) {
                 location.href = data.redirect_url;
             }
             if (data.message) {
-                form.prepend(form_status)
-                form_status.html('<p class="text-warning">' + data.message + '</p>');
+                form.find('.errors').remove();
+                form.prepend(form_status);
+                form_status.find('center').html(data.message);
             }
         });
     });
@@ -112,5 +113,9 @@ jQuery(function ($) {
                 }
             }
         });
+    });
+
+    $('button.btn-submit-form').on('click', function () {
+        $('.container > form').trigger('submit');
     });
 });

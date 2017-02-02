@@ -23,9 +23,9 @@ services:
     class: ProfileBundle\Services\UserAutoLogin
     arguments: ['@service_container', "@doctrine.orm.entity_manager"]
 
-  profile.registration_messenger:
-    class: ProfileBundle\Services\RegistrationMessenger
-    arguments: ['@service_container', "@doctrine.orm.entity_manager"]
+  profile.profile_messenger:
+    class: ProfileBundle\Services\ProfileMessenger
+    arguments: ['@service_container', "@doctrine.orm.entity_manager", "@router"]
 
   profile.post_persist:
     class: ProfileBundle\EventListener\PostPersistListener

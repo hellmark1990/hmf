@@ -151,7 +151,7 @@
             </div>
             <div class="col-sm-6">
                 <ul class="pull-right">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="{% if app.user %}{{ path('fos_user_profile_edit') }}{% else %}{{ path('fos_user_security_login') }}{% endif %}">Home</a></li>
                     {% if app.user %}
                         <li class="{% if app.request.attributes.get('_route') in ['fos_user_profile_edit'] %}active{% endif %}">
                             <a href="{{ path('fos_user_profile_edit') }}">{% trans %}My Profile{% endtrans %}</a>

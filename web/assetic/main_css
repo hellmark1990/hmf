@@ -4521,7 +4521,28 @@ form.fos_user_change_password .form-group > .col-sm-2.control-label {
 
 /** Change password END **/
 
-/** Request onm reset password form Start **/
+/** Reset password Start **/
+
+form.fos_user_resetting_reset {
+    width: 600px;
+    margin: 0 auto;
+}
+
+form.fos_user_resetting_reset .col-sm-10 {
+    width: 50%;
+}
+
+form.fos_user_resetting_reset .form-group > .col-sm-10 {
+    width: 50%;
+}
+
+form.fos_user_resetting_reset .form-group > .col-sm-2.control-label {
+    width: 30%;
+}
+
+/** Reset password END **/
+
+/** Request on reset password form Start **/
 
 form.fos_user_resetting_request {
     width: 600px;
@@ -4532,7 +4553,7 @@ form.fos_user_resetting_request .form-group > .col-sm-9 {
     width: 50%;
 }
 
-/** Request onm reset password form END **/
+/** Request on reset password form END **/
 
 /** Login form **/
 a.forgot-password-link {

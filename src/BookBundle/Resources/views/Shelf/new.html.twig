@@ -5,6 +5,13 @@
 
     <h1 class="h1-title">Shelf creation</h1>
 
+    <div class="pull-right book-top-controls">
+        <button class="btn btn-default btn-submit-form">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+            {% trans %}Create{% endtrans %}
+        </button>
+    </div>
+
     {{ form(form) }}
 
 {% endblock %}

@@ -23,7 +23,7 @@ class PostPersistListener {
 
         // only act on some "Product" entity
         if ($entity instanceof User) {
-            $this->container->get('profile.registration_messenger')->sendEmail($entity);
+            $this->container->get('profile.profile_messenger')->sendEmail($entity);
             return;
         }
 
