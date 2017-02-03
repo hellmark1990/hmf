@@ -267,7 +267,9 @@ class BookController extends Controller {
             $imageContent = file_get_contents($request->get('bookbundle_book')['imageUrl']);
             file_put_contents($tmpImagePath, $imageContent);
             $entity->getImage()->setBinaryContent($tmpImagePath);
+
         }
+        dump($entity->getImage()->getSize());exit;
 
 
         foreach ($entity->getShelfs() as $shelf) {
@@ -276,6 +278,8 @@ class BookController extends Controller {
                 $shelf->addBook($entity);
             }
         }
+
+        var_dump($editForm->getErrors(true, false));exit;
 
         if ($editForm->isValid()) {
             $em->flush();

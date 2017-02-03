@@ -10,8 +10,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Validator\Constraints\CallbackValidator;
+use Symfony\Component\Validator\Constraints\File;
 
 class BookType extends AbstractType {
 
@@ -32,7 +35,7 @@ class BookType extends AbstractType {
                 'context' => 'book',
                 'attr' => ['class' => 'form-book-image'],
                 'show_unlink' => false,
-                'label' => false
+                'label' => false,
             ])
             ->add('name', 'text', [
                 'required' => false
