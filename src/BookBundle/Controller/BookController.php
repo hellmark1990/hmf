@@ -4,6 +4,7 @@ namespace BookBundle\Controller;
 
 use Gaufrette\File;
 use Sonata\MediaBundle\Model\Media;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -269,8 +270,6 @@ class BookController extends Controller {
             $entity->getImage()->setBinaryContent($tmpImagePath);
 
         }
-        dump($entity->getImage()->getSize());exit;
-
 
         foreach ($entity->getShelfs() as $shelf) {
             $entity->addShelf($shelf);
@@ -279,7 +278,16 @@ class BookController extends Controller {
             }
         }
 
-        var_dump($editForm->getErrors(true, false));exit;
+        $fileValidator = $this->get('app.file_validatator');
+
+        if (!$fileValidator->validate($entity->getImage(), [
+            'fieldName' => $editForm->get('image')->getName(),
+            'maxSize' => '1m',
+            'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+        ])
+        ) {
+            $editForm->get('image')->get('binaryContent')->addError(new FormError($fileValidator->getMessage()));
+        }
 
         if ($editForm->isValid()) {
             $em->flush();

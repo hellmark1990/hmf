@@ -22,10 +22,15 @@
 
     {{ form_start(form) }}
     <div class="book-create-form-container">
+
+
         <div class="pull-left">
             {{ form_row(form.image) }}
         </div>
         <div class="pull-right">
+            {% if form.image.binaryContent.vars.errors.count %}
+                <div class="alert alert-danger" role="alert">{{ form_errors(form.image.binaryContent) }}</div>
+            {% endif %}
             {{ form_row(form.name) }}
             {{ form_row(form.authors) }}
             {{ form_row(form.publisher) }}
