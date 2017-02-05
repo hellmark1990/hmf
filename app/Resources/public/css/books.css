@@ -99,6 +99,19 @@ Book create block start
     width: 200px;
 }
 
+.book-grid-list-view .item.grid-group-item {
+    height: 400px;
+}
+
+.book-grid-list-view .item.grid-group-item > .thumbnail {
+    height: 400px;
+}
+
+.book-grid-list-view .item.grid-group-item .book-title-block {
+    min-height: 50px;
+    height: 50px;
+}
+
 .book-top-controls {
     margin-bottom: 30px;
 }

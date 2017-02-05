@@ -26,3 +26,4 @@ parameters:
     google_project_name: ibooker
 
     host: http://127.0.0.1:8000
+    max_upload_size: 2m

@@ -4,6 +4,7 @@ namespace BookBundle\Controller;
 
 use Gaufrette\File;
 use Sonata\MediaBundle\Model\Media;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -99,6 +100,21 @@ class BookController extends Controller {
             $image->setProviderName('sonata.media.provider.image');
             $image->setContext('book');
             $entity->setImage($image);
+        }
+
+        /**
+         * Validate image file
+         */
+        $fileValidator = $this->get('app.file_validatator');
+        if (!$fileValidator->validate($entity->getImage(), [
+            'fieldName' => $form->get('image')->getName(),
+            'maxSize' => $this->getParameter('max_upload_size'),
+            'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+        ])
+        ) {
+            $form->get('image')
+                ->get('binaryContent')
+                ->addError(new FormError($fileValidator->getMessage()));
         }
 
         if ($form->isValid()) {
@@ -214,6 +230,7 @@ class BookController extends Controller {
             'action' => $this->generateUrl('book_update', array('id' => $entity->getId())),
             'method' => 'PUT',
             'user' => $this->getUser(),
+            'container' => $this->container,
         ));
 
         $form->add('submit', 'submit', array('label' => 'Update'));
@@ -245,7 +262,6 @@ class BookController extends Controller {
                 $shelf->removeBook($entity);
             }
         }
-
         $entity->getShelfs()->clear();
         $em->flush();
 
@@ -267,14 +283,29 @@ class BookController extends Controller {
             $imageContent = file_get_contents($request->get('bookbundle_book')['imageUrl']);
             file_put_contents($tmpImagePath, $imageContent);
             $entity->getImage()->setBinaryContent($tmpImagePath);
-        }
 
+        }
 
         foreach ($entity->getShelfs() as $shelf) {
             $entity->addShelf($shelf);
             if (!$shelf->getBooks()->contains($entity)) {
                 $shelf->addBook($entity);
             }
+        }
+
+        /**
+         * Validate image file
+         */
+        $fileValidator = $this->get('app.file_validatator');
+        if (!$fileValidator->validate($entity->getImage(), [
+            'fieldName' => $editForm->get('image')->getName(),
+            'maxSize' => $this->getParameter('max_upload_size'),
+            'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+        ])
+        ) {
+            $editForm->get('image')
+                ->get('binaryContent')
+                ->addError(new FormError($fileValidator->getMessage()));
         }
 
         if ($editForm->isValid()) {
@@ -285,7 +316,7 @@ class BookController extends Controller {
 
         return array(
             'entity' => $entity,
-            'edit_form' => $editForm->createView(),
+            'form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }

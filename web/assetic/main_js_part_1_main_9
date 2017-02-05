@@ -26,7 +26,7 @@ jQuery(function ($) {
     var form = $('#main-contact-form');
     form.submit(function (event) {
         event.preventDefault();
-        var form_status = $('<div class="form_status"></div>');
+        var form_status = $('<div class="form-group errors"><label class="col-sm-3 control-label"></label><div class="col-sm-9"><div class="alert alert-danger" role="alert"><center></center></div></div></div></div>');
         $.ajax({
             type: 'POST',
             url: $(this).attr('action'),
@@ -39,8 +39,9 @@ jQuery(function ($) {
                 location.href = data.redirect_url;
             }
             if (data.message) {
-                form.prepend(form_status)
-                form_status.html('<p class="text-warning">' + data.message + '</p>');
+                form.find('.errors').remove();
+                form.prepend(form_status);
+                form_status.find('center').html(data.message);
             }
         });
     });
@@ -59,19 +60,21 @@ jQuery(function ($) {
         social_tools: false
     });
 
-    $('button.button-edit').on('click', function () {
+    $('form button.button-edit').on('click', function () {
         $(this).closest('.form-group').find('input[type="file"]').click();
     });
 
-    $('button.button-delete').on('click', function () {
+    $('form button.button-delete').on('click', function () {
         $(this).closest('.form-group').find('input[type="hidden"]').val(1);
         var image = $(this).closest('.form-group').find('.image-container > img');
+        var newSrc = $(image).data('default-src') ? $(image).data('default-src') : '';
         $(image).attr('src', $(image).data('default-src'));
     });
 
     $('#list').click(function (event) {
         event.preventDefault();
         $('#products .item').addClass('list-group-item');
+        $('#products .item').removeClass('grid-group-item');
     });
 
     $('#grid').click(function (event) {
@@ -95,15 +98,25 @@ jQuery(function ($) {
     $('.btn-modal-submit').on('click', function () {
         var modal = $(this).closest('.modal');
         var form = $(modal).find('form');
-        var formData = new FormData(form);
-        console.log(formData)
-
+        var formData = new FormData(form[0]);
         $.ajax({
             url: $(form).attr('action'),
+            type: 'POST',
             data: formData,
+            processData: false,
+            contentType: false,
             success: function (content) {
                 $(modal).find('.modal-body').html(content)
+                if (content.search("alert-success") !== -1) {
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 300);
+                }
             }
         });
+    });
+
+    $('button.btn-submit-form').on('click', function () {
+        $('.container > form').trigger('submit');
     });
 });

@@ -6,12 +6,19 @@ use BookBundle\Entity\ShelfRepository;
 use ProfileBundle\Entity\User;
 use Sonata\AdminBundle\Form\Type\ModelHiddenType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Locale\Locale;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Validator\Constraints\CallbackValidator;
+use Symfony\Component\Validator\Constraints\File;
 
 class BookType extends AbstractType {
 
@@ -20,6 +27,7 @@ class BookType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options){
+        $container = $options['container'];
         /**
          * @var User $user
          */
@@ -32,7 +40,7 @@ class BookType extends AbstractType {
                 'context' => 'book',
                 'attr' => ['class' => 'form-book-image'],
                 'show_unlink' => false,
-                'label' => false
+                'label' => false,
             ])
             ->add('name', 'text', [
                 'required' => false
@@ -45,7 +53,7 @@ class BookType extends AbstractType {
             ])
             ->add('shelfs', EntityType::class, array(
                 'class' => 'BookBundle:Shelf',
-                'query_builder' => function (ShelfRepository $er) use($user){
+                'query_builder' => function (ShelfRepository $er) use ($user){
                     $qb = $er->createQueryBuilder('s');
                     return $qb
                         ->where($qb->expr()->eq('s.user', $user->getId()))
@@ -81,6 +89,20 @@ class BookType extends AbstractType {
                 'required' => false
             ]);
 
+        $builder->get('language')
+            ->addModelTransformer(new CallbackTransformer(
+                function ($locale){
+                    return ucfirst(Locale::getDisplayLanguage($locale));
+                },
+                function ($language) use ($container){
+                    $locales = Locale::getLocales();
+                    if(array_search($language, $locales)){
+                        return $language;
+                    }
+                    return $container->get('app.languages')->getLocaleByLanguage($language);
+                }
+            ));
+
     }
 
     /**
@@ -89,7 +111,8 @@ class BookType extends AbstractType {
     public function setDefaultOptions(OptionsResolverInterface $resolver){
         $resolver->setDefaults(array(
             'data_class' => 'BookBundle\Entity\Book',
-            'user' => null
+            'user' => null,
+            'container' => null,
         ));
     }
 

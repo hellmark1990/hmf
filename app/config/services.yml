@@ -59,3 +59,10 @@ services:
         arguments: ["@app.form.data_transformer.book_to_number_transformer"]
         tags:
             - { name: form.type }
+
+    app.file_validatator:
+        class: AppBundle\Services\FileValidate
+        arguments: ['@service_container']
+
+    app.languages:
+        class: AppBundle\Services\Langauges

@@ -41,6 +41,7 @@
             <div class="col-sm-3">
                 <input type="submit" name="_submit" class="btn btn-default" value="{% trans %}Sign in{% endtrans %}">
             </div>
+            <a class="forgot-password-link" href="{{ path('fos_user_resetting_request') }}">{% trans %}Forgot your password?{% endtrans %}</a>
         </div>
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>

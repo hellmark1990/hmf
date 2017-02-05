@@ -2,6 +2,7 @@
 
 namespace BookBundle\Controller;
 
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -51,6 +52,21 @@ class ShelfController extends Controller {
         $entity = new Shelf();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+
+        /**
+         * Validate image file
+         */
+        $fileValidator = $this->get('app.file_validatator');
+        if (!$fileValidator->validate($entity->getImage(), [
+            'fieldName' => $form->get('image')->getName(),
+            'maxSize' => $this->getParameter('max_upload_size'),
+            'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+        ])
+        ) {
+            $form->get('image')
+                ->get('binaryContent')
+                ->addError(new FormError($fileValidator->getMessage()));
+        }
 
         if ($form->isValid()) {
             $entity->setUser($this->getUser());
@@ -192,6 +208,21 @@ class ShelfController extends Controller {
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
+
+        /**
+         * Validate image file
+         */
+        $fileValidator = $this->get('app.file_validatator');
+        if (!$fileValidator->validate($entity->getImage(), [
+            'fieldName' => $editForm->get('image')->getName(),
+            'maxSize' => $this->getParameter('max_upload_size'),
+            'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+        ])
+        ) {
+            $editForm->get('image')
+                ->get('binaryContent')
+                ->addError(new FormError($fileValidator->getMessage()));
+        }
 
         if ($editForm->isValid()) {
             $em->flush();

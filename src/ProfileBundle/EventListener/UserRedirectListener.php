@@ -16,6 +16,9 @@ class UserRedirectListener {
     const LOGIN_ROUTE = 'fos_user_security_login';
     const REGISTRATION_ROUTE = 'fos_user_registration_register';
     const LOGIN_API_ROUTE = 'fos_user_security_check';
+    const FORGOT_PASSWORD_ROUTE = 'fos_user_resetting_request';
+    const FORGOT_PASSWORD_SEND_EMAIL_ROUTE = 'fos_user_resetting_send_email';
+    const RESET_PASSWORD_ROUTE = 'fos_user_resetting_reset';
 
     public function __construct(ContainerInterface $container) // this is @service_container
     {
@@ -33,6 +36,9 @@ class UserRedirectListener {
                 self::LOGIN_ROUTE,
                 self::REGISTRATION_ROUTE,
                 self::LOGIN_API_ROUTE,
+                self::FORGOT_PASSWORD_ROUTE,
+                self::FORGOT_PASSWORD_SEND_EMAIL_ROUTE,
+                self::RESET_PASSWORD_ROUTE,
             ])
             && $event->getRequest()->get('autologin') != 1
         ) {

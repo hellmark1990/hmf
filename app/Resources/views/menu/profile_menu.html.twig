@@ -39,17 +39,30 @@
                         <a href="{{ path('shared_to_user_shelves') }}">{% trans %}Shared Shelves{% endtrans %}</a>
                     </li>
                 {% endif %}
-
             </ul>
         </li>
 
-        <li class="dropdown {% if app.request.attributes.get('_route')  in ['fos_user_security_logout', 'fos_user_profile_edit'] %}active{% endif %}">
-            <a class="dropdown-toggle" data-toggle="dropdown">{% trans %}Profile{% endtrans %}
+        <li class="dropdown {% if app.request.attributes.get('_route')  in ['fos_user_security_logout', 'fos_user_profile_edit', 'fos_user_change_password'] %}active{% endif %}">
+            <a class="dropdown-toggle dropdown-toggle-avatar" data-toggle="dropdown">
+                <div class="menu-user-avatar">
+                    {% if app.user.avatar %}
+                        {% thumbnail app.user.avatar, 'small' with {'class': 'img-polaroid media-object'} %}
+                    {% else %}
+                        <span class="pseudo-letters">
+                            <span class="helper"></span>
+                            <span class="s-t">{{ app.user.avatarLetters }}</span>
+                        </span>
+                    {% endif %}
+
+                </div>
                 <i class="fa fa-angle-down"></i>
             </a>
             <ul class="dropdown-menu">
                 <li class="{% if app.request.attributes.get('_route') in ['fos_user_profile_edit'] %}active{% endif %}">
                     <a href="{{ path('fos_user_profile_edit') }}">{% trans %}Personal profile{% endtrans %}</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') in ['fos_user_change_password'] %}active{% endif %}">
+                    <a href="{{ path('fos_user_change_password') }}">{% trans %}Change Password{% endtrans %}</a>
                 </li>
                 <li class="{% if app.request.attributes.get('_route') in ['fos_user_security_logout'] %}active{% endif %}">
                     <a href="{{ path('fos_user_security_logout') }}">{% trans %}Log out{% endtrans %}</a>

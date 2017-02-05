@@ -29,7 +29,8 @@
         "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
         "sonata-project/media-bundle": "^2.3",
         "google/apiclient": "1.0.*@beta",
-        "aivus/sonata-media-fixed-dimensions-resizer": "^1.0"
+        "aivus/sonata-media-fixed-dimensions-resizer": "^1.0",
+        "symfony/locale": "^2.8"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "~2.7"

@@ -5,6 +5,23 @@
 
     <h1 class="h1-title">Shelf creation</h1>
 
+    <div class="pull-right book-top-controls">
+        <button class="btn btn-default btn-submit-form">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+            {% trans %}Create{% endtrans %}
+        </button>
+        <a href="{{ path('shelf') }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+            {% trans %}Shelves{% endtrans %}
+        </a>
+    </div>
+
+    {% if form.image.binaryContent.vars.errors.count %}
+        <br>
+        <br>
+        <div class="alert alert-danger" role="alert">{{ form_errors(form.image.binaryContent) }}</div>
+    {% endif %}
+
     {{ form(form) }}
 
 {% endblock %}

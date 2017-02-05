@@ -2,12 +2,22 @@
 
 <h1 class="h1-title">{% trans %}Profile{% endtrans %}</h1>
 
+<div class="pull-right book-top-controls">
+    <button class="btn btn-default btn-submit-form">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        {% trans %}Update{% endtrans %}
+    </button>
+</div>
+
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 <div class="profile-edit-form-container">
     <div class="pull-left profile-avatar">
         {{ form_row(form.avatar) }}
     </div>
     <div class="pull-right">
+        {% if form.avatar.binaryContent.vars.errors.count %}
+            <div class="alert alert-danger" role="alert">{{ form_errors(form.avatar.binaryContent) }}</div>
+        {% endif %}
         {{ form_row(form.username) }}
         {{ form_row(form.email) }}
         {{ form_row(form.phone) }}

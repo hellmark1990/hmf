@@ -3,12 +3,22 @@
 {% block body -%}     {{ parent() }}
     <h1 class="h1-title">Book creation</h1>
 
+    <div class="pull-right book-top-controls">
+        <button class="btn btn-default btn-submit-form">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+            {% trans %}Create{% endtrans %}
+        </button>
+    </div>
+
     {{ form_start(form, { 'action': path('book_create') }) }}
     <div class="book-create-form-container">
         <div class="pull-left">
             {{ form_row(form.image) }}
         </div>
         <div class="pull-right">
+            {% if form.image.binaryContent.vars.errors.count %}
+                <div class="alert alert-danger" role="alert">{{ form_errors(form.image.binaryContent) }}</div>
+            {% endif %}
             {{ form_row(form.name) }}
             {{ form_row(form.authors) }}
             {{ form_row(form.publisher) }}

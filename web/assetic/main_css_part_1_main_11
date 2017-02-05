@@ -169,10 +169,6 @@ body > section {
   }
 }
 
-.navbar-right{    right: 100px;
-  position: relative;
-}
-
 /*************************
 *******Header******
 **************************/
@@ -1740,7 +1736,7 @@ ul.social_icons li  a i{
   background: #e24f43
 }
 
-.pricing-area .heading-two, 
+.pricing-area .heading-two,
 .pricing-area .price-two .plan-action .btn-primary {
   background:#27AE60;
 }
@@ -1750,23 +1746,23 @@ ul.social_icons li  a i{
   background: #f39c12;
 }
 
-.pricing-area .heading-four, 
+.pricing-area .heading-four,
 .pricing-area .price-four .plan-action .btn-primary {
   background: #5c5c5c
 }
 
-.pricing-area .heading-five, 
+.pricing-area .heading-five,
 .pricing-area .price-five .plan-action .btn-primary {
   background: #5c5c5c
 }
 
-.pricing-area .heading-six, 
+.pricing-area .heading-six,
 .pricing-area .price-six .plan-action .btn-primary {
   background: #e24f43
 ;
 }
 
-.pricing-area .heading-seven, 
+.pricing-area .heading-seven,
 .pricing-area .price-seven .plan-action .btn-primary {
   background: #5c5c5c
 }

@@ -24,7 +24,7 @@ use FOS\UserBundle\Model\UserInterface;
 
 /**
  * Controller managing the registration
- *
+ *ofile
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */

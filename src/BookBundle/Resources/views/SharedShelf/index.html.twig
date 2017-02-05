@@ -41,7 +41,7 @@
         <div id="products" class="row list-group">
             {% if shelf.shareUsers.count %}
                 {% for shareUser in shelf.shareUsers %}
-                    <div class="item  col-xs-4 col-lg-4">
+                    <div class="item  col-xs-4 col-lg-4 grid-group-item">
                         <div class="thumbnail profile-avatar">
                             <div class="btn-delete">
                                 <a class="btn btn-danger btn-sm" href="{{ path('shared_delete_user', { 'shelfId': shelf.id, 'userToShareId': shareUser.id }) }}">

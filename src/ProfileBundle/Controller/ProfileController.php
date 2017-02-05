@@ -18,6 +18,7 @@ use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
 use ProfileBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -71,6 +72,24 @@ class ProfileController extends Controller {
         $form->setData($user);
 
         $form->handleRequest($request);
+
+        /**
+         * Validate image file
+         */
+        $fileValidator = $this->get('app.file_validatator');
+        if ($user->getAvatar()) {
+            if (!$fileValidator->validate($user->getAvatar(), [
+                'fieldName' => $form->get('avatar')->getName(),
+                'maxSize' => $this->getParameter('max_upload_size'),
+                'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+            ])
+            ) {
+                $form->get('avatar')
+                    ->get('binaryContent')
+                    ->addError(new FormError($fileValidator->getMessage()));
+            }
+        }
+
 
         if ($form->isValid()) {
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */

@@ -3,6 +3,7 @@
 namespace BookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Book
@@ -24,6 +25,7 @@ class Book {
      * @var string
      *
      * @ORM\Column(name="name", type="text")
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -231,7 +233,7 @@ class Book {
      * @return integer
      */
     public function getPageCount(){
-        return $this->pageCount;
+        return $this->pageCount ? $this->pageCount : 0;
     }
 
     /**

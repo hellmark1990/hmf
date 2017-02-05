@@ -28,7 +28,7 @@
         {% if reads.count %}
             <div id="products" class="row list-group">
                 {% for read in reads %}
-                    <div class="item  col-xs-4 col-lg-4">
+                    <div class="item  col-xs-4 col-lg-4 grid-group-item">
                         <div class="thumbnail">
                             <div class="btn-delete">
                                 <a class="btn btn-danger btn-sm" href="{{ path('read_delete', { 'id': read.id }) }}">

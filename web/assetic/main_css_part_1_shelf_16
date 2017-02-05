@@ -76,7 +76,11 @@ form[name="bookbundle_shelf"] .button-delete {
 .container-shelf-list .list-group-item {
     height: 202px !important;
     padding-top: 1px !important;
-    margin-bottom: 15px!important;
+    margin-bottom: 15px !important;
+}
+
+.container-shelf-list .grid-group-item .description-block {
+    height: 75px;
 }
 
 

@@ -4,7 +4,7 @@
     {{ parent() }}
     <h1 class="h1-title">{% trans %}Books{% endtrans %}</h1>
 
-    <div class="grid-list-view container">
+    <div class="grid-list-view book-grid-list-view container">
         <div class="well well-sm">
             <strong>Display</strong>
 
@@ -16,11 +16,18 @@
                     <span class="glyphicon glyphicon-th"></span>Grid
                 </a>
             </div>
+
+            <div class="btn-group pull-right">
+                <a class="btn btn-default btn-sm" href="{{ path('book_new') }}">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>{% trans %}Add
+                    book{% endtrans %}
+                </a>
+            </div>
         </div>
         <div id="products" class="row list-group">
             {% if entities %}
                 {% for entity in entities %}
-                    <div class="item  col-xs-3 col-lg-3">
+                    <div class="item  col-xs-3 col-lg-3 grid-group-item">
                         <div class="thumbnail">
                             <div class="btn-delete">
                                 <a class="btn btn-danger btn-sm" href="{{ path('book_delete', { 'id': entity.id }) }}">
@@ -30,26 +37,37 @@
 
                             <a href="{{ path('book_edit', { 'id': entity.id }) }}">
                                 <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
+                                <div class="labels">
+                                    <span class="label label-inverse arrowed-in">
+                                        {{ entity.pageCount }}
+                                        <span class="glyphicon glyphicon-align-justify"></span>
+                                    </span>
+                                </div>
                             </a>
 
                             <div class="caption">
-                                <a href="{{ path('book_edit', { 'id': entity.id }) }}">
-                                    <h5 class="group inner list-group-item-heading">{{ entity.name }}</h5>
-                                </a>
+                                <div class="group inner list-group-item-text book-title-block">
+                                    <a href="{{ path('book_edit', { 'id': entity.id }) }}">
+                                        <h5 class="group inner list-group-item-heading">{{ entity.name }}</h5>
+                                    </a>
+                                </div>
 
-                                <p class="group inner list-group-item-text">
-                                    {% if entity.authors %}
-                                        <b>{% trans %}Author:{% endtrans %}</b>
-                                        {{ entity.authors|truncate(200) }}
-                                    {% endif %}
-                                </p>
+                                <div class="group inner list-group-item-text common-one-line-block center-block">
+                                    <div><b>{% trans %}Author{% endtrans %}</b></div>
+                                    <p class="gray-color">{{ entity.authors|truncate(200) }}</p>
+                                </div>
 
-                                <p class="group inner list-group-item-text">
-                                    {% if entity.authors %}
-                                        <b>{% trans %}Pages:{% endtrans %}</b>
-                                        {{ entity.pageCount|truncate(200) }}
-                                    {% endif %}
-                                </p>
+                                <div class="group inner list-group-item-text common-block">
+                                    <ul class="nav nav-pills" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a href="{{ path('book_reading', {'id': entity.id}) }}">
+                                                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                                                {% trans %}Read{% endtrans %} ({{ entity.reads.count }})
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
 
                                 <div class="row">
                                     <div class="col-xs-12 col-md-6">

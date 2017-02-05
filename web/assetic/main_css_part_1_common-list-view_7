@@ -1,0 +1,35 @@
+.grid-list-view .list-group-item-text.common-block {
+    height: 50px;
+}
+
+.grid-list-view .list-group-item-text.common-one-line-block {
+    height: 20px;
+}
+
+.grid-list-view .badge {
+    left: 0;
+    top: 0;
+    padding: 4px;
+    min-width: 20px;
+    border-radius: 3px;
+}
+
+.grid-list-view .nav.nav-pills {
+    margin-left: -5px;
+}
+
+.grid-list-view .nav.nav-pills a {
+    padding: 8px;
+    background-color: #c52d2f;
+    border-radius: 0px;
+}
+
+.grid-list-view .nav.nav-pills a:hover {
+    opacity: 0.9;
+    background-color: #c52d2f;
+}
+
+.grid-list-view .nav.nav-pills li {
+    margin-left: 5px;
+}
+
