@@ -133,12 +133,11 @@
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal">
-                        <div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control share-link">
-                                </div>
-                            </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control share-link" id="share-link" readonly>
+                              <span class="input-group-btn">
+                                <button class="btn btn-primary copy-share-link" type="button" data-clipboard-action="copy" data-clipboard-target="#share-link">{% trans %}Copy{% endtrans %}</button>
+                              </span>
                         </div>
                     </form>
                 </div>

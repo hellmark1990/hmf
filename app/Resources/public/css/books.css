@@ -154,3 +154,8 @@ form[name="bookbundle_book"] .circle.image-container > img {
     margin: 0 auto;
     margin-top: 20px;
 }
+
+#bookShareLinkModal .btn-primary, #shelfShareLinkModal .btn-primary{
+    padding: 7px 20px;
+    margin-top: 0px;
+}

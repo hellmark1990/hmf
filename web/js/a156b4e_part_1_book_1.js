@@ -128,5 +128,9 @@ $(document).ready(function () {
             }
         });
     });
-})
-;
+
+    /**
+     * Copy share link to clipboard
+     */
+    var clipboard = new Clipboard('.copy-share-link');
+});

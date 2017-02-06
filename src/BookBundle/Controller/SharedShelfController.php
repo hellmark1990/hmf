@@ -311,7 +311,7 @@ class SharedShelfController extends Controller {
          * @var  SharedBookLink $sharedLink
          */
         $sharedLink = $em->getRepository('BookBundle:SharedBookLink')->findOneBy([
-            'shelf' => $book,
+            'book' => $book,
             'userOwner' => $this->getUser(),
         ]);
 

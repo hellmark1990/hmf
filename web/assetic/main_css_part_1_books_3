@@ -100,11 +100,11 @@ Book create block start
 }
 
 .book-grid-list-view .item.grid-group-item {
-    height: 390px;
+    height: 400px;
 }
 
 .book-grid-list-view .item.grid-group-item > .thumbnail {
-    height: 390px;
+    height: 400px;
 }
 
 .book-grid-list-view .item.grid-group-item .book-title-block {
@@ -153,4 +153,9 @@ form[name="bookbundle_book"] .circle.image-container > img {
 .grid-list-view .profile-avatar .image-container {
     margin: 0 auto;
     margin-top: 20px;
+}
+
+#bookShareLinkModal .btn-primary, #shelfShareLinkModal .btn-primary{
+    padding: 7px 20px;
+    margin-top: 0px;
 }

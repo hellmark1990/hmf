@@ -50,6 +50,7 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
+        server_version: '5.5'
         driver:   pdo_mysql
         host:     "%database_host%"
         port:     "%database_port%"
@@ -101,6 +102,7 @@ assetic:
                 - '%kernel.root_dir%/Resources/public/jquery/jquery.js'
                 - '%kernel.root_dir%/Resources/public/jquery/jquery-ui.js'
                 - '%kernel.root_dir%/Resources/public/jquery/chosen.jquery.min.js'
+                - '%kernel.root_dir%/Resources/public/js/clipboard.min.js'
 
         bootstrap:
             inputs:
