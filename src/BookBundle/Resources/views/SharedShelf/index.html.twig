@@ -1,43 +1,28 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1 class="h1-title">{% trans %}Shared shelf list{% endtrans %}</h1>
-
     <div class="grid-list-view container share-folder-users-list">
-        <div class="well well-sm">
-            <strong>Display</strong>
-
-            <div class="btn-group">
-                <a href="#" id="list" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-th-list"></span>List
-                </a>
-                <a href="#" id="grid" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-th"></span>Grid
-                </a>
-            </div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#shelfShareModal">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{% trans %}Share to
-                    user{% endtrans %}
-                </button>
-            </div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#shelfShareEmailModal">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{% trans %}Share by
-                    email{% endtrans %}
-                </button>
-            </div>
-
-            <div class="btn-group pull-right">
-                <button class="btn btn-default btn-sm share-link-button" data-shared-link-url="{{ path('shared_shelf_link', {'shelfId': shelf.id}) }}" data-toggle="modal" data-target="#shelfShareLinkModal">
-                    <span class="glyphicon glyphicon-link" aria-hidden="true"></span>{% trans %}Get shared
-                    link{% endtrans %}
-                </button>
+        <div id="sticky" class="well well-sm">
+            <div class="top-panel-content container">
+                <div class="pull-left">
+                    <h1>{% trans %}Shared shelf users{% endtrans %}</h1>
+                </div>
+                <div class="btn-group pull-right">
+                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#shelfShareModal">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{% trans %}Share to
+                        user{% endtrans %}
+                    </button>
+                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#shelfShareEmailModal">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{% trans %}Share by
+                        email{% endtrans %}
+                    </button>
+                    <button class="btn btn-default btn-sm share-link-button" data-shared-link-url="{{ path('shared_shelf_link', {'shelfId': shelf.id}) }}" data-toggle="modal" data-target="#shelfShareLinkModal">
+                        <span class="glyphicon glyphicon-link" aria-hidden="true"></span>{% trans %}Get shared
+                        link{% endtrans %}
+                    </button>
+                </div>
             </div>
         </div>
-
         <div id="products" class="row list-group">
             {% if shelf.shareUsers.count %}
                 {% for shareUser in shelf.shareUsers %}
@@ -135,8 +120,9 @@
                     <form class="form-horizontal">
                         <div class="input-group">
                             <input type="text" class="form-control share-link" id="share-link" readonly>
-                              <span class="input-group-btn">
-                                <button class="btn btn-primary copy-share-link" type="button" data-clipboard-action="copy" data-clipboard-target="#share-link">{% trans %}Copy{% endtrans %}</button>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary copy-share-link" type="button" data-clipboard-action="copy" data-clipboard-target="#share-link">{% trans %}
+                                    Copy{% endtrans %}</button>
                               </span>
                         </div>
                     </form>

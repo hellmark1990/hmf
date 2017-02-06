@@ -1,6 +1,12 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 {% block fos_user_content %}
-    <h1 class="h1-title">{% trans %}Reset password{% endtrans %}</h1>
+    <div id="sticky" class="well well-sm">
+        <div class="top-panel-content container">
+            <div class="center">
+                <h1>{% trans %}Reset password{% endtrans %}</h1>
+            </div>
+        </div>
+    </div>
 
     {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
     <div class="form-container">

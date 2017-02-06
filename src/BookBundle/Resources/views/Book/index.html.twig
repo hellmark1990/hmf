@@ -2,26 +2,20 @@
 
 {% block body -%}
     {{ parent() }}
-    <h1 class="h1-title">{% trans %}Books{% endtrans %}</h1>
 
     <div class="grid-list-view book-grid-list-view container">
-        <div class="well well-sm">
-            <strong>Display</strong>
+        <div id="sticky" class="well well-sm">
+            <div class="top-panel-content container">
+                <div class="pull-left">
+                    <h1>{% trans %}My books{% endtrans %}</h1>
+                </div>
 
-            <div class="btn-group">
-                <a href="#" id="list" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-th-list"></span>List
-                </a>
-                <a href="#" id="grid" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-th"></span>Grid
-                </a>
-            </div>
-
-            <div class="btn-group pull-right">
-                <a class="btn btn-default btn-sm" href="{{ path('book_new') }}">
-                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>{% trans %}Add
-                    book{% endtrans %}
-                </a>
+                <div class="btn-group pull-right">
+                    <a class="btn btn-default" href="{{ path('book_new') }}">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>{% trans %}Add
+                        book{% endtrans %}
+                    </a>
+                </div>
             </div>
         </div>
         <div id="products" class="row list-group">

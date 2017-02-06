@@ -1,7 +1,11 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="center">
-    <h1 class="h1-title">{% trans %}Sign up{% endtrans %}</h1>
+<div id="sticky" class="well well-sm">
+    <div class="top-panel-content container">
+        <div class="center">
+            <h1>{% trans %}Sign up{% endtrans %}</h1>
+        </div>
+    </div>
 </div>
 
 <form class="registration-form col-sm-5 form-horizontal" method="post" action="{{ path('fos_user_registration_register') }}">

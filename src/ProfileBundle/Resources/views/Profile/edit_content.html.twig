@@ -1,12 +1,17 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<h1 class="h1-title">{% trans %}Profile{% endtrans %}</h1>
-
-<div class="pull-right book-top-controls">
-    <button class="btn btn-default btn-submit-form">
-        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-        {% trans %}Update{% endtrans %}
-    </button>
+<div id="sticky" class="well well-sm">
+    <div class="top-panel-content container">
+        <div class="pull-left">
+            <h1>{% trans %}My Profile{% endtrans %}</h1>
+        </div>
+        <div class="btn-group pull-right">
+            <button class="btn btn-default btn-submit-form">
+                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                {% trans %}Update{% endtrans %}
+            </button>
+        </div>
+    </div>
 </div>
 
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}

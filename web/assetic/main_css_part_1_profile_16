@@ -1,0 +1,210 @@
+.profile-avatar .image-container {
+    width: 200px;
+    height: 200px;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.profile-avatar .circle.image-container > img {
+    border: none;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    padding: 0px;
+}
+
+.profile-avatar .button-edit {
+    left: 70px !important;
+    bottom: 40px !important;
+    opacity: 0.9 !important;
+}
+
+.profile-avatar .button-delete {
+    left: 70px !important;
+    bottom: 40px !important;
+    opacity: 0.9 !important;
+}
+
+.login-form, .registration-form {
+    margin-left: 25%;
+}
+
+.profile-avatar .image-container.no-image > .pseudo-letters {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: #c52d2f;
+    font-size: 0;
+    white-space: normal;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.profile-avatar .image-container.no-image > img {
+    display: none;
+}
+
+.profile-avatar .image-container.no-image > .pseudo-letters .s-t {
+    display: block;
+    width: 50px;
+    margin: 0 auto;
+    margin-top: 80px;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #efefef;
+    line-height: 1;
+    white-space: normal;
+}
+
+/** Change password Start **/
+
+form.fos_user_change_password {
+    width: 600px;
+    margin: 0 auto;
+}
+
+form.fos_user_change_password .col-sm-10 {
+    width: 50%;
+}
+
+form.fos_user_change_password .form-group > .col-sm-10 {
+    width: 50%;
+}
+
+form.fos_user_change_password .form-group > .col-sm-2.control-label {
+    width: 30%;
+}
+
+/** Change password END **/
+
+/** Reset password Start **/
+
+form.fos_user_resetting_reset {
+    width: 600px;
+    margin: 0 auto;
+}
+
+form.fos_user_resetting_reset .col-sm-10 {
+    width: 50%;
+}
+
+form.fos_user_resetting_reset .form-group > .col-sm-10 {
+    width: 50%;
+}
+
+form.fos_user_resetting_reset .form-group > .col-sm-2.control-label {
+    width: 30%;
+}
+
+/** Reset password END **/
+
+/** Request on reset password form Start **/
+
+form.fos_user_resetting_request {
+    width: 600px;
+    margin: 0 auto;
+}
+
+form.fos_user_resetting_request .form-group > .col-sm-9 {
+    width: 50%;
+}
+
+/** Request on reset password form END **/
+
+/** Login form **/
+a.forgot-password-link {
+    display: inline-block;
+    margin-top: 5px;
+    border-bottom: 1px dashed;
+}
+
+/** Login form **/
+
+/** Top menu avatar **/
+
+.menu-user-avatar {
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-top: -15px;
+    margin-bottom: -20px;
+    margin-right: 10px;
+}
+
+.menu-user-avatar > img {
+    width: 50px;
+    height: 50px;
+    border: none;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.menu-user-avatar > .pseudo-letters {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: #c52d2f;
+    font-size: 0;
+    white-space: normal;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.menu-user-avatar > .pseudo-letters .s-t {
+    display: block;
+    width: 50px;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #efefef;
+    line-height: 1;
+    white-space: normal;
+}
+
+.menu-user-avatar > .pseudo-letters:hover {
+    opacity: 0.9;
+}
+
+
+a.dropdown-toggle-avatar:hover {
+    background: none !important;
+}
+
+a.dropdown-toggle-avatar > .menu-user-avatar > img:hover {
+    opacity: 0.9;
+}
+
+.dropdown.active > a.dropdown-toggle-avatar{
+    background: none;
+}
+
+.dropdown.active > a.dropdown-toggle-avatar .fa {
+    color: #c52d2f;
+}
+
+/** Top menu avatar **/
+
+
+
+
+
+
+
+
+

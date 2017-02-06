@@ -1,21 +1,14 @@
 {% extends "BookBundle::layout.html.twig" %}
 
 {% block body -%}     {{ parent() }}
-    <h1 class="h1-title">{% trans %}Your Books Shelf list{% endtrans %}</h1>
 
     <div class="grid-list-view container container-shelf-list">
-        <div class="well well-sm">
-            <strong>Display</strong>
-
-            <div class="btn-group">
-                <a href="#" id="list" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-th-list"></span>List
-                </a>
-                <a href="#" id="grid" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-th"></span>Grid
-                </a>
+        <div id="sticky" class="well well-sm">
+            <div class="top-panel-content container">
+                <div class="center">
+                    <h1>{% trans %}Shared shelves{% endtrans %}</h1>
+                </div>
             </div>
-
         </div>
 
         {% if entities %}

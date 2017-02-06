@@ -6,8 +6,8 @@
     -webkit-box-shadow: 0 8px 13px 0 rgba(0, 0, 2, 0.2);
     box-shadow: 0 8px 13px 0 rgba(0, 0, 2, 0.2);
     padding: 0;
-    margin-left: 10px;
-    margin-bottom: 15px;
+    margin-left: 22px;
+    margin-bottom: 22px;
     height: 330px;
     width: 272px!important;
     border: none!important;
@@ -137,6 +137,6 @@
 
 .grid-list-view .row {
     margin-right: 0 !important;
-    margin-left: 0 !important;
+    margin-left: -20px !important;
 }
 

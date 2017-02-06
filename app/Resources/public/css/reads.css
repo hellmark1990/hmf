@@ -15,6 +15,7 @@
 
 .container-read-list .item{
     width: 365px!important;
+    margin-left: 27px;
 }
 
 .container-read-list .item.list-group-item {

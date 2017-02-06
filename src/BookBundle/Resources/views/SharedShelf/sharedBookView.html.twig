@@ -2,57 +2,129 @@
 
 {% block body -%}
     {{ parent() }}
-    <h1 class="h1-title">{% trans %}Shared Shelf{% endtrans %}: "{{ shelf.title }}"</h1>
-    <h2 class="h1-title">{% trans %}By{% endtrans %} {{ shelf.user.username }}</h2>
 
-    <div class="grid-list-view container share-books-list">
-        <div class="well well-sm">
-            <strong>Display</strong>
-
-            <div class="btn-group">
-                <a href="#" id="list" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-th-list"></span>List
-                </a>
-                <a href="#" id="grid" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-th"></span>Grid
-                </a>
+    <div class="grid-list-view book-share-view-container container share-books-list">
+        <div id="sticky" class="well well-sm">
+            <div class="top-panel-content container">
+                <div class="center">
+                    <h1>"{{ book.name }}" {% trans %}read by{% endtrans %} {{ book.user.username }}</h1>
+                </div>
             </div>
         </div>
         <div id="products" class="row list-group">
-            {% if shelf.books %}
-                {% for entity in shelf.books %}
-                    <div class="item  col-xs-3 col-lg-3 grid-group-item">
-                        <div class="thumbnail">
-                            <a href="{{ path('shared_shelf_book', {'shelfId':shelf.id, 'bookId': entity.id, 'salt': salt}) }}">
-                                <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
+            <div class="book-content container">
+                <div class="pull-left image-block">
+                    <div class="image">
+                        <img class="group list-group-image" src="{% path book.image, 'small' %}" alt=""/>
+                    </div>
+                </div>
+
+                <div class="pull-right data-block">
+                    <div class="name">
+                        <span class="item-title">
+                            {% trans %}Title:{% endtrans %}
+                        </span>
+                        <span class="item-value">
+                            "{{ book.name }}"
+                        </span>
+                    </div>
+                    <div class="author">
+                        <span class="item-title">
+                            {% trans %}Author:{% endtrans %}
+                        </span>
+                        <span class="item-value">
+                            {{ book.authors }}
+                        </span>
+                    </div>
+                    <div class="publisher">
+                        <span class="item-title">
+                            {% trans %}Publisher:{% endtrans %}
+                        </span>
+                        <span class="item-value">
+                            {{ book.publisher }}
+                        </span>
+                    </div>
+                    <div class="publishedDate">
+                        <span class="item-title">
+                            {% trans %}Published in:{% endtrans %}
+                        </span>
+                        <span class="item-value">
+                            {{ book.publishedDate|date("Y.m.d") }}
+                        </span>
+                    </div>
+                    <div class="pageCount">
+                        <span class="item-title">
+                            {% trans %}Pages count:{% endtrans %}
+                        </span>
+                        <span class="item-value">
+                            {{ book.pageCount }}
+                        </span>
+                    </div>
+                    <div class="language">
+                        <span class="item-title">
+                            {% trans %}Language:{% endtrans %}
+                        </span>
+                        <span class="item-value">
+                            {{ service_language.getLanguageByLocale(book.language) }}
+                        </span>
+                    </div>
+                </div>
+                <div class="book-tabs">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#description" aria-controls="description" role="tab" data-toggle="tab">
+                                {% trans %}Description{% endtrans %}
                             </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#shelves" aria-controls="shelves" role="tab" data-toggle="tab">
+                                {% trans %}Shelves{% endtrans %} ({{ book.shelfs.count }})
+                            </a>
+                        </li>
+                    </ul>
 
-                            <div class="caption">
-                                <a href="{{ path('shared_shelf_book', {'shelfId':shelf.id, 'bookId': entity.id}) }}">
-                                    <h5 class="group inner list-group-item-heading">{{ entity.name }}</h5>
-                                </a>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="description">
+                            {{ book.description|raw }}
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="shelves">
+                            <div class="grid-list-view container-shelf-list">
+                                {% if book.shelfs %}
+                                    <div id="products" class="row list-group">
+                                        {% for entity in book.shelfs %}
+                                            <div class="item  col-xs-4 col-lg-4 grid-group-item">
+                                                <div class="thumbnail">
+                                                    {% if entity.image %}
+                                                        <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
+                                                    {% else %}
+                                                        <img class="group list-group-image no-image" src="/uploads/no-image.png" alt=""/>
+                                                    {% endif %}
 
-                                {% if entity.authors %}
-                                    <div class="group inner list-group-item-text">
-                                        <b>{% trans %}Author:{% endtrans %}</b> {{ entity.authors|truncate(200) }}
+                                                    <div class="caption">
+                                                        <h4 class="group inner list-group-item-heading">
+                                                            {{ entity.title }}
+                                                        </h4>
+
+                                                        <p class="group inner list-group-item-text read-comment">{{ entity.description|striptags|truncate(120) }}</p>
+
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-md-6">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
                                     </div>
                                 {% endif %}
-
-                                {% if entity.description %}
-                                    <div class="group inner list-group-item-text">
-                                        {{ entity.description|striptags|truncate(100) }}
-                                    </div>
-                                {% endif %}
-
                             </div>
                         </div>
                     </div>
-                {% endfor %}
-            {% else %}
-                <div class="alert alert-info">
-                    {% trans %} Shelf books list is empty.{% endtrans %}
+
                 </div>
-            {% endif %}
+            </div>
         </div>
     </div>
 

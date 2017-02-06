@@ -19,6 +19,12 @@ form[name="bookbundle_shelf"] .button-delete {
 
 .container-shelf-list .item {
     width: 352px !important;
+    margin-left: 29px;
+    margin-bottom: 30px!important;
+}
+
+.container-shelf-list #products {
+    margin-left: -26px!important;
 }
 
 .container-shelf-list img {

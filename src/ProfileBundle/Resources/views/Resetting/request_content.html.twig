@@ -1,7 +1,12 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<h1 class="h1-title">{% trans %}Reset password{% endtrans %}</h1>
-
+<div id="sticky" class="well well-sm">
+    <div class="top-panel-content container">
+        <div class="center">
+            <h1>{% trans %}Reset password{% endtrans %}</h1>
+        </div>
+    </div>
+</div>
 
 <form class="fos_user_resetting_request form-horizontal" method="post" action="{{ path('fos_user_resetting_send_email') }}">
     <div class="form-container">

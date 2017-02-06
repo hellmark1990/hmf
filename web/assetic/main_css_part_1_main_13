@@ -6,7 +6,8 @@
 **************************/
 
 body {
-  background: #efefef;
+  /*background: #efefef;*/
+  background-color: rgba(239, 239, 239, 0.85);
   font-family: 'Open Sans', sans-serif;
   color:#4e4e4e;
   line-height: 22px;
@@ -120,7 +121,6 @@ body > section {
 
 .center {
   text-align: center;
-  padding-bottom: 55px;
 }
 
 .scaleIn {
@@ -175,6 +175,7 @@ body > section {
 
 #header .navbar.navbar-inverse{
   height: 90px;
+  margin-bottom: 100px;
 }
 
 #header .search{
@@ -328,6 +329,7 @@ input.search-form:hover {
   border-top: 0;
   border-radius: 0;
   left: 0;
+  z-index: 10001;
 }
 
 .navbar-inverse .navbar-nav .dropdown-menu:before{
@@ -338,6 +340,7 @@ input.search-form:hover {
 .navbar-inverse .navbar-nav .dropdown-menu > li > a {
   padding: 8px 15px;
   color: #fff;
+  cursor: pointer;
 }
 
 .navbar-inverse .navbar-nav .dropdown-menu > li:hover > a,
@@ -2540,3 +2543,37 @@ section#content{
 .gray-color{
   color: #666
 }
+
+/** Top panel **/
+.well{
+  position: absolute;
+  top: 90px;
+  z-index: 1000;
+  width: 100%;
+  left: 0;
+  min-height: 60px;
+  max-height: 110px;
+  border-radius: 0;
+  padding: 0;
+}
+
+
+#sticky.stick {
+  margin-top: 0 !important;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+}
+
+.well  h1{
+  margin-top: 12px;
+}
+
+.well  .btn-group{
+  margin-top: 10px;
+}
+
+div.container{
+  padding: 0px!important;
+}
+/** Top panel **/

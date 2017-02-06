@@ -40,5 +40,9 @@ class Langauges {
         return 'en';
     }
 
+    public function getLanguageByLocale($locale){
+        return ucfirst(Locale::getDisplayLanguage($locale));
+    }
+
 
 }

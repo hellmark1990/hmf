@@ -91,12 +91,12 @@ class BookType extends AbstractType {
 
         $builder->get('language')
             ->addModelTransformer(new CallbackTransformer(
-                function ($locale){
-                    return ucfirst(Locale::getDisplayLanguage($locale));
+                function ($locale) use ($container){
+                    return $container->get('app.languages')->getLanguageByLocale($locale);
                 },
                 function ($language) use ($container){
                     $locales = Locale::getLocales();
-                    if(array_search($language, $locales)){
+                    if (array_search($language, $locales)) {
                         return $language;
                     }
                     return $container->get('app.languages')->getLocaleByLanguage($language);

@@ -96,26 +96,27 @@ class BookController extends Controller {
             file_put_contents($tmpImagePath, $imageData);
 
             $image = new \Application\Sonata\MediaBundle\Entity\Media();
-            $image->setBinaryContent($tmpImagePath);
+            $image->setBinaryContent($imageData);
             $image->setProviderName('sonata.media.provider.image');
             $image->setContext('book');
             $entity->setImage($image);
+        }else{
+            /**
+             * Validate image file
+             */
+            $fileValidator = $this->get('app.file_validatator');
+            if (!$fileValidator->validate($entity->getImage(), [
+                'fieldName' => $form->get('image')->getName(),
+                'maxSize' => $this->getParameter('max_upload_size'),
+                'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+            ])
+            ) {
+                $form->get('image')
+                    ->get('binaryContent')
+                    ->addError(new FormError($fileValidator->getMessage()));
+            }
         }
 
-        /**
-         * Validate image file
-         */
-        $fileValidator = $this->get('app.file_validatator');
-        if (!$fileValidator->validate($entity->getImage(), [
-            'fieldName' => $form->get('image')->getName(),
-            'maxSize' => $this->getParameter('max_upload_size'),
-            'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
-        ])
-        ) {
-            $form->get('image')
-                ->get('binaryContent')
-                ->addError(new FormError($fileValidator->getMessage()));
-        }
 
         if ($form->isValid()) {
             $entity->setUser($this->getUser());
@@ -144,6 +145,7 @@ class BookController extends Controller {
             'action' => $this->generateUrl('book_create'),
             'method' => 'POST',
             'user' => $this->getUser(),
+            'container' => $this->container,
         ));
 
         $form->add('submit', 'submit', array('label' => 'Create'));
@@ -284,6 +286,21 @@ class BookController extends Controller {
             file_put_contents($tmpImagePath, $imageContent);
             $entity->getImage()->setBinaryContent($tmpImagePath);
 
+        }else{
+            /**
+             * Validate image file
+             */
+            $fileValidator = $this->get('app.file_validatator');
+            if (!$fileValidator->validate($entity->getImage(), [
+                'fieldName' => $editForm->get('image')->getName(),
+                'maxSize' => $this->getParameter('max_upload_size'),
+                'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+            ])
+            ) {
+                $editForm->get('image')
+                    ->get('binaryContent')
+                    ->addError(new FormError($fileValidator->getMessage()));
+            }
         }
 
         foreach ($entity->getShelfs() as $shelf) {
@@ -291,21 +308,6 @@ class BookController extends Controller {
             if (!$shelf->getBooks()->contains($entity)) {
                 $shelf->addBook($entity);
             }
-        }
-
-        /**
-         * Validate image file
-         */
-        $fileValidator = $this->get('app.file_validatator');
-        if (!$fileValidator->validate($entity->getImage(), [
-            'fieldName' => $editForm->get('image')->getName(),
-            'maxSize' => $this->getParameter('max_upload_size'),
-            'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
-        ])
-        ) {
-            $editForm->get('image')
-                ->get('binaryContent')
-                ->addError(new FormError($fileValidator->getMessage()));
         }
 
         if ($editForm->isValid()) {

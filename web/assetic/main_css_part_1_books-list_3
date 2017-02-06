@@ -1,7 +1,7 @@
 #books-list-wrapper {
-    width: 60%;
+    width: 70%;
     min-width: 500px;
-    margin: 50px auto;
+    margin: 0 auto;
 }
 
 #books-list-wrapper > #columns {
@@ -68,4 +68,13 @@
 
 #books-list-wrapper > #columns:hover .pin:not(:hover) {
     opacity: 0.4;
+}
+
+.book-grid-list-view.grid-list-view .item {
+    margin-left: 22px;
+    margin-bottom: 22px;
+}
+
+.book-grid-list-view.grid-list-view > #products {
+    margin-left: -20px !important;
 }

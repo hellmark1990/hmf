@@ -1,13 +1,19 @@
 {% extends "BookBundle::layout.html.twig" %}
 
-{% block body -%}     {{ parent() }}
-    <h1 class="h1-title">Book creation</h1>
-
-    <div class="pull-right book-top-controls">
-        <button class="btn btn-default btn-submit-form">
-            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-            {% trans %}Create{% endtrans %}
-        </button>
+{% block body -%}
+    {{ parent() }}
+    <div id="sticky" class="well well-sm">
+        <div class="top-panel-content container">
+            <div class="pull-left">
+                <h1>{% trans %}New book{% endtrans %}</h1>
+            </div>
+            <div class="btn-group pull-right">
+                <button class="btn btn-default btn-submit-form">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    {% trans %}Create{% endtrans %}
+                </button>
+            </div>
+        </div>
     </div>
 
     {{ form_start(form, { 'action': path('book_create') }) }}
