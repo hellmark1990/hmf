@@ -2,6 +2,7 @@
 
 namespace BookBundle\Controller;
 
+use BookBundle\Entity\SharedBookLink;
 use BookBundle\Entity\SharedShelfLink;
 use BookBundle\Entity\Shelf;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -253,7 +254,7 @@ class SharedShelfController extends Controller {
      *
      * @Route("/share-link/{shelfId}", name="shared_shelf_link")
      */
-    public function sharedLinkAction(Request $request, $shelfId){
+    public function sharedShelfLinkAction(Request $request, $shelfId){
         $em = $this->getDoctrine()->getManager();
         $shelf = $em->getRepository('BookBundle:Shelf')->find($shelfId);
 
@@ -290,6 +291,79 @@ class SharedShelfController extends Controller {
 
     }
 
+
+    /**
+     * Get shared shelf link.
+     *
+     * @Route("/book-link/{bookId}", name="shared_book_link")
+     */
+    public function sharedBookLinkAction(Request $request, $bookId){
+        $em = $this->getDoctrine()->getManager();
+        $book = $em->getRepository('BookBundle:Book')->find($bookId);
+
+        if (!$book) {
+            return new JsonResponse([
+                'success' => false,
+            ]);
+        }
+
+        /**
+         * @var  SharedBookLink $sharedLink
+         */
+        $sharedLink = $em->getRepository('BookBundle:SharedBookLink')->findOneBy([
+            'shelf' => $book,
+            'userOwner' => $this->getUser(),
+        ]);
+
+        if (!$sharedLink) {
+            $tokenGenerator = $this->get('fos_user.util.token_generator');
+
+            $sharedLink = new SharedBookLink();
+            $sharedLink->setUserOwner($this->getUser());
+            $sharedLink->setBook($book);
+            $sharedLink->setSalt(substr($tokenGenerator->generateToken(), 0, 20));
+
+            $em->persist($sharedLink);
+            $em->flush();
+        }
+
+        return new JsonResponse([
+            'success' => true,
+            'shareLink' => $this->generateUrl('shared_book_by_salt', ['salt' => $sharedLink->getSalt()], UrlGeneratorInterface::ABSOLUTE_URL)
+        ]);
+
+    }
+
+    /**
+     * Get shared shelf link.
+     *
+     * @Route("/book/{salt}", name="shared_book_by_salt")
+     * @Template()
+     */
+    public function sharedBookBySaltAction(Request $request, $salt){
+        /**
+         * @var $shareLink SharedShelfLink
+         */
+        $em = $this->getDoctrine()->getManager();
+        $sharedLink = $em->getRepository('BookBundle:SharedBookLink')->findOneBy([
+            'salt' => $salt
+        ]);
+
+        if (!$sharedLink) {
+            throw $this->createNotFoundException('Unable to find Book.');
+        }
+
+        if (!$sharedLink->getBook()) {
+            throw $this->createNotFoundException('Unable to find Book.');
+        }
+
+        return array(
+            'book' => $sharedLink->getBook(),
+            'salt' => $salt
+        );
+
+    }
+
     /**
      * Get shared shelf link.
      *
@@ -314,7 +388,8 @@ class SharedShelfController extends Controller {
         }
 
         return array(
-            'shelf' => $sharedLink->getShelf()
+            'shelf' => $sharedLink->getShelf(),
+            'salt' => $salt
         );
 
     }
@@ -345,7 +420,8 @@ class SharedShelfController extends Controller {
         }
 
         return array(
-            'shelf' => $shelf
+            'shelf' => $shelf,
+            'salt' => false
         );
     }
 
@@ -360,6 +436,44 @@ class SharedShelfController extends Controller {
 
         return [
             'entities' => $sharedShelves
+        ];
+    }
+
+    /**
+     * Get shared shelf link.
+     *
+     * @Route("/shelf/{shelfId}/book/{bookId}", name="shared_shelf_book")
+     * @Template()
+     */
+    public function sharedBookView(Request $request, $shelfId, $bookId){
+        $em = $this->getDoctrine()->getManager();
+        $shelf = $em->getRepository('BookBundle:Shelf')->find($shelfId);
+
+        if (!$shelf) {
+            throw $this->createNotFoundException('Unable to find Shelf.');
+        }
+
+        if ($request->get('salt')) {
+            $sharedLink = $em->getRepository('BookBundle:SharedShelfLink')->findOneBy([
+                'salt' => $request->get('salt')
+            ]);
+
+            if (!$sharedLink) {
+                throw $this->createNotFoundException('Unable to find Shelf.');
+            }
+        } else {
+            if (!$this->getUser()->getSharedShelfsToMe()->contains($shelf)) {
+                throw $this->createNotFoundException('Unable to find Shelf.');
+            }
+        }
+
+        $book = $em->getRepository('BookBundle:Book')->find($bookId);
+        if (!$shelf->getBooks()->contains($book)) {
+            throw $this->createNotFoundException('Unable to find book.');
+        }
+
+        return [
+            'book' => $book
         ];
     }
 

@@ -83,6 +83,11 @@ class User extends BaseUser {
      */
     private $sharedShelfLinks;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedBookLink", mappedBy="userOwner")
+     */
+    private $sharedBookLinks;
+
     public function __construct(){
         parent::__construct();
         // your own logic

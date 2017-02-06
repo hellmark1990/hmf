@@ -121,6 +121,11 @@ class Book {
      */
     private $reads;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedBookLink", mappedBy="book")
+     */
+    private $shareLinks;
+
 
     /**
      * Get id
@@ -471,5 +476,38 @@ class Book {
     public function getAuthors()
     {
         return $this->authors;
+    }
+
+    /**
+     * Add shareLinks
+     *
+     * @param \BookBundle\Entity\SharedBookLink $shareLinks
+     * @return Book
+     */
+    public function addShareLink(\BookBundle\Entity\SharedBookLink $shareLinks)
+    {
+        $this->shareLinks[] = $shareLinks;
+
+        return $this;
+    }
+
+    /**
+     * Remove shareLinks
+     *
+     * @param \BookBundle\Entity\SharedBookLink $shareLinks
+     */
+    public function removeShareLink(\BookBundle\Entity\SharedBookLink $shareLinks)
+    {
+        $this->shareLinks->removeElement($shareLinks);
+    }
+
+    /**
+     * Get shareLinks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getShareLinks()
+    {
+        return $this->shareLinks;
     }
 }
