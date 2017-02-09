@@ -6,8 +6,8 @@
 **************************/
 
 body {
-  /*background: #efefef;*/
-  background-color: rgba(239, 239, 239, 0.85);
+  /*background-color: rgba(239, 239, 239, 0.85);*/
+  background-image: url('/images/back.png');
   font-family: 'Open Sans', sans-serif;
   color:#4e4e4e;
   line-height: 22px;
@@ -2588,4 +2588,15 @@ div.container{
 
 .btn:hover{
 background-color: rgba(197, 45, 47, 0.8)
+}
+
+#content > .filter{
+  float: left;
+  width: 400px;
+  /*border: 1px solid red;*/
+  min-height: 820px;
+}
+#content > .container{
+  margin-left: 410px;
+  /*border: 1px solid red;*/
 }
