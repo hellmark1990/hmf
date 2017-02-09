@@ -8,15 +8,15 @@
                     <h1>{% trans %}Shared shelf users{% endtrans %}</h1>
                 </div>
                 <div class="btn-group pull-right">
-                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#shelfShareModal">
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#shelfShareModal">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{% trans %}Share to
                         user{% endtrans %}
                     </button>
-                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#shelfShareEmailModal">
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#shelfShareEmailModal">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{% trans %}Share by
                         email{% endtrans %}
                     </button>
-                    <button class="btn btn-default btn-sm share-link-button" data-shared-link-url="{{ path('shared_shelf_link', {'shelfId': shelf.id}) }}" data-toggle="modal" data-target="#shelfShareLinkModal">
+                    <button class="btn btn-primary btn-sm share-link-button" data-shared-link-url="{{ path('shared_shelf_link', {'shelfId': shelf.id}) }}" data-toggle="modal" data-target="#shelfShareLinkModal">
                         <span class="glyphicon glyphicon-link" aria-hidden="true"></span>{% trans %}Get shared
                         link{% endtrans %}
                     </button>
@@ -76,9 +76,9 @@
                     {{ form(form) }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans %}
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans %}
                         Close{% endtrans %}</button>
-                    <button type="button" class="btn btn-default btn-modal-submit">{% trans %}
+                    <button type="button" class="btn btn-primary btn-modal-submit">{% trans %}
                         Share{% endtrans %}</button>
                 </div>
             </div>
@@ -98,9 +98,9 @@
                     {{ form(formEmail) }}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans %}
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans %}
                         Close{% endtrans %}</button>
-                    <button type="button" class="btn btn-default btn-modal-submit">{% trans %}
+                    <button type="button" class="btn btn-primary btn-modal-submit">{% trans %}
                         Share{% endtrans %}</button>
                 </div>
             </div>
@@ -128,7 +128,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans %}
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans %}
                         Close{% endtrans %}</button>
                 </div>
             </div>

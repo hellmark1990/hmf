@@ -9,19 +9,19 @@
                 <h1>"{{ entity.name }}"</h1>
             </div>
             <div class="btn-group pull-right">
-                <button class="btn btn-default btn-submit-form">
+                <button class="btn btn-primary btn-submit-form">
                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                     {% trans %}Update{% endtrans %}
                 </button>
-                <a href="{{ path('book_delete', {'id': entity.id}) }}" class="btn btn-default">
+                <a href="{{ path('book_delete', {'id': entity.id}) }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     {% trans %}Delete{% endtrans %}
                 </a>
-                <a href="{{ path('book_reading', {'id': entity.id}) }}" class="btn btn-default">
+                <a href="{{ path('book_reading', {'id': entity.id}) }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
                     {% trans %}Reading{% endtrans %}
                 </a>
-                <button class="btn btn-default share-link-button" data-shared-link-url="{{ path('shared_book_link', {'bookId': entity.id}) }}" data-toggle="modal" data-target="#bookShareLinkModal">
+                <button class="btn btn-primary share-link-button" data-shared-link-url="{{ path('shared_book_link', {'bookId': entity.id}) }}" data-toggle="modal" data-target="#bookShareLinkModal">
                     <span class="glyphicon glyphicon-link" aria-hidden="true"></span>{% trans %}Get shared
                     link{% endtrans %}
                 </button>
@@ -73,7 +73,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">{% trans %}
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans %}
                         Close{% endtrans %}</button>
                 </div>
             </div>

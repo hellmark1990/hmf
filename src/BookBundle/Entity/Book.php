@@ -116,13 +116,13 @@ class Book {
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="BookBundle\Entity\Read", mappedBy="book")
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\Read", mappedBy="book", cascade={"remove"})
      * @ORM\OrderBy({"id" = "DESC"})
      */
     private $reads;
 
     /**
-     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedBookLink", mappedBy="book")
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedBookLink", mappedBy="book", cascade={"remove"})
      */
     private $shareLinks;
 
@@ -461,8 +461,7 @@ class Book {
      * @param string $authors
      * @return Book
      */
-    public function setAuthors($authors)
-    {
+    public function setAuthors($authors){
         $this->authors = $authors;
 
         return $this;
@@ -471,10 +470,9 @@ class Book {
     /**
      * Get authors
      *
-     * @return string 
+     * @return string
      */
-    public function getAuthors()
-    {
+    public function getAuthors(){
         return $this->authors;
     }
 
@@ -484,8 +482,7 @@ class Book {
      * @param \BookBundle\Entity\SharedBookLink $shareLinks
      * @return Book
      */
-    public function addShareLink(\BookBundle\Entity\SharedBookLink $shareLinks)
-    {
+    public function addShareLink(\BookBundle\Entity\SharedBookLink $shareLinks){
         $this->shareLinks[] = $shareLinks;
 
         return $this;
@@ -496,18 +493,22 @@ class Book {
      *
      * @param \BookBundle\Entity\SharedBookLink $shareLinks
      */
-    public function removeShareLink(\BookBundle\Entity\SharedBookLink $shareLinks)
-    {
+    public function removeShareLink(\BookBundle\Entity\SharedBookLink $shareLinks){
         $this->shareLinks->removeElement($shareLinks);
     }
 
     /**
      * Get shareLinks
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getShareLinks()
-    {
+    public function getShareLinks(){
         return $this->shareLinks;
+    }
+
+    public function getPageReadCount(){
+        return array_sum($this->getReads()->map(function (Read $read){
+            return $read->getPagesCount();
+        })->toArray());
     }
 }

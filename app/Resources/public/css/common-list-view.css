@@ -32,7 +32,10 @@
 }
 
 .grid-list-view .labels > .label{
-    font-size:  92%;
+    /*font-size:  92%;*/
+    display: block;
+    font-size: 99%;
+    margin-bottom: 10px;
 }
 
 .grid-list-view .labels > .label > .glyphicon{

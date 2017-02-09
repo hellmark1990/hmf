@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="btn-group pull-right">
-                    <a class="btn btn-default" href="{{ path('book_new') }}">
+                    <a class="btn btn-primary" href="{{ path('book_new') }}">
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>{% trans %}Add
                         book{% endtrans %}
                     </a>
@@ -32,8 +32,12 @@
                             <a href="{{ path('book_edit', { 'id': entity.id }) }}">
                                 <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
                                 <div class="labels">
-                                    <span class="label label-inverse arrowed-in">
+                                    <span class="label label-inverse arrowed-in" data-toggle="tooltip" data-placement="right" title="{% trans %}Pages count{% endtrans %}">
                                         {{ entity.pageCount }}
+                                        <span class="glyphicon glyphicon-align-justify"></span>
+                                    </span>
+                                    <span class="label label-inverse arrowed-in" data-toggle="tooltip" data-placement="right" title="{% trans %}Read pages{% endtrans %}">
+                                        {{ entity.pageReadCount }}
                                         <span class="glyphicon glyphicon-align-justify"></span>
                                     </span>
                                 </div>

@@ -1151,7 +1151,7 @@ jQuery(function ($) {
         }
     }
 
-    $(function() {
+    $(function () {
         $(window).scroll(sticky_relocate);
         sticky_relocate();
     });
@@ -1159,6 +1159,9 @@ jQuery(function ($) {
     /**
      * Top pannel
      */
+
+    // Tooltip init
+    $('[data-toggle="tooltip"]').tooltip()
 });
 //! moment.js
 //! version : 2.17.1

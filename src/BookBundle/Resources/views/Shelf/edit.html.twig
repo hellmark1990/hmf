@@ -9,19 +9,19 @@
                 <h1>{% trans %}Edit shelf{% endtrans %}</h1>
             </div>
             <div class="btn-group pull-right">
-                <button class="btn btn-default btn-submit-form">
+                <button class="btn btn-primary btn-submit-form">
                     <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                     {% trans %}Update{% endtrans %}
                 </button>
-                <a href="{{ path('shelf_delete', {'id': entity.id}) }}" class="btn btn-default">
+                <a href="{{ path('shelf_delete', {'id': entity.id}) }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     {% trans %}Delete{% endtrans %}
                 </a>
-                <a href="{{ path('shared_shelf_users', {'shelfId': entity.id}) }}" class="btn btn-default">
+                <a href="{{ path('shared_shelf_users', {'shelfId': entity.id}) }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
                     {% trans %}Share{% endtrans %}
                 </a>
-                <a href="{{ path('shelf') }}" class="btn btn-default">
+                <a href="{{ path('shelf') }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
                     {% trans %}Shelves{% endtrans %}
                 </a>

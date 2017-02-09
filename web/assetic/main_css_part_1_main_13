@@ -21,12 +21,12 @@ h5,
 h6 {
   font-weight: 600; 
   font-family: 'Open Sans', sans-serif;
-  color:#4e4e4e;
+  color:#000!important;
 }
 
 h1{
   font-size: 36px;
-  color:#fff;
+  color:#000;
 }
 
 h2{
@@ -2570,10 +2570,22 @@ section#content{
 }
 
 .well  .btn-group{
-  margin-top: 10px;
+  margin-top: 2px;
 }
 
 div.container{
   padding: 0px!important;
 }
 /** Top panel **/
+
+.form-control{
+  border-radius: inherit;
+}
+
+.btn{
+  border-radius: inherit;
+}
+
+.btn:hover{
+background-color: rgba(197, 45, 47, 0.8)
+}
