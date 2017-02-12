@@ -20,6 +20,11 @@
 .toggle-btn-group .btn.active {
     background-color: #32b0b3;
     color: white;
+    border-color: #32b0b3;
+}
+
+.toggle-btn-group .btn:hover {
+    border-color: #32b0b3;
 }
 
 .toggle-btn-group .btn:hover > span {
@@ -72,9 +77,6 @@
     float: right;
     width: 38%;
     min-height: 200px;
-}
-.book-filter .btn.dropdown-toggle{
-    max-width: 300px;
 }
 
 .book-filter .btn-danger{
@@ -135,6 +137,13 @@
 
 .book-filter button[type="submit"]:hover{
     background-color: inherit;
+}
+
+
+.book-filter #filter-location-map-input{
+    border-color: #32b0b3;
+    border-width: 2px;
+    width: 332px;
 }
 
 

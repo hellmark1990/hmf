@@ -32,6 +32,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .toggle-btn-group .btn.active {
     background-color: #32b0b3;
     color: white;
+    border-color: #32b0b3;
+}
+
+.toggle-btn-group .btn:hover {
+    border-color: #32b0b3;
 }
 
 .toggle-btn-group .btn:hover > span {
@@ -84,9 +89,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     float: right;
     width: 38%;
     min-height: 200px;
-}
-.book-filter .btn.dropdown-toggle{
-    max-width: 300px;
 }
 
 .book-filter .btn-danger{
@@ -147,6 +149,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .book-filter button[type="submit"]:hover{
     background-color: inherit;
+}
+
+
+.book-filter #filter-location-map-input{
+    border-color: #32b0b3;
+    border-width: 2px;
+    width: 332px;
 }
 
 
@@ -332,6 +341,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .book-grid-list-view .circle-progress{
     width: 70px;
+}
+
+.book-grid-list-view a.list-main-bottom-button{
+    width: 213px;
+    text-align: center;
 }
 
 
@@ -692,7 +706,7 @@ input, textarea, select, label{
 }
 
 .grid-list-view .nav.nav-pills li {
-    margin-left: 5px;
+    margin-left: 15px;
 }
 
 
