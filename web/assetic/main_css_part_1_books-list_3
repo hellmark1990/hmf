@@ -48,6 +48,7 @@
     webkit-box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
     box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
     margin-bottom: 5px;
+    width: 125px;
 }
 
 #books-list-wrapper .pin p {

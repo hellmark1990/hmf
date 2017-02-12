@@ -57,7 +57,7 @@ class ShelfController extends Controller {
          * Validate image file
          */
         $fileValidator = $this->get('app.file_validatator');
-        if (!$fileValidator->validate($entity->getImage(), [
+        if ($entity->getImage() && !$fileValidator->validate($entity->getImage(), [
             'fieldName' => $form->get('image')->getName(),
             'maxSize' => $this->getParameter('max_upload_size'),
             'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
@@ -97,8 +97,6 @@ class ShelfController extends Controller {
             'method' => 'POST',
             'user' => $this->getUser(),
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -184,8 +182,6 @@ class ShelfController extends Controller {
             'user' => $this->getUser(),
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
         return $form;
     }
 
@@ -213,7 +209,7 @@ class ShelfController extends Controller {
          * Validate image file
          */
         $fileValidator = $this->get('app.file_validatator');
-        if (!$fileValidator->validate($entity->getImage(), [
+        if ($entity->getImage() && !$fileValidator->validate($entity->getImage(), [
             'fieldName' => $editForm->get('image')->getName(),
             'maxSize' => $this->getParameter('max_upload_size'),
             'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']

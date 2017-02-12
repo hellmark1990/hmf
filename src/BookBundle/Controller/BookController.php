@@ -105,7 +105,7 @@ class BookController extends Controller {
              * Validate image file
              */
             $fileValidator = $this->get('app.file_validatator');
-            if (!$fileValidator->validate($entity->getImage(), [
+            if ($entity->getImage() && !$fileValidator->validate($entity->getImage(), [
                 'fieldName' => $form->get('image')->getName(),
                 'maxSize' => $this->getParameter('max_upload_size'),
                 'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
@@ -147,8 +147,6 @@ class BookController extends Controller {
             'user' => $this->getUser(),
             'container' => $this->container,
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -235,8 +233,6 @@ class BookController extends Controller {
             'container' => $this->container,
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
         return $form;
     }
 
@@ -291,7 +287,7 @@ class BookController extends Controller {
              * Validate image file
              */
             $fileValidator = $this->get('app.file_validatator');
-            if (!$fileValidator->validate($entity->getImage(), [
+            if ($entity->getImage() && !$fileValidator->validate($entity->getImage(), [
                 'fieldName' => $editForm->get('image')->getName(),
                 'maxSize' => $this->getParameter('max_upload_size'),
                 'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']

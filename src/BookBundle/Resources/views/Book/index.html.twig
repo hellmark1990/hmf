@@ -18,11 +18,29 @@
                 </div>
             </div>
         </div>
+
+
+        {{ include('BookBundle:Book:filter.html.twig') }}
+
         <div id="products" class="row list-group">
             {% if entities %}
                 {% for entity in entities %}
                     <div class="item  col-xs-3 col-lg-3 grid-group-item">
                         <div class="thumbnail">
+                            <div class="progress"
+                                 data-toggle="tooltip"
+                                 data-placement="top"
+                                 title="{% trans %}Pages count{% endtrans %} {{ entity.pageCount }}. {% trans %}You read{% endtrans %} {{ entity.pageReadCount }}.">
+
+                                <div class="progress-bar progress-bar-danger" role="progressbar"
+                                     aria-valuenow="{{ entity.getPageReadPercents }}"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100"
+                                     style="width: {{ entity.getPageReadPercents }}%;">
+                                    <p>{{ entity.getPageReadPercents }}%</p>
+                                </div>
+                            </div>
+
                             <div class="btn-delete">
                                 <a class="btn btn-danger btn-sm" href="{{ path('book_delete', { 'id': entity.id }) }}">
                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -31,16 +49,14 @@
 
                             <a href="{{ path('book_edit', { 'id': entity.id }) }}">
                                 <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
-                                <div class="labels">
-                                    <span class="label label-inverse arrowed-in" data-toggle="tooltip" data-placement="right" title="{% trans %}Pages count{% endtrans %}">
-                                        {{ entity.pageCount }}
-                                        <span class="glyphicon glyphicon-align-justify"></span>
-                                    </span>
-                                    <span class="label label-inverse arrowed-in" data-toggle="tooltip" data-placement="right" title="{% trans %}Read pages{% endtrans %}">
-                                        {{ entity.pageReadCount }}
-                                        <span class="glyphicon glyphicon-align-justify"></span>
-                                    </span>
-                                </div>
+                                {#<div class="labels">#}
+                                {#<span class="label label-warning arrowed-in" data-toggle="tooltip" data-placement="right" title="{% trans %}Pages{% endtrans %}">#}
+                                {#{{ entity.pageCount }}#}
+                                {#</span>#}
+                                {#<span class="label label-success arrowed-in" data-toggle="tooltip" data-placement="right" title="{% trans %}Read pages{% endtrans %}">#}
+                                {#{{ entity.pageReadCount }}#}
+                                {#</span>#}
+                                {#</div>#}
                             </a>
 
                             <div class="caption">
@@ -59,13 +75,11 @@
                                     <ul class="nav nav-pills" role="tablist">
                                         <li role="presentation" class="active">
                                             <a href="{{ path('book_reading', {'id': entity.id}) }}">
-                                                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                                                {% trans %}Read{% endtrans %} ({{ entity.reads.count }})
+                                                {% trans %}Read{% endtrans %}
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
-
 
                                 <div class="row">
                                     <div class="col-xs-12 col-md-6">

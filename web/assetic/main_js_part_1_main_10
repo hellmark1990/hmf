@@ -119,4 +119,47 @@ jQuery(function ($) {
     $('button.btn-submit-form').on('click', function () {
         $('.container > form').trigger('submit');
     });
+
+    /**
+     * Top pannel
+     */
+
+    function sticky_relocate() {
+        var window_top = $(window).scrollTop();
+        var div_top = $('#content').offset().top;
+        if (window_top > div_top) {
+            $('#sticky').addClass('stick');
+        } else {
+            $('#sticky').removeClass('stick');
+        }
+    }
+
+    $(function () {
+        $(window).scroll(sticky_relocate);
+        sticky_relocate();
+    });
+
+    /**
+     * Top pannel
+     */
+
+    // Tooltip init
+    $('[data-toggle="tooltip"]').tooltip()
+
+     // Dropdown init
+    $('.dropdown-toggle').dropdown('toggle')
+    $(".dropdown-menu li a").click(function () {
+        $(this).closest('.btn-group').find(".btn:first-child").text($(this).text());
+        $(this).closest('.btn-group').find(".btn:first-child").val($(this).text());
+
+        var dropSelect = $(this).closest('.form-group').find('select');
+        $(dropSelect).val($(this).data('value'));
+    });
+
+    $(".toggle-btn-group > .btn").click(function () {
+        var dropSelect = $(this).closest('.form-group').find('select');
+        $(dropSelect).val($(this).data('value'));
+        $(this).closest('.form-group').find('.btn').removeClass('active')
+        $(this).addClass('active');
+    });
 });

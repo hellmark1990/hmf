@@ -1,0 +1,125 @@
+{% set filterOptions = book_filter.getOptions %}
+{#{{ dump(filterOptions) }}#}
+
+<div class="book-filter">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-left">
+
+                    <div class="left-filter">
+                        <h2>{% trans %}Filters & Sorting{% endtrans %}</h2>
+
+                        <div class="filters">
+
+                            <div class="filter-row">
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-filter-label" type="button">
+                                            {% trans %}Book{% endtrans %}
+                                        </button>
+                                    </span>
+
+                                    <select name="filter[name]" data-width="250px" class="selectpicker form-control" multiple data-live-search="true" data-style="btn-danger" aria-describedby="sizing-addon2">
+                                        {% for book in filterOptions.filter.name %}
+                                            <option data-value="{{ book.name }}" value="{{ book.name }}">{{ book.name }}</option>
+                                        {% endfor %}
+                                    </select>
+
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-filter-label" type="button">
+                                            {% trans %}Author{% endtrans %}
+                                        </button>
+                                    </span>
+
+                                    <select name="filter[author]" data-width="250px" class="selectpicker form-control" multiple data-live-search="true" data-style="btn-danger">
+                                        {% for book in filterOptions.filter.author if book.authors %}
+                                            <option data-value="{{ book.authors }}" value="{{ book.authors }}">{{ book.authors }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="filter-row">
+                                <div class="input-group">
+                                     <span class="input-group-btn">
+                                        <button class="btn btn-default btn-filter-label" type="button">
+                                            {% trans %}Shelves{% endtrans %}
+                                        </button>
+                                    </span>
+
+                                    <select name="filter[shelves]" data-width="250px" multiple class="selectpicker form-control" data-live-search="true" data-style="btn-danger">
+                                        {% for shelf in filterOptions.filter.shelves %}
+                                            <option data-value="{{ shelf.title }}" value="{{ shelf.title }}">{{ shelf.title }}</option>
+                                        {% endfor %}
+                                    </select>
+
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-filter-label" type="button">
+                                            {% trans %}Sorting{% endtrans %}
+                                        </button>
+                                    </span>
+
+                                    <select name="sort" class="selectpicker form-control" data-width="205px" data-style="btn-danger">
+                                        {% for sortName, sortTitle  in filterOptions.sort %}
+                                            <option value="{{ sortName }}">{{ sortTitle }}</option>
+                                        {% endfor %}
+                                    </select>
+
+                                    <span class="input-group-btn toggle-btn-group">
+                                       <button type="button" class="btn btn-default" data-value="asc" aria-label="Left Align">
+                                            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default" data-value="desc" aria-label="Left Align">
+                                            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                        </button>
+                                    </span>
+
+                                    <select name="sort_direction" id="" class="form-control hidden">
+                                        {% for sortDirectionName, sortDirectionTitle  in filterOptions.sort_directions %}
+                                            <option value="{{ sortDirectionName }}">{{ sortDirectionTitle }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-default">{% trans %}Filter{% endtrans %}</button>
+                    </div>
+
+                    <div class="right-filter">
+                        <div class="location-filter">
+                            <div class="filter-location-map"></div>
+                            <div class="input-group">
+                                <div class="input-group-btn">
+                                    <select class="selectpicker filter-location-type btn-filter-label" data-width="90px" data-style="btn-danger">
+                                        <option selected="selected" value="exists">
+                                            {% trans %}Your{% endtrans %}
+                                        </option>
+                                        <option value="search">
+                                            {% trans %}Find{% endtrans %}
+                                        </option>
+                                    </select>
+                                </div><!-- /btn-group -->
+                                <input type="text" id="filter-location-map-input" class="form-control hidden" aria-label="...">
+                                <select name="filter[locations]" class="selectpicker form-control filter-location-select"
+                                        title="{% trans %}Choose locations...{% endtrans %}"
+                                        multiple
+                                        data-live-search="true"
+                                        data-style="btn-danger"
+                                        data-width="100%">
+                                    {% for location in filterOptions.filter.locations %}
+                                        <option data-latitude="{{ location.latitude }}" data-longitude="{{ location.longitude }}" value="{{ location.place }}">{{ location.place }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+{#{{   dump(book_filter.getOptions) }}#}

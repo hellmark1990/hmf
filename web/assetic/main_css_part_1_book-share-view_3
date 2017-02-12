@@ -49,7 +49,7 @@
     margin-left: 55px;
 }
 
-.book-share-view-container .tab-content .container-shelf-list .caption {
+.book-share-view-container .tab-content .container-shelf-list .item > .thumbnail > .caption {
     margin-top: 4px;
 }
 
@@ -58,6 +58,6 @@
 }
 
 .book-share-view-container .nav-tabs > li > a:hover, .book-share-view-container .nav-tabs > li.active > a, .book-share-view-container .nav-tabs > li.active > a:hover, .book-share-view-container .nav-tabs > li.active > a:focus {
-    background: #c52d2f;
+    background: #32b0b3;
 }
 

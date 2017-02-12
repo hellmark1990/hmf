@@ -2,6 +2,8 @@
 
 namespace ProfileBundle\Entity;
 
+use BookBundle\Entity\Book;
+use BookBundle\Entity\Read;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
@@ -402,5 +404,16 @@ class User extends BaseUser {
         }
 
         return $username[0] . $username[1];
+    }
+
+    public function getBooksReads(){
+        $reads = [];
+        $this->books->map(function (Book $item) use(&$reads){
+            $item->getReads()->map(function (Read $item) use(&$reads){
+                $reads[$item->getPlace()] = $item;
+            });
+        });
+
+        return $reads;
     }
 }

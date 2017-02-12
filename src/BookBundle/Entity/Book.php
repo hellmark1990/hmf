@@ -511,4 +511,12 @@ class Book {
             return $read->getPagesCount();
         })->toArray());
     }
+
+    public function getPageReadPercents(){
+        if (!$this->getPageCount()) {
+            return 0;
+        }
+
+        return round($this->getPageReadCount() / ($this->getPageCount() / 100));
+    }
 }

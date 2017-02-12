@@ -47,6 +47,7 @@ twig:
             google_api_key: '%google_api_key%'
             site_host: '%host%'
         service_language: "@app.languages"
+        book_filter: "@book.filter"
 
 # Doctrine Configuration
 doctrine:
@@ -104,17 +105,25 @@ assetic:
                 - '%kernel.root_dir%/Resources/public/jquery/jquery-ui.js'
                 - '%kernel.root_dir%/Resources/public/jquery/chosen.jquery.min.js'
                 - '%kernel.root_dir%/Resources/public/js/clipboard.min.js'
+                - '%kernel.root_dir%/Resources/public/jquery/locationpicker.jquery.js'
+                - '%kernel.root_dir%/Resources/public/jquery/jquery.circliful.min.js'
+                - '%kernel.root_dir%/Resources/public/jquery/jquery.prettyPhoto.js'
+                - '%kernel.root_dir%/Resources/public/jquery/jquery.geocomplete.min.js'
 
         bootstrap:
             inputs:
-                - '%kernel.root_dir%/Resources/public/js/moment.min.js'
                 - '%kernel.root_dir%/Resources/public/js/transition.js'
                 - '%kernel.root_dir%/Resources/public/js/collapse.js'
                 - '%kernel.root_dir%/Resources/public/js/z-bootstrap.min.js'
+                - '%kernel.root_dir%/Resources/public/js/bootstrap-select.min.js'
+                - '%kernel.root_dir%/Resources/public/js/moment.min.js'
                 - '%kernel.root_dir%/Resources/public/js/bootstrap-datetimepicker.min.js'
+                - '%kernel.root_dir%/Resources/public/js/bootstrap-datetimepicker.min.js'
+                - '%kernel.root_dir%/Resources/public/js/gmaps.js'
+                - '%kernel.root_dir%/Resources/public/js/wow.min.js'
+                - '%kernel.root_dir%/Resources/public/js/main.js'
         main_js:
             inputs:
-                - '%kernel.root_dir%/Resources/public/js/*'
                 - '@BookBundle/Resources/public/js/*'
 
 sonata_block:

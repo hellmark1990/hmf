@@ -16630,3 +16630,424 @@ u[o]&&(delete u[o],c?delete n[l]:typeof n.removeAttribute!==i?n.removeAttribute(
  * Licensed MIT © Zeno Rocha
  */
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var t;t="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,t.Clipboard=e()}}(function(){var e,t,n;return function e(t,n,i){function o(a,c){if(!n[a]){if(!t[a]){var l="function"==typeof require&&require;if(!c&&l)return l(a,!0);if(r)return r(a,!0);var s=new Error("Cannot find module '"+a+"'");throw s.code="MODULE_NOT_FOUND",s}var u=n[a]={exports:{}};t[a][0].call(u.exports,function(e){var n=t[a][1][e];return o(n?n:e)},u,u.exports,e,t,n,i)}return n[a].exports}for(var r="function"==typeof require&&require,a=0;a<i.length;a++)o(i[a]);return o}({1:[function(e,t,n){function i(e,t){for(;e&&e.nodeType!==o;){if(e.matches(t))return e;e=e.parentNode}}var o=9;if(Element&&!Element.prototype.matches){var r=Element.prototype;r.matches=r.matchesSelector||r.mozMatchesSelector||r.msMatchesSelector||r.oMatchesSelector||r.webkitMatchesSelector}t.exports=i},{}],2:[function(e,t,n){function i(e,t,n,i,r){var a=o.apply(this,arguments);return e.addEventListener(n,a,r),{destroy:function(){e.removeEventListener(n,a,r)}}}function o(e,t,n,i){return function(n){n.delegateTarget=r(n.target,t),n.delegateTarget&&i.call(e,n)}}var r=e("./closest");t.exports=i},{"./closest":1}],3:[function(e,t,n){n.node=function(e){return void 0!==e&&e instanceof HTMLElement&&1===e.nodeType},n.nodeList=function(e){var t=Object.prototype.toString.call(e);return void 0!==e&&("[object NodeList]"===t||"[object HTMLCollection]"===t)&&"length"in e&&(0===e.length||n.node(e[0]))},n.string=function(e){return"string"==typeof e||e instanceof String},n.fn=function(e){var t=Object.prototype.toString.call(e);return"[object Function]"===t}},{}],4:[function(e,t,n){function i(e,t,n){if(!e&&!t&&!n)throw new Error("Missing required arguments");if(!c.string(t))throw new TypeError("Second argument must be a String");if(!c.fn(n))throw new TypeError("Third argument must be a Function");if(c.node(e))return o(e,t,n);if(c.nodeList(e))return r(e,t,n);if(c.string(e))return a(e,t,n);throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList")}function o(e,t,n){return e.addEventListener(t,n),{destroy:function(){e.removeEventListener(t,n)}}}function r(e,t,n){return Array.prototype.forEach.call(e,function(e){e.addEventListener(t,n)}),{destroy:function(){Array.prototype.forEach.call(e,function(e){e.removeEventListener(t,n)})}}}function a(e,t,n){return l(document.body,e,t,n)}var c=e("./is"),l=e("delegate");t.exports=i},{"./is":3,delegate:2}],5:[function(e,t,n){function i(e){var t;if("SELECT"===e.nodeName)e.focus(),t=e.value;else if("INPUT"===e.nodeName||"TEXTAREA"===e.nodeName)e.focus(),e.setSelectionRange(0,e.value.length),t=e.value;else{e.hasAttribute("contenteditable")&&e.focus();var n=window.getSelection(),i=document.createRange();i.selectNodeContents(e),n.removeAllRanges(),n.addRange(i),t=n.toString()}return t}t.exports=i},{}],6:[function(e,t,n){function i(){}i.prototype={on:function(e,t,n){var i=this.e||(this.e={});return(i[e]||(i[e]=[])).push({fn:t,ctx:n}),this},once:function(e,t,n){function i(){o.off(e,i),t.apply(n,arguments)}var o=this;return i._=t,this.on(e,i,n)},emit:function(e){var t=[].slice.call(arguments,1),n=((this.e||(this.e={}))[e]||[]).slice(),i=0,o=n.length;for(i;i<o;i++)n[i].fn.apply(n[i].ctx,t);return this},off:function(e,t){var n=this.e||(this.e={}),i=n[e],o=[];if(i&&t)for(var r=0,a=i.length;r<a;r++)i[r].fn!==t&&i[r].fn._!==t&&o.push(i[r]);return o.length?n[e]=o:delete n[e],this}},t.exports=i},{}],7:[function(t,n,i){!function(o,r){if("function"==typeof e&&e.amd)e(["module","select"],r);else if("undefined"!=typeof i)r(n,t("select"));else{var a={exports:{}};r(a,o.select),o.clipboardAction=a.exports}}(this,function(e,t){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var o=n(t),r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},a=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),c=function(){function e(t){i(this,e),this.resolveOptions(t),this.initSelection()}return a(e,[{key:"resolveOptions",value:function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action=t.action,this.emitter=t.emitter,this.target=t.target,this.text=t.text,this.trigger=t.trigger,this.selectedText=""}},{key:"initSelection",value:function e(){this.text?this.selectFake():this.target&&this.selectTarget()}},{key:"selectFake",value:function e(){var t=this,n="rtl"==document.documentElement.getAttribute("dir");this.removeFake(),this.fakeHandlerCallback=function(){return t.removeFake()},this.fakeHandler=document.body.addEventListener("click",this.fakeHandlerCallback)||!0,this.fakeElem=document.createElement("textarea"),this.fakeElem.style.fontSize="12pt",this.fakeElem.style.border="0",this.fakeElem.style.padding="0",this.fakeElem.style.margin="0",this.fakeElem.style.position="absolute",this.fakeElem.style[n?"right":"left"]="-9999px";var i=window.pageYOffset||document.documentElement.scrollTop;this.fakeElem.addEventListener("focus",window.scrollTo(0,i)),this.fakeElem.style.top=i+"px",this.fakeElem.setAttribute("readonly",""),this.fakeElem.value=this.text,document.body.appendChild(this.fakeElem),this.selectedText=(0,o.default)(this.fakeElem),this.copyText()}},{key:"removeFake",value:function e(){this.fakeHandler&&(document.body.removeEventListener("click",this.fakeHandlerCallback),this.fakeHandler=null,this.fakeHandlerCallback=null),this.fakeElem&&(document.body.removeChild(this.fakeElem),this.fakeElem=null)}},{key:"selectTarget",value:function e(){this.selectedText=(0,o.default)(this.target),this.copyText()}},{key:"copyText",value:function e(){var t=void 0;try{t=document.execCommand(this.action)}catch(e){t=!1}this.handleResult(t)}},{key:"handleResult",value:function e(t){this.emitter.emit(t?"success":"error",{action:this.action,text:this.selectedText,trigger:this.trigger,clearSelection:this.clearSelection.bind(this)})}},{key:"clearSelection",value:function e(){this.target&&this.target.blur(),window.getSelection().removeAllRanges()}},{key:"destroy",value:function e(){this.removeFake()}},{key:"action",set:function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"copy";if(this._action=t,"copy"!==this._action&&"cut"!==this._action)throw new Error('Invalid "action" value, use either "copy" or "cut"')},get:function e(){return this._action}},{key:"target",set:function e(t){if(void 0!==t){if(!t||"object"!==("undefined"==typeof t?"undefined":r(t))||1!==t.nodeType)throw new Error('Invalid "target" value, use a valid Element');if("copy"===this.action&&t.hasAttribute("disabled"))throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');if("cut"===this.action&&(t.hasAttribute("readonly")||t.hasAttribute("disabled")))throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');this._target=t}},get:function e(){return this._target}}]),e}();e.exports=c})},{select:5}],8:[function(t,n,i){!function(o,r){if("function"==typeof e&&e.amd)e(["module","./clipboard-action","tiny-emitter","good-listener"],r);else if("undefined"!=typeof i)r(n,t("./clipboard-action"),t("tiny-emitter"),t("good-listener"));else{var a={exports:{}};r(a,o.clipboardAction,o.tinyEmitter,o.goodListener),o.clipboard=a.exports}}(this,function(e,t,n,i){"use strict";function o(e){return e&&e.__esModule?e:{default:e}}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function a(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function c(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}function l(e,t){var n="data-clipboard-"+e;if(t.hasAttribute(n))return t.getAttribute(n)}var s=o(t),u=o(n),f=o(i),d=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),h=function(e){function t(e,n){r(this,t);var i=a(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return i.resolveOptions(n),i.listenClick(e),i}return c(t,e),d(t,[{key:"resolveOptions",value:function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action="function"==typeof t.action?t.action:this.defaultAction,this.target="function"==typeof t.target?t.target:this.defaultTarget,this.text="function"==typeof t.text?t.text:this.defaultText}},{key:"listenClick",value:function e(t){var n=this;this.listener=(0,f.default)(t,"click",function(e){return n.onClick(e)})}},{key:"onClick",value:function e(t){var n=t.delegateTarget||t.currentTarget;this.clipboardAction&&(this.clipboardAction=null),this.clipboardAction=new s.default({action:this.action(n),target:this.target(n),text:this.text(n),trigger:n,emitter:this})}},{key:"defaultAction",value:function e(t){return l("action",t)}},{key:"defaultTarget",value:function e(t){var n=l("target",t);if(n)return document.querySelector(n)}},{key:"defaultText",value:function e(t){return l("text",t)}},{key:"destroy",value:function e(){this.listener.destroy(),this.clipboardAction&&(this.clipboardAction.destroy(),this.clipboardAction=null)}}]),t}(u.default);e.exports=h})},{"./clipboard-action":7,"good-listener":4,"tiny-emitter":6}]},{},[8])(8)});
+(function ( $ ) {
+
+    /**
+     * Holds google map object and related utility entities.
+     * @constructor
+     */
+    function GMapContext(domElement, options) {
+        var _map = new google.maps.Map(domElement, options);
+        var _marker = new google.maps.Marker({
+            position: new google.maps.LatLng(54.19335, -3.92695),
+            map: _map,
+            title: "Drag Me",
+            draggable: options.draggable
+        });
+        return {
+            map: _map,
+            marker: _marker,
+            circle: null,
+            location: _marker.position,
+            radius: options.radius,
+            locationName: options.locationName,
+            addressComponents: {
+                formatted_address: null,
+                addressLine1: null,
+                addressLine2: null,
+                streetName: null,
+                streetNumber: null,
+                city: null,
+                district: null,
+                state: null,
+                stateOrProvince: null
+            },
+            settings: options.settings,
+            domContainer: domElement,
+            geodecoder: new google.maps.Geocoder()
+        }
+    }
+
+    // Utility functions for Google Map Manipulations
+    var GmUtility = {
+        /**
+         * Draw a circle over the the map. Returns circle object.
+         * Also writes new circle object in gmapContext.
+         *
+         * @param center - LatLng of the center of the circle
+         * @param radius - radius in meters
+         * @param gmapContext - context
+         * @param options
+         */
+        drawCircle: function(gmapContext, center, radius, options) {
+            if (gmapContext.circle != null) {
+                gmapContext.circle.setMap(null);
+            }
+            if (radius > 0) {
+                radius *= 1;
+                options = $.extend({
+                    strokeColor: "#0000FF",
+                    strokeOpacity: 0.35,
+                    strokeWeight: 2,
+                    fillColor: "#0000FF",
+                    fillOpacity: 0.20
+                }, options);
+                options.map = gmapContext.map;
+                options.radius = radius;
+                options.center = center;
+                gmapContext.circle = new google.maps.Circle(options);
+                return gmapContext.circle;
+            }
+            return null;
+        },
+        /**
+         *
+         * @param gMapContext
+         * @param location
+         * @param callback
+         */
+        setPosition: function(gMapContext, location, callback) {
+            gMapContext.location = location;
+            gMapContext.marker.setPosition(location);
+            gMapContext.map.panTo(location);
+            this.drawCircle(gMapContext, location, gMapContext.radius, {});
+            if (gMapContext.settings.enableReverseGeocode) {
+                gMapContext.geodecoder.geocode({latLng: gMapContext.location}, function(results, status){
+                    if (status == google.maps.GeocoderStatus.OK && results.length > 0){
+                        gMapContext.locationName = results[0].formatted_address;
+                        gMapContext.addressComponents =
+                            GmUtility.address_component_from_google_geocode(results[0].address_components);
+                    }
+                    if (callback) {
+                        callback.call(this, gMapContext);
+                    }
+                });
+            } else {
+                if (callback) {
+                    callback.call(this, gMapContext);
+                }
+            }
+
+        },
+        locationFromLatLng: function(lnlg) {
+            return {latitude: lnlg.lat(), longitude: lnlg.lng()}
+        },
+        address_component_from_google_geocode: function(address_components) {
+            var result = {};
+            for (var i = address_components.length-1; i>=0; i--) {
+                var component = address_components[i];
+                // Postal code
+                if (component.types.indexOf('postal_code') >= 0) {
+                    result.postalCode = component.short_name;
+                }
+                // Street number
+                else if (component.types.indexOf('street_number') >= 0) {
+                    result.streetNumber = component.short_name;
+                }
+                // Street name
+                else if (component.types.indexOf('route') >= 0) {
+                    result.streetName = component.short_name;
+                }
+                // City
+                else if (component.types.indexOf('locality') >= 0) {
+                    result.city = component.short_name;
+                }
+                // District
+                else if (component.types.indexOf('sublocality') >= 0) {
+                    result.district = component.short_name;
+                }
+                // State \ Province
+                else if (component.types.indexOf('administrative_area_level_1') >= 0) {
+                    result.stateOrProvince = component.short_name;
+                }
+                // State \ Province
+                else if (component.types.indexOf('country') >= 0) {
+                    result.country = component.short_name;
+                }
+            }
+            result.addressLine1 = [result.streetNumber, result.streetName].join(' ').trim();
+            result.addressLine2 = '';
+            return result;
+        }
+    };
+
+    function isPluginApplied(domObj) {
+        return getContextForElement(domObj) != undefined;
+    }
+
+    function getContextForElement(domObj) {
+        return $(domObj).data("locationpicker");
+    }
+
+    function updateInputValues(inputBinding, gmapContext){
+        if (!inputBinding) return;
+        var currentLocation = GmUtility.locationFromLatLng(gmapContext.location);
+        if (inputBinding.latitudeInput) {
+            inputBinding.latitudeInput.val(currentLocation.latitude).change();
+        }
+        if (inputBinding.longitudeInput) {
+            inputBinding.longitudeInput.val(currentLocation.longitude).change();
+        }
+        if (inputBinding.radiusInput) {
+            inputBinding.radiusInput.val(gmapContext.radius).change();
+        }
+        if (inputBinding.locationNameInput) {
+            inputBinding.locationNameInput.val(gmapContext.locationName).change();
+        }
+    }
+
+    function setupInputListenersInput(inputBinding, gmapContext) {
+        if (inputBinding) {
+            if (inputBinding.radiusInput){
+                inputBinding.radiusInput.on("change", function(e) {
+                    if (!e.originalEvent) { return }
+                    gmapContext.radius = $(this).val();
+                    GmUtility.setPosition(gmapContext, gmapContext.location, function(context){
+                        context.settings.onchanged.apply(gmapContext.domContainer,
+                            [GmUtility.locationFromLatLng(context.location), context.radius, false]);
+                    });
+                });
+            }
+            if (inputBinding.locationNameInput && gmapContext.settings.enableAutocomplete) {
+                var blur = false;
+                gmapContext.autocomplete = new google.maps.places.Autocomplete(inputBinding.locationNameInput.get(0));
+                google.maps.event.addListener(gmapContext.autocomplete, 'place_changed', function() {
+                    blur = false;
+                    var place = gmapContext.autocomplete.getPlace();
+                    if (!place.geometry) {
+                        gmapContext.settings.onlocationnotfound(place.name);
+                        return;
+                    }
+                    GmUtility.setPosition(gmapContext, place.geometry.location, function(context) {
+                        updateInputValues(inputBinding, context);
+                        context.settings.onchanged.apply(gmapContext.domContainer,
+                            [GmUtility.locationFromLatLng(context.location), context.radius, false]);
+                    });
+                });
+                if(gmapContext.settings.enableAutocompleteBlur) {
+                  inputBinding.locationNameInput.on("change", function(e) {
+                    if (!e.originalEvent) { return }
+                    blur = true;
+                  });
+                  inputBinding.locationNameInput.on("blur", function(e) {
+                    if (!e.originalEvent) { return }
+                    setTimeout(function() {
+                        var address = $(inputBinding.locationNameInput).val();
+                        if (address.length > 5 && blur) {
+                            blur = false;
+                            gmapContext.geodecoder.geocode({'address': address}, function(results, status) {
+                                if(status == google.maps.GeocoderStatus.OK  && results && results.length) {
+                                    GmUtility.setPosition(gmapContext, results[0].geometry.location, function(context) {
+                                        updateInputValues(inputBinding, context);
+                                        context.settings.onchanged.apply(gmapContext.domContainer,
+                                            [GmUtility.locationFromLatLng(context.location), context.radius, false]);
+                                    });
+                                }
+                            });
+                        }
+                    }, 1000);
+                  });
+                }
+            }
+            if (inputBinding.latitudeInput) {
+                inputBinding.latitudeInput.on("change", function(e) {
+                    if (!e.originalEvent) { return }
+                    GmUtility.setPosition(gmapContext, new google.maps.LatLng($(this).val(), gmapContext.location.lng()), function(context){
+                        context.settings.onchanged.apply(gmapContext.domContainer,
+                            [GmUtility.locationFromLatLng(context.location), context.radius, false]);
+                    });
+                });
+            }
+            if (inputBinding.longitudeInput) {
+                inputBinding.longitudeInput.on("change", function(e) {
+                    if (!e.originalEvent) { return }
+                    GmUtility.setPosition(gmapContext, new google.maps.LatLng(gmapContext.location.lat(), $(this).val()), function(context){
+                        context.settings.onchanged.apply(gmapContext.domContainer,
+                            [GmUtility.locationFromLatLng(context.location), context.radius, false]);
+                    });
+                });
+            }
+        }
+    }
+
+    function autosize(gmapContext) {
+        google.maps.event.trigger(gmapContext.map, 'resize');
+        setTimeout(function() {
+            gmapContext.map.setCenter(gmapContext.marker.position);
+        }, 300);
+    }
+
+    function updateMap(gmapContext, $target, options) {
+        var settings = $.extend({}, $.fn.locationpicker.defaults, options ),
+            latNew = settings.location.latitude,
+            lngNew = settings.location.longitude,
+            radiusNew = settings.radius,
+            latOld = gmapContext.settings.location.latitude,
+            lngOld = gmapContext.settings.location.longitude,
+            radiusOld = gmapContext.settings.radius;
+        
+        if (latNew == latOld && lngNew == lngOld && radiusNew == radiusOld)
+        return;
+
+        gmapContext.settings.location.latitude = latNew;
+        gmapContext.settings.location.longitude = lngNew;
+        gmapContext.radius = radiusNew;
+
+        GmUtility.setPosition(gmapContext, new google.maps.LatLng(gmapContext.settings.location.latitude, gmapContext.settings.location.longitude), function(context){
+            setupInputListenersInput(gmapContext.settings.inputBinding, gmapContext);
+            context.settings.oninitialized($target);
+        });
+    }
+    /**
+     * Initializeialization:
+     *  $("#myMap").locationpicker(options);
+     * @param options
+     * @param params
+     * @returns {*}
+     */
+    $.fn.locationpicker = function( options, params ) {
+        if (typeof options == 'string') { // Command provided
+            var _targetDomElement = this.get(0);
+            // Plug-in is not applied - nothing to do.
+            if (!isPluginApplied(_targetDomElement)) return;
+            var gmapContext = getContextForElement(_targetDomElement);
+            switch (options) {
+                case "location":
+                    if (params == undefined) { // Getter
+                        var location = GmUtility.locationFromLatLng(gmapContext.location);
+                        location.radius = gmapContext.radius;
+                        location.name = gmapContext.locationName;
+                        return location;
+                    } else { // Setter
+                        if (params.radius) {
+                            gmapContext.radius = params.radius;
+                        }
+                        GmUtility.setPosition(gmapContext, new google.maps.LatLng(params.latitude, params.longitude), function(gmapContext) {
+                            updateInputValues(gmapContext.settings.inputBinding, gmapContext);
+                        });
+                    }
+                    break;
+                case "subscribe":
+                    /**
+                     * Provides interface for subscribing for GoogleMap events.
+                     * See Google API documentation for details.
+                     * Parameters:
+                     * - event: string, name of the event
+                     * - callback: function, callback function to be invoked
+                     */
+                    if (params == undefined) { // Getter is not available
+                        return null;
+                    } else {
+                        var event = params.event;
+                        var callback = params.callback;
+                        if (!event || ! callback) {
+                            console.error("LocationPicker: Invalid arguments for method \"subscribe\"")
+                            return null;
+                        }
+                        google.maps.event.addListener(gmapContext.map, event, callback);
+                    }
+                    break;
+                case "map":
+                    /**
+                     * Returns object which allows access actual google widget and marker paced on it.
+                     * Structure: {
+                     *  map: Instance of the google map widget
+                     *  marker: marker placed on map
+                     * }
+                     */
+                    if (params == undefined) { // Getter
+                        var locationObj = GmUtility.locationFromLatLng(gmapContext.location);
+                        locationObj.formattedAddress = gmapContext.locationName;
+                        locationObj.addressComponents = gmapContext.addressComponents;
+                        return {
+                            map: gmapContext.map,
+                            marker: gmapContext.marker,
+                            location: locationObj
+                        }
+                    } else { // Setter is not available
+                        return null;
+                    }
+                case "autosize":
+                    autosize(gmapContext);
+                    return this;
+            }
+            return null;
+        }
+        return this.each(function() {
+            var $target = $(this);
+            // If plug-in hasn't been applied before - initialize, otherwise - skip
+            if (isPluginApplied(this)){
+              updateMap(getContextForElement(this), $(this), options);
+              return;  
+            } 
+            // Plug-in initialization is required
+            // Defaults
+            var settings = $.extend({}, $.fn.locationpicker.defaults, options );
+            // Initialize
+            var gmapContext = new GMapContext(this, {
+                zoom: settings.zoom,
+                center: new google.maps.LatLng(settings.location.latitude, settings.location.longitude),
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControl: false,
+                disableDoubleClickZoom: false,
+                scrollwheel: settings.scrollwheel,
+                streetViewControl: false,
+                radius: settings.radius,
+                locationName: settings.locationName,
+                settings: settings,
+                draggable: settings.draggable
+            });
+            $target.data("locationpicker", gmapContext);
+            // Subscribe GMap events
+            google.maps.event.addListener(gmapContext.marker, "dragend", function(event) {
+                GmUtility.setPosition(gmapContext, gmapContext.marker.position, function(context){
+                    var currentLocation = GmUtility.locationFromLatLng(gmapContext.location);
+                    context.settings.onchanged.apply(gmapContext.domContainer, [currentLocation, context.radius, true]);
+                    updateInputValues(gmapContext.settings.inputBinding, gmapContext);
+                });
+            });
+            GmUtility.setPosition(gmapContext, new google.maps.LatLng(settings.location.latitude, settings.location.longitude), function(context){
+                updateInputValues(settings.inputBinding, gmapContext);
+                // Set  input bindings if needed
+                setupInputListenersInput(settings.inputBinding, gmapContext);
+                context.settings.oninitialized($target);
+            });
+        });
+    };
+    $.fn.locationpicker.defaults = {
+        location: {latitude: 40.7324319, longitude: -73.82480777777776},
+        locationName: "",
+        radius: 500,
+        zoom: 15,
+        scrollwheel: true,
+        inputBinding: {
+            latitudeInput: null,
+            longitudeInput: null,
+            radiusInput: null,
+            locationNameInput: null
+        },
+        enableAutocomplete: false,
+        enableAutocompleteBlur: false,
+        enableReverseGeocode: true,
+        draggable: true,
+        onchanged: function(currentLocation, radius, isMarkerDropped) {},
+        onlocationnotfound: function(locationName) {},
+        oninitialized: function (component) {}
+    }
+}( jQuery ));
+"use strict";!function(a){a.fn.circliful=function(b,c){var d=a.extend({foregroundColor:"#3498DB",backgroundColor:"#ccc",pointColor:"none",fillColor:"none",foregroundBorderWidth:15,backgroundBorderWidth:15,pointSize:28.5,fontColor:"#aaa",percent:75,animation:1,animationStep:5,icon:"none",iconSize:"30",iconColor:"#ccc",iconPosition:"top",target:0,start:0,showPercent:1,percentageTextSize:22,textAdditionalCss:"",targetPercent:0,targetTextSize:17,targetColor:"#2980B9",text:null,textStyle:null,textColor:"#666",multiPercentage:0,percentages:null,textBelow:!1,noPercentageSign:!1,replacePercentageByText:null,halfCircle:!1,animateInView:!1,decimals:0,alwaysDecimals:!1},b);return this.each(function(){function y(){var a=window.setInterval(function(){r>=x?(window.clearInterval(a),t=1,"function"==typeof c&&c.call(this)):(r+=s,u+=v),r/3.6>=e&&1==t&&(r=3.6*e),u>d.target&&1==t&&(u=d.target),null==d.replacePercentageByText&&(w=d.halfCircle?parseFloat(100*r/360*2):parseFloat(100*r/360),w=w.toFixed(d.decimals),!d.alwaysDecimals&&(0==e||e>1&&1!=t)&&(w=parseInt(w))),o.attr("stroke-dasharray",r+", 20000"),1==d.showPercent?p.find(".number").text(w):(p.find(".number").text(u),p.find(".percent").text(""))}.bind(o),q)}function z(){var b=navigator.userAgent.toLowerCase().indexOf("webkit")!=-1?"body":"html",c=a(b).scrollTop(),d=c+a(window).height(),e=Math.round(o.offset().top),f=e+o.height();return e<d&&f>c}function A(){o.hasClass("start")||z(o)&&(o.addClass("start"),setTimeout(y,250))}function B(b,c){a.each(b,function(a,d){a.toLowerCase()in c&&(b[a]=c[a.toLowerCase()])})}var b=a(this);B(d,b.data());var j,k,l,e=d.percent,f=83,g=100,h=100,i=100,m=d.backgroundBorderWidth;if(d.halfCircle?"left"==d.iconPosition?(g=80,f=100,i=117,h=100):d.halfCircle&&(f=80,h=100):"bottom"==d.iconPosition?(f=124,h=95):"left"==d.iconPosition?(g=80,f=110,i=117):"middle"==d.iconPosition?1==d.multiPercentage?"object"==typeof d.percentages?m=30:(f=110,k='<g stroke="'+("none"!=d.backgroundColor?d.backgroundColor:"#ccc")+'" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>',k+='<g stroke="'+("none"!=d.backgroundColor?d.backgroundColor:"#ccc")+'" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>',i=228,h=47):(f=110,k='<g stroke="'+("none"!=d.backgroundColor?d.backgroundColor:"#ccc")+'" ><line x1="133" y1="50" x2="140" y2="40" stroke-width="2"  /></g>',k+='<g stroke="'+("none"!=d.backgroundColor?d.backgroundColor:"#ccc")+'" ><line x1="140" y1="40" x2="200" y2="40" stroke-width="2"  /></g>',i=170,h=35):"right"==d.iconPosition&&(g=120,f=110,i=80),d.targetPercent>0&&(h=95,k='<g stroke="'+("none"!=d.backgroundColor?d.backgroundColor:"#ccc")+'" ><line x1="75" y1="101" x2="125" y2="101" stroke-width="1"  /></g>',k+='<text text-anchor="middle" x="'+i+'" y="120" style="font-size: '+d.targetTextSize+'px;" fill="'+d.targetColor+'">'+d.targetPercent+(d.noPercentageSign&&null==d.replacePercentageByText?"":"%")+"</text>",k+='<circle cx="100" cy="100" r="69" fill="none" stroke="'+d.backgroundColor+'" stroke-width="3" stroke-dasharray="450" transform="rotate(-90,100,100)" />',k+='<circle cx="100" cy="100" r="69" fill="none" stroke="'+d.targetColor+'" stroke-width="3" stroke-dasharray="'+3.6*d.targetPercent+', 20000" transform="rotate(-90,100,100)" />'),null!=d.text&&(d.halfCircle?d.textBelow?k+='<text text-anchor="middle" x="100" y="120" style="'+d.textStyle+'" fill="'+d.textColor+'">'+d.text+"</text>":0==d.multiPercentage?k+='<text text-anchor="middle" x="100" y="115" style="'+d.textStyle+'" fill="'+d.textColor+'">'+d.text+"</text>":1==d.multiPercentage&&(k+='<text text-anchor="middle" x="228" y="65" style="'+d.textStyle+'" fill="'+d.textColor+'">'+d.text+"</text>"):d.textBelow?k+='<text text-anchor="middle" x="100" y="190" style="'+d.textStyle+'" fill="'+d.textColor+'">'+d.text+"</text>":0==d.multiPercentage?k+='<text text-anchor="middle" x="100" y="115" style="'+d.textStyle+'" fill="'+d.textColor+'">'+d.text+"</text>":1==d.multiPercentage&&(k+='<text text-anchor="middle" x="228" y="65" style="'+d.textStyle+'" fill="'+d.textColor+'">'+d.text+"</text>")),"none"!=d.icon&&(l='<text text-anchor="middle" x="'+g+'" y="'+f+'" class="icon" style="font-size: '+d.iconSize+'px" fill="'+d.iconColor+'">&#x'+d.icon+"</text>"),d.halfCircle){var n='transform="rotate(-180,100,100)"';b.addClass("svg-container").append(a('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 194 186" class="circliful">'+k+'<clipPath id="cut-off-bottom"> <rect x="100" y="0" width="100" height="200" /> </clipPath><circle cx="100" cy="100" r="57" class="border" fill="'+d.fillColor+'" stroke="'+d.backgroundColor+'" stroke-width="'+m+'" stroke-dasharray="360" clip-path="url(#cut-off-bottom)" transform="rotate(-90,100,100)" /><circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="'+d.foregroundColor+'" stroke-width="'+d.foregroundBorderWidth+'" stroke-dasharray="0,20000" '+n+' /><circle cx="100" cy="100" r="'+d.pointSize+'" fill="'+d.pointColor+'" clip-path="url(#cut-off-bottom)" transform="rotate(-90,100,100)" />'+l+'<text class="timer" text-anchor="middle" x="'+i+'" y="'+h+'" style="font-size: '+d.percentageTextSize+"px; "+j+";"+d.textAdditionalCss+'" fill="'+d.fontColor+'"><tspan class="number">'+(null==d.replacePercentageByText?0:d.replacePercentageByText)+'</tspan><tspan class="percent">'+(d.noPercentageSign||null!=d.replacePercentageByText?"":"%")+"</tspan></text>"))}else b.addClass("svg-container").append(a('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 194 186" class="circliful">'+k+'<circle cx="100" cy="100" r="57" class="border" fill="'+d.fillColor+'" stroke="'+d.backgroundColor+'" stroke-width="'+m+'" stroke-dasharray="360" transform="rotate(-90,100,100)" /><circle class="circle" cx="100" cy="100" r="57" class="border" fill="none" stroke="'+d.foregroundColor+'" stroke-width="'+d.foregroundBorderWidth+'" stroke-dasharray="0,20000" transform="rotate(-90,100,100)" /><circle cx="100" cy="100" r="'+d.pointSize+'" fill="'+d.pointColor+'" />'+l+'<text class="timer" text-anchor="middle" x="'+i+'" y="'+h+'" style="font-size: '+d.percentageTextSize+"px; "+j+";"+d.textAdditionalCss+'" fill="'+d.fontColor+'"><tspan class="number">'+(null==d.replacePercentageByText?0:d.replacePercentageByText)+'</tspan><tspan class="percent">'+(d.noPercentageSign||null!=d.replacePercentageByText?"":"%")+"</tspan></text>"));var o=b.find(".circle"),p=b.find(".timer"),q=30,r=0,s=d.animationStep,t=0,u=0,v=0,w=e,x=3.6*e;d.halfCircle&&(x=3.6*e/2),null!=d.replacePercentageByText&&(w=d.replacePercentageByText),d.start>0&&d.target>0&&(e=d.start/(d.target/100),v=d.target/100),1==d.animation?d.animateInView?a(window).scroll(function(){A()}):y():(o.attr("stroke-dasharray",x+", 20000"),1==d.showPercent?p.find(".number").text(w):(p.find(".number").text(d.target),p.find(".percent").text("")))})}}(jQuery);
+/* ------------------------------------------------------------------------
+	Class: prettyPhoto
+	Use: Lightbox clone for jQuery
+	Author: Stephane Caron (http://www.no-margin-for-errors.com)
+	Version: 3.1.5
+------------------------------------------------------------------------- */
+(function(e){function t(){var e=location.href;hashtag=e.indexOf("#prettyPhoto")!==-1?decodeURI(e.substring(e.indexOf("#prettyPhoto")+1,e.length)):false;return hashtag}function n(){if(typeof theRel=="undefined")return;location.hash=theRel+"/"+rel_index+"/"}function r(){if(location.href.indexOf("#prettyPhoto")!==-1)location.hash="prettyPhoto"}function i(e,t){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var n="[\\?&]"+e+"=([^&#]*)";var r=new RegExp(n);var i=r.exec(t);return i==null?"":i[1]}e.prettyPhoto={version:"3.1.5"};e.fn.prettyPhoto=function(s){function g(){e(".pp_loaderIcon").hide();projectedTop=scroll_pos["scrollTop"]+(d/2-a["containerHeight"]/2);if(projectedTop<0)projectedTop=0;$ppt.fadeTo(settings.animation_speed,1);$pp_pic_holder.find(".pp_content").animate({height:a["contentHeight"],width:a["contentWidth"]},settings.animation_speed);$pp_pic_holder.animate({top:projectedTop,left:v/2-a["containerWidth"]/2<0?0:v/2-a["containerWidth"]/2,width:a["containerWidth"]},settings.animation_speed,function(){$pp_pic_holder.find(".pp_hoverContainer,#fullResImage").height(a["height"]).width(a["width"]);$pp_pic_holder.find(".pp_fade").fadeIn(settings.animation_speed);if(isSet&&S(pp_images[set_position])=="image"){$pp_pic_holder.find(".pp_hoverContainer").show()}else{$pp_pic_holder.find(".pp_hoverContainer").hide()}if(settings.allow_expand){if(a["resized"]){e("a.pp_expand,a.pp_contract").show()}else{e("a.pp_expand").hide()}}if(settings.autoplay_slideshow&&!m&&!f)e.prettyPhoto.startSlideshow();settings.changepicturecallback();f=true});C();s.ajaxcallback()}function y(t){$pp_pic_holder.find("#pp_full_res object,#pp_full_res embed").css("visibility","hidden");$pp_pic_holder.find(".pp_fade").fadeOut(settings.animation_speed,function(){e(".pp_loaderIcon").show();t()})}function b(t){t>1?e(".pp_nav").show():e(".pp_nav").hide()}function w(e,t){resized=false;E(e,t);imageWidth=e,imageHeight=t;if((p>v||h>d)&&doresize&&settings.allow_resize&&!u){resized=true,fitting=false;while(!fitting){if(p>v){imageWidth=v-200;imageHeight=t/e*imageWidth}else if(h>d){imageHeight=d-200;imageWidth=e/t*imageHeight}else{fitting=true}h=imageHeight,p=imageWidth}if(p>v||h>d){w(p,h)}E(imageWidth,imageHeight)}return{width:Math.floor(imageWidth),height:Math.floor(imageHeight),containerHeight:Math.floor(h),containerWidth:Math.floor(p)+settings.horizontal_padding*2,contentHeight:Math.floor(l),contentWidth:Math.floor(c),resized:resized}}function E(t,n){t=parseFloat(t);n=parseFloat(n);$pp_details=$pp_pic_holder.find(".pp_details");$pp_details.width(t);detailsHeight=parseFloat($pp_details.css("marginTop"))+parseFloat($pp_details.css("marginBottom"));$pp_details=$pp_details.clone().addClass(settings.theme).width(t).appendTo(e("body")).css({position:"absolute",top:-1e4});detailsHeight+=$pp_details.height();detailsHeight=detailsHeight<=34?36:detailsHeight;$pp_details.remove();$pp_title=$pp_pic_holder.find(".ppt");$pp_title.width(t);titleHeight=parseFloat($pp_title.css("marginTop"))+parseFloat($pp_title.css("marginBottom"));$pp_title=$pp_title.clone().appendTo(e("body")).css({position:"absolute",top:-1e4});titleHeight+=$pp_title.height();$pp_title.remove();l=n+detailsHeight;c=t;h=l+titleHeight+$pp_pic_holder.find(".pp_top").height()+$pp_pic_holder.find(".pp_bottom").height();p=t}function S(e){if(e.match(/youtube\.com\/watch/i)||e.match(/youtu\.be/i)){return"youtube"}else if(e.match(/vimeo\.com/i)){return"vimeo"}else if(e.match(/\b.mov\b/i)){return"quicktime"}else if(e.match(/\b.swf\b/i)){return"flash"}else if(e.match(/\biframe=true\b/i)){return"iframe"}else if(e.match(/\bajax=true\b/i)){return"ajax"}else if(e.match(/\bcustom=true\b/i)){return"custom"}else if(e.substr(0,1)=="#"){return"inline"}else{return"image"}}function x(){if(doresize&&typeof $pp_pic_holder!="undefined"){scroll_pos=T();contentHeight=$pp_pic_holder.height(),contentwidth=$pp_pic_holder.width();projectedTop=d/2+scroll_pos["scrollTop"]-contentHeight/2;if(projectedTop<0)projectedTop=0;if(contentHeight>d)return;$pp_pic_holder.css({top:projectedTop,left:v/2+scroll_pos["scrollLeft"]-contentwidth/2})}}function T(){if(self.pageYOffset){return{scrollTop:self.pageYOffset,scrollLeft:self.pageXOffset}}else if(document.documentElement&&document.documentElement.scrollTop){return{scrollTop:document.documentElement.scrollTop,scrollLeft:document.documentElement.scrollLeft}}else if(document.body){return{scrollTop:document.body.scrollTop,scrollLeft:document.body.scrollLeft}}}function N(){d=e(window).height(),v=e(window).width();if(typeof $pp_overlay!="undefined")$pp_overlay.height(e(document).height()).width(v)}function C(){if(isSet&&settings.overlay_gallery&&S(pp_images[set_position])=="image"){itemWidth=52+5;navWidth=settings.theme=="facebook"||settings.theme=="pp_default"?50:30;itemsPerPage=Math.floor((a["containerWidth"]-100-navWidth)/itemWidth);itemsPerPage=itemsPerPage<pp_images.length?itemsPerPage:pp_images.length;totalPage=Math.ceil(pp_images.length/itemsPerPage)-1;if(totalPage==0){navWidth=0;$pp_gallery.find(".pp_arrow_next,.pp_arrow_previous").hide()}else{$pp_gallery.find(".pp_arrow_next,.pp_arrow_previous").show()}galleryWidth=itemsPerPage*itemWidth;fullGalleryWidth=pp_images.length*itemWidth;$pp_gallery.css("margin-left",-(galleryWidth/2+navWidth/2)).find("div:first").width(galleryWidth+5).find("ul").width(fullGalleryWidth).find("li.selected").removeClass("selected");goToPage=Math.floor(set_position/itemsPerPage)<totalPage?Math.floor(set_position/itemsPerPage):totalPage;e.prettyPhoto.changeGalleryPage(goToPage);$pp_gallery_li.filter(":eq("+set_position+")").addClass("selected")}else{$pp_pic_holder.find(".pp_content").unbind("mouseenter mouseleave")}}function k(t){if(settings.social_tools)facebook_like_link=settings.social_tools.replace("{location_href}",encodeURIComponent(location.href));settings.markup=settings.markup.replace("{pp_social}","");e("body").append(settings.markup);$pp_pic_holder=e(".pp_pic_holder"),$ppt=e(".ppt"),$pp_overlay=e("div.pp_overlay");if(isSet&&settings.overlay_gallery){currentGalleryPage=0;toInject="";for(var n=0;n<pp_images.length;n++){if(!pp_images[n].match(/\b(jpg|jpeg|png|gif)\b/gi)){classname="default";img_src=""}else{classname="";img_src=pp_images[n]}toInject+="<li class='"+classname+"'><a href='#'><img src='"+img_src+"' width='50' alt='' /></a></li>"}toInject=settings.gallery_markup.replace(/{gallery}/g,toInject);$pp_pic_holder.find("#pp_full_res").after(toInject);$pp_gallery=e(".pp_pic_holder .pp_gallery"),$pp_gallery_li=$pp_gallery.find("li");$pp_gallery.find(".pp_arrow_next").click(function(){e.prettyPhoto.changeGalleryPage("next");e.prettyPhoto.stopSlideshow();return false});$pp_gallery.find(".pp_arrow_previous").click(function(){e.prettyPhoto.changeGalleryPage("previous");e.prettyPhoto.stopSlideshow();return false});$pp_pic_holder.find(".pp_content").hover(function(){$pp_pic_holder.find(".pp_gallery:not(.disabled)").fadeIn()},function(){$pp_pic_holder.find(".pp_gallery:not(.disabled)").fadeOut()});itemWidth=52+5;$pp_gallery_li.each(function(t){e(this).find("a").click(function(){e.prettyPhoto.changePage(t);e.prettyPhoto.stopSlideshow();return false})})}if(settings.slideshow){$pp_pic_holder.find(".pp_nav").prepend('<a href="#" class="pp_play">Play</a>');$pp_pic_holder.find(".pp_nav .pp_play").click(function(){e.prettyPhoto.startSlideshow();return false})}$pp_pic_holder.attr("class","pp_pic_holder "+settings.theme);$pp_overlay.css({opacity:0,height:e(document).height(),width:e(window).width()}).bind("click",function(){if(!settings.modal)e.prettyPhoto.close()});e("a.pp_close").bind("click",function(){e.prettyPhoto.close();return false});if(settings.allow_expand){e("a.pp_expand").bind("click",function(t){if(e(this).hasClass("pp_expand")){e(this).removeClass("pp_expand").addClass("pp_contract");doresize=false}else{e(this).removeClass("pp_contract").addClass("pp_expand");doresize=true}y(function(){e.prettyPhoto.open()});return false})}$pp_pic_holder.find(".pp_previous, .pp_nav .pp_arrow_previous").bind("click",function(){e.prettyPhoto.changePage("previous");e.prettyPhoto.stopSlideshow();return false});$pp_pic_holder.find(".pp_next, .pp_nav .pp_arrow_next").bind("click",function(){e.prettyPhoto.changePage("next");e.prettyPhoto.stopSlideshow();return false});x()}s=jQuery.extend({hook:"rel",animation_speed:"fast",ajaxcallback:function(){},slideshow:5e3,autoplay_slideshow:false,opacity:.8,show_title:true,allow_resize:true,allow_expand:true,default_width:500,default_height:344,counter_separator_label:"/",theme:"pp_default",horizontal_padding:20,hideflash:false,wmode:"opaque",autoplay:true,modal:false,deeplinking:true,overlay_gallery:true,overlay_gallery_max:30,keyboard_shortcuts:true,changepicturecallback:function(){},callback:function(){},ie6_fallback:true,markup:'<div class="pp_pic_holder"> 						<div class="ppt"> </div> 						<div class="pp_top"> 							<div class="pp_left"></div> 							<div class="pp_middle"></div> 							<div class="pp_right"></div> 						</div> 						<div class="pp_content_container"> 							<div class="pp_left"> 							<div class="pp_right"> 								<div class="pp_content"> 									<div class="pp_loaderIcon"></div> 									<div class="pp_fade"> 										<a href="#" class="pp_expand" title="Expand the image">Expand</a> 										<div class="pp_hoverContainer"> 											<a class="pp_next" href="#">next</a> 											<a class="pp_previous" href="#">previous</a> 										</div> 										<div id="pp_full_res"></div> 										<div class="pp_details"> 											<div class="pp_nav"> 												<a href="#" class="pp_arrow_previous">Previous</a> 												<p class="currentTextHolder">0/0</p> 												<a href="#" class="pp_arrow_next">Next</a> 											</div> 											<p class="pp_description"></p> 											<div class="pp_social">{pp_social}</div> 											<a class="pp_close" href="#">Close</a> 										</div> 									</div> 								</div> 							</div> 							</div> 						</div> 						<div class="pp_bottom"> 							<div class="pp_left"></div> 							<div class="pp_middle"></div> 							<div class="pp_right"></div> 						</div> 					</div> 					<div class="pp_overlay"></div>',gallery_markup:'<div class="pp_gallery"> 								<a href="#" class="pp_arrow_previous">Previous</a> 								<div> 									<ul> 										{gallery} 									</ul> 								</div> 								<a href="#" class="pp_arrow_next">Next</a> 							</div>',image_markup:'<img id="fullResImage" src="{path}" />',flash_markup:'<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="{width}" height="{height}"><param name="wmode" value="{wmode}" /><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="{path}" /><embed src="{path}" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="{width}" height="{height}" wmode="{wmode}"></embed></object>',quicktime_markup:'<object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab" height="{height}" width="{width}"><param name="src" value="{path}"><param name="autoplay" value="{autoplay}"><param name="type" value="video/quicktime"><embed src="{path}" height="{height}" width="{width}" autoplay="{autoplay}" type="video/quicktime" pluginspage="http://www.apple.com/quicktime/download/"></embed></object>',iframe_markup:'<iframe src ="{path}" width="{width}" height="{height}" frameborder="no"></iframe>',inline_markup:'<div class="pp_inline">{content}</div>',custom_markup:"",social_tools:'<div class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div><div class="facebook"><iframe src="//www.facebook.com/plugins/like.php?locale=en_US&href={location_href}&layout=button_count&show_faces=true&width=500&action=like&font&colorscheme=light&height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:23px;" allowTransparency="true"></iframe></div>'},s);var o=this,u=false,a,f,l,c,h,p,d=e(window).height(),v=e(window).width(),m;doresize=true,scroll_pos=T();e(window).unbind("resize.prettyphoto").bind("resize.prettyphoto",function(){x();N()});if(s.keyboard_shortcuts){e(document).unbind("keydown.prettyphoto").bind("keydown.prettyphoto",function(t){if(typeof $pp_pic_holder!="undefined"){if($pp_pic_holder.is(":visible")){switch(t.keyCode){case 37:e.prettyPhoto.changePage("previous");t.preventDefault();break;case 39:e.prettyPhoto.changePage("next");t.preventDefault();break;case 27:if(!settings.modal)e.prettyPhoto.close();t.preventDefault();break}}}})}e.prettyPhoto.initialize=function(){settings=s;if(settings.theme=="pp_default")settings.horizontal_padding=16;theRel=e(this).attr(settings.hook);galleryRegExp=/\[(?:.*)\]/;isSet=galleryRegExp.exec(theRel)?true:false;pp_images=isSet?jQuery.map(o,function(t,n){if(e(t).attr(settings.hook).indexOf(theRel)!=-1)return e(t).attr("href")}):e.makeArray(e(this).attr("href"));pp_titles=isSet?jQuery.map(o,function(t,n){if(e(t).attr(settings.hook).indexOf(theRel)!=-1)return e(t).find("img").attr("alt")?e(t).find("img").attr("alt"):""}):e.makeArray(e(this).find("img").attr("alt"));pp_descriptions=isSet?jQuery.map(o,function(t,n){if(e(t).attr(settings.hook).indexOf(theRel)!=-1)return e(t).attr("title")?e(t).attr("title"):""}):e.makeArray(e(this).attr("title"));if(pp_images.length>settings.overlay_gallery_max)settings.overlay_gallery=false;set_position=jQuery.inArray(e(this).attr("href"),pp_images);rel_index=isSet?set_position:e("a["+settings.hook+"^='"+theRel+"']").index(e(this));k(this);if(settings.allow_resize)e(window).bind("scroll.prettyphoto",function(){x()});e.prettyPhoto.open();return false};e.prettyPhoto.open=function(t){if(typeof settings=="undefined"){settings=s;pp_images=e.makeArray(arguments[0]);pp_titles=arguments[1]?e.makeArray(arguments[1]):e.makeArray("");pp_descriptions=arguments[2]?e.makeArray(arguments[2]):e.makeArray("");isSet=pp_images.length>1?true:false;set_position=arguments[3]?arguments[3]:0;k(t.target)}if(settings.hideflash)e("object,embed,iframe[src*=youtube],iframe[src*=vimeo]").css("visibility","hidden");b(e(pp_images).size());e(".pp_loaderIcon").show();if(settings.deeplinking)n();if(settings.social_tools){facebook_like_link=settings.social_tools.replace("{location_href}",encodeURIComponent(location.href));$pp_pic_holder.find(".pp_social").html(facebook_like_link)}if($ppt.is(":hidden"))$ppt.css("opacity",0).show();$pp_overlay.show().fadeTo(settings.animation_speed,settings.opacity);$pp_pic_holder.find(".currentTextHolder").text(set_position+1+settings.counter_separator_label+e(pp_images).size());if(typeof pp_descriptions[set_position]!="undefined"&&pp_descriptions[set_position]!=""){$pp_pic_holder.find(".pp_description").show().html(unescape(pp_descriptions[set_position]))}else{$pp_pic_holder.find(".pp_description").hide()}movie_width=parseFloat(i("width",pp_images[set_position]))?i("width",pp_images[set_position]):settings.default_width.toString();movie_height=parseFloat(i("height",pp_images[set_position]))?i("height",pp_images[set_position]):settings.default_height.toString();u=false;if(movie_height.indexOf("%")!=-1){movie_height=parseFloat(e(window).height()*parseFloat(movie_height)/100-150);u=true}if(movie_width.indexOf("%")!=-1){movie_width=parseFloat(e(window).width()*parseFloat(movie_width)/100-150);u=true}$pp_pic_holder.fadeIn(function(){settings.show_title&&pp_titles[set_position]!=""&&typeof pp_titles[set_position]!="undefined"?$ppt.html(unescape(pp_titles[set_position])):$ppt.html(" ");imgPreloader="";skipInjection=false;switch(S(pp_images[set_position])){case"image":imgPreloader=new Image;nextImage=new Image;if(isSet&&set_position<e(pp_images).size()-1)nextImage.src=pp_images[set_position+1];prevImage=new Image;if(isSet&&pp_images[set_position-1])prevImage.src=pp_images[set_position-1];$pp_pic_holder.find("#pp_full_res")[0].innerHTML=settings.image_markup.replace(/{path}/g,pp_images[set_position]);imgPreloader.onload=function(){a=w(imgPreloader.width,imgPreloader.height);g()};imgPreloader.onerror=function(){alert("Image cannot be loaded. Make sure the path is correct and image exist.");e.prettyPhoto.close()};imgPreloader.src=pp_images[set_position];break;case"youtube":a=w(movie_width,movie_height);movie_id=i("v",pp_images[set_position]);if(movie_id==""){movie_id=pp_images[set_position].split("youtu.be/");movie_id=movie_id[1];if(movie_id.indexOf("?")>0)movie_id=movie_id.substr(0,movie_id.indexOf("?"));if(movie_id.indexOf("&")>0)movie_id=movie_id.substr(0,movie_id.indexOf("&"))}movie="http://www.youtube.com/embed/"+movie_id;i("rel",pp_images[set_position])?movie+="?rel="+i("rel",pp_images[set_position]):movie+="?rel=1";if(settings.autoplay)movie+="&autoplay=1";toInject=settings.iframe_markup.replace(/{width}/g,a["width"]).replace(/{height}/g,a["height"]).replace(/{wmode}/g,settings.wmode).replace(/{path}/g,movie);break;case"vimeo":a=w(movie_width,movie_height);movie_id=pp_images[set_position];var t=/http(s?):\/\/(www\.)?vimeo.com\/(\d+)/;var n=movie_id.match(t);movie="http://player.vimeo.com/video/"+n[3]+"?title=0&byline=0&portrait=0";if(settings.autoplay)movie+="&autoplay=1;";vimeo_width=a["width"]+"/embed/?moog_width="+a["width"];toInject=settings.iframe_markup.replace(/{width}/g,vimeo_width).replace(/{height}/g,a["height"]).replace(/{path}/g,movie);break;case"quicktime":a=w(movie_width,movie_height);a["height"]+=15;a["contentHeight"]+=15;a["containerHeight"]+=15;toInject=settings.quicktime_markup.replace(/{width}/g,a["width"]).replace(/{height}/g,a["height"]).replace(/{wmode}/g,settings.wmode).replace(/{path}/g,pp_images[set_position]).replace(/{autoplay}/g,settings.autoplay);break;case"flash":a=w(movie_width,movie_height);flash_vars=pp_images[set_position];flash_vars=flash_vars.substring(pp_images[set_position].indexOf("flashvars")+10,pp_images[set_position].length);filename=pp_images[set_position];filename=filename.substring(0,filename.indexOf("?"));toInject=settings.flash_markup.replace(/{width}/g,a["width"]).replace(/{height}/g,a["height"]).replace(/{wmode}/g,settings.wmode).replace(/{path}/g,filename+"?"+flash_vars);break;case"iframe":a=w(movie_width,movie_height);frame_url=pp_images[set_position];frame_url=frame_url.substr(0,frame_url.indexOf("iframe")-1);toInject=settings.iframe_markup.replace(/{width}/g,a["width"]).replace(/{height}/g,a["height"]).replace(/{path}/g,frame_url);break;case"ajax":doresize=false;a=w(movie_width,movie_height);doresize=true;skipInjection=true;e.get(pp_images[set_position],function(e){toInject=settings.inline_markup.replace(/{content}/g,e);$pp_pic_holder.find("#pp_full_res")[0].innerHTML=toInject;g()});break;case"custom":a=w(movie_width,movie_height);toInject=settings.custom_markup;break;case"inline":myClone=e(pp_images[set_position]).clone().append('<br clear="all" />').css({width:settings.default_width}).wrapInner('<div id="pp_full_res"><div class="pp_inline"></div></div>').appendTo(e("body")).show();doresize=false;a=w(e(myClone).width(),e(myClone).height());doresize=true;e(myClone).remove();toInject=settings.inline_markup.replace(/{content}/g,e(pp_images[set_position]).html());break}if(!imgPreloader&&!skipInjection){$pp_pic_holder.find("#pp_full_res")[0].innerHTML=toInject;g()}});return false};e.prettyPhoto.changePage=function(t){currentGalleryPage=0;if(t=="previous"){set_position--;if(set_position<0)set_position=e(pp_images).size()-1}else if(t=="next"){set_position++;if(set_position>e(pp_images).size()-1)set_position=0}else{set_position=t}rel_index=set_position;if(!doresize)doresize=true;if(settings.allow_expand){e(".pp_contract").removeClass("pp_contract").addClass("pp_expand")}y(function(){e.prettyPhoto.open()})};e.prettyPhoto.changeGalleryPage=function(e){if(e=="next"){currentGalleryPage++;if(currentGalleryPage>totalPage)currentGalleryPage=0}else if(e=="previous"){currentGalleryPage--;if(currentGalleryPage<0)currentGalleryPage=totalPage}else{currentGalleryPage=e}slide_speed=e=="next"||e=="previous"?settings.animation_speed:0;slide_to=currentGalleryPage*itemsPerPage*itemWidth;$pp_gallery.find("ul").animate({left:-slide_to},slide_speed)};e.prettyPhoto.startSlideshow=function(){if(typeof m=="undefined"){$pp_pic_holder.find(".pp_play").unbind("click").removeClass("pp_play").addClass("pp_pause").click(function(){e.prettyPhoto.stopSlideshow();return false});m=setInterval(e.prettyPhoto.startSlideshow,settings.slideshow)}else{e.prettyPhoto.changePage("next")}};e.prettyPhoto.stopSlideshow=function(){$pp_pic_holder.find(".pp_pause").unbind("click").removeClass("pp_pause").addClass("pp_play").click(function(){e.prettyPhoto.startSlideshow();return false});clearInterval(m);m=undefined};e.prettyPhoto.close=function(){if($pp_overlay.is(":animated"))return;e.prettyPhoto.stopSlideshow();$pp_pic_holder.stop().find("object,embed").css("visibility","hidden");e("div.pp_pic_holder,div.ppt,.pp_fade").fadeOut(settings.animation_speed,function(){e(this).remove()});$pp_overlay.fadeOut(settings.animation_speed,function(){if(settings.hideflash)e("object,embed,iframe[src*=youtube],iframe[src*=vimeo]").css("visibility","visible");e(this).remove();e(window).unbind("scroll.prettyphoto");r();settings.callback();doresize=true;f=false;delete settings})};if(!pp_alreadyInitialized&&t()){pp_alreadyInitialized=true;hashIndex=t();hashRel=hashIndex;hashIndex=hashIndex.substring(hashIndex.indexOf("/")+1,hashIndex.length-1);hashRel=hashRel.substring(0,hashRel.indexOf("/"));setTimeout(function(){e("a["+s.hook+"^='"+hashRel+"']:eq("+hashIndex+")").trigger("click")},50)}return this.unbind("click.prettyphoto").bind("click.prettyphoto",e.prettyPhoto.initialize)};})(jQuery);var pp_alreadyInitialized=false;
+/**
+ * jQuery Geocoding and Places Autocomplete Plugin - V 1.7.0
+ *
+ * @author Martin Kleppe <kleppe@ubilabs.net>, 2016
+ * @author Ubilabs http://ubilabs.net, 2016
+ * @license MIT License <http://www.opensource.org/licenses/mit-license.php>
+ */
+(function($,window,document,undefined){var defaults={bounds:true,country:null,map:false,details:false,detailsAttribute:"name",detailsScope:null,autoselect:true,location:false,mapOptions:{zoom:14,scrollwheel:false,mapTypeId:"roadmap"},markerOptions:{draggable:false},maxZoom:16,types:["geocode"],blur:false,geocodeAfterResult:false,restoreValueAfterBlur:false};var componentTypes=("street_address route intersection political "+"country administrative_area_level_1 administrative_area_level_2 "+"administrative_area_level_3 colloquial_area locality sublocality "+"neighborhood premise subpremise postal_code natural_feature airport "+"park point_of_interest post_box street_number floor room "+"lat lng viewport location "+"formatted_address location_type bounds").split(" ");var placesDetails=("id place_id url website vicinity reference name rating "+"international_phone_number icon formatted_phone_number").split(" ");function GeoComplete(input,options){this.options=$.extend(true,{},defaults,options);if(options&&options.types){this.options.types=options.types}this.input=input;this.$input=$(input);this._defaults=defaults;this._name="geocomplete";this.init()}$.extend(GeoComplete.prototype,{init:function(){this.initMap();this.initMarker();this.initGeocoder();this.initDetails();this.initLocation()},initMap:function(){if(!this.options.map){return}if(typeof this.options.map.setCenter=="function"){this.map=this.options.map;return}this.map=new google.maps.Map($(this.options.map)[0],this.options.mapOptions);google.maps.event.addListener(this.map,"click",$.proxy(this.mapClicked,this));google.maps.event.addListener(this.map,"dragend",$.proxy(this.mapDragged,this));google.maps.event.addListener(this.map,"idle",$.proxy(this.mapIdle,this));google.maps.event.addListener(this.map,"zoom_changed",$.proxy(this.mapZoomed,this))},initMarker:function(){if(!this.map){return}var options=$.extend(this.options.markerOptions,{map:this.map});if(options.disabled){return}this.marker=new google.maps.Marker(options);google.maps.event.addListener(this.marker,"dragend",$.proxy(this.markerDragged,this))},initGeocoder:function(){var selected=false;var options={types:this.options.types,bounds:this.options.bounds===true?null:this.options.bounds,componentRestrictions:this.options.componentRestrictions};if(this.options.country){options.componentRestrictions={country:this.options.country}}this.autocomplete=new google.maps.places.Autocomplete(this.input,options);this.geocoder=new google.maps.Geocoder;if(this.map&&this.options.bounds===true){this.autocomplete.bindTo("bounds",this.map)}google.maps.event.addListener(this.autocomplete,"place_changed",$.proxy(this.placeChanged,this));this.$input.on("keypress."+this._name,function(event){if(event.keyCode===13){return false}});if(this.options.geocodeAfterResult===true){this.$input.bind("keypress."+this._name,$.proxy(function(){if(event.keyCode!=9&&this.selected===true){this.selected=false}},this))}this.$input.bind("geocode."+this._name,$.proxy(function(){this.find()},this));this.$input.bind("geocode:result."+this._name,$.proxy(function(){this.lastInputVal=this.$input.val()},this));if(this.options.blur===true){this.$input.on("blur."+this._name,$.proxy(function(){if(this.options.geocodeAfterResult===true&&this.selected===true){return}if(this.options.restoreValueAfterBlur===true&&this.selected===true){setTimeout($.proxy(this.restoreLastValue,this),0)}else{this.find()}},this))}},initDetails:function(){if(!this.options.details){return}if(this.options.detailsScope){var $details=$(this.input).parents(this.options.detailsScope).find(this.options.details)}else{var $details=$(this.options.details)}var attribute=this.options.detailsAttribute,details={};function setDetail(value){details[value]=$details.find("["+attribute+"="+value+"]")}$.each(componentTypes,function(index,key){setDetail(key);setDetail(key+"_short")});$.each(placesDetails,function(index,key){setDetail(key)});this.$details=$details;this.details=details},initLocation:function(){var location=this.options.location,latLng;if(!location){return}if(typeof location=="string"){this.find(location);return}if(location instanceof Array){latLng=new google.maps.LatLng(location[0],location[1])}if(location instanceof google.maps.LatLng){latLng=location}if(latLng){if(this.map){this.map.setCenter(latLng)}if(this.marker){this.marker.setPosition(latLng)}}},destroy:function(){if(this.map){google.maps.event.clearInstanceListeners(this.map);google.maps.event.clearInstanceListeners(this.marker)}this.autocomplete.unbindAll();google.maps.event.clearInstanceListeners(this.autocomplete);google.maps.event.clearInstanceListeners(this.input);this.$input.removeData();this.$input.off(this._name);this.$input.unbind("."+this._name)},find:function(address){this.geocode({address:address||this.$input.val()})},geocode:function(request){if(!request.address){return}if(this.options.bounds&&!request.bounds){if(this.options.bounds===true){request.bounds=this.map&&this.map.getBounds()}else{request.bounds=this.options.bounds}}if(this.options.country){request.region=this.options.country}this.geocoder.geocode(request,$.proxy(this.handleGeocode,this))},selectFirstResult:function(){var selected="";if($(".pac-item-selected")[0]){selected="-selected"}var $span1=$(".pac-container:visible .pac-item"+selected+":first span:nth-child(2)").text();var $span2=$(".pac-container:visible .pac-item"+selected+":first span:nth-child(3)").text();var firstResult=$span1;if($span2){firstResult+=" - "+$span2}this.$input.val(firstResult);return firstResult},restoreLastValue:function(){if(this.lastInputVal){this.$input.val(this.lastInputVal)}},handleGeocode:function(results,status){if(status===google.maps.GeocoderStatus.OK){var result=results[0];this.$input.val(result.formatted_address);this.update(result);if(results.length>1){this.trigger("geocode:multiple",results)}}else{this.trigger("geocode:error",status)}},trigger:function(event,argument){this.$input.trigger(event,[argument])},center:function(geometry){if(geometry.viewport){this.map.fitBounds(geometry.viewport);if(this.map.getZoom()>this.options.maxZoom){this.map.setZoom(this.options.maxZoom)}}else{this.map.setZoom(this.options.maxZoom);this.map.setCenter(geometry.location)}if(this.marker){this.marker.setPosition(geometry.location);this.marker.setAnimation(this.options.markerOptions.animation)}},update:function(result){if(this.map){this.center(result.geometry)}if(this.$details){this.fillDetails(result)}this.trigger("geocode:result",result)},fillDetails:function(result){var data={},geometry=result.geometry,viewport=geometry.viewport,bounds=geometry.bounds;$.each(result.address_components,function(index,object){var name=object.types[0];$.each(object.types,function(index,name){data[name]=object.long_name;data[name+"_short"]=object.short_name})});$.each(placesDetails,function(index,key){data[key]=result[key]});$.extend(data,{formatted_address:result.formatted_address,location_type:geometry.location_type||"PLACES",viewport:viewport,bounds:bounds,location:geometry.location,lat:geometry.location.lat(),lng:geometry.location.lng()});$.each(this.details,$.proxy(function(key,$detail){var value=data[key];this.setDetail($detail,value)},this));this.data=data},setDetail:function($element,value){if(value===undefined){value=""}else if(typeof value.toUrlValue=="function"){value=value.toUrlValue()}if($element.is(":input")){$element.val(value)}else{$element.text(value)}},markerDragged:function(event){this.trigger("geocode:dragged",event.latLng)},mapClicked:function(event){this.trigger("geocode:click",event.latLng)},mapDragged:function(event){this.trigger("geocode:mapdragged",this.map.getCenter())},mapIdle:function(event){this.trigger("geocode:idle",this.map.getCenter())},mapZoomed:function(event){this.trigger("geocode:zoom",this.map.getZoom())},resetMarker:function(){this.marker.setPosition(this.data.location);this.setDetail(this.details.lat,this.data.location.lat());this.setDetail(this.details.lng,this.data.location.lng())},placeChanged:function(){var place=this.autocomplete.getPlace();this.selected=true;if(!place.geometry){if(this.options.autoselect){var autoSelection=this.selectFirstResult();this.find(autoSelection)}}else{this.update(place)}}});$.fn.geocomplete=function(options){var attribute="plugin_geocomplete";if(typeof options=="string"){var instance=$(this).data(attribute)||$(this).geocomplete().data(attribute),prop=instance[options];if(typeof prop=="function"){prop.apply(instance,Array.prototype.slice.call(arguments,1));return $(this)}else{if(arguments.length==2){prop=arguments[1]}return prop}}else{return this.each(function(){var instance=$.data(this,attribute);if(!instance){instance=new GeoComplete(this,options);$.data(this,attribute,instance)}})}}})(jQuery,window,document);

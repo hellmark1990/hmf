@@ -6,3 +6,7 @@ services:
     book.shared_shelf_messenger:
         class: BookBundle\Services\SharedShelfMessenger
         arguments: [@service_container]
+
+    book.filter:
+        class: BookBundle\Services\BookFilter
+        arguments: [@service_container]

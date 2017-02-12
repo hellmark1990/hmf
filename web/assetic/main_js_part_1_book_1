@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    
     if ($("#bookbundle_book_name").length) {
         $("#bookbundle_book_name").autocomplete({
             minLength: 0,
@@ -20,6 +19,7 @@ $(document).ready(function () {
                 $('form[name="bookbundle_book"]').find('[name="bookbundle_book[language]"]').val(ui.item.language);
                 $('form[name="bookbundle_book"]').find('[name="bookbundle_book[previewLink]"]').val(ui.item.previewLink);
                 $('form[name="bookbundle_book"]').find('[name="bookbundle_book[previewLink]"]').val(ui.item.previewLink);
+                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[authors]"]').val(ui.item.authors);
 
                 $(".js-datepicker-publishedDate").datepicker('setDate', ui.item.publishedDate);
                 console.log(ui.item.publishedDate)
@@ -57,16 +57,131 @@ $(document).ready(function () {
     }
 
     if ($('div.location-map').length) {
-
-        $('div.location-map').locationpicker({
-            location: {latitude: 46.15242437752303, longitude: 2.7470703125},
-            radius: 30,
+        var mapSettings = {
+            location: {
+                latitude: $('#bookbundle_read_latitude').val(),
+                longitude: $('#bookbundle_read_longitude').val()
+            },
             inputBinding: {
                 latitudeInput: $('#bookbundle_read_latitude'),
                 longitudeInput: $('#bookbundle_read_longitude'),
                 locationNameInput: $('#bookbundle_read_place')
             },
             enableAutocomplete: true,
-        });
+            radius: 30,
+        };
+
+        if ($('.location-map-edit').length) {
+            mapSettings.location = {
+                latitude: $('#bookbundle_read_latitude').val(),
+                longitude: $('#bookbundle_read_longitude').val()
+            }
+            $('div.location-map').locationpicker(mapSettings);
+        } else if ($('.location-map-read-list').length) {
+            $('.location-map-read-list').each(function () {
+                mapSettings.location = {
+                    latitude: $(this).data('latitude'),
+                    longitude: $(this).data('longitude')
+                }
+                mapSettings.inputBinding = {};
+                mapSettings.draggable = false;
+                mapSettings.zoom = 12;
+
+                $(this).locationpicker(mapSettings);
+            });
+        } else {
+            mapSettings.location = {
+                latitude: 46.15242437752303,
+                longitude: 2.7470703125
+            }
+            $('div.location-map').locationpicker(mapSettings);
+        }
+
     }
+
+    if ($('div.filter-location-map').length) {
+        FilterMap = new GMaps({
+            div: '.filter-location-map',
+            lat: 52.4908,
+            lng: -1.9351,
+            zoom: 1
+        });
+
+        $('#filter-location-map-input').on('keyup', function () {
+            GMaps.geocode({
+                address: $('#filter-location-map-input').val(),
+                callback: function (results, status) {
+                    if (status == 'OK') {
+                        var latlng = results[0].geometry.location;
+                        FilterMap.setCenter(latlng.lat(), latlng.lng());
+                        FilterMap.removeMarkers();
+                        FilterMap.addMarker({
+                            lat: latlng.lat(),
+                            lng: latlng.lng()
+                        });
+                    }
+                }
+            });
+        });
+        $('#filter-location-map-input').geocomplete();
+    }
+
+    $('.filter-location-select').on('change', function () {
+        FilterMap.removeMarkers();
+        $(this).find('option:selected').each(function(){
+            FilterMap.setCenter($(this).data('latitude'), $(this).data('longitude'));
+            FilterMap.addMarker({
+                lat: $(this).data('latitude'),
+                lng: $(this).data('longitude')
+            });
+        });
+
+    });
+
+    $('.filter-location-type').on('change', function () {
+        if($(this).val() == 'search'){
+            $('#filter-location-map-input').removeClass('hidden');
+            $('.filter-location-select').hide();
+        }else{
+            $('#filter-location-map-input').addClass('hidden');
+            $('.filter-location-select').show();
+        }
+    });
+
+
+    $('#datetimepicker6').datetimepicker(
+        {
+            format: 'Y-MM-DD HH:mm'
+        }
+    );
+    $('#datetimepicker7').datetimepicker({
+        useCurrent: false, //Important! See issue #1075
+        format: 'Y-MM-DD HH:mm'
+    });
+    $("#datetimepicker6").on("dp.change", function (e) {
+        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+    });
+    $("#datetimepicker7").on("dp.change", function (e) {
+        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+    });
+
+    $('.share-link-button').on('click', function () {
+        var url = $(this).data('shared-link-url');
+        var linkElement = $($(this).data('target')).find('input.share-link');
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function (data) {
+                if (data.success) {
+                    linkElement.val(data.shareLink);
+                }
+            }
+        });
+    });
+
+    /**
+     * Copy share link to clipboard
+     */
+    var clipboard = new Clipboard('.copy-share-link');
 });

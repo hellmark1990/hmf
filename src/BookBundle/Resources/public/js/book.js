@@ -96,7 +96,58 @@ $(document).ready(function () {
             }
             $('div.location-map').locationpicker(mapSettings);
         }
+
     }
+
+    if ($('div.filter-location-map').length) {
+        FilterMap = new GMaps({
+            div: '.filter-location-map',
+            lat: 52.4908,
+            lng: -1.9351,
+            zoom: 1
+        });
+
+        $('#filter-location-map-input').on('keyup', function () {
+            GMaps.geocode({
+                address: $('#filter-location-map-input').val(),
+                callback: function (results, status) {
+                    if (status == 'OK') {
+                        var latlng = results[0].geometry.location;
+                        FilterMap.setCenter(latlng.lat(), latlng.lng());
+                        FilterMap.removeMarkers();
+                        FilterMap.addMarker({
+                            lat: latlng.lat(),
+                            lng: latlng.lng()
+                        });
+                    }
+                }
+            });
+        });
+        $('#filter-location-map-input').geocomplete();
+    }
+
+    $('.filter-location-select').on('change', function () {
+        FilterMap.removeMarkers();
+        $(this).find('option:selected').each(function(){
+            FilterMap.setCenter($(this).data('latitude'), $(this).data('longitude'));
+            FilterMap.addMarker({
+                lat: $(this).data('latitude'),
+                lng: $(this).data('longitude')
+            });
+        });
+
+    });
+
+    $('.filter-location-type').on('change', function () {
+        if($(this).val() == 'search'){
+            $('#filter-location-map-input').removeClass('hidden');
+            $('.filter-location-select').hide();
+        }else{
+            $('#filter-location-map-input').addClass('hidden');
+            $('.filter-location-select').show();
+        }
+    });
+
 
     $('#datetimepicker6').datetimepicker(
         {

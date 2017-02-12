@@ -1,0 +1,161 @@
+.dropdown-menu > li:hover {
+    cursor: pointer;
+}
+
+.toggle-btn-group{
+    margin-left: -10px;
+    display: inline-block!important;
+    width: 55px!important;
+}
+
+.toggle-btn-group .btn {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.toggle-btn-group .btn > span {
+    margin: 0px;
+}
+
+.toggle-btn-group .btn.active {
+    background-color: #c52d2f;
+    color: white;
+}
+
+.toggle-btn-group .btn:hover > span {
+    color: white;
+}
+
+.book-filter{
+    margin-top: -30px;
+}
+
+.book-filter h2{
+    text-align: center;
+    width: 100%;
+}
+
+.book-filter > .navbar {
+    border: none;
+    border-radius: 0;
+    webkit-box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
+    box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
+}
+
+.book-filter .btn-group.sorting {
+    width: 170px;
+}
+
+.book-filter .btn-group > button.title {
+    width: 145px;
+}
+
+.book-filter h2 {
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+}
+
+.book-filter .navbar-form {
+    width: 100%;
+}
+
+.book-filter .left-filter {
+    /*border: 1px solid red;*/
+    float: left;
+    width: 62%;
+    min-height: 200px;
+}
+
+.book-filter .right-filter {
+    /*border: 1px solid black;*/
+    float: right;
+    width: 38%;
+    min-height: 200px;
+}
+.book-filter .btn.dropdown-toggle{
+    max-width: 300px;
+}
+
+.book-filter .btn-danger{
+    background-color: #c52d2f;
+    color: #fff!important;
+}
+
+.book-filter .filter-row{
+    margin-top: 25px;
+}
+
+.book-filter .btn-filter-label{
+    width: 80px;
+    font-weight: 600;
+}
+
+.book-filter .btn-filter-label:hover{
+    background-color: inherit;
+}
+
+.book-filter .location-filter .btn-group{
+    margin-right: 0px;
+}
+
+.book-filter .filter-location-map{
+    width: 100%;
+    min-height: 164px;
+}
+
+.book-filter .dropdown-menu li:hover{
+    background-color: rgba(253, 180, 180, 0.65)
+}
+
+.book-filter .dropdown-menu li.active > a{
+    background-color: #c52d2f
+}
+
+.book-filter .dropdown-menu li.selected{
+    background-color: #c52d2f;
+    color: #fff;
+}
+
+.book-filter .dropdown-menu li.selected > a{
+    background-color: #c52d2f;
+    color: #fff;
+}
+
+.book-filter .filter-location-select{
+    background-color: #c52d2f;
+    color: #fff;
+}
+
+.book-filter button[type="submit"]{
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

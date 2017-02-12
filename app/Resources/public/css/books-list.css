@@ -44,10 +44,12 @@
     margin-bottom: 5px;
 }
 
-.book-grid-list-view img{
+.book-grid-list-view .thumbnail img{
     webkit-box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
     box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
     margin-bottom: 5px;
+    width: 125px;
+    margin-top: 25px;
 }
 
 #books-list-wrapper .pin p {
@@ -82,5 +84,9 @@
 }
 
 .book-grid-list-view.grid-list-view > #products {
-    margin-left: -20px !important;
+    /*margin-left: -20px !important;*/
+}
+
+.book-grid-list-view .circle-progress{
+    width: 70px;
 }
