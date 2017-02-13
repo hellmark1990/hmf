@@ -1,18 +1,23 @@
 .profile-avatar .image-container {
-    width: 200px;
-    height: 200px;
+    width: 202px;
+    height: 202px;
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;
     overflow: hidden;
+    margin-left: 50px;
+    margin-top: 30px;
 }
 
 .profile-avatar .circle.image-container > img {
-    border: none;
     margin: 0 auto;
-    width: 200px;
-    height: 200px;
+    width: 202px;
+    height: 202px;
     padding: 0px;
+    border: 6px solid white;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
 }
 
 .profile-avatar .button-edit {

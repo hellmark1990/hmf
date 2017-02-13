@@ -5,8 +5,8 @@
 **************************/
 
 body {
-    /*background-color: rgba(239, 239, 239, 0.85);*/
-    background-image: url('/images/back.png');
+    background-color: rgba(173, 195, 193, 0.44);
+    /*background-image: url('/images/back.png');*/
     font-family: 'Open Sans', sans-serif;
     color: #4e4e4e;
     line-height: 22px;

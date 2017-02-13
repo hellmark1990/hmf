@@ -2247,8 +2247,8 @@ svg .icon {
 **************************/
 
 body {
-    /*background-color: rgba(239, 239, 239, 0.85);*/
-    background-image: url('/images/back.png');
+    background-color: rgba(173, 195, 193, 0.44);
+    /*background-image: url('/images/back.png');*/
     font-family: 'Open Sans', sans-serif;
     color: #4e4e4e;
     line-height: 22px;
@@ -5001,20 +5001,25 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 .pp_top .pp_right,.pp_bottom .pp_right{height:20px;left:auto;position:absolute;right:0;top:0;width:20px}
 .pp_fade,.pp_gallery li.default a img{display:none}
 .profile-avatar .image-container {
-    width: 200px;
-    height: 200px;
+    width: 202px;
+    height: 202px;
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;
     overflow: hidden;
+    margin-left: 50px;
+    margin-top: 30px;
 }
 
 .profile-avatar .circle.image-container > img {
-    border: none;
     margin: 0 auto;
-    width: 200px;
-    height: 200px;
+    width: 202px;
+    height: 202px;
     padding: 0px;
+    border: 6px solid white;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
 }
 
 .profile-avatar .button-edit {
