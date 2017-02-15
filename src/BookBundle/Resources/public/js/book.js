@@ -141,10 +141,10 @@ $(document).ready(function () {
     $('.filter-location-type').on('change', function () {
         if($(this).val() == 'search'){
             $('#filter-location-map-input').removeClass('hidden');
-            $('.filter-location-select').hide();
+            $('.filter-location-select').addClass('hidden');
         }else{
             $('#filter-location-map-input').addClass('hidden');
-            $('.filter-location-select').show();
+            $('.filter-location-select').removeClass('hidden');
         }
     });
 

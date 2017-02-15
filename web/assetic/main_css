@@ -45,6 +45,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .book-filter{
     margin-top: -30px;
+    margin-bottom: 50px;
 }
 
 .book-filter h2{
@@ -141,22 +142,34 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     color: #fff;
 }
 
-.book-filter button[type="submit"]{
-    width: 672px;
+.book-filter .filter-submit{
+    width: 329px;
     margin-top: 10px;
     font-weight: 600;
 }
 
-.book-filter button[type="submit"]:hover{
+.book-filter .filter-submit:hover{
     background-color: inherit;
 }
 
+.book-filter .filter-reset{
+    width: 329px;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.book-filter .filter-reset:hover{
+    background-color: inherit;
+}
 
 .book-filter #filter-location-map-input{
     border-color: #32b0b3;
     border-width: 2px;
     width: 332px;
 }
+/**/
+/*.filter-option*/
 
 
 

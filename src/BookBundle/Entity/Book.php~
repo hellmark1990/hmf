@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="book")
  * @ORM\Entity(repositoryClass="BookBundle\Entity\BookRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Book {
     /**
@@ -116,16 +117,37 @@ class Book {
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="BookBundle\Entity\Read", mappedBy="book")
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\Read", mappedBy="book", cascade={"remove"})
      * @ORM\OrderBy({"id" = "DESC"})
      */
     private $reads;
 
     /**
-     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedBookLink", mappedBy="book")
+     * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedBookLink", mappedBy="book", cascade={"remove"})
      */
     private $shareLinks;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $updatedAt;
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function updatedTimestamps(){
+//        $this->setModifiedAt(new \DateTime(date('Y-m-d H:i:s')));
+//
+//        if ($this->getCreatedAt() == null) {
+//            $this->setCreatedAt(new \DateTime(date('Y-m-d H:i:s')));
+//        }
+    }
 
     /**
      * Get id
@@ -461,8 +483,7 @@ class Book {
      * @param string $authors
      * @return Book
      */
-    public function setAuthors($authors)
-    {
+    public function setAuthors($authors){
         $this->authors = $authors;
 
         return $this;
@@ -471,10 +492,53 @@ class Book {
     /**
      * Get authors
      *
-     * @return string 
+     * @return string
      */
-    public function getAuthors()
-    {
+    public function getAuthors(){
         return $this->authors;
+    }
+
+    /**
+     * Add shareLinks
+     *
+     * @param \BookBundle\Entity\SharedBookLink $shareLinks
+     * @return Book
+     */
+    public function addShareLink(\BookBundle\Entity\SharedBookLink $shareLinks){
+        $this->shareLinks[] = $shareLinks;
+
+        return $this;
+    }
+
+    /**
+     * Remove shareLinks
+     *
+     * @param \BookBundle\Entity\SharedBookLink $shareLinks
+     */
+    public function removeShareLink(\BookBundle\Entity\SharedBookLink $shareLinks){
+        $this->shareLinks->removeElement($shareLinks);
+    }
+
+    /**
+     * Get shareLinks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getShareLinks(){
+        return $this->shareLinks;
+    }
+
+    public function getPageReadCount(){
+        return array_sum($this->getReads()->map(function (Read $read){
+            return $read->getPagesCount();
+        })->toArray());
+    }
+
+    public function getPageReadPercents(){
+        if (!$this->getPageCount()) {
+            return 0;
+        }
+
+        return round($this->getPageReadCount() / ($this->getPageCount() / 100));
     }
 }

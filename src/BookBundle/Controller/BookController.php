@@ -29,10 +29,10 @@ class BookController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction(){
+    public function indexAction(Request $request){
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $this->getUser()->getBooks();
+        $entities = $this->get('book.filter')->getBooks($request);
 
         $deleteForms = [];
         foreach ($entities as $entity) {

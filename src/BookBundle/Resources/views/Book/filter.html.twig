@@ -1,5 +1,5 @@
 {% set filterOptions = book_filter.getOptions %}
-{#{{ dump(filterOptions) }}#}
+{% set currentFilterOptions = app.request.query.get('filter') %}
 
 <div class="book-filter">
     <nav class="navbar navbar-default">
@@ -21,9 +21,9 @@
                                         </button>
                                     </span>
 
-                                    <select name="filter[name]" data-width="250px" class="selectpicker form-control" multiple data-live-search="true" data-style="btn-danger" aria-describedby="sizing-addon2">
+                                    <select name="filter[books][]" data-width="250px" class="selectpicker form-control" multiple data-live-search="true" data-style="btn-danger" aria-describedby="sizing-addon2">
                                         {% for book in filterOptions.filter.name %}
-                                            <option data-value="{{ book.name }}" value="{{ book.name }}">{{ book.name }}</option>
+                                            <option {% if (currentFilterOptions and currentFilterOptions.books is defined)  and book.id in currentFilterOptions.books %}selected{% endif %} value="{{ book.id }}">{{ book.name }}</option>
                                         {% endfor %}
                                     </select>
 
@@ -33,9 +33,9 @@
                                         </button>
                                     </span>
 
-                                    <select name="filter[author]" data-width="250px" class="selectpicker form-control" multiple data-live-search="true" data-style="btn-danger">
+                                    <select name="filter[authors][]" data-width="250px" class="selectpicker form-control" multiple data-live-search="true" data-style="btn-danger">
                                         {% for book in filterOptions.filter.author if book.authors %}
-                                            <option data-value="{{ book.authors }}" value="{{ book.authors }}">{{ book.authors }}</option>
+                                            <option {% if (currentFilterOptions and currentFilterOptions.authors is defined)  and book.authors in currentFilterOptions.authors %}selected{% endif %} value="{{ book.authors }}">{{ book.authors }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
@@ -50,9 +50,9 @@
                                         </button>
                                     </span>
 
-                                    <select name="filter[shelves]" data-width="250px" multiple class="selectpicker form-control" data-live-search="true" data-style="btn-danger">
+                                    <select name="filter[shelves][]" data-width="250px" multiple class="selectpicker form-control" data-live-search="true" data-style="btn-danger">
                                         {% for shelf in filterOptions.filter.shelves %}
-                                            <option data-value="{{ shelf.title }}" value="{{ shelf.title }}">{{ shelf.title }}</option>
+                                            <option {% if (currentFilterOptions and currentFilterOptions.shelves is defined) and shelf.id in currentFilterOptions.shelves %}selected{% endif %} value="{{ shelf.id }}">{{ shelf.title }}</option>
                                         {% endfor %}
                                     </select>
 
@@ -62,31 +62,31 @@
                                         </button>
                                     </span>
 
-                                    <select name="sort" class="selectpicker form-control" data-width="205px" data-style="btn-danger">
+                                    <select name="filter[sort][name]" class="selectpicker form-control" data-width="205px" data-style="btn-danger">
                                         {% for sortName, sortTitle  in filterOptions.sort %}
-                                            <option value="{{ sortName }}">{{ sortTitle }}</option>
+                                            <option {% if (currentFilterOptions and currentFilterOptions.sort is defined) and currentFilterOptions.sort.name == sortName %}selected{% endif %} value="{{ sortName }}">{{ sortTitle }}</option>
                                         {% endfor %}
                                     </select>
 
                                     <span class="input-group-btn toggle-btn-group">
-                                       <button type="button" class="btn btn-default" data-value="asc" aria-label="Left Align">
+                                       <button type="button" class="btn btn-default {% if currentFilterOptions and currentFilterOptions.sort.direction == 'asc' %}active{% endif %}" data-value="asc" aria-label="Left Align">
                                             <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
                                         </button>
-                                        <button type="button" class="btn btn-default" data-value="desc" aria-label="Left Align">
+                                        <button type="button" class="btn btn-default  {% if currentFilterOptions and currentFilterOptions.sort.direction == 'desc' %}active{% endif %}" data-value="desc" aria-label="Left Align">
                                             <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
                                         </button>
+                                        <select name="filter[sort][direction]" id="" class="form-control hidden">
+                                            {% for sortDirectionName, sortDirectionTitle  in filterOptions.sort_directions %}
+                                                <option {% if (currentFilterOptions and currentFilterOptions.sort is defined) and currentFilterOptions.sort.direction == sortDirectionName %}selected{% endif %} value="{{ sortDirectionName }}">{{ sortDirectionTitle }}</option>
+                                            {% endfor %}
+                                        </select>
                                     </span>
-
-                                    <select name="sort_direction" id="" class="form-control hidden">
-                                        {% for sortDirectionName, sortDirectionTitle  in filterOptions.sort_directions %}
-                                            <option value="{{ sortDirectionName }}">{{ sortDirectionTitle }}</option>
-                                        {% endfor %}
-                                    </select>
                                 </div>
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-default">{% trans %}Filter{% endtrans %}</button>
+                        <a href="{{ path('book') }}" type="submit" class="btn btn-default filter-reset">{% trans %}Reset{% endtrans %}</a>
+                        <button type="submit" class="btn btn-default filter-submit">{% trans %}Filter{% endtrans %}</button>
                     </div>
 
                     <div class="right-filter">
@@ -94,24 +94,29 @@
                             <div class="filter-location-map"></div>
                             <div class="input-group">
                                 <div class="input-group-btn">
-                                    <select class="selectpicker filter-location-type btn-filter-label" data-width="90px" data-style="btn-danger">
-                                        <option selected="selected" value="exists">
+                                    <select class="selectpicker filter-location-type btn-filter-label" name="filter[locations][type]" data-width="90px" data-style="btn-danger">
+                                        <option {% if (currentFilterOptions and currentFilterOptions.locations is defined) and currentFilterOptions.locations.type == 'exists' %}selected{% endif %} value="exists">
                                             {% trans %}Your{% endtrans %}
                                         </option>
-                                        <option value="search">
+                                        <option {% if (currentFilterOptions and currentFilterOptions.locations is defined) and currentFilterOptions.locations.type == 'search' %}selected{% endif %} value="search">
                                             {% trans %}Find{% endtrans %}
                                         </option>
                                     </select>
                                 </div><!-- /btn-group -->
-                                <input type="text" id="filter-location-map-input" class="form-control hidden" aria-label="...">
-                                <select name="filter[locations]" class="selectpicker form-control filter-location-select"
+                                <input type="text" name="filter[locations][custom]" id="filter-location-map-input" class="form-control {% if ((currentFilterOptions and currentFilterOptions.locations is defined) and currentFilterOptions.locations.type == 'exists') or not currentFilterOptions %}hidden{% endif %}" aria-label="...">
+                                <select name="filter[locations][exists][]" class="selectpicker form-control filter-location-select {% if (currentFilterOptions and currentFilterOptions.locations is defined) and currentFilterOptions.locations.type == 'search' %}hidden{% endif %}"
                                         title="{% trans %}Choose locations...{% endtrans %}"
                                         multiple
                                         data-live-search="true"
                                         data-style="btn-danger"
-                                        data-width="100%">
+                                        data-width="332px">
                                     {% for location in filterOptions.filter.locations %}
-                                        <option data-latitude="{{ location.latitude }}" data-longitude="{{ location.longitude }}" value="{{ location.place }}">{{ location.place }}</option>
+                                        <option
+                                                {% if (currentFilterOptions and currentFilterOptions.locations is defined) and (currentFilterOptions.locations.exists is defined and location.id in currentFilterOptions.locations.exists) %}selected{% endif %}
+                                                data-latitude="{{ location.latitude }}"
+                                                data-longitude="{{ location.longitude }}"
+                                                value="{{ location.id }}"
+                                        >{{ location.place }}</option>
                                     {% endfor %}
                                 </select>
                             </div><!-- /input-group -->

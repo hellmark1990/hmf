@@ -9,4 +9,4 @@ services:
 
     book.filter:
         class: BookBundle\Services\BookFilter
-        arguments: [@service_container]
+        arguments: [@service_container, "@doctrine.orm.entity_manager"]

@@ -6,10 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * SharedShelfLink
+ * SharedBookLink
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="BookBundle\Entity\SharedShelfLinkRepository")
+ * @ORM\Entity(repositoryClass="BookBundle\Entity\SharedBookLinkRepository")
  * @UniqueEntity(
  *     fields={"userOwner", "book"},
  *     errorPath="salt",
@@ -43,4 +43,83 @@ class SharedBookLink {
      */
     private $salt;
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return SharedBookLink
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string 
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * Set userOwner
+     *
+     * @param \ProfileBundle\Entity\User $userOwner
+     * @return SharedBookLink
+     */
+    public function setUserOwner(\ProfileBundle\Entity\User $userOwner = null)
+    {
+        $this->userOwner = $userOwner;
+
+        return $this;
+    }
+
+    /**
+     * Get userOwner
+     *
+     * @return \ProfileBundle\Entity\User 
+     */
+    public function getUserOwner()
+    {
+        return $this->userOwner;
+    }
+
+    /**
+     * Set book
+     *
+     * @param \BookBundle\Entity\Book $book
+     * @return SharedBookLink
+     */
+    public function setBook(\BookBundle\Entity\Book $book = null)
+    {
+        $this->book = $book;
+
+        return $this;
+    }
+
+    /**
+     * Get book
+     *
+     * @return \BookBundle\Entity\Book 
+     */
+    public function getBook()
+    {
+        return $this->book;
+    }
 }
