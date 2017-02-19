@@ -90,9 +90,23 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <div class="alert alert-info">
-                    {% trans %} Your Books list is empty.{% endtrans %}
-                </div>
+                {% if app.request.query.get('filter') %}
+                    <div class="alert alert-info alert-empty-list">
+                        <div>
+                            {% trans %}Empty results. Try to change filter options.{% endtrans %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info alert-empty-list">
+                        <div>
+                            {% trans %} Your Books list is empty{% endtrans %}
+                        </div>
+                        <a href="{{ path('book_new') }}">
+                            {% trans %} Add your first book{% endtrans %}
+                        </a>
+                    </div>
+                {% endif %}
+
             {% endif %}
         </div>
     </div>

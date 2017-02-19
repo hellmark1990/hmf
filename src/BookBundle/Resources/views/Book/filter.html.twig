@@ -1,13 +1,26 @@
 {% set filterOptions = book_filter.getOptions %}
 {% set currentFilterOptions = app.request.query.get('filter') %}
 
-<div class="book-filter">
+<div class="book-filter loading">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="sk-circle">
+                    <div class="sk-circle1 sk-child"></div>
+                    <div class="sk-circle2 sk-child"></div>
+                    <div class="sk-circle3 sk-child"></div>
+                    <div class="sk-circle4 sk-child"></div>
+                    <div class="sk-circle5 sk-child"></div>
+                    <div class="sk-circle6 sk-child"></div>
+                    <div class="sk-circle7 sk-child"></div>
+                    <div class="sk-circle8 sk-child"></div>
+                    <div class="sk-circle9 sk-child"></div>
+                    <div class="sk-circle10 sk-child"></div>
+                    <div class="sk-circle11 sk-child"></div>
+                    <div class="sk-circle12 sk-child"></div>
+                </div>
                 <form class="navbar-form navbar-left">
-
                     <div class="left-filter">
                         <h2>{% trans %}Filters & Sorting{% endtrans %}</h2>
 
@@ -92,6 +105,7 @@
                     <div class="right-filter">
                         <div class="location-filter">
                             <div class="filter-location-map"></div>
+                            <div class="filter-location-map-hidden hidden"></div>
                             <div class="input-group">
                                 <div class="input-group-btn">
                                     <select class="selectpicker filter-location-type btn-filter-label" name="filter[locations][type]" data-width="90px" data-style="btn-danger">
@@ -103,7 +117,9 @@
                                         </option>
                                     </select>
                                 </div><!-- /btn-group -->
-                                <input type="text" name="filter[locations][custom]" id="filter-location-map-input" class="form-control {% if ((currentFilterOptions and currentFilterOptions.locations is defined) and currentFilterOptions.locations.type == 'exists') or not currentFilterOptions %}hidden{% endif %}" aria-label="...">
+                                <input type="text" name="filter[locations][custom]" id="filter-location-map-input"
+                                       value="{% if ((currentFilterOptions and currentFilterOptions.locations is defined) and currentFilterOptions.locations.type == 'search') %}{{ currentFilterOptions.locations.custom }}{% endif %}"
+                                       class="form-control {% if ((currentFilterOptions and currentFilterOptions.locations is defined) and currentFilterOptions.locations.type == 'exists') or not currentFilterOptions %}hidden{% endif %}" aria-label="...">
                                 <select name="filter[locations][exists][]" class="selectpicker form-control filter-location-select {% if (currentFilterOptions and currentFilterOptions.locations is defined) and currentFilterOptions.locations.type == 'search' %}hidden{% endif %}"
                                         title="{% trans %}Choose locations...{% endtrans %}"
                                         multiple

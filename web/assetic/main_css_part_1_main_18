@@ -2550,7 +2550,6 @@ section#content {
 
 .well h1 {
     margin-top: 12px;
-    font-size: 28px;
 }
 
 .well .btn-group {

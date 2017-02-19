@@ -1,6 +1,7 @@
 {% extends "BookBundle::layout.html.twig" %}
 
-{% block body -%}     {{ parent() }}
+{% block body -%}
+    {{ parent() }}
     <div class="grid-list-view container container-shelf-list">
         <div id="sticky" class="well well-sm">
             <div class="top-panel-content container">
@@ -71,7 +72,9 @@
                 {% endfor %}
             </div>
         {% else %}
-            <div class="alert alert-info" role="alert">{% trans %}Your Shelfs list is empty.{% endtrans %}</div>
+            <div class="alert alert-info alert-empty-list" role="alert">
+                {% trans %}Your Shelfs list is empty.{% endtrans %}
+            </div>
         {% endif %}
     </div>
 {% endblock %}

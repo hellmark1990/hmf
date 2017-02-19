@@ -58,6 +58,6 @@
 }
 
 .book-share-view-container .nav-tabs > li > a:hover, .book-share-view-container .nav-tabs > li.active > a, .book-share-view-container .nav-tabs > li.active > a:hover, .book-share-view-container .nav-tabs > li.active > a:focus {
-    background: #c52d2f;
+    background: #32b0b3;
 }
 

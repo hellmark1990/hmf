@@ -48,8 +48,8 @@
                 {% endfor %}
             </div>
         {% else %}
-            <div class="alert alert-info" role="alert">
-                <h3>{% trans %}Your Reading list is empty.{% endtrans %}</h3>
+            <div class="alert alert-info alert-empty-list" role="alert">
+                <div>{% trans %}Your Reading list is empty.{% endtrans %}</div>
             </div>
         {% endif %}
     </div>
