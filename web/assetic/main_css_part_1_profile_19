@@ -32,8 +32,14 @@
     opacity: 0.9 !important;
 }
 
-.login-form, .registration-form {
-    margin-left: 25%;
+.login-form label, .registration-form label, .fos_user_resetting_request label{
+    text-align: left;
+}
+
+.login-form, .registration-form, .fos_user_resetting_request {
+    float: none;
+    width: 500px;
+    margin: 0 auto;
 }
 
 .profile-avatar .image-container.no-image > .pseudo-letters {
@@ -88,35 +94,35 @@ form.fos_user_change_password .form-group > .col-sm-2.control-label {
 
 /** Reset password Start **/
 
-form.fos_user_resetting_reset {
-    width: 600px;
-    margin: 0 auto;
-}
+/*form.fos_user_resetting_reset {*/
+    /*width: 600px;*/
+    /*margin: 0 auto;*/
+/*}*/
 
-form.fos_user_resetting_reset .col-sm-10 {
-    width: 50%;
-}
+/*form.fos_user_resetting_reset .col-sm-10 {*/
+    /*width: 50%;*/
+/*}*/
 
-form.fos_user_resetting_reset .form-group > .col-sm-10 {
-    width: 50%;
-}
+/*form.fos_user_resetting_reset .form-group > .col-sm-10 {*/
+    /*width: 50%;*/
+/*}*/
 
-form.fos_user_resetting_reset .form-group > .col-sm-2.control-label {
-    width: 30%;
-}
+/*form.fos_user_resetting_reset .form-group > .col-sm-2.control-label {*/
+    /*width: 30%;*/
+/*}*/
 
 /** Reset password END **/
 
 /** Request on reset password form Start **/
 
-form.fos_user_resetting_request {
-    width: 600px;
-    margin: 0 auto;
-}
+/*form.fos_user_resetting_request {*/
+    /*width: 600px;*/
+    /*margin: 0 auto;*/
+/*}*/
 
-form.fos_user_resetting_request .form-group > .col-sm-9 {
-    width: 50%;
-}
+/*form.fos_user_resetting_request .form-group > .col-sm-9 {*/
+    /*width: 50%;*/
+/*}*/
 
 /** Request on reset password form END **/
 
@@ -125,6 +131,7 @@ a.forgot-password-link {
     display: inline-block;
     margin-top: 5px;
     border-bottom: 1px dashed;
+    margin-left: 30px;
 }
 
 /** Login form **/
@@ -143,6 +150,7 @@ a.forgot-password-link {
     margin-bottom: -20px;
     margin-right: 10px;
 }
+
 .menu-user-avatar.active > img {
     border: 3px solid #32b0b3;
 }
@@ -193,7 +201,6 @@ a.forgot-password-link {
     opacity: 0.9;
 }
 
-
 a.dropdown-toggle-avatar:hover {
     background: none !important;
 }
@@ -202,7 +209,7 @@ a.dropdown-toggle-avatar > .menu-user-avatar > img:hover {
     opacity: 0.9;
 }
 
-.dropdown.active > a.dropdown-toggle-avatar{
+.dropdown.active > a.dropdown-toggle-avatar {
     background: none;
 }
 

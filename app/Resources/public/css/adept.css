@@ -1,0 +1,17 @@
+@media screen and (max-width: 767px) {
+
+    #header > .navbar > .container > .navbar-header {
+        width: 100px;
+        float: left;
+    }
+
+    #header > .navbar > .container > .navbar-right {
+        float: right;
+        display: block;
+        margin-right: 15px;
+    }
+
+    #header > .navbar > .container > .navbar-right > .navbar-nav > li {
+        float: left;
+    }
+}

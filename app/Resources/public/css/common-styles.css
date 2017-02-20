@@ -1,4 +1,4 @@
-div.alert.alert-empty-list{
+div.alert.alert-empty-list {
     background-color: rgba(50, 176, 179, 0.8);
     font-size: 20px;
     font-weight: 600;
@@ -11,12 +11,21 @@ div.alert.alert-empty-list{
     border-radius: 0;
 }
 
-div.alert.alert-empty-list > a{
+div.alert.alert-empty-list > a {
     color: #fff;
     border-bottom: dotted;
     font-size: 14px;
 }
 
-div.alert.alert-empty-list > a:hover{
+div.alert.alert-empty-list > a:hover {
     border-bottom: solid;
+}
+
+.alert-danger {
+    border: 5px solid white;
+    border-radius: 0;
+    background-color: #8e1f1f;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
 }

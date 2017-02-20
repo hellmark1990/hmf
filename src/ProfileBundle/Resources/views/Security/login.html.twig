@@ -15,7 +15,7 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form id="main-contact-form" class="login-form col-sm-5 form-horizontal" method="post"
+    <form id="main-contact-form" class="login-form form-horizontal" method="post"
           action="{{ path("fos_user_security_check") }}">
 
         <div class="form-group">
@@ -44,12 +44,13 @@
 
         <div class="form-group">
             <label class="col-sm-3 control-label"></label>
-            <div class="col-sm-3">
+            <div class="col-sm-9">
                 <input type="submit" name="_submit" class="btn btn-primary" value="{% trans %}Sign in{% endtrans %}">
+                <a class="forgot-password-link" href="{{ path('fos_user_resetting_request') }}">
+                    {% trans %}Forgot your password?{% endtrans %}
+                </a>
             </div>
-            <a class="forgot-password-link" href="{{ path('fos_user_resetting_request') }}">{% trans %}Forgot your password?{% endtrans %}</a>
         </div>
-
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
         </div>
     </form>

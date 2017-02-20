@@ -1,3 +1,20 @@
+@media screen and (max-width: 767px) {
+
+    #header > .navbar > .container > .navbar-header {
+        width: 100px;
+        float: left;
+    }
+
+    #header > .navbar > .container > .navbar-right {
+        float: right;
+        display: block;
+        margin-right: 15px;
+    }
+
+    #header > .navbar > .container > .navbar-right > .navbar-nav > li {
+        float: left;
+    }
+}
 @charset "UTF-8";/*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license
@@ -739,7 +756,7 @@ input, textarea, select, label{
 }
 
 
-div.alert.alert-empty-list{
+div.alert.alert-empty-list {
     background-color: rgba(50, 176, 179, 0.8);
     font-size: 20px;
     font-weight: 600;
@@ -752,14 +769,23 @@ div.alert.alert-empty-list{
     border-radius: 0;
 }
 
-div.alert.alert-empty-list > a{
+div.alert.alert-empty-list > a {
     color: #fff;
     border-bottom: dotted;
     font-size: 14px;
 }
 
-div.alert.alert-empty-list > a:hover{
+div.alert.alert-empty-list > a:hover {
     border-bottom: solid;
+}
+
+.alert-danger {
+    border: 5px solid white;
+    border-radius: 0;
+    background-color: #8e1f1f;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
 }
 /*!
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
@@ -5087,8 +5113,14 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     opacity: 0.9 !important;
 }
 
-.login-form, .registration-form {
-    margin-left: 25%;
+.login-form label, .registration-form label, .fos_user_resetting_request label{
+    text-align: left;
+}
+
+.login-form, .registration-form, .fos_user_resetting_request {
+    float: none;
+    width: 400px;
+    margin: 0 auto;
 }
 
 .profile-avatar .image-container.no-image > .pseudo-letters {
@@ -5143,35 +5175,35 @@ form.fos_user_change_password .form-group > .col-sm-2.control-label {
 
 /** Reset password Start **/
 
-form.fos_user_resetting_reset {
-    width: 600px;
-    margin: 0 auto;
-}
+/*form.fos_user_resetting_reset {*/
+    /*width: 600px;*/
+    /*margin: 0 auto;*/
+/*}*/
 
-form.fos_user_resetting_reset .col-sm-10 {
-    width: 50%;
-}
+/*form.fos_user_resetting_reset .col-sm-10 {*/
+    /*width: 50%;*/
+/*}*/
 
-form.fos_user_resetting_reset .form-group > .col-sm-10 {
-    width: 50%;
-}
+/*form.fos_user_resetting_reset .form-group > .col-sm-10 {*/
+    /*width: 50%;*/
+/*}*/
 
-form.fos_user_resetting_reset .form-group > .col-sm-2.control-label {
-    width: 30%;
-}
+/*form.fos_user_resetting_reset .form-group > .col-sm-2.control-label {*/
+    /*width: 30%;*/
+/*}*/
 
 /** Reset password END **/
 
 /** Request on reset password form Start **/
 
-form.fos_user_resetting_request {
-    width: 600px;
-    margin: 0 auto;
-}
+/*form.fos_user_resetting_request {*/
+    /*width: 600px;*/
+    /*margin: 0 auto;*/
+/*}*/
 
-form.fos_user_resetting_request .form-group > .col-sm-9 {
-    width: 50%;
-}
+/*form.fos_user_resetting_request .form-group > .col-sm-9 {*/
+    /*width: 50%;*/
+/*}*/
 
 /** Request on reset password form END **/
 
@@ -5180,6 +5212,7 @@ a.forgot-password-link {
     display: inline-block;
     margin-top: 5px;
     border-bottom: 1px dashed;
+    margin-left: 30px;
 }
 
 /** Login form **/
@@ -5198,6 +5231,7 @@ a.forgot-password-link {
     margin-bottom: -20px;
     margin-right: 10px;
 }
+
 .menu-user-avatar.active > img {
     border: 3px solid #32b0b3;
 }
@@ -5248,7 +5282,6 @@ a.forgot-password-link {
     opacity: 0.9;
 }
 
-
 a.dropdown-toggle-avatar:hover {
     background: none !important;
 }
@@ -5257,7 +5290,7 @@ a.dropdown-toggle-avatar > .menu-user-avatar > img:hover {
     opacity: 0.9;
 }
 
-.dropdown.active > a.dropdown-toggle-avatar{
+.dropdown.active > a.dropdown-toggle-avatar {
     background: none;
 }
 
