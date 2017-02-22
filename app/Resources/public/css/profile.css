@@ -1,6 +1,6 @@
 .profile-avatar .image-container {
-    width: 202px;
-    height: 202px;
+    width: 207px;
+    height: 207px;
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;
@@ -52,6 +52,10 @@
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;
+}
+
+.profile-avatar .image-container.no-image{
+    border: 5px solid #fff;
 }
 
 .profile-avatar .image-container.no-image > img {

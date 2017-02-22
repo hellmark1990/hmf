@@ -1,7 +1,8 @@
 @media screen and (max-width: 767px) {
 
+    /** Menu and header S **/
     #header > .navbar > .container > .navbar-header {
-        width: 100px;
+        width: 50px;
         float: left;
     }
 
@@ -14,7 +15,92 @@
     #header > .navbar > .container > .navbar-right > .navbar-nav > li {
         float: left;
     }
+
+    .navbar-nav {
+        margin: 0 !important;
+    }
+
+    .navbar-nav .open .dropdown-menu {
+        position: absolute !important;
+    }
+
+    .navbar-nav > li:last-child.open .dropdown-menu {
+        left: -57px !important;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+        background-color: #32b0b3 !important;
+        color: #fff !important;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+        background-color: #32b0b3 !important;
+        color: #fff !important;
+    }
+
+    /** Menu and header E **/
+    /** Profile edit S **/
+    .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    .profile-edit-form-container .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /** Profile edit E **/
+    /** Top pannel S **/
+    #content > div.container, #content div.container, #header div.container {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+
+    /** Top pannel E **/
+    /** Change Password S **/
+    form.fos_user_change_password .form-group > .col-sm-10 {
+        width: 100% !important;
+    }
+
+    form.fos_user_change_password label {
+        width: 100% !important;
+    }
+
+    form.fos_user_change_password {
+        min-width: 300px !important;
+        max-width: 500px !important;
+    }
+
+    /** Change Password E **/
+
 }
+
+@media screen and (max-width: 1200px) {
+    /** Profile edit S **/
+    .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    .profile-edit-form-container .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /** Profile edit E **/
+}
+
 @charset "UTF-8";/*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license
@@ -787,6 +873,18 @@ div.alert.alert-empty-list > a:hover {
     font-weight: 600;
     font-size: 16px;
 }
+
+#header .navbar-nav  a{
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+}
+
+#header .navbar-nav .dropdown-menu a{
+    font-size: 15px;
+}
+
+
 /*!
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -4834,6 +4932,10 @@ shortcodes page css
     margin-left: 15px;
 }
 
+#footer .row{
+    margin: 0;
+}
+
 .form-horizontal {
     clear: both;
 }
@@ -5080,8 +5182,8 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 .pp_top .pp_right,.pp_bottom .pp_right{height:20px;left:auto;position:absolute;right:0;top:0;width:20px}
 .pp_fade,.pp_gallery li.default a img{display:none}
 .profile-avatar .image-container {
-    width: 202px;
-    height: 202px;
+    width: 207px;
+    height: 207px;
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;
@@ -5133,6 +5235,10 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
     border-radius: 100%;
+}
+
+.profile-avatar .image-container.no-image{
+    border: 5px solid #fff;
 }
 
 .profile-avatar .image-container.no-image > img {
