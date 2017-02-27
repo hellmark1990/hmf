@@ -84,7 +84,7 @@
 }
 
 .book-grid-list-view.grid-list-view > #products {
-    /*margin-left: -20px !important;*/
+    margin-right: -20px !important;
 }
 
 .book-grid-list-view .circle-progress{

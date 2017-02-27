@@ -104,7 +104,7 @@
 
 .grid-list-view .btn-delete {
     position: relative;
-    left: 233px;
+    left: 234px;
     margin-bottom: -10px;
 }
 
@@ -143,5 +143,9 @@
 .grid-list-view .row {
     margin-right: 0 !important;
     /*margin-left: -20px !important;*/
+}
+
+#products{
+    width: 1177px;
 }
 

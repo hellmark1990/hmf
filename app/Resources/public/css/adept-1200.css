@@ -1,0 +1,74 @@
+@media screen and (max-width: 1200px) and (min-width: 1000px) {
+    /** Profile edit S **/
+    .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    .profile-edit-form-container .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /** Profile edit E **/
+
+    /** Book Filter S **/
+    div.book-filter .filter-row .row-right > .bootstrap-select{
+        width: 200px!important;
+    }
+
+    div.book-filter .filter-row .row-left > .bootstrap-select{
+        width: 200px!important;
+    }
+
+    div.book-filter .filter-row .row-right{
+        width: 290px;
+    }
+
+    div.book-filter .filter-row .row-left{
+        width: 290px;
+    }
+
+    .book-filter .right-filter > .location-filter #filter-location-map-input{
+        width: 268px!important;
+    }
+
+    .book-filter .right-filter > .location-filter .filter-location-select{
+        width: 268px!important;
+    }
+
+    div.book-filter .navbar-form .filter-reset {
+        width: 280px;
+        margin-right: 5px;
+    }
+
+    div.book-filter .navbar-form .filter-submit {
+        width: 280px;
+    }
+
+    /** Book Filter E **/
+
+    /** Book List S **/
+    .book-grid-list-view.grid-list-view .item{
+        width: 304px!important;
+    }
+
+    .book-grid-list-view.grid-list-view .btn-delete{
+        left: 266px;
+        height: 26px;
+    }
+
+    .book-grid-list-view.grid-list-view a.list-main-bottom-button {
+        width: 244px;
+    }
+
+    .book-grid-list-view.grid-list-view #products{
+       width: 982px
+    }
+    /** Book List У **/
+}

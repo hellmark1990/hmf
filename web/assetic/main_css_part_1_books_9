@@ -1,0 +1,161 @@
+h1 {
+    color: #4e4e4e !important;
+}
+
+.clear-float {
+    clear: both;
+}
+
+.pseudo-letters{
+    display: none;
+}
+
+.img-polaroid {
+    webkit-box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
+    box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
+}
+
+.image-container {
+    display: block;
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*text-align: center;*/
+}
+
+/**
+Profile edit block start
+ */
+.image-container > .button.button-edit {
+    position: relative;
+    bottom: 230px;
+    left: 40px;
+    width: 30px;
+    height: 26px;
+    padding: 0;
+    opacity: 0.7;
+}
+
+.image-container > .button.button-delete {
+    position: relative;
+    bottom: 230px;
+    left: 40px;
+    width: 30px;
+    height: 26px;
+    padding: 0;
+    opacity: 0.7;
+}
+
+.profile-edit-form-container > .form-container {
+    clear: both;
+}
+
+.profile-edit-form-container > .pull-left {
+    width: 10%;
+    padding-left: 17%;
+}
+
+.profile-edit-form-container > .pull-right {
+    width: 60%;
+}
+
+.books-button-panel {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+/**
+Profile edit block end
+ */
+
+/**
+Book create block start
+ */
+.book-create-form-container > .form-container {
+    clear: both;
+}
+
+.book-create-form-container > .pull-left {
+    width: 12%;
+    padding-left: 17%;
+}
+
+.book-create-form-container > .pull-right {
+    width: 65%;
+}
+
+.book-create-form-container .small-container {
+    width: 100%;
+    margin-left: 2px;
+}
+
+.book-create-form-container .small-container label {
+    width: 200px;
+}
+
+.book-create-form-container .small-container .col-sm-10 {
+    width: 200px;
+}
+
+.book-grid-list-view .item.grid-group-item {
+    height: 425px;
+}
+
+.book-grid-list-view .item.grid-group-item > .thumbnail {
+    height: 425px;
+}
+
+.book-grid-list-view .item.grid-group-item .book-title-block {
+    min-height: 50px;
+    height: 50px;
+}
+
+.book-top-controls {
+    margin-bottom: 30px;
+}
+
+/**
+Book create block end
+ */
+
+.h1-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+form[name="bookbundle_book"] .circle.image-container {
+    width: 200px;
+    height: 260px;
+    padding: 25px;
+    padding-top: 35px;
+}
+
+form[name="bookbundle_book"] .circle.image-container > img {
+    margin: 0 auto;
+    width: 125px;
+    height: 190px;
+    webkit-box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
+    box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
+    padding: 0px;
+}
+
+.form-group .form-control {
+    border-color: #d8d8d8 !important;
+}
+
+.grid-list-view .btn-group {
+    margin-right: 10px;
+}
+
+.grid-list-view .profile-avatar .image-container {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#bookShareLinkModal .btn-primary, #shelfShareLinkModal .btn-primary{
+    padding: 7px 20px;
+    margin-top: 0px;
+}
+
+input, textarea, select, label{
+    color: #000!important;
+}

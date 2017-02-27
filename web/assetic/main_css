@@ -1,4 +1,79 @@
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1200px) and (min-width: 1000px) {
+    /** Profile edit S **/
+    .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    .profile-edit-form-container .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /** Profile edit E **/
+
+    /** Book Filter S **/
+    div.book-filter .filter-row .row-right > .bootstrap-select{
+        width: 200px!important;
+    }
+
+    div.book-filter .filter-row .row-left > .bootstrap-select{
+        width: 200px!important;
+    }
+
+    div.book-filter .filter-row .row-right{
+        width: 290px;
+    }
+
+    div.book-filter .filter-row .row-left{
+        width: 290px;
+    }
+
+    .book-filter .right-filter > .location-filter #filter-location-map-input{
+        width: 268px!important;
+    }
+
+    .book-filter .right-filter > .location-filter .filter-location-select{
+        width: 268px!important;
+    }
+
+    div.book-filter .navbar-form .filter-reset {
+        width: 280px;
+        margin-right: 5px;
+    }
+
+    div.book-filter .navbar-form .filter-submit {
+        width: 280px;
+    }
+
+    /** Book Filter E **/
+
+    /** Book List S **/
+    .book-grid-list-view.grid-list-view .item{
+        width: 304px!important;
+    }
+
+    .book-grid-list-view.grid-list-view .btn-delete{
+        left: 266px;
+        height: 26px;
+    }
+
+    .book-grid-list-view.grid-list-view a.list-main-bottom-button {
+        width: 244px;
+    }
+
+    .book-grid-list-view.grid-list-view #products{
+       width: 982px
+    }
+    /** Book List У **/
+}
+
+@media screen and (max-width: 600px) and (min-width: 320px) {
 
     /** Menu and header S **/
     #header > .navbar > .container > .navbar-header {
@@ -78,10 +153,157 @@
     }
 
     /** Change Password E **/
+    /** Book list S **/
+    .book-grid-list-view.grid-list-view .item .btn-delete {
+        left: 222px;
+        height: 26px;
+    }
+
+    div.book-grid-list-view.grid-list-view #products {
+        width: 300px;
+        margin: 0 auto!important;
+    }
+
+    div.book-grid-list-view.grid-list-view .item {
+        width: 260px!important;
+        margin-left: 3%;
+    }
+
+    div.book-grid-list-view.grid-list-view a.list-main-bottom-button {
+        width: 200px;
+    }
+
+    /** Book list E **/
+    /** Book list filter S **/
+    .book-filter .collapse {
+        display: inline-block;
+    }
+
+    .book-filter .navbar-form .filter-reset {
+        width: 88%;
+        position: absolute;
+        bottom: 10px;
+    }
+
+    .book-filter .navbar-form .filter-submit {
+        width: 88%;
+        position: absolute;
+        bottom: 50px;
+    }
+
+    .book-filter .dropdown-menu {
+        top: initial;
+        bottom: 100%;
+    }
+
+    .book-filter .navbar > .container-fluid {
+        height: 517px;
+    }
+
+    .book-filter .navbar-form {
+        margin-left: 0px !important;
+    }
+
+    .book-filter .navbar-form > .left-filter {
+        width: 100%;
+        float: none;
+    }
+
+    .book-filter .navbar-form > .right-filter {
+        width: 100%;
+        float: none;
+        margin-top: 7px;
+    }
+
+    .book-filter .navbar-default .navbar-collapse, .book-filter .navbar-default .navbar-form {
+        border: none;
+    }
+
+    div.book-filter .filter-row {
+        margin: 0 auto;
+        width: 390px;
+    }
+
+    .book-filter .filter-row .bootstrap-select {
+        width: 300px !important;
+    }
+
+    div.book-filter .filter-row .row-left > .bootstrap-select {
+        float: none;
+    }
+
+    div.book-filter .filter-row .row-right > .bootstrap-select {
+        float: none;
+    }
+
+    div.book-filter .filter-row .row-right {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    div.book-filter .filter-row .row-left {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    div.book-filter .filter-row .row-right > .input-group-btn {
+        width: 80px;
+    }
+
+    div.book-filter .filter-row .row-left > .input-group-btn {
+        width: 80px;
+    }
+
+    div.book-filter #filter-location-map-input {
+        width: 100%;
+    }
+
+
+    /** Book list filter E **/
 
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 650px) and (min-width: 600px) {
+
+    /** Menu and header S **/
+    #header > .navbar > .container > .navbar-header {
+        width: 50px;
+        float: left;
+    }
+
+    #header > .navbar > .container > .navbar-right {
+        float: right;
+        display: block;
+        margin-right: 15px;
+    }
+
+    #header > .navbar > .container > .navbar-right > .navbar-nav > li {
+        float: left;
+    }
+
+    .navbar-nav {
+        margin: 0 !important;
+    }
+
+    .navbar-nav .open .dropdown-menu {
+        position: absolute !important;
+    }
+
+    .navbar-nav > li:last-child.open .dropdown-menu {
+        left: -57px !important;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+        background-color: #32b0b3 !important;
+        color: #fff !important;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+        background-color: #32b0b3 !important;
+        color: #fff !important;
+    }
+
+    /** Menu and header E **/
     /** Profile edit S **/
     .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
         float: none !important;
@@ -99,6 +321,404 @@
     }
 
     /** Profile edit E **/
+    /** Top pannel S **/
+    #content > div.container, #content div.container, #header div.container {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+
+    /** Top pannel E **/
+    /** Change Password S **/
+    form.fos_user_change_password .form-group > .col-sm-10 {
+        width: 100% !important;
+    }
+
+    form.fos_user_change_password label {
+        width: 100% !important;
+    }
+
+    form.fos_user_change_password {
+        min-width: 300px !important;
+        max-width: 500px !important;
+    }
+
+    /** Change Password E **/
+    /** Book list S **/
+    .book-grid-list-view.grid-list-view .item .btn-delete {
+        left: 212px;
+        height: 26px;
+    }
+
+    div.book-grid-list-view.grid-list-view #products {
+        width: 550px;
+        margin: 0 auto!important;
+    }
+
+    div.book-grid-list-view.grid-list-view .item {
+        width: 250px!important;
+        margin-left: 3%;
+    }
+
+    div.book-grid-list-view.grid-list-view a.list-main-bottom-button {
+        width: 190px;
+    }
+
+    /** Book list E **/
+    /** Book list filter S **/
+    .book-filter .collapse {
+        display: inline-block;
+    }
+
+    .book-filter .navbar-form .filter-reset {
+        width: 90%;
+        position: absolute;
+        bottom: 10px;
+    }
+
+    .book-filter .navbar-form .filter-submit {
+        width: 90%;
+        position: absolute;
+        bottom: 50px;
+    }
+
+    .book-filter .dropdown-menu {
+        top: initial;
+        bottom: 100%;
+    }
+
+    .book-filter .navbar > .container-fluid {
+        height: 517px;
+    }
+
+    .book-filter .navbar-form {
+        margin-left: 0px !important;
+    }
+
+    .book-filter .navbar-form > .left-filter {
+        width: 100%;
+        float: none;
+    }
+
+    .book-filter .navbar-form > .right-filter {
+        width: 100%;
+        float: none;
+        margin-top: 7px;
+    }
+
+    .book-filter .navbar-default .navbar-collapse, .book-filter .navbar-default .navbar-form {
+        border: none;
+    }
+
+    div.book-filter .filter-row {
+        margin: 0 auto;
+        width: 390px;
+    }
+
+    .book-filter .filter-row .bootstrap-select {
+        width: 300px !important;
+    }
+
+    div.book-filter .filter-row .row-left > .bootstrap-select {
+        float: none;
+    }
+
+    div.book-filter .filter-row .row-right > .bootstrap-select {
+        float: none;
+    }
+
+    div.book-filter .filter-row .row-right {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    div.book-filter .filter-row .row-left {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    div.book-filter .filter-row .row-right > .input-group-btn {
+        width: 80px;
+    }
+
+    div.book-filter .filter-row .row-left > .input-group-btn {
+        width: 80px;
+    }
+
+    div.book-filter #filter-location-map-input {
+        width: 100%;
+    }
+
+    /** Book list filter E **/
+
+}
+
+@media screen and (max-width: 1000px) and (min-width: 767px) {
+    /** Books List S **/
+    div#products {
+        width: 750px
+    }
+
+    .book-grid-list-view.grid-list-view .item{
+        width: 227px!important;
+    }
+
+    .book-grid-list-view.grid-list-view .btn-delete{
+        left: 189px;
+        height: 26px;
+    }
+
+    .book-grid-list-view.grid-list-view a.list-main-bottom-button {
+        width: 167px;
+    }
+
+    /** Books List E **/
+
+    /** Book Filter S **/
+    div.book-filter .filter-row .row-right > .bootstrap-select{
+        width: 270px!important;
+    }
+
+    div.book-filter .filter-row .row-left > .bootstrap-select{
+        width: 270px!important;
+    }
+
+    div.book-filter .filter-row .row-right{
+        width: 100%;
+    }
+
+    div.book-filter .filter-row .row-left{
+        width: 100%;
+    }
+
+    div.book-filter .left-filter{
+        width: 50%;
+    }
+
+    div.book-filter .right-filter{
+        width: 50%;
+    }
+
+    div.book-filter .filter-row{
+        margin-top: 5px;
+    }
+
+    div.book-filter .filter-row .row-left{
+        margin-bottom: 5px;
+    }
+
+    div.book-filter .navbar-form .filter-reset {
+        width: 170px;
+        float: left;
+    }
+
+    div.book-filter .navbar-form .filter-submit {
+        width: 170px;
+        float: right;
+        margin-right: 10px;
+    }
+
+    .book-filter .right-filter > .location-filter #filter-location-map-input{
+        width: 270px!important;
+    }
+
+    .book-filter .right-filter > .location-filter .filter-location-select{
+        width: 270px!important;
+    }
+
+    .book-filter form.navbar-form{
+        padding-bottom: 20px;
+    }
+
+    /** Book Filter E **/
+}
+
+@media screen and (max-width: 767px) and (min-width: 650px) {
+
+    /** Menu and header S **/
+    #header > .navbar > .container > .navbar-header {
+        width: 50px;
+        float: left;
+    }
+
+    #header > .navbar > .container > .navbar-right {
+        float: right;
+        display: block;
+        margin-right: 15px;
+    }
+
+    #header > .navbar > .container > .navbar-right > .navbar-nav > li {
+        float: left;
+    }
+
+    .navbar-nav {
+        margin: 0 !important;
+    }
+
+    .navbar-nav .open .dropdown-menu {
+        position: absolute !important;
+    }
+
+    .navbar-nav > li:last-child.open .dropdown-menu {
+        left: -57px !important;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+        background-color: #32b0b3 !important;
+        color: #fff !important;
+    }
+
+    .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
+        background-color: #32b0b3 !important;
+        color: #fff !important;
+    }
+
+    /** Menu and header E **/
+    /** Profile edit S **/
+    .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    .profile-edit-form-container .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /** Profile edit E **/
+    /** Top pannel S **/
+    #content > div.container, #content div.container, #header div.container {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+
+    /** Top pannel E **/
+    /** Change Password S **/
+    form.fos_user_change_password .form-group > .col-sm-10 {
+        width: 100% !important;
+    }
+
+    form.fos_user_change_password label {
+        width: 100% !important;
+    }
+
+    form.fos_user_change_password {
+        min-width: 300px !important;
+        max-width: 500px !important;
+    }
+
+    /** Change Password E **/
+    /** Book list S **/
+    .book-grid-list-view.grid-list-view .item .btn-delete {
+        left: 212px;
+        height: 26px;
+    }
+
+    div.book-grid-list-view.grid-list-view #products {
+        width: 600px;
+        margin: 0 auto !important;
+    }
+
+    div.book-grid-list-view.grid-list-view .item {
+        width: 250px !important;
+        margin-left: 6%;
+    }
+
+    div.book-grid-list-view.grid-list-view a.list-main-bottom-button {
+        width: 190px;
+    }
+
+    /** Book list E **/
+    /** Book list filter S **/
+    .book-filter .collapse {
+        display: inline-block;
+    }
+
+    .book-filter .navbar-form .filter-reset {
+        width: 90%;
+        position: absolute;
+        bottom: 10px;
+    }
+
+    .book-filter .navbar-form .filter-submit {
+        width: 90%;
+        position: absolute;
+        bottom: 50px;
+    }
+
+    .book-filter .dropdown-menu {
+        top: initial;
+        bottom: 100%;
+    }
+
+    .book-filter .navbar > .container-fluid {
+        height: 517px;
+    }
+
+    .book-filter .navbar-form {
+        margin-left: 0px !important;
+    }
+
+    .book-filter .navbar-form > .left-filter {
+        width: 100%;
+        float: none;
+    }
+
+    .book-filter .navbar-form > .right-filter {
+        width: 100%;
+        float: none;
+        margin-top: 7px;
+    }
+
+    .book-filter .navbar-default .navbar-collapse, .book-filter .navbar-default .navbar-form {
+        border: none;
+    }
+
+    div.book-filter .filter-row {
+        margin: 0 auto;
+        width: 390px;
+    }
+
+    .book-filter .filter-row .bootstrap-select {
+        width: 300px !important;
+    }
+
+    div.book-filter .filter-row .row-left > .bootstrap-select {
+        float: none;
+    }
+
+    div.book-filter .filter-row .row-right > .bootstrap-select {
+        float: none;
+    }
+
+    div.book-filter .filter-row .row-right {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    div.book-filter .filter-row .row-left {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    div.book-filter .filter-row .row-right > .input-group-btn {
+        width: 80px;
+    }
+
+    div.book-filter .filter-row .row-left > .input-group-btn {
+        width: 80px;
+    }
+
+    div.book-filter #filter-location-map-input {
+        width: 100%;
+    }
+
+    /** Book list filter E **/
+
 }
 
 @charset "UTF-8";/*!
@@ -120,7 +740,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .toggle-btn-group {
     margin-left: -10px;
     display: inline-block !important;
-    width: 55px !important;
+    width: 43px !important;
 }
 
 .toggle-btn-group .btn {
@@ -293,7 +913,39 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     background-color: rgb(50, 176, 179);
 }
 
+.book-filter .filter-row .row-left{
+    width: 340px;
+    float: left;
+}
 
+.book-filter .filter-row .row-right{
+    width: 340px;
+    float: right;
+}
+
+.book-filter .filter-row .row-left > .input-group-btn{
+    float: left;
+}
+
+.book-filter .filter-row .row-left > .bootstrap-select{
+    float: right;
+}
+
+.book-filter .filter-row .row-right > .input-group-btn{
+    float: left;
+}
+
+.book-filter .filter-row .row-right > .bootstrap-select{
+    float: right;
+}
+
+.book-filter .filter-row .row-right > .input-group-btn.toggle-btn-group{
+    float: right;
+}
+
+.book-filter form.navbar-form {
+    overflow: hidden;
+}
 
 
 
@@ -470,7 +1122,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 .book-grid-list-view.grid-list-view > #products {
-    /*margin-left: -20px !important;*/
+    margin-right: -20px !important;
 }
 
 .book-grid-list-view .circle-progress{
@@ -2334,7 +2986,7 @@ div.alert.alert-empty-list > a:hover {
 
 .grid-list-view .btn-delete {
     position: relative;
-    left: 233px;
+    left: 234px;
     margin-bottom: -10px;
 }
 
@@ -2373,6 +3025,11 @@ div.alert.alert-empty-list > a:hover {
 .grid-list-view .row {
     margin-right: 0 !important;
     /*margin-left: -20px !important;*/
+}
+
+#products{
+    width: 1177px;
+    overflow: hidden;
 }
 
 
@@ -2427,6 +3084,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     color: #4e4e4e;
     line-height: 22px;
+    min-width: 580px;
 }
 
 h1,
@@ -3143,7 +3801,7 @@ input.search-form:hover {
 .progress {
     position: relative;
     margin-bottom: -27px;
-    margin-right: 37px;
+    margin-right: 36px;
     height: 27px;
     border-radius: 0px;
     background-color: rgba(50, 176, 179, 0.51)

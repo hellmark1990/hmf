@@ -45,9 +45,7 @@ class BookFilter {
     protected $filterOptions;
 
 
-    const DEFAULT_SORTING_COLUMN = 'b.name';
-
-    const DEFAULT_SORTING_DIRECTION = 'ASC';
+    const DEFAULT_SORTING_COLUMN = 'b.name ASC';
 
     static $SORTING_DIRECTIONS = [
         'asc' => 'ASC',
@@ -55,11 +53,16 @@ class BookFilter {
     ];
 
     static $SORTING_COLUMNS = [
-        'name' => 'b.name',
-        'date' => 'b.createdAt',
-        'author' => 'b.authors',
-        'pageCount' => 'b.pageCount',
-        'readPageCount' => 'readPagesCount',
+        'name_asc' => 'b.name ASC',
+        'name_desc' => 'b.name DESC',
+        'date_asc' => 'b.createdAt ASC',
+        'date_desc' => 'b.createdAt DESC',
+        'author_asc' => 'b.authors ASC',
+        'author_desc' => 'b.authors DESC',
+        'pageCount_asc' => 'b.pageCount ASC',
+        'pageCount_desc' => 'b.pageCount DESC',
+        'readPageCount_asc' => 'readPagesCount ASC',
+        'readPageCount_desc' => 'readPagesCount DESC',
     ];
 
 
@@ -78,11 +81,16 @@ class BookFilter {
 
         return [
             'sort' => [
-                'date' => $this->translator->trans('Created'),
-                'name' => $this->translator->trans('Title'),
-                'author' => $this->translator->trans('Author'),
-                'pageCount' => $this->translator->trans('Pages count'),
-                'readPageCount' => $this->translator->trans('Read pages count')
+                'date_asc' => $this->translator->trans('Created Ascending'),
+                'date_desc' => $this->translator->trans('Created Descending'),
+                'name_asc' => $this->translator->trans('Title Ascending'),
+                'name_desc' => $this->translator->trans('Title Descending'),
+                'author_asc' => $this->translator->trans('Author Ascending'),
+                'author_desc' => $this->translator->trans('Author Descending'),
+                'pageCount_asc' => $this->translator->trans('Pages count Ascending'),
+                'pageCount_desc' => $this->translator->trans('Pages count Descending'),
+                'readPageCount_asc' => $this->translator->trans('Read pages count Ascending'),
+                'readPageCount_desc' => $this->translator->trans('Read pages count Descending'),
             ],
             'sort_directions' => [
                 'asc' => $this->translator->trans('Ascending'),
@@ -99,13 +107,16 @@ class BookFilter {
 
     public function getBooks(Request $request){
         $this->prepareRequestParams($request);
+        $sorting = explode(' ', $this->getSortingColumn());
+        $sortingOrder = $sorting[0];
+        $sortingDirection = $sorting[1];
 
         return $this->em
             ->getRepository('BookBundle:Book')
             ->getFilteredBooks(
                 $this->user,
-                $this->getSortingColumn(),
-                $this->getSortingDirection(),
+                $sortingOrder,
+                $sortingDirection,
                 $this->getFilterOptions()
             );
     }
@@ -121,15 +132,6 @@ class BookFilter {
 
         $requestSort = self::$SORTING_COLUMNS[$this->filterOptions['sort']['name']];
         return $requestSort ? $requestSort : self::DEFAULT_SORTING_COLUMN;
-    }
-
-    protected function getSortingDirection(){
-        if (!$this->filterOptions) {
-            return self::DEFAULT_SORTING_DIRECTION;
-        }
-
-        $requestSortDirection = self::$SORTING_DIRECTIONS[$this->filterOptions['sort']['direction']];
-        return $requestSortDirection ? $requestSortDirection : self::DEFAULT_SORTING_DIRECTION;
     }
 
     protected function getFilterOptions(){

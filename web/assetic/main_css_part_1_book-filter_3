@@ -5,7 +5,7 @@
 .toggle-btn-group {
     margin-left: -10px;
     display: inline-block !important;
-    width: 55px !important;
+    width: 43px !important;
 }
 
 .toggle-btn-group .btn {
@@ -178,6 +178,35 @@
     background-color: rgb(50, 176, 179);
 }
 
+.book-filter .filter-row .row-left{
+    width: 340px;
+    float: left;
+}
+
+.book-filter .filter-row .row-right{
+    width: 340px;
+    float: right;
+}
+
+.book-filter .filter-row .row-left > .input-group-btn{
+    float: left;
+}
+
+.book-filter .filter-row .row-left > .bootstrap-select{
+    float: right;
+}
+
+.book-filter .filter-row .row-right > .input-group-btn{
+    float: left;
+}
+
+.book-filter .filter-row .row-right > .bootstrap-select{
+    float: right;
+}
+
+.book-filter .filter-row .row-right > .input-group-btn.toggle-btn-group{
+    float: right;
+}
 
 
 

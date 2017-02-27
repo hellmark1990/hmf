@@ -45,7 +45,7 @@ class BookRepository extends EntityRepository {
             );
         }
 
-        return $queryBooks->orderBy($orderBy, $orderDirection);;
+        return $queryBooks->orderBy($orderBy, $orderDirection);
     }
 
     protected function filterBooks(QueryBuilder $queryBooks, $filter){

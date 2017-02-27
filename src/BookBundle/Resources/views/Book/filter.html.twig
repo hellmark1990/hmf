@@ -28,78 +28,86 @@
 
                             <div class="filter-row">
                                 <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default btn-filter-label" type="button">
-                                            {% trans %}Book{% endtrans %}
-                                        </button>
-                                    </span>
+                                    <div class="row-left">
+                                         <span class="input-group-btn">
+                                            <button class="btn btn-default btn-filter-label" type="button">
+                                                {% trans %}Book{% endtrans %}
+                                            </button>
+                                        </span>
 
-                                    <select name="filter[books][]" data-width="250px" class="selectpicker form-control" multiple data-live-search="true" data-style="btn-danger" aria-describedby="sizing-addon2">
-                                        {% for book in filterOptions.filter.name %}
-                                            <option {% if (currentFilterOptions and currentFilterOptions.books is defined)  and book.id in currentFilterOptions.books %}selected{% endif %} value="{{ book.id }}">{{ book.name }}</option>
-                                        {% endfor %}
-                                    </select>
+                                        <select name="filter[books][]" data-width="250px" class="selectpicker form-control" multiple data-live-search="true" data-style="btn-danger" aria-describedby="sizing-addon2">
+                                            {% for book in filterOptions.filter.name %}
+                                                <option {% if (currentFilterOptions and currentFilterOptions.books is defined)  and book.id in currentFilterOptions.books %}selected{% endif %} value="{{ book.id }}">{{ book.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="row-right">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default btn-filter-label" type="button">
+                                                {% trans %}Author{% endtrans %}
+                                            </button>
+                                        </span>
 
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default btn-filter-label" type="button">
-                                            {% trans %}Author{% endtrans %}
-                                        </button>
-                                    </span>
-
-                                    <select name="filter[authors][]" data-width="250px" class="selectpicker form-control" multiple data-live-search="true" data-style="btn-danger">
-                                        {% for book in filterOptions.filter.author if book.authors %}
-                                            <option {% if (currentFilterOptions and currentFilterOptions.authors is defined)  and book.authors in currentFilterOptions.authors %}selected{% endif %} value="{{ book.authors }}">{{ book.authors }}</option>
-                                        {% endfor %}
-                                    </select>
+                                        <select name="filter[authors][]" data-width="250px" class="selectpicker form-control" multiple data-live-search="true" data-style="btn-danger">
+                                            {% for book in filterOptions.filter.author if book.authors %}
+                                                <option {% if (currentFilterOptions and currentFilterOptions.authors is defined)  and book.authors in currentFilterOptions.authors %}selected{% endif %} value="{{ book.authors }}">{{ book.authors }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
                                 </div>
 
                             </div>
 
                             <div class="filter-row">
                                 <div class="input-group">
-                                     <span class="input-group-btn">
-                                        <button class="btn btn-default btn-filter-label" type="button">
-                                            {% trans %}Shelves{% endtrans %}
-                                        </button>
-                                    </span>
+                                    <div class="row-left">
+                                         <span class="input-group-btn">
+                                            <button class="btn btn-default btn-filter-label" type="button">
+                                                {% trans %}Shelves{% endtrans %}
+                                            </button>
+                                        </span>
 
-                                    <select name="filter[shelves][]" data-width="250px" multiple class="selectpicker form-control" data-live-search="true" data-style="btn-danger">
-                                        {% for shelf in filterOptions.filter.shelves %}
-                                            <option {% if (currentFilterOptions and currentFilterOptions.shelves is defined) and shelf.id in currentFilterOptions.shelves %}selected{% endif %} value="{{ shelf.id }}">{{ shelf.title }}</option>
-                                        {% endfor %}
-                                    </select>
-
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default btn-filter-label" type="button">
-                                            {% trans %}Sorting{% endtrans %}
-                                        </button>
-                                    </span>
-
-                                    <select name="filter[sort][name]" class="selectpicker form-control" data-width="205px" data-style="btn-danger">
-                                        {% for sortName, sortTitle  in filterOptions.sort %}
-                                            <option {% if (currentFilterOptions and currentFilterOptions.sort is defined) and currentFilterOptions.sort.name == sortName %}selected{% endif %} value="{{ sortName }}">{{ sortTitle }}</option>
-                                        {% endfor %}
-                                    </select>
-
-                                    <span class="input-group-btn toggle-btn-group">
-                                       <button type="button" class="btn btn-default {% if currentFilterOptions and currentFilterOptions.sort.direction == 'asc' %}active{% endif %}" data-value="asc" aria-label="Left Align">
-                                            <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default  {% if currentFilterOptions and currentFilterOptions.sort.direction == 'desc' %}active{% endif %}" data-value="desc" aria-label="Left Align">
-                                            <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-                                        </button>
-                                        <select name="filter[sort][direction]" id="" class="form-control hidden">
-                                            {% for sortDirectionName, sortDirectionTitle  in filterOptions.sort_directions %}
-                                                <option {% if (currentFilterOptions and currentFilterOptions.sort is defined) and currentFilterOptions.sort.direction == sortDirectionName %}selected{% endif %} value="{{ sortDirectionName }}">{{ sortDirectionTitle }}</option>
+                                        <select name="filter[shelves][]" data-width="250px" multiple class="selectpicker form-control" data-live-search="true" data-style="btn-danger">
+                                            {% for shelf in filterOptions.filter.shelves %}
+                                                <option {% if (currentFilterOptions and currentFilterOptions.shelves is defined) and shelf.id in currentFilterOptions.shelves %}selected{% endif %} value="{{ shelf.id }}">{{ shelf.title }}</option>
                                             {% endfor %}
                                         </select>
-                                    </span>
+                                    </div>
+                                    <div class="row-right">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default btn-filter-label" type="button">
+                                                {% trans %}Sorting{% endtrans %}
+                                            </button>
+                                        </span>
+
+                                        <select name="filter[sort][name]" class="selectpicker form-control" data-width="250px" data-style="btn-danger">
+                                            {% for sortName, sortTitle  in filterOptions.sort %}
+                                                <option {% if (currentFilterOptions and currentFilterOptions.sort is defined) and currentFilterOptions.sort.name == sortName %}selected{% endif %} value="{{ sortName }}">{{ sortTitle }}</option>
+                                            {% endfor %}
+                                        </select>
+
+                                        {#<span class="input-group-btn toggle-btn-group">#}
+                                           {#<button type="button" class="btn btn-default {% if currentFilterOptions and currentFilterOptions.sort.direction == 'asc' %}active{% endif %}" data-value="asc" aria-label="Left Align">#}
+                                                {#<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>#}
+                                            {#</button>#}
+                                            {#<button type="button" class="btn btn-default  {% if currentFilterOptions and currentFilterOptions.sort.direction == 'desc' %}active{% endif %}" data-value="desc" aria-label="Left Align">#}
+                                                {#<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>#}
+                                            {#</button>#}
+                                            {#<select name="filter[sort][direction]" id="" class="form-control hidden">#}
+                                                {#{% for sortDirectionName, sortDirectionTitle  in filterOptions.sort_directions %}#}
+                                                    {#<option {% if (currentFilterOptions and currentFilterOptions.sort is defined) and currentFilterOptions.sort.direction == sortDirectionName %}selected{% endif %} value="{{ sortDirectionName }}">{{ sortDirectionTitle }}</option>#}
+                                                {#{% endfor %}#}
+                                            {#</select>#}
+                                        {#</span>#}
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <a href="{{ path('book') }}" type="submit" class="btn btn-default filter-reset">{% trans %}Reset{% endtrans %}</a>
-                        <button type="submit" class="btn btn-default filter-submit">{% trans %}Filter{% endtrans %}</button>
+                        <a href="{{ path('book') }}" type="submit" class="btn btn-default filter-reset">{% trans %}
+                            Reset{% endtrans %}</a>
+                        <button type="submit" class="btn btn-default filter-submit">{% trans %}
+                            Filter{% endtrans %}</button>
                     </div>
 
                     <div class="right-filter">

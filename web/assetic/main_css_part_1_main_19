@@ -726,7 +726,7 @@ input.search-form:hover {
 .progress {
     position: relative;
     margin-bottom: -27px;
-    margin-right: 37px;
+    margin-right: 36px;
     height: 27px;
     border-radius: 0px;
     background-color: rgba(50, 176, 179, 0.51)

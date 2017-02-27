@@ -1,0 +1,79 @@
+@media screen and (max-width: 1000px) and (min-width: 767px) {
+    /** Books List S **/
+    div#products {
+        width: 750px
+    }
+
+    .book-grid-list-view.grid-list-view .item{
+        width: 227px!important;
+    }
+
+    .book-grid-list-view.grid-list-view .btn-delete{
+        left: 189px;
+        height: 26px;
+    }
+
+    .book-grid-list-view.grid-list-view a.list-main-bottom-button {
+        width: 167px;
+    }
+
+    /** Books List E **/
+
+    /** Book Filter S **/
+    div.book-filter .filter-row .row-right > .bootstrap-select{
+        width: 270px!important;
+    }
+
+    div.book-filter .filter-row .row-left > .bootstrap-select{
+        width: 270px!important;
+    }
+
+    div.book-filter .filter-row .row-right{
+        width: 100%;
+    }
+
+    div.book-filter .filter-row .row-left{
+        width: 100%;
+    }
+
+    div.book-filter .left-filter{
+        width: 50%;
+    }
+
+    div.book-filter .right-filter{
+        width: 50%;
+    }
+
+    div.book-filter .filter-row{
+        margin-top: 5px;
+    }
+
+    div.book-filter .filter-row .row-left{
+        margin-bottom: 5px;
+    }
+
+    div.book-filter .navbar-form .filter-reset {
+        width: 170px;
+        float: left;
+    }
+
+    div.book-filter .navbar-form .filter-submit {
+        width: 170px;
+        float: right;
+        margin-right: 10px;
+    }
+
+    .book-filter .right-filter > .location-filter #filter-location-map-input{
+        width: 270px!important;
+    }
+
+    .book-filter .right-filter > .location-filter .filter-location-select{
+        width: 270px!important;
+    }
+
+    .book-filter form.navbar-form{
+        padding-bottom: 20px;
+    }
+
+    /** Book Filter E **/
+}
