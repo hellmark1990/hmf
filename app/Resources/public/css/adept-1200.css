@@ -70,5 +70,19 @@
     .book-grid-list-view.grid-list-view #products{
        width: 982px
     }
-    /** Book List У **/
+    /** Book List E **/
+
+    /** Shelves list S **/
+    div.container-shelf-list #products{
+        width: 800px;
+        margin: 0 auto !important;
+    }
+    /** Shelves list E **/
+
+    /** Reading list S **/
+    div.container-read-list #products{
+        width: 800px;
+        margin: 0 auto !important;
+    }
+    /** Reading list E **/
 }

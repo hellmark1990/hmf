@@ -20,11 +20,11 @@ form[name="bookbundle_shelf"] .button-delete {
 .container-shelf-list .item {
     width: 352px !important;
     margin-left: 29px;
-    margin-bottom: 30px!important;
+    margin-bottom: 30px !important;
 }
 
 .container-shelf-list #products {
-    margin-left: -26px!important;
+    margin-left: -26px !important;
 }
 
 .container-shelf-list img {
@@ -89,19 +89,22 @@ form[name="bookbundle_shelf"] .button-delete {
     height: 105px;
 }
 
-
 .container-shelf-list .grid-group-item .description-block {
     height: 75px;
     margin-bottom: 10px;
 }
 
-.container-shelf-list .grid-group-item{
+.container-shelf-list .grid-group-item {
     height: 380px;
     margin-right: 17px;
 }
 
-.container-shelf-list .grid-group-item .thumbnail{
+.container-shelf-list .grid-group-item .thumbnail {
     height: 380px;;
+}
+
+.container-shelf-list.grid-list-view .nav.nav-pills li {
+    width: 140px;
 }
 
 

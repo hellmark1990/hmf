@@ -131,7 +131,7 @@
 
     div.book-share-view-container .image-block{
         margin: 0 auto;
-        width: 125px!important;
+        width: 150px!important;
     }
     /** Share Book view E **/
 }

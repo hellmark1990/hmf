@@ -1,4 +1,4 @@
-@media screen and (max-width: 650px) and (min-width: 600px) {
+@media screen and (max-width: 600px) and (min-width: 320px) {
 
     /** Menu and header S **/
     #header > .navbar > .container > .navbar-header {
@@ -80,22 +80,22 @@
     /** Change Password E **/
     /** Book list S **/
     .book-grid-list-view.grid-list-view .item .btn-delete {
-        left: 212px;
+        left: 222px;
         height: 26px;
     }
 
     div.book-grid-list-view.grid-list-view #products {
-        width: 550px;
+        width: 300px;
         margin: 0 auto!important;
     }
 
     div.book-grid-list-view.grid-list-view .item {
-        width: 250px!important;
+        width: 260px!important;
         margin-left: 3%;
     }
 
     div.book-grid-list-view.grid-list-view a.list-main-bottom-button {
-        width: 190px;
+        width: 200px;
     }
 
     /** Book list E **/
@@ -105,13 +105,13 @@
     }
 
     .book-filter .navbar-form .filter-reset {
-        width: 90%;
+        width: 88%;
         position: absolute;
         bottom: 10px;
     }
 
     .book-filter .navbar-form .filter-submit {
-        width: 90%;
+        width: 88%;
         position: absolute;
         bottom: 50px;
     }
@@ -183,6 +183,7 @@
         width: 100%;
     }
 
+
     /** Book list filter E **/
 
     /** Book Create S **/
@@ -213,35 +214,5 @@
         margin-right: 0px;
     }
     /** Shelves list E **/
-
-    /** Reading list S **/
-    div.container-read-list #products{
-        width: 384px;
-        margin: 0 auto !important;
-    }
-
-    div.container-read-list .grid-group-item{
-        margin-left: 15px;
-        margin-right: 0px;
-    }
-    /** Reading list E **/
-
-    /** Share Book view S **/
-
-    .share-books-list > .pull-left, .share-books-list  > .pull-right, .share-books-list  .pull-left, .share-books-list  .pull-right {
-        float: none !important;
-        width: 100% !important;
-        padding-left: 0 !important;
-    }
-
-    div.book-share-view-container .data-block{
-        margin-top: 50px;
-    }
-
-    div.book-share-view-container .image-block{
-        margin: 0 auto;
-        width: 125px!important;
-    }
-    /** Share Book view E **/
 
 }

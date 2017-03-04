@@ -70,7 +70,27 @@
     .book-grid-list-view.grid-list-view #products{
        width: 982px
     }
-    /** Book List У **/
+    /** Book List E **/
+
+    /** Shelves list S **/
+    div.container-shelf-list #products{
+        width: 800px;
+        margin: 0 auto !important;
+    }
+    /** Shelves list E **/
+
+    /** Reading list S **/
+    div.container-read-list #products{
+        width: 800px;
+        margin: 0 auto !important;
+    }
+    /** Reading list E **/
+}
+
+@media screen and (max-width: 550px) and (min-width: 320px) {
+    #sticky.well{
+        width: 550px;
+    }
 }
 
 @media screen and (max-width: 600px) and (min-width: 320px) {
@@ -261,6 +281,65 @@
 
     /** Book list filter E **/
 
+    /** Book Create S **/
+    form[name="bookbundle_book"] > .pull-left, form[name="bookbundle_book"]  > .pull-right, form[name="bookbundle_book"]  .pull-left, form[name="bookbundle_book"]  .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    form[name="bookbundle_book"]  .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+    /** Book Create E **/
+
+    /** Shelves list S **/
+    div.container-shelf-list #products{
+        width: 384px;
+        margin: 0 auto !important;
+    }
+
+    div.container-shelf-list .grid-group-item{
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+    /** Shelves list E **/
+
+    /** Reading list S **/
+    div.container-read-list #products{
+        width: 384px;
+        margin: 0 auto !important;
+    }
+
+    div.container-read-list .grid-group-item{
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+    /** Reading list E **/
+
+    /** Share Book view S **/
+
+    .share-books-list > .pull-left, .share-books-list  > .pull-right, .share-books-list  .pull-left, .share-books-list  .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    div.book-share-view-container .data-block{
+        margin-top: 50px;
+    }
+
+    div.book-share-view-container .image-block{
+        margin: 0 auto;
+        width: 125px!important;
+    }
+    /** Share Book view E **/
+
 }
 
 @media screen and (max-width: 650px) and (min-width: 600px) {
@@ -450,6 +529,65 @@
 
     /** Book list filter E **/
 
+    /** Book Create S **/
+    form[name="bookbundle_book"] > .pull-left, form[name="bookbundle_book"]  > .pull-right, form[name="bookbundle_book"]  .pull-left, form[name="bookbundle_book"]  .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    form[name="bookbundle_book"]  .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+    /** Book Create E **/
+
+    /** Shelves list S **/
+    div.container-shelf-list #products{
+        width: 384px;
+        margin: 0 auto !important;
+    }
+
+    div.container-shelf-list .grid-group-item{
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+    /** Shelves list E **/
+
+    /** Reading list S **/
+    div.container-read-list #products{
+        width: 384px;
+        margin: 0 auto !important;
+    }
+
+    div.container-read-list .grid-group-item{
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+    /** Reading list E **/
+
+    /** Share Book view S **/
+
+    .share-books-list > .pull-left, .share-books-list  > .pull-right, .share-books-list  .pull-left, .share-books-list  .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    div.book-share-view-container .data-block{
+        margin-top: 50px;
+    }
+
+    div.book-share-view-container .image-block{
+        margin: 0 auto;
+        width: 125px!important;
+    }
+    /** Share Book view E **/
+
 }
 
 @media screen and (max-width: 1000px) and (min-width: 767px) {
@@ -530,6 +668,64 @@
     }
 
     /** Book Filter E **/
+
+    /** Book Create S **/
+    form[name="bookbundle_book"] > .pull-left, form[name="bookbundle_book"]  > .pull-right, form[name="bookbundle_book"]  .pull-left, form[name="bookbundle_book"]  .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    form[name="bookbundle_book"]  .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+    /** Book Create E **/
+
+    /** Shelves list S **/
+    div.container-shelf-list #products{
+        width: 734px;
+        margin: 0 auto !important;
+    }
+
+    div.container-shelf-list .grid-group-item{
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+    /** Shelves list E **/
+
+    /** Reading list S **/
+    div.container-read-list #products{
+        width: 760px;
+        margin: 0 auto !important;
+    }
+
+    div.container-read-list .grid-group-item{
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+    /** Reading list E **/
+    /** Share Book view S **/
+
+    .share-books-list > .pull-left, .share-books-list  > .pull-right, .share-books-list  .pull-left, .share-books-list  .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    div.book-share-view-container .data-block{
+        margin-top: 50px;
+    }
+
+    div.book-share-view-container .image-block{
+        margin: 0 auto;
+        width: 125px!important;
+    }
+    /** Share Book view E **/
 }
 
 @media screen and (max-width: 767px) and (min-width: 650px) {
@@ -718,6 +914,65 @@
     }
 
     /** Book list filter E **/
+
+    /** Book Create S **/
+    form[name="bookbundle_book"] > .pull-left, form[name="bookbundle_book"]  > .pull-right, form[name="bookbundle_book"]  .pull-left, form[name="bookbundle_book"]  .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    form[name="bookbundle_book"]  .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+    /** Book Create E **/
+
+    /** Shelves list S **/
+    div.container-shelf-list #products{
+        width: 384px;
+        margin: 0 auto !important;
+    }
+
+    div.container-shelf-list .grid-group-item{
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+    /** Shelves list E **/
+
+    /** Reading list S **/
+    div.container-read-list #products{
+        width: 384px;
+        margin: 0 auto !important;
+    }
+
+    div.container-read-list .grid-group-item{
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+    /** Reading list E **/
+
+    /** Share Book view S **/
+
+    .share-books-list > .pull-left, .share-books-list  > .pull-right, .share-books-list  .pull-left, .share-books-list  .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    div.book-share-view-container .data-block{
+        margin-top: 50px;
+    }
+
+    div.book-share-view-container .image-block{
+        margin: 0 auto;
+        width: 125px!important;
+    }
+    /** Share Book view E **/
 
 }
 
@@ -1528,7 +1783,7 @@ div.alert.alert-empty-list > a:hover {
 
 #header .navbar-nav  a{
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     color: #fff;
 }
 
@@ -3028,7 +3283,7 @@ div.alert.alert-empty-list > a:hover {
 }
 
 #products{
-    width: 1177px;
+    /*width: 1177px;*/
     overflow: hidden;
 }
 
@@ -3084,7 +3339,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     color: #4e4e4e;
     line-height: 22px;
-    min-width: 580px;
+    min-width: 550px;
 }
 
 h1,
@@ -6435,8 +6690,9 @@ form[name="bookbundle_read"] .read-location-map{
 }
 
 
-.share-books-list .item > .thumbnail{
-    padding-top: 20px;
+.share-books-list .item .progress{
+    margin-right: 0px;
+    margin-bottom: 5px;
 }
 
 .share-books-list .item.grid-group-item .book-title-block {
@@ -6450,6 +6706,10 @@ form[name="bookbundle_read"] .read-location-map{
 
 .share-books-list .item.grid-group-item > .thumbnail {
     height: 400px;
+}
+
+.share-books-list .item.grid-group-item > .thumbnail img {
+    margin-bottom: 20px;
 }
 
 .share-books-list .item.grid-group-item > .thumbnail > .caption{
@@ -6541,11 +6801,11 @@ form[name="bookbundle_shelf"] .button-delete {
 .container-shelf-list .item {
     width: 352px !important;
     margin-left: 29px;
-    margin-bottom: 30px!important;
+    margin-bottom: 30px !important;
 }
 
 .container-shelf-list #products {
-    margin-left: -26px!important;
+    margin-left: -26px !important;
 }
 
 .container-shelf-list img {
@@ -6610,19 +6870,22 @@ form[name="bookbundle_shelf"] .button-delete {
     height: 105px;
 }
 
-
 .container-shelf-list .grid-group-item .description-block {
     height: 75px;
     margin-bottom: 10px;
 }
 
-.container-shelf-list .grid-group-item{
+.container-shelf-list .grid-group-item {
     height: 380px;
     margin-right: 17px;
 }
 
-.container-shelf-list .grid-group-item .thumbnail{
+.container-shelf-list .grid-group-item .thumbnail {
     height: 380px;;
+}
+
+.container-shelf-list.grid-list-view .nav.nav-pills li {
+    width: 140px;
 }
 
 

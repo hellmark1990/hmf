@@ -1,0 +1,63 @@
+.book-share-view-container .book-content {
+    padding-left: 150px !important;
+    padding-right: 150px !important;
+}
+
+.book-share-view-container .image-block {
+    width: 20%
+}
+
+.book-share-view-container .image {
+    width: 125px;
+    height: 190px;
+    background-color: white;
+    -webkit-box-shadow: 0 8px 13px 0 rgba(0, 0, 2, 0.2);
+    box-shadow: 0 8px 13px 0 rgba(0, 0, 2, 0.2);
+}
+
+.book-share-view-container .data-block {
+    width: 80%;
+    font-size: 18px;
+    line-height: 2em;
+    margin-top: -10px;
+}
+
+.book-share-view-container .data-block .item-title {
+    font-weight: bold;
+    width: 130px;
+    display: inline-block;
+}
+
+.book-share-view-container .book-tabs {
+    clear: both;
+    padding-top: 70px;
+}
+
+.book-share-view-container .book-tabs a {
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.book-share-view-container .tab-content {
+    background-color: white;
+    line-height: 26px;
+    font-size: 16px;
+}
+
+.book-share-view-container .tab-content .container-shelf-list .item {
+    margin-left: 55px;
+}
+
+.book-share-view-container .tab-content .container-shelf-list .item > .thumbnail > .caption {
+    margin-top: 4px;
+}
+
+.book-share-view-container .nav-tabs > li.active > a:after {
+    content: normal;
+}
+
+.book-share-view-container .nav-tabs > li > a:hover, .book-share-view-container .nav-tabs > li.active > a, .book-share-view-container .nav-tabs > li.active > a:hover, .book-share-view-container .nav-tabs > li.active > a:focus {
+    background: #32b0b3;
+}
+

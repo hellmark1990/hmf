@@ -1,0 +1,70 @@
+.grid-list-view .list-group-item-text.common-block {
+    height: 50px;
+}
+
+.grid-list-view .list-group-item-text.common-one-line-block {
+    height: 20px;
+}
+
+.grid-list-view .list-group-item-text.common-one-line-block.center-block {
+    text-align: center;
+    border: 1px solid #32b0b3;
+    min-height: 60px;
+    height: 60px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.grid-list-view .badge {
+    left: 0;
+    top: 0;
+    padding: 4px;
+    min-width: 20px;
+    border-radius: 3px;
+}
+
+.grid-list-view .labels {
+    position: absolute;
+    top: 50px;
+    right: -6px;
+}
+
+.grid-list-view .labels > .label{
+    /*font-size:  92%;*/
+    display: block;
+    /*font-size: 105%;*/
+    margin-bottom: 10px;
+    height: 22px;
+    padding: 4px;
+    width: 45px;
+    font-size: 14px;
+    border-radius: 0px;
+}
+
+/*.grid-list-view .labels > .label > .glyphicon{*/
+    /*margin-right: 0px;*/
+/*}*/
+
+.grid-list-view .nav.nav-pills {
+    margin-left: -5px;
+    margin-top: 15px;
+}
+
+.grid-list-view .nav.nav-pills a {
+    padding: 8px;
+    background-color: #32b0b3;
+    border-radius: 0px;
+    font-weight: 600;
+}
+
+.grid-list-view .nav.nav-pills a:hover {
+    opacity: 0.9;
+    background-color: #32b0b3;
+}
+
+.grid-list-view .nav.nav-pills li {
+    margin-left: 15px;
+}
+

@@ -3,7 +3,7 @@
 {% block body -%}
     {{ parent() }}
 
-    <div class="grid-list-view container share-books-list">
+    <div class="grid-list-view book-grid-list-view container share-books-list">
         <div id="sticky" class="well well-sm">
             <div class="top-panel-content container">
                 <div class="center">
@@ -11,19 +11,28 @@
                 </div>
             </div>
         </div>
+
         <div id="products" class="row list-group">
             {% if shelf.books %}
                 {% for entity in shelf.books %}
                     <div class="item  col-xs-3 col-lg-3 grid-group-item">
                         <div class="thumbnail">
+                            <div class="progress"
+                                 data-toggle="tooltip"
+                                 data-placement="top"
+                                 title="{% trans %}Pages count{% endtrans %} {{ entity.pageCount }}. {% trans %}You read{% endtrans %} {{ entity.pageReadCount }}.">
+
+                                <div class="progress-bar progress-bar-danger" role="progressbar"
+                                     aria-valuenow="{{ entity.getPageReadPercents }}"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100"
+                                     style="width: {{ entity.getPageReadPercents }}%;">
+                                    <p>{{ entity.getPageReadPercents }}%</p>
+                                </div>
+                            </div>
+
                             <a href="{{ path('shared_shelf_book', {'shelfId':shelf.id, 'bookId': entity.id, 'salt': salt}) }}">
                                 <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
-                                <div class="labels">
-                                    <span class="label label-inverse arrowed-in">
-                                        {{ entity.pageCount }}
-                                        <span class="glyphicon glyphicon-align-justify"></span>
-                                    </span>
-                                </div>
                             </a>
 
                             <div class="caption">
@@ -38,17 +47,6 @@
                                     <p class="gray-color">{{ entity.authors|truncate(200) }}</p>
                                 </div>
 
-                                <div class="group inner list-group-item-text common-block">
-                                    <ul class="nav nav-pills" role="tablist">
-                                        <li role="presentation" class="active">
-                                            <a>
-                                                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-                                                {% trans %}Read{% endtrans %} ({{ entity.reads.count }})
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
 
                                 <div class="row">
                                     <div class="col-xs-12 col-md-6">
@@ -59,11 +57,19 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <div class="alert alert-info alert-empty-list">
-                    {% trans %} Shelf books list is empty.{% endtrans %}
-                </div>
+                {% if app.request.query.get('filter') %}
+                    <div class="alert alert-info alert-empty-list">
+                        <div>
+                            {% trans %}Empty results. Try to change filter options.{% endtrans %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info alert-empty-list">
+                        {% trans %} Shelf books list is empty.{% endtrans %}
+                    </div>
+                {% endif %}
+
             {% endif %}
         </div>
     </div>
-
 {% endblock %}

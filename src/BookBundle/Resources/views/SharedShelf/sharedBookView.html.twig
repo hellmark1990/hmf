@@ -77,11 +77,11 @@
                                 {% trans %}Description{% endtrans %}
                             </a>
                         </li>
-                        <li role="presentation">
-                            <a href="#shelves" aria-controls="shelves" role="tab" data-toggle="tab">
-                                {% trans %}Shelves{% endtrans %} ({{ book.shelfs.count }})
-                            </a>
-                        </li>
+                        {#<li role="presentation">#}
+                            {#<a href="#shelves" aria-controls="shelves" role="tab" data-toggle="tab">#}
+                                {#{% trans %}Shelves{% endtrans %} ({{ book.shelfs.count }})#}
+                            {#</a>#}
+                        {#</li>#}
                     </ul>
 
                     <!-- Tab panes -->
@@ -89,38 +89,38 @@
                         <div role="tabpanel" class="tab-pane active" id="description">
                             {{ book.description|raw }}
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="shelves">
-                            <div class="grid-list-view container-shelf-list">
-                                {% if book.shelfs %}
-                                    <div id="products" class="row list-group">
-                                        {% for entity in book.shelfs %}
-                                            <div class="item  col-xs-4 col-lg-4 grid-group-item">
-                                                <div class="thumbnail">
-                                                    {% if entity.image %}
-                                                        <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
-                                                    {% else %}
-                                                        <img class="group list-group-image no-image" src="/uploads/no-image.png" alt=""/>
-                                                    {% endif %}
+                        {#<div role="tabpanel" class="tab-pane" id="shelves">#}
+                            {#<div class="grid-list-view container-shelf-list">#}
+                                {#{% if book.shelfs %}#}
+                                    {#<div id="products" class="row list-group">#}
+                                        {#{% for entity in book.shelfs %}#}
+                                            {#<div class="item  col-xs-4 col-lg-4 grid-group-item">#}
+                                                {#<div class="thumbnail">#}
+                                                    {#{% if entity.image %}#}
+                                                        {#<img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>#}
+                                                    {#{% else %}#}
+                                                        {#<img class="group list-group-image no-image" src="/uploads/no-image.png" alt=""/>#}
+                                                    {#{% endif %}#}
 
-                                                    <div class="caption">
-                                                        <h4 class="group inner list-group-item-heading">
-                                                            {{ entity.title }}
-                                                        </h4>
+                                                    {#<div class="caption">#}
+                                                        {#<h4 class="group inner list-group-item-heading">#}
+                                                            {#{{ entity.title }}#}
+                                                        {#</h4>#}
 
-                                                        <p class="group inner list-group-item-text read-comment">{{ entity.description|striptags|truncate(120) }}</p>
+                                                        {#<p class="group inner list-group-item-text read-comment">{{ entity.description|striptags|truncate(120) }}</p>#}
 
-                                                        <div class="row">
-                                                            <div class="col-xs-12 col-md-6">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
+                                                        {#<div class="row">#}
+                                                            {#<div class="col-xs-12 col-md-6">#}
+                                                            {#</div>#}
+                                                        {#</div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                            {#</div>#}
+                                        {#{% endfor %}#}
+                                    {#</div>#}
+                                {#{% endif %}#}
+                            {#</div>#}
+                        {#</div>#}
                     </div>
 
                 </div>

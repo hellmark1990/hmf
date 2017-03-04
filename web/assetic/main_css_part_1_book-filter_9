@@ -1,0 +1,238 @@
+.dropdown-menu > li:hover {
+    cursor: pointer;
+}
+
+.toggle-btn-group {
+    margin-left: -10px;
+    display: inline-block !important;
+    width: 43px !important;
+}
+
+.toggle-btn-group .btn {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.toggle-btn-group .btn > span {
+    margin: 0px;
+}
+
+.toggle-btn-group .btn.active {
+    background-color: #32b0b3;
+    color: white;
+    border-color: #32b0b3;
+}
+
+.toggle-btn-group .btn:hover {
+    border-color: #32b0b3;
+}
+
+.toggle-btn-group .btn:hover > span {
+    color: white;
+}
+
+.book-filter {
+    margin-top: -30px;
+    margin-bottom: 50px;
+}
+
+.book-filter h2 {
+    text-align: center;
+    width: 100%;
+}
+
+.book-filter > .navbar {
+    border: none;
+    border-radius: 0;
+    webkit-box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
+    box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
+}
+
+.book-filter .btn-group.sorting {
+    width: 170px;
+}
+
+.book-filter .btn-group > button.title {
+    width: 145px;
+}
+
+.book-filter h2 {
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+}
+
+.book-filter .navbar-form {
+    width: 100%;
+}
+
+.book-filter .left-filter {
+    /*border: 1px solid red;*/
+    float: left;
+    width: 62%;
+    min-height: 200px;
+}
+
+.book-filter .right-filter {
+    /*border: 1px solid black;*/
+    float: right;
+    width: 38%;
+    min-height: 200px;
+}
+
+.book-filter .btn-danger {
+    background-color: #32b0b3;
+    color: #fff !important;
+}
+
+.book-filter .filter-row {
+    margin-top: 22px;
+}
+
+.book-filter .btn-filter-label {
+    width: 80px;
+    font-weight: 600;
+}
+
+.book-filter .btn-filter-label:hover {
+    background-color: inherit;
+}
+
+.book-filter .location-filter .btn-group {
+    margin-right: 0px;
+}
+
+.book-filter .filter-location-map {
+    width: 100%;
+    min-height: 164px;
+}
+
+.book-filter .dropdown-menu li:hover {
+    background-color: rgba(50, 176, 179, 0.51)
+}
+
+.book-filter .dropdown-menu li.active > a {
+    background-color: #32b0b3
+}
+
+.book-filter .dropdown-menu li.selected {
+    background-color: #32b0b3;
+    color: #fff;
+}
+
+.book-filter .dropdown-menu li.selected > a {
+    background-color: #32b0b3;
+    color: #fff;
+}
+
+.book-filter .filter-location-select {
+    background-color: #32b0b3;
+    color: #fff;
+}
+
+.book-filter .filter-submit {
+    width: 329px;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.book-filter .filter-submit:hover {
+    background-color: inherit;
+}
+
+.book-filter .filter-reset {
+    width: 329px;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.book-filter .filter-reset:hover {
+    background-color: inherit;
+}
+
+.book-filter #filter-location-map-input {
+    border-color: #32b0b3;
+    border-width: 2px;
+    width: 332px;
+}
+
+/**/
+/*.filter-option*/
+
+.book-filter.loading {
+}
+
+.book-filter.loading form{
+    opacity: 0;
+}
+
+.book-filter.loading .sk-circle {
+    position: relative;
+    margin-top: 70px;
+    margin-bottom: -90px;
+}
+
+.book-filter.loading > .navbar {
+    max-height: 216px;
+    background-color: rgb(50, 176, 179);
+}
+
+.book-filter .filter-row .row-left{
+    width: 340px;
+    float: left;
+}
+
+.book-filter .filter-row .row-right{
+    width: 340px;
+    float: right;
+}
+
+.book-filter .filter-row .row-left > .input-group-btn{
+    float: left;
+}
+
+.book-filter .filter-row .row-left > .bootstrap-select{
+    float: right;
+}
+
+.book-filter .filter-row .row-right > .input-group-btn{
+    float: left;
+}
+
+.book-filter .filter-row .row-right > .bootstrap-select{
+    float: right;
+}
+
+.book-filter .filter-row .row-right > .input-group-btn.toggle-btn-group{
+    float: right;
+}
+
+.book-filter form.navbar-form {
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
