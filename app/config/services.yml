@@ -66,3 +66,10 @@ services:
 
     app.languages:
         class: AppBundle\Services\Langauges
+
+# Admin entities
+    admin.seo_item:
+        class: App\AdminBundle\Entity\SeoItem
+        arguments: [~, App\SeoBundle\Entity\SeoItem, ~, '@service_container']
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: SeoItem }

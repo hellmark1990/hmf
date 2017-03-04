@@ -416,4 +416,37 @@ class User extends BaseUser {
 
         return $reads;
     }
+
+    /**
+     * Add sharedBookLinks
+     *
+     * @param \BookBundle\Entity\SharedBookLink $sharedBookLinks
+     * @return User
+     */
+    public function addSharedBookLink(\BookBundle\Entity\SharedBookLink $sharedBookLinks)
+    {
+        $this->sharedBookLinks[] = $sharedBookLinks;
+
+        return $this;
+    }
+
+    /**
+     * Remove sharedBookLinks
+     *
+     * @param \BookBundle\Entity\SharedBookLink $sharedBookLinks
+     */
+    public function removeSharedBookLink(\BookBundle\Entity\SharedBookLink $sharedBookLinks)
+    {
+        $this->sharedBookLinks->removeElement($sharedBookLinks);
+    }
+
+    /**
+     * Get sharedBookLinks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSharedBookLinks()
+    {
+        return $this->sharedBookLinks;
+    }
 }

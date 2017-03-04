@@ -39,7 +39,10 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             // ...,
-            new \BookBundle\BookBundle()
+            new \BookBundle\BookBundle(),
+            new Sonata\SeoBundle\SonataSeoBundle(),
+            new Symfony\Cmf\Bundle\SeoBundle\CmfSeoBundle(),
+            new \App\SeoBundle\AppSeoBundle(),
         );
 
 
@@ -48,6 +51,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
         }
 
         return $bundles;

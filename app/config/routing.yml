@@ -1,3 +1,8 @@
+seo:
+    resource: "@AppSeoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 book:
     resource: "@BookBundle/Controller/"
     type:     annotation
