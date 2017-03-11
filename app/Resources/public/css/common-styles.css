@@ -40,3 +40,7 @@ div.alert.alert-empty-list > a:hover {
     font-size: 15px;
 }
 
+.clear-float{
+    clear: both;
+}
+

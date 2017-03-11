@@ -2,4 +2,9 @@
     #sticky.well{
         width: 550px;
     }
+    /** Toggle S **/
+    .toggle{
+        right: 15px;
+    }
+    /** Toggle list E **/
 }

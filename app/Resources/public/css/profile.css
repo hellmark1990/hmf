@@ -75,6 +75,11 @@
     white-space: normal;
 }
 
+.fos_user_profile_edit .toggle.btn{
+    float: right;
+    margin-bottom: 15px;
+}
+
 /** Change password Start **/
 
 form.fos_user_change_password {

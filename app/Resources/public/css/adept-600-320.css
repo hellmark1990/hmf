@@ -245,4 +245,10 @@
     }
     /** Share Book view E **/
 
+    /** Toggle S **/
+    .toggle{
+        right: 15px;
+    }
+    /** Toggle list E **/
+
 }

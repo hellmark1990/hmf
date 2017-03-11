@@ -13,6 +13,7 @@ namespace ProfileBundle\Form\Type;
 
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -76,6 +77,7 @@ class ProfileFormType extends AbstractType {
             ->add('phone', 'text', ['required' => false])
             ->add('vk', 'text', ['required' => false])
             ->add('facebook', 'text', ['required' => false, 'label' => 'FB'])
+            ->add('accessType', HiddenType::class)
             ->add('twitter', 'text', ['required' => false]);
     }
 }

@@ -13,6 +13,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks
  */
 class Book {
+
+    const ACCESS_PRIVATE = 0;
+    const ACCESS_PUBLIC = 1;
+
     /**
      * @var integer
      *
@@ -136,6 +140,14 @@ class Book {
      * @ORM\Column(type="datetime", nullable=true)
      */
     protected $updatedAt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="accessType", type="smallint")
+     */
+    private $accessType = 0;
+
 
     /**
      * @ORM\PrePersist
@@ -548,8 +560,7 @@ class Book {
      * @param \DateTime $createdAt
      * @return Book
      */
-    public function setCreatedAt($createdAt)
-    {
+    public function setCreatedAt($createdAt){
         $this->createdAt = $createdAt;
 
         return $this;
@@ -558,10 +569,9 @@ class Book {
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getCreatedAt()
-    {
+    public function getCreatedAt(){
         return $this->createdAt;
     }
 
@@ -571,8 +581,7 @@ class Book {
      * @param \DateTime $updatedAt
      * @return Book
      */
-    public function setUpdatedAt($updatedAt)
-    {
+    public function setUpdatedAt($updatedAt){
         $this->updatedAt = $updatedAt;
 
         return $this;
@@ -581,10 +590,61 @@ class Book {
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
-    public function getUpdatedAt()
-    {
+    public function getUpdatedAt(){
         return $this->updatedAt;
     }
+
+    /**
+     * Set accessType
+     *
+     * @param integer $accessType
+     * @return Book
+     */
+    public function setAccessType($accessType){
+        $this->accessType = $accessType;
+
+        return $this;
+    }
+
+    /**
+     * Get accessType
+     *
+     * @return integer
+     */
+    public function getAccessType(){
+        return $this->accessType;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPublic(){
+        return $this->accessType == self::ACCESS_PUBLIC;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPrivate(){
+        return $this->accessType == self::ACCESS_PRIVATE;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setPublicAccess(){
+        $this->accessType = self::ACCESS_PUBLIC;
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setPrivateAccess(){
+        $this->accessType = self::ACCESS_PRIVATE;
+        return $this;
+    }
+
 }

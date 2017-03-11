@@ -122,7 +122,7 @@ assetic:
                 - '%kernel.root_dir%/Resources/public/js/bootstrap-select.min.js'
                 - '%kernel.root_dir%/Resources/public/js/moment.min.js'
                 - '%kernel.root_dir%/Resources/public/js/bootstrap-datetimepicker.min.js'
-                - '%kernel.root_dir%/Resources/public/js/bootstrap-datetimepicker.min.js'
+                - '%kernel.root_dir%/Resources/public/js/bootstrap-toggle.min.js'
                 - '%kernel.root_dir%/Resources/public/js/gmaps.js'
                 - '%kernel.root_dir%/Resources/public/js/wow.min.js'
                 - '%kernel.root_dir%/Resources/public/js/main.js'

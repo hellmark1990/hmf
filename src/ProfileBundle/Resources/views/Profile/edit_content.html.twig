@@ -23,6 +23,8 @@
         {% if form.avatar.binaryContent.vars.errors.count %}
             <div class="alert alert-danger" role="alert">{{ form_errors(form.avatar.binaryContent) }}</div>
         {% endif %}
+        <input type="checkbox" data-name="fos_user_profile_form[accessType]" value="1" {% if app.user.isPrivate %}checked{% endif %} data-on=" {% trans %}Private{% endtrans %}" data-off="{% trans %}Public{% endtrans %}" data-toggle="toggle" data-onstyle="danger" data-style="round">
+        <div class="clear-float"></div>
         {{ form_row(form.username) }}
         {{ form_row(form.email) }}
         {{ form_row(form.phone) }}

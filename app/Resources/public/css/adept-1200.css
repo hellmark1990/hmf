@@ -85,4 +85,10 @@
         margin: 0 auto !important;
     }
     /** Reading list E **/
+
+    /** Toggle S **/
+    .toggle{
+        right: 15px;
+    }
+    /** Toggle list E **/
 }

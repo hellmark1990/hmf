@@ -16,6 +16,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="ProfileBundle\Repository\UserRepository")
  */
 class User extends BaseUser {
+
+    const ACCESS_PRIVATE = 0;
+    const ACCESS_PUBLIC = 1;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -89,6 +93,13 @@ class User extends BaseUser {
      * @ORM\OneToMany(targetEntity="BookBundle\Entity\SharedBookLink", mappedBy="userOwner")
      */
     private $sharedBookLinks;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="accessType", type="smallint")
+     */
+    private $accessType = 0;
 
     public function __construct(){
         parent::__construct();
@@ -448,5 +459,56 @@ class User extends BaseUser {
     public function getSharedBookLinks()
     {
         return $this->sharedBookLinks;
+    }
+
+    /**
+     * Set accessType
+     *
+     * @param integer $accessType
+     * @return Book
+     */
+    public function setAccessType($accessType){
+        $this->accessType = $accessType;
+
+        return $this;
+    }
+
+    /**
+     * Get accessType
+     *
+     * @return integer
+     */
+    public function getAccessType(){
+        return $this->accessType;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPublic(){
+        return $this->accessType == self::ACCESS_PUBLIC;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPrivate(){
+        return $this->accessType == self::ACCESS_PRIVATE;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setPublicAccess(){
+        $this->accessType = self::ACCESS_PUBLIC;
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setPrivateAccess(){
+        $this->accessType = self::ACCESS_PRIVATE;
+        return $this;
     }
 }
