@@ -18,10 +18,11 @@
 
     {{ form_start(form, { 'action': path('book_create') }) }}
     <div class="book-create-form-container">
-        <div class="pull-left">
+        <div class="pull-left control-block book-image">
+            <h2 class="control-block-h2">{% trans %}Book image{% endtrans %}</h2>
             {{ form_row(form.image) }}
         </div>
-        <div class="pull-right">
+        <div class="pull-right control-block">
             {% if form.image.binaryContent.vars.errors.count %}
                 <div class="alert alert-danger" role="alert">{{ form_errors(form.image.binaryContent) }}</div>
             {% endif %}
@@ -31,10 +32,12 @@
             {{ form_row(form.readerLink) }}
             {{ form_row(form.previewLink) }}
         </div>
-        <div class="form-container">
+        <div class="form-container control-block">
             {{ form_row(form.publishedDate) }}
             {{ form_row(form.pageCount) }}
             {{ form_row(form.language) }}
+            {{ form_row(form.shelfs) }}
+            {{ form_row(form.description) }}
         </div>
         <div class="clear-float"></div>
     </div>

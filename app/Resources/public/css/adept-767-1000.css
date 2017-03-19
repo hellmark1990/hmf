@@ -102,6 +102,18 @@
         padding-left: 0 !important;
     }
 
+    form[name="bookbundle_book"] .book-image.control-block  .pull-left{
+        width: 300px;
+    }
+
+    form[name="bookbundle_book"] .circle.image-container {
+        margin: 0 auto;
+        width: 200px;
+        height: 260px;
+        padding: 25px;
+        padding-top: 35px;
+    }
+
     form[name="bookbundle_book"]  .circle.image-container {
         margin: 0 auto !important;
     }

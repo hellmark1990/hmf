@@ -6,6 +6,9 @@
             <h1>{% trans %}My Profile{% endtrans %}</h1>
         </div>
         <div class="btn-group pull-right">
+            <a class="btn btn-primary btn-submit-form" href="{{ path('fos_user_change_password') }}">
+                {% trans %}Change Password{% endtrans %}
+            </a>
             <button class="btn btn-primary btn-submit-form">
                 <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                 {% trans %}Update{% endtrans %}
@@ -16,23 +19,30 @@
 
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 <div class="profile-edit-form-container">
-    <div class="pull-left profile-avatar">
+    <div class="pull-left profile-avatar control-block">
+        <h2 class="control-block-h2">{% trans %}My Avatar{% endtrans %}</h2>
         {{ form_row(form.avatar) }}
     </div>
     <div class="pull-right">
         {% if form.avatar.binaryContent.vars.errors.count %}
             <div class="alert alert-danger" role="alert">{{ form_errors(form.avatar.binaryContent) }}</div>
         {% endif %}
-        <input type="checkbox" data-name="fos_user_profile_form[accessType]" value="1" {% if app.user.isPrivate %}checked{% endif %} data-on=" {% trans %}Private{% endtrans %}" data-off="{% trans %}Public{% endtrans %}" data-toggle="toggle" data-onstyle="danger" data-style="round">
+        <input type="checkbox" data-name="fos_user_profile_form[accessType]" value="1" {% if app.user.isPrivate %}checked{% endif %} data-on=" {% trans %}Private{% endtrans %}" data-off="{% trans %}Public{% endtrans %}" data-toggle="toggle" data-onstyle="danger">
         <div class="clear-float"></div>
-        {{ form_row(form.username) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.phone) }}
+        <div class="control-block">
+            {{ form_row(form.username) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.phone) }}
+        </div>
+    </div>
+    <div class="form-container control-block social-controls">
+        <h2 class="control-block-h2">{% trans %}Social links{% endtrans %}</h2>
         {{ form_row(form.vk) }}
         {{ form_row(form.facebook) }}
         {{ form_row(form.twitter) }}
     </div>
-    <div class="form-container">
+    <div class="form-container control-block">
+        <h2 class="control-block-h2">{% trans %}About me{% endtrans %}</h2>
         {{ form_row(form.about) }}
     </div>
 </div>

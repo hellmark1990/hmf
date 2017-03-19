@@ -5,8 +5,8 @@
     -webkit-border-radius: 100%;
     border-radius: 100%;
     overflow: hidden;
-    margin-left: 50px;
-    margin-top: 30px;
+    margin: 0 auto;
+    clear: both;
 }
 
 .profile-avatar .circle.image-container > img {
@@ -32,7 +32,7 @@
     opacity: 0.9 !important;
 }
 
-.login-form label, .registration-form label, .fos_user_resetting_request label{
+.login-form label, .registration-form label, .fos_user_resetting_request label {
     text-align: left;
 }
 
@@ -54,7 +54,7 @@
     border-radius: 100%;
 }
 
-.profile-avatar .image-container.no-image{
+.profile-avatar .image-container.no-image {
     border: 5px solid #fff;
 }
 
@@ -75,9 +75,29 @@
     white-space: normal;
 }
 
-.fos_user_profile_edit .toggle.btn{
+.fos_user_profile_edit.form-horizontal .profile-avatar .pull-left{
+    width: 420px;
+}
+
+.fos_user_profile_edit.form-horizontal .profile-avatar.control-block{
+    width: 420px;
+    margin-top: 48px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 19px;
+}
+
+.fos_user_profile_edit .social-controls > .form-group {
+    width: 30%;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.fos_user_profile_edit .toggle.btn {
     float: right;
     margin-bottom: 15px;
+    -webkit-box-shadow: -2px 5px 8px 1px rgba(0, 0, 2, .2);
+    box-shadow: -2px 5px 8px 1px rgba(0, 0, 2, .2);
 }
 
 /** Change password Start **/
@@ -104,20 +124,20 @@ form.fos_user_change_password .form-group > .col-sm-2.control-label {
 /** Reset password Start **/
 
 /*form.fos_user_resetting_reset {*/
-    /*width: 600px;*/
-    /*margin: 0 auto;*/
+/*width: 600px;*/
+/*margin: 0 auto;*/
 /*}*/
 
 /*form.fos_user_resetting_reset .col-sm-10 {*/
-    /*width: 50%;*/
+/*width: 50%;*/
 /*}*/
 
 /*form.fos_user_resetting_reset .form-group > .col-sm-10 {*/
-    /*width: 50%;*/
+/*width: 50%;*/
 /*}*/
 
 /*form.fos_user_resetting_reset .form-group > .col-sm-2.control-label {*/
-    /*width: 30%;*/
+/*width: 30%;*/
 /*}*/
 
 /** Reset password END **/
@@ -125,12 +145,12 @@ form.fos_user_change_password .form-group > .col-sm-2.control-label {
 /** Request on reset password form Start **/
 
 /*form.fos_user_resetting_request {*/
-    /*width: 600px;*/
-    /*margin: 0 auto;*/
+/*width: 600px;*/
+/*margin: 0 auto;*/
 /*}*/
 
 /*form.fos_user_resetting_request .form-group > .col-sm-9 {*/
-    /*width: 50%;*/
+/*width: 50%;*/
 /*}*/
 
 /** Request on reset password form END **/

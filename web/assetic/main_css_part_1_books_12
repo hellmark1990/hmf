@@ -138,6 +138,12 @@ form[name="bookbundle_book"] .circle.image-container > img {
     padding: 0px;
 }
 
+form[name="bookbundle_book"] .book-image.control-block{
+    width: 300px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
 .form-group .form-control {
     border-color: #d8d8d8 !important;
 }

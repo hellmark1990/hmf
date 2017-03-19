@@ -22,11 +22,14 @@ class ReadType extends AbstractType {
         $builder
             ->add('title')
             ->add('pagesCount')
-            ->add('place', TextType::class)
+            ->add('place', TextType::class, [
+                'label' => false
+            ])
             ->add('timeStart', TextType::class)
             ->add('timeEnd', TextType::class)
             ->add('comment', TextareaType::class, [
-                'required' => false
+                'required' => false,
+                'label' => false
             ])
             ->add('latitude', HiddenType::class)
             ->add('longitude', HiddenType::class)
@@ -38,7 +41,7 @@ class ReadType extends AbstractType {
                     return $date ? $date->format('Y-m-d H:i:s') : null;
                 },
                 function ($date){
-                    return \DateTime::createFromFormat('Y-m-d H:i', $date);
+                    return $date ?  \DateTime::createFromFormat('Y-m-d H:i', $date) : null;
                 }
             ));
 
@@ -49,7 +52,7 @@ class ReadType extends AbstractType {
                     return $date ? $date->format('Y-m-d H:i:s') : null;
                 },
                 function ($date){
-                    return \DateTime::createFromFormat('Y-m-d H:i', $date);
+                    return $date ?  \DateTime::createFromFormat('Y-m-d H:i', $date) : null;
                 }
             ));
 

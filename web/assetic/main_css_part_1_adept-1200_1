@@ -53,6 +53,15 @@
 
     /** Book Filter E **/
 
+    form[name="bookbundle_book"].form-horizontal .circle.image-container {
+        margin: 0 auto;
+        width: 200px;
+        height: 260px;
+        padding: 25px;
+        padding-top: 35px;
+        padding-left: 0px;
+    }
+
     /** Book List S **/
     .book-grid-list-view.grid-list-view .item{
         width: 304px!important;

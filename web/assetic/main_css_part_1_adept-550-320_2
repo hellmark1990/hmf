@@ -7,4 +7,13 @@
         right: 15px;
     }
     /** Toggle list E **/
+
+    /** Read edit-create S **/
+
+    form[name="bookbundle_read"].form-horizontal .datepicker-container > .col-sm-4 {
+        float: none;
+        width: 100%;
+    }
+
+    /** Read edit-create E **/
 }

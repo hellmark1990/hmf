@@ -1,9 +1,8 @@
 {% use "bootstrap_3_horizontal_layout.html.twig" %}
 
 {% block sonata_media_type_widget %}
-    <div class="span3 pull-left">
+    <div class="pull-left">
         {% if value is not empty and value.providerReference %}
-            <div class="pull-left" style="margin-right: 5px">
                 <div class="circle image-container">
                     {% thumbnail value, 'small' with {'class': 'img-polaroid media-object', 'data-default-src': asset('bundles/sonatamedia/grey.png')} %}
                     <button type="button" class="btn btn-default btn-small button button-edit">
@@ -12,7 +11,6 @@
                     <button type="button" class="btn btn-default btn-small button button-delete">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
-                </div>
             </div>
 
             {% if sonata_admin_enabled is defined and sonata_admin_enabled %}

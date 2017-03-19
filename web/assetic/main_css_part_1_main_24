@@ -318,7 +318,7 @@ input.search-form:hover {
 }
 
 .navbar-inverse .navbar-nav .dropdown-menu {
-    background-color: rgba(0, 0, 0, .85);
+    background-color: rgba(0, 0, 0, .92);
     -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
     -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
@@ -361,6 +361,18 @@ input.search-form:hover {
 .navbar-inverse .navbar-form {
     border-top: 0;
     padding-bottom: 0;
+}
+
+#header > .navbar .dropdown-menu > li{
+    border-bottom: 1px solid #ffffff;
+}
+
+#header > .navbar .dropdown-menu > li > a{
+    padding: 15px;
+}
+
+#header > .navbar .dropdown-menu > li .fa{
+    padding-right: 10px;
 }
 
 /*************************

@@ -102,6 +102,12 @@
         padding-left: 0 !important;
     }
 
+
+    div.form[name="bookbundle_book"] .book-image.control-block{
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
     form[name="bookbundle_book"]  .circle.image-container {
         margin: 0 auto !important;
     }
@@ -152,4 +158,10 @@
         width: 125px!important;
     }
     /** Share Book view E **/
+
+    /** Toggle S **/
+    .toggle{
+        right: 15px;
+    }
+    /** Toggle list E **/
 }

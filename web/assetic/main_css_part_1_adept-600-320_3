@@ -227,6 +227,15 @@
     }
     /** Reading list E **/
 
+    /** Read edit-create S **/
+
+    form[name="bookbundle_read"].form-horizontal .datepicker-container.form-group > .col-sm-4 {
+        float: none;
+        width: 100%;
+    }
+
+    /** Read edit-create E **/
+
     /** Share Book view S **/
 
     .share-books-list > .pull-left, .share-books-list  > .pull-right, .share-books-list  .pull-left, .share-books-list  .pull-right {

@@ -9,39 +9,6 @@
     {% endif %}
 
     {% if app.user %}
-        <li class="dropdown {% if app.request.attributes.get('_route') in ['book', 'book_new'] %}active{% endif %}">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans %}My Books{% endtrans %}
-                <i class="fa fa-angle-down"></i>
-            </a>
-            <ul class="dropdown-menu">
-                <li class="{% if app.request.attributes.get('_route') == 'book' %}active{% endif %}">
-                    <a href="{{ path('book') }}">{% trans %}All books{% endtrans %}</a>
-                </li>
-                <li class="{% if app.request.attributes.get('_route') == 'book_new' %}active{% endif %}">
-                    <a href="{{ path('book_new') }}">{% trans %}Add Book{% endtrans %}</a>
-                </li>
-            </ul>
-        </li>
-
-        <li class="dropdown {% if app.request.attributes.get('_route')  in ['shelf', 'shelf_new'] %}active{% endif %}">
-            <a href="{{ path('book') }}" class="dropdown-toggle" data-toggle="dropdown">{% trans %}Shelfs{% endtrans %}
-                <i class="fa fa-angle-down"></i>
-            </a>
-            <ul class="dropdown-menu">
-                <li class="{% if app.request.attributes.get('_route') == 'shelf' %}active{% endif %}">
-                    <a href="{{ path('shelf') }}">{% trans %}All shelfs{% endtrans %}</a>
-                </li>
-                <li class="{% if app.request.attributes.get('_route') == 'shelf_new' %}active{% endif %}">
-                    <a href="{{ path('shelf_new') }}">{% trans %}Add shelf{% endtrans %}</a>
-                </li>
-                {% if app.user.sharedShelfsToMe.count %}
-                    <li class="{% if app.request.attributes.get('_route') == 'shared_to_user_shelves' %}active{% endif %}">
-                        <a href="{{ path('shared_to_user_shelves') }}">{% trans %}Shared Shelves{% endtrans %}</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </li>
-
         <li class="dropdown {% if app.request.attributes.get('_route')  in ['fos_user_security_logout', 'fos_user_profile_edit', 'fos_user_change_password'] %}active{% endif %}">
             <a class="dropdown-toggle dropdown-toggle-avatar" data-toggle="dropdown">
                 <div class="menu-user-avatar {% if app.request.attributes.get('_route')  in ['fos_user_security_logout', 'fos_user_profile_edit', 'fos_user_change_password'] %}active{% endif %}">
@@ -58,13 +25,28 @@
             </a>
             <ul class="dropdown-menu">
                 <li class="{% if app.request.attributes.get('_route') in ['fos_user_profile_edit'] %}active{% endif %}">
-                    <a href="{{ path('fos_user_profile_edit') }}">{% trans %}Personal profile{% endtrans %}</a>
+                    <a href="{{ path('fos_user_profile_edit') }}">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        {% trans %}My profile{% endtrans %}
+                    </a>
                 </li>
-                <li class="{% if app.request.attributes.get('_route') in ['fos_user_change_password'] %}active{% endif %}">
-                    <a href="{{ path('fos_user_change_password') }}">{% trans %}Change Password{% endtrans %}</a>
+                <li class="{% if app.request.attributes.get('_route') == 'book' %}active{% endif %}">
+                    <a href="{{ path('book') }}">
+                        <i class="fa fa-book" aria-hidden="true"></i>
+                        {% trans %}My books{% endtrans %}
+                    </a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'shelf' %}active{% endif %}">
+                    <a href="{{ path('shelf') }}">
+                        <i class="fa fa-align-right" aria-hidden="true"></i>
+                        {% trans %}My shelves{% endtrans %}
+                    </a>
                 </li>
                 <li class="{% if app.request.attributes.get('_route') in ['fos_user_security_logout'] %}active{% endif %}">
-                    <a href="{{ path('fos_user_security_logout') }}">{% trans %}Log out{% endtrans %}</a>
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        {% trans %}Log out{% endtrans %}
+                    </a>
                 </li>
             </ul>
         </li>

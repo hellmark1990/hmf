@@ -73,11 +73,11 @@ class ProfileFormType extends AbstractType {
             ])
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', \Nelmio\ApiDocBundle\Util\LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-            ->add('about', 'textarea', ['required' => false])
+            ->add('about', 'textarea', ['required' => false, 'label' => false,])
             ->add('phone', 'text', ['required' => false])
-            ->add('vk', 'text', ['required' => false])
-            ->add('facebook', 'text', ['required' => false, 'label' => 'FB'])
+            ->add('vk', 'text', ['required' => false, 'label' => 'VKontakte'])
+            ->add('facebook', 'text', ['required' => false, 'label' => 'Facebook'])
             ->add('accessType', HiddenType::class)
-            ->add('twitter', 'text', ['required' => false]);
+            ->add('twitter', 'text', ['required' => false, 'label' => 'Instagram']);
     }
 }

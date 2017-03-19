@@ -32,7 +32,7 @@ class Read {
      *
      * @ORM\Column(name="pagesCount", type="integer")
      */
-    private $pagesCount;
+    private $pagesCount = 0;
 
     /**
      * @var \DateTime
@@ -284,6 +284,6 @@ class Read {
      */
     public function getPagesCount()
     {
-        return $this->pagesCount;
+        return $this->pagesCount ? $this->pagesCount : 0;
     }
 }
