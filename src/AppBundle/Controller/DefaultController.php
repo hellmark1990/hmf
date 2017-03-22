@@ -18,4 +18,24 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ));
     }
+
+    /**
+     * @Route("/fn", name="fn")
+     */
+    public function findNameAction(Request $request)
+    {
+        $dictionaryFilePath=str_replace('app', 'web', $this->get('kernel')->getRootDir()) . '/words.txt';
+        $dictionary = file_get_contents($dictionaryFilePath);
+        $dictionary = explode("\n",$dictionary);
+
+        $mainWord = 'book';
+        foreach($dictionary as $word){
+            if(mb_strlen($word) == 3){
+                echo $mainWord . $word;
+                echo '<br>';
+            }
+        }
+
+//       dump(explode("\n",$dictionary));exit;
+    }
 }
