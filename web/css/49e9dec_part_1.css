@@ -1306,7 +1306,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 .book-filter form.navbar-form {
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 
@@ -2009,7 +2009,6 @@ div.alert.alert-empty-list > a:hover {
 }
 
 #header .navbar-nav a {
-    font-weight: 600;
     font-size: 18px;
     color: #fff;
 }
@@ -3604,7 +3603,7 @@ svg .icon {
 **************************/
 
 body {
-    background-color: rgba(173, 195, 193, 0.44);
+    background-color: rgba(241, 241, 241, 0.92);
     /*background-image: url('/images/back.png');*/
     font-family: 'Open Sans', sans-serif;
     color: #4e4e4e;
@@ -3917,13 +3916,13 @@ input.search-form:hover {
 }
 
 .navbar-inverse .navbar-nav .dropdown-menu {
-    background-color: rgba(0, 0, 0, .92);
-    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
-    -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125);
+    background-color: rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 0px 5px 16px 4px rgba(0, 0, 0, 0.37);
+    -moz-box-shadow: 0px 5px 16px 4px rgba(0, 0, 0, 0.37);
+    box-shadow: 0px 5px 16px 4px rgba(0, 0, 0, 0.37);
     border: 0;
     padding: 0;
-    margin-top: 0;
+    margin-top: -4px;
     border-top: 0;
     border-radius: 0;
     left: 0;
@@ -3960,10 +3959,6 @@ input.search-form:hover {
 .navbar-inverse .navbar-form {
     border-top: 0;
     padding-bottom: 0;
-}
-
-#header > .navbar .dropdown-menu > li{
-    border-bottom: 1px solid #ffffff;
 }
 
 #header > .navbar .dropdown-menu > li > a{
@@ -6206,6 +6201,10 @@ div.container {
 .hidden{
     display: none;
 }
+
+select.filter-location-select{
+    display: none!important;
+}
 div.pp_default .pp_top,div.pp_default .pp_top .pp_middle,div.pp_default .pp_top .pp_left,div.pp_default .pp_top .pp_right,div.pp_default .pp_bottom,div.pp_default .pp_bottom .pp_left,div.pp_default .pp_bottom .pp_middle,div.pp_default .pp_bottom .pp_right{height:13px}
 div.pp_default .pp_top .pp_left{background:url(../images/prettyPhoto/default/sprite.png) -78px -93px no-repeat}
 div.pp_default .pp_top .pp_middle{background:url(../images/prettyPhoto/default/sprite_x.png) top left repeat-x}
@@ -6481,7 +6480,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 /** Change password Start **/
 
 form.fos_user_change_password {
-    width: 600px;
+    width: 400px;
     margin: 0 auto;
 }
 
@@ -6489,12 +6488,8 @@ form.fos_user_change_password .col-sm-10 {
     width: 50%;
 }
 
-form.fos_user_change_password .form-group > .col-sm-10 {
-    width: 50%;
-}
-
 form.fos_user_change_password .form-group > .col-sm-2.control-label {
-    width: 30%;
+    width: 100%;
 }
 
 /** Change password END **/

@@ -209,7 +209,7 @@
 }
 
 .book-filter form.navbar-form {
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 

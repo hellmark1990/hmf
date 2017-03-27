@@ -9,14 +9,13 @@
     </div>
 
     {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
-    <div class="form-container">
+    <div class="form-container control-block">
         {{ form_row(form.plainPassword.first) }}
         {{ form_row(form.plainPassword.second) }}
 
         <div class="form-group">
-            <label class="col-sm-2 control-label"></label>
             <div class="col-sm-3">
-                <input type="submit"  class="btn btn-primary" value="{{ 'Reset'|trans }}"/>
+                <input type="submit" class="btn btn-primary" value="{{ 'Reset'|trans }}"/>
             </div>
         </div>
     </div>
