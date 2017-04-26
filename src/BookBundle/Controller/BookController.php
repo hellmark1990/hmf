@@ -96,7 +96,7 @@ class BookController extends Controller {
             file_put_contents($tmpImagePath, $imageData);
 
             $image = new \Application\Sonata\MediaBundle\Entity\Media();
-            $image->setBinaryContent($imageData);
+            $image->setBinaryContent($tmpImagePath);
             $image->setProviderName('sonata.media.provider.image');
             $image->setContext('book');
             $entity->setImage($image);
