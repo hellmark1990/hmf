@@ -29,6 +29,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  * @author Christophe Coevoet <stof@notk.org>
  */
 class ProfileController extends Controller {
+
+
     /**
      * Show the user
      */

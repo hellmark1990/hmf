@@ -12,11 +12,6 @@ form[name="bookbundle_read"] .datepicker-container > .col-sm-4{
     float: left;
 }
 
-form[name="bookbundle_read"] .read-location-map{
-    webkit-box-shadow: 0 7px 15px 0 rgba(0, 0, 2, 0.4);
-    box-shadow: 0 7px 9px 0 rgba(0, 0, 2, 0.2);
-}
-
 .location-map-read-list {
     height: 200px;
 }
