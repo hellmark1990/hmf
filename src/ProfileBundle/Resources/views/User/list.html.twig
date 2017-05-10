@@ -31,8 +31,20 @@
 
                                 <p class="group inner list-group-item-text read-comment">{{ user.about|striptags|truncate(120) }}</p>
 
+
                                 <div class="row">
-                                    <div class="col-xs-12 col-md-6">
+                                    <div class="group inner list-group-item-text common-block">
+                                        <ul class="nav nav-pills" role="tablist">
+                                            <li role="presentation" class="active">
+                                                <a class="list-main-bottom-button" href="">
+                                                    {#{{ path('book_reading', {'id': entity.id}) }}#}
+                                                    {{ user.books.count }}
+                                                    {% transchoice user.books.count %}
+                                                    {0} Books|{1} Book|]1,Inf] Books
+                                                    {% endtranschoice %}
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

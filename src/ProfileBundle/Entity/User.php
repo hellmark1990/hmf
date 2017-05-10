@@ -419,8 +419,8 @@ class User extends BaseUser {
 
     public function getBooksReads(){
         $reads = [];
-        $this->books->map(function (Book $item) use(&$reads){
-            $item->getReads()->map(function (Read $item) use(&$reads){
+        $this->books->map(function (Book $item) use (&$reads){
+            $item->getReads()->map(function (Read $item) use (&$reads){
                 $reads[$item->getPlace()] = $item;
             });
         });
@@ -434,8 +434,7 @@ class User extends BaseUser {
      * @param \BookBundle\Entity\SharedBookLink $sharedBookLinks
      * @return User
      */
-    public function addSharedBookLink(\BookBundle\Entity\SharedBookLink $sharedBookLinks)
-    {
+    public function addSharedBookLink(\BookBundle\Entity\SharedBookLink $sharedBookLinks){
         $this->sharedBookLinks[] = $sharedBookLinks;
 
         return $this;
@@ -446,18 +445,16 @@ class User extends BaseUser {
      *
      * @param \BookBundle\Entity\SharedBookLink $sharedBookLinks
      */
-    public function removeSharedBookLink(\BookBundle\Entity\SharedBookLink $sharedBookLinks)
-    {
+    public function removeSharedBookLink(\BookBundle\Entity\SharedBookLink $sharedBookLinks){
         $this->sharedBookLinks->removeElement($sharedBookLinks);
     }
 
     /**
      * Get sharedBookLinks
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getSharedBookLinks()
-    {
+    public function getSharedBookLinks(){
         return $this->sharedBookLinks;
     }
 
@@ -510,5 +507,11 @@ class User extends BaseUser {
     public function setPrivateAccess(){
         $this->accessType = self::ACCESS_PRIVATE;
         return $this;
+    }
+
+    public function getPublicBooks(){
+        return $this->getBooks()->filter(function (Book $book){
+            return $book->isPublic();
+        });
     }
 }
