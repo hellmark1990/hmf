@@ -32,11 +32,11 @@
                             <div class="caption">
                                 <h4 class="group inner list-group-item-heading">
                                     <a href="{{ path('read_book_edit', {'id': read.id, 'bookId': read.book.id  }) }}">
-                                        {{ read.title }}
+                                        {{ read.title|truncate(80) }}
                                     </a>
                                 </h4>
 
-                                <p class="group inner list-group-item-text read-comment">{{ read.comment|striptags|truncate(120) }}</p>
+                                <p class="group inner list-group-item-text read-comment">{{ read.comment|striptags|truncate(150) }}</p>
 
                                 <div class="row">
                                     <div class="col-xs-12 col-md-6">

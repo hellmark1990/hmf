@@ -37,12 +37,12 @@
                             <div class="caption">
                                 <h4 class="group inner list-group-item-heading">
                                     <a href="{{ path('shelf_edit', {'id': entity.id }) }}">
-                                        {{ entity.title }}
+                                        {{ entity.title|truncate(70) }}
                                     </a>
                                 </h4>
 
                                 <div class="group inner list-group-item-text description-block">
-                                    {{ entity.description|striptags|truncate(120) }}
+                                    {{ entity.description|striptags|truncate(195) }}
                                 </div>
 
                                 <div class="group inner list-group-item-text common-block">

@@ -62,13 +62,13 @@
                             <div class="caption">
                                 <div class="group inner list-group-item-text book-title-block">
                                     <a href="{{ path('book_edit', { 'id': entity.id }) }}">
-                                        <h5 class="group inner list-group-item-heading">{{ entity.name }}</h5>
+                                        <h5 class="group inner list-group-item-heading">{{ entity.name|truncate(50)  }}</h5>
                                     </a>
                                 </div>
 
                                 <div class="group inner list-group-item-text common-one-line-block center-block">
                                     <div><b>{% trans %}Author{% endtrans %}</b></div>
-                                    <p class="gray-color">{{ entity.authors|truncate(200) }}</p>
+                                    <p class="gray-color">{{ entity.authors|truncate(40) }}</p>
                                 </div>
 
                                 <div class="group inner list-group-item-text common-block">

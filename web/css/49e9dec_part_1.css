@@ -1603,8 +1603,7 @@ Book create block start
 }
 
 .book-grid-list-view .item.grid-group-item .book-title-block {
-    min-height: 50px;
-    height: 50px;
+    height: 100%;
 }
 
 .book-top-controls {
@@ -1914,11 +1913,15 @@ input, textarea, select, label {
     height: 20px;
 }
 
+.grid-list-view .list-group-item-text.common-one-line-block > p{
+    margin: 0;
+}
+
 .grid-list-view .list-group-item-text.common-one-line-block.center-block {
     text-align: center;
     border: 1px solid #32b0b3;
     min-height: 60px;
-    height: 60px;
+    height: 100%;
     padding: 10px;
     margin-left: 20px;
     margin-right: 20px;
@@ -3462,6 +3465,7 @@ form.form-horizontal .control-block > h2 {
     min-height: 30px;
     max-height: 50px;
     text-align: center;
+    margin-bottom: 0px;
 }
 
 .grid-list-view .item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
@@ -7018,8 +7022,7 @@ form[name="bookbundle_read"] .datepicker-container > .col-sm-4{
 }
 
 .share-books-list .item.grid-group-item .book-title-block {
-    min-height: 50px;
-    height: 50px;
+    height: 100%;
 }
 
 .share-books-list .item.grid-group-item {
@@ -7195,6 +7198,7 @@ form[name="bookbundle_shelf"] .button-delete {
 .container-shelf-list .grid-group-item .description-block {
     height: 75px;
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .container-shelf-list .grid-group-item {
