@@ -1,0 +1,86 @@
+{% extends "BookBundle::layout.html.twig" %}
+
+{% block body -%}
+    {{ parent() }}
+
+    <div class="grid-list-view book-grid-list-view container book-grid-list-view-public">
+        <div id="sticky" class="well well-sm">
+            <div class="top-panel-content container">
+                <div class="pull-left">
+                    <h1>{{ user.username|capitalize }} {% trans %}books{% endtrans %}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div id="products" class="row list-group">
+            {% if user.publicBooks %}
+                {% for entity in user.publicBooks %}
+                    <div class="item  col-xs-3 col-lg-3 grid-group-item">
+                        <div class="thumbnail">
+                            <div class="progress"
+                                 data-toggle="tooltip"
+                                 data-placement="top"
+                                 title="{% trans %}Pages count{% endtrans %} {{ entity.pageCount }}. {% trans %}You read{% endtrans %} {{ entity.pageReadCount }}.">
+
+                                <div class="progress-bar progress-bar-danger" role="progressbar"
+                                     aria-valuenow="{{ entity.getPageReadPercents }}"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100"
+                                     style="width: {{ entity.getPageReadPercents }}%;">
+                                    <p>{{ entity.getPageReadPercents }}%</p>
+                                </div>
+                            </div>
+
+                            <a href="{{ path('book_public_view', { 'id': entity.id }) }}">
+                                <img class="group list-group-image" src="{% path entity.image, 'small' %}" alt=""/>
+                                {#<div class="labels">#}
+                                {#<span class="label label-warning arrowed-in" data-toggle="tooltip" data-placement="right" title="{% trans %}Pages{% endtrans %}">#}
+                                {#{{ entity.pageCount }}#}
+                                {#</span>#}
+                                {#<span class="label label-success arrowed-in" data-toggle="tooltip" data-placement="right" title="{% trans %}Read pages{% endtrans %}">#}
+                                {#{{ entity.pageReadCount }}#}
+                                {#</span>#}
+                                {#</div>#}
+                            </a>
+
+                            <div class="caption">
+                                <div class="group inner list-group-item-text book-title-block">
+                                    <a href="{{ path('book_public_view', { 'id': entity.id }) }}">
+                                        <h5 class="group inner list-group-item-heading">{{ entity.name|truncate(50) }}</h5>
+                                    </a>
+                                </div>
+
+                                <div class="group inner list-group-item-text common-one-line-block center-block">
+                                    <div><b>{% trans %}Author{% endtrans %}</b></div>
+                                    <p class="gray-color">{{ entity.authors|truncate(40) }}</p>
+                                </div>
+
+                                <div class="group inner list-group-item-text common-block">
+                                    <ul class="nav nav-pills" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a class="list-main-bottom-button" href="{{ path('book_public_view', {'id': entity.id}) }}">
+                                                {% trans %}View{% endtrans %}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info alert-empty-list">
+                    <div>
+                        {% trans %}Books list is empty{% endtrans %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

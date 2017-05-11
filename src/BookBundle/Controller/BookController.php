@@ -3,6 +3,7 @@
 namespace BookBundle\Controller;
 
 use Gaufrette\File;
+use ProfileBundle\Entity\User;
 use Sonata\MediaBundle\Model\Media;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,6 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use BookBundle\Entity\Book;
 use BookBundle\Form\BookType;
 use Symfony\Component\Intl\Locale\Locale;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Book controller.
@@ -386,5 +388,45 @@ class BookController extends Controller {
         }
 
         return new JsonResponse($result);
+    }
+
+    /**
+     *  @Route("/public/user/{userId}", name="book_list_user_public")
+     *  @Template("BookBundle:Book:public.html.twig")
+     */
+    public function publicUserBooksAction(Request $request, $userId){
+        $em = $this->getDoctrine()->getManager();
+        /**
+         * @var User $user
+         */
+        $user = $em->getRepository('ProfileBundle:User')->find($userId);
+
+        if(!$user->isPublic()){
+            throw new AccessDeniedException('You can not access to this page');
+        }
+
+        return array(
+            'user' => $user,
+        );
+    }
+
+    /**
+     *  @Route("/public/{id}", name="book_public_view")
+     *  @Template("BookBundle:Book:public_view.html.twig")
+     */
+    public function publicBookAction(Request $request, $id){
+        $em = $this->getDoctrine()->getManager();
+        /**
+         * @var Book $book
+         */
+        $book = $em->getRepository('BookBundle:Book')->find($id);
+
+//        if(!$book->isPublic()){
+//            throw new AccessDeniedException('You can not access to this page');
+//        }
+
+        return array(
+            'book' => $book,
+        );
     }
 }

@@ -511,7 +511,8 @@ class User extends BaseUser {
 
     public function getPublicBooks(){
         return $this->getBooks()->filter(function (Book $book){
-            return $book->isPublic();
+//            return $book->isPublic();
+            return true;
         });
     }
 }

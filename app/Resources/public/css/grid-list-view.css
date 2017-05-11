@@ -93,7 +93,8 @@
 
 .grid-list-view .list-group-item-text {
     margin: 0 0 5px;
-    min-height: 50px;
+    min-height: 30px;
+    max-height: 50px;
     padding-left: 10px;
     padding-right: 10px;
 }

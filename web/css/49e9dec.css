@@ -1399,6 +1399,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }
 
 
+.book-grid-list-view-public .progress{
+    margin-right: 0px;
+    margin-bottom: -10px;
+}
 #books-list-wrapper {
     width: 70%;
     min-width: 500px;
@@ -3504,7 +3508,8 @@ form.form-horizontal .control-block > h2 {
 
 .grid-list-view .list-group-item-text {
     margin: 0 0 5px;
-    min-height: 50px;
+    min-height: 30px;
+    max-height: 50px;
     padding-left: 10px;
     padding-right: 10px;
 }

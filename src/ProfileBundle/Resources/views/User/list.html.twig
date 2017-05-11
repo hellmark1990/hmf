@@ -36,13 +36,14 @@
                                     <div class="group inner list-group-item-text common-block">
                                         <ul class="nav nav-pills" role="tablist">
                                             <li role="presentation" class="active">
-                                                <a class="list-main-bottom-button" href="">
-                                                    {#{{ path('book_reading', {'id': entity.id}) }}#}
-                                                    {{ user.books.count }}
-                                                    {% transchoice user.books.count %}
-                                                    {0} Books|{1} Book|]1,Inf] Books
-                                                    {% endtranschoice %}
-                                                </a>
+                                                {% if user.publicBooks.count %}
+                                                    <a class="list-main-bottom-button" href="{{ path('book_list_user_public', {'userId': user.id}) }}">
+                                                        {{ user.publicBooks.count }}
+                                                        {% transchoice user.publicBooks.count %}
+                                                        {0} Books|{1} Book|]1,Inf] Books
+                                                        {% endtranschoice %}
+                                                    </a>
+                                                {% endif %}
                                             </li>
                                         </ul>
                                     </div>
