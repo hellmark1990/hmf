@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="js-best-readers" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+        {% for user in best_readers %}
+            <div>
+                <h3>{{ user[0].username }}</h3>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}

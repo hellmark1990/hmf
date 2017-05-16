@@ -10,3 +10,7 @@ services:
     book.filter:
         class: BookBundle\Services\BookFilter
         arguments: [@service_container, "@doctrine.orm.entity_manager"]
+
+    book.widget:
+        class: BookBundle\Services\BookWidget
+        arguments: [@service_container, "@doctrine.orm.entity_manager"]
