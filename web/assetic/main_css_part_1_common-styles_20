@@ -1,3 +1,24 @@
+.navbar-brand > span{
+    text-transform: uppercase;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.navbar-brand > .first-part{
+    display: block;
+    color: #32b0b3;
+}
+
+.navbar-brand > .second-part{
+    color: #32b0b3;
+}
+
+.navbar-brand > .third-part{
+    float: right;
+    font-size: 86px;
+    margin-top: -2px;
+}
+
 div.alert.alert-empty-list {
     background-color: rgba(50, 176, 179, 0.8);
     font-size: 20px;

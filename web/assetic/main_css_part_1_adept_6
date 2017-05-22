@@ -2,7 +2,7 @@
 
     /** Menu and header S **/
     #header > .navbar > .container > .navbar-header {
-        width: 50px;
+        width: 195px;
         float: left;
     }
 

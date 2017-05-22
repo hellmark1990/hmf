@@ -91,8 +91,12 @@
     <nav class="navbar navbar-inverse" role="banner">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% if app.user %}{{ path('fos_user_profile_edit') }}{% else %}{{ path('fos_user_security_login') }}{% endif %}">
-                    <img width="60px" height="60px" src="/uploads/logo.png" alt="logo">
+                <a class="navbar-brand" href="{% if app.user %}{{ path('homepage') }}{% else %}{{ path('fos_user_security_login') }}{% endif %}">
+                    <span class="first-part">
+                        {% trans %}Drive{% endtrans %}
+                    </span>
+                    <span class="second-part">{% trans %}Book{% endtrans %}</span>
+                    <span class="third-part">{% trans %}In{% endtrans %}</span>
                 </a>
             </div>
 
