@@ -1,0 +1,8 @@
+.best-users .title > h2{
+    font-size: 30px;
+    font-weight: 200;
+}
+
+.best-users .title > p{
+    color: #32b0b3;
+}

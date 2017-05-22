@@ -1,0 +1,4 @@
+.book-grid-list-view-public .progress{
+    margin-right: 0px;
+    margin-bottom: -10px;
+}

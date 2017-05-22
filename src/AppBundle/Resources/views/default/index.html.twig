@@ -1,132 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="grid-list-view container share-folder-users-list">
-        <div id="products" class="row list-group js-best-readers">
+    <div class="grid-list-view container share-folder-users-list best-users">
+        <div class="title">
+            <h2><a href="">{% trans %}Best readers{% endtrans %}</a></h2>
+        </div>
+        <hr>
+        <div id="products" class="row list-group">
             {% if best_readers %}
-                {% for user in best_readers %}
-                    {% set user = user[0] %}
-                    <div class="item  col-xs-4 col-lg-4 grid-group-item">
-                        <div class="thumbnail profile-avatar">
-                            <div class="circle image-container {% if not user.avatar %}no-image{% endif %}">
-                                <span class="pseudo-letters">
-                                    <span class="helper"></span>
-                                    <span class="s-t">{{ user.avatarLetters }}</span>
-                                </span>
-                                {% if user.avatar %}
-                                    <img class="group list-group-image img-polaroid media-object" src="{% path user.avatar, 'small' %}" alt=""/>
-                                {% endif %}
-                            </div>
-
-                            <div class="caption">
-                                <h4 class="group inner list-group-item-heading">
-                                    {{ user.username }}
-                                </h4>
-
-                                <p class="group inner list-group-item-text read-comment">{{ user.about|striptags|truncate(120) }}</p>
-
-                                <div class="row">
-                                    <div class="group inner list-group-item-text common-block">
-                                        <ul class="nav nav-pills" role="tablist">
-                                            <li role="presentation" class="active">
-                                                {% if user.publicBooks.count %}
-                                                    <a class="list-main-bottom-button" href="{{ path('book_list_user_public', {'userId': user.id}) }}">
-                                                        {{ user.publicBooks.count }}
-                                                        {% transchoice user.publicBooks.count %}
-                                                        {0} Books|{1} Book|]1,Inf] Books
-                                                        {% endtranschoice %}
-                                                    </a>
-                                                {% endif %}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-                {% for user in best_readers %}
-                    {% set user = user[0] %}
-                    <div class="item  col-xs-4 col-lg-4 grid-group-item">
-                        <div class="thumbnail profile-avatar">
-                            <div class="circle image-container {% if not user.avatar %}no-image{% endif %}">
-                                <span class="pseudo-letters">
-                                    <span class="helper"></span>
-                                    <span class="s-t">{{ user.avatarLetters }}</span>
-                                </span>
-                                {% if user.avatar %}
-                                    <img class="group list-group-image img-polaroid media-object" src="{% path user.avatar, 'small' %}" alt=""/>
-                                {% endif %}
-                            </div>
-
-                            <div class="caption">
-                                <h4 class="group inner list-group-item-heading">
-                                    {{ user.username }}
-                                </h4>
-
-                                <p class="group inner list-group-item-text read-comment">{{ user.about|striptags|truncate(120) }}</p>
-
-                                <div class="row">
-                                    <div class="group inner list-group-item-text common-block">
-                                        <ul class="nav nav-pills" role="tablist">
-                                            <li role="presentation" class="active">
-                                                {% if user.publicBooks.count %}
-                                                    <a class="list-main-bottom-button" href="{{ path('book_list_user_public', {'userId': user.id}) }}">
-                                                        {{ user.publicBooks.count }}
-                                                        {% transchoice user.publicBooks.count %}
-                                                        {0} Books|{1} Book|]1,Inf] Books
-                                                        {% endtranschoice %}
-                                                    </a>
-                                                {% endif %}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-                {% for user in best_readers %}
-                    {% set user = user[0] %}
-                    <div class="item  col-xs-4 col-lg-4 grid-group-item">
-                        <div class="thumbnail profile-avatar">
-                            <div class="circle image-container {% if not user.avatar %}no-image{% endif %}">
-                                <span class="pseudo-letters">
-                                    <span class="helper"></span>
-                                    <span class="s-t">{{ user.avatarLetters }}</span>
-                                </span>
-                                {% if user.avatar %}
-                                    <img class="group list-group-image img-polaroid media-object" src="{% path user.avatar, 'small' %}" alt=""/>
-                                {% endif %}
-                            </div>
-
-                            <div class="caption">
-                                <h4 class="group inner list-group-item-heading">
-                                    {{ user.username }}
-                                </h4>
-
-                                <p class="group inner list-group-item-text read-comment">{{ user.about|striptags|truncate(120) }}</p>
-
-                                <div class="row">
-                                    <div class="group inner list-group-item-text common-block">
-                                        <ul class="nav nav-pills" role="tablist">
-                                            <li role="presentation" class="active">
-                                                {% if user.publicBooks.count %}
-                                                    <a class="list-main-bottom-button" href="{{ path('book_list_user_public', {'userId': user.id}) }}">
-                                                        {{ user.publicBooks.count }}
-                                                        {% transchoice user.publicBooks.count %}
-                                                        {0} Books|{1} Book|]1,Inf] Books
-                                                        {% endtranschoice %}
-                                                    </a>
-                                                {% endif %}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
                 {% for user in best_readers %}
                     {% set user = user[0] %}
                     <div class="item  col-xs-4 col-lg-4 grid-group-item">

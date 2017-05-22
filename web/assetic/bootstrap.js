@@ -3522,9 +3522,9 @@ jQuery(function ($) {
         dots: false,
         infinite: true,
         speed: 200,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        arrows: false,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        arrows: true,
         responsive: [
             // {
             //     breakpoint: 1024,

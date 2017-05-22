@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository {
 
-    const MAX_BEST_READERS = 20;
+    const MAX_BEST_READERS = 8;
 
     /**
      * Get users list sorted by books count

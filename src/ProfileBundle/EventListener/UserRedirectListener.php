@@ -20,6 +20,9 @@ class UserRedirectListener {
     const FORGOT_PASSWORD_SEND_EMAIL_ROUTE = 'fos_user_resetting_send_email';
     const RESET_PASSWORD_ROUTE = 'fos_user_resetting_reset';
     const FIND_NAME_ROUTE = 'fn';
+    const SITEMAP = 'seo_sitemap';
+    const USERS_LIST = 'users_list';
+    const ROBOTS_TXT = 'seo_robots_txt';
 
     public function __construct(ContainerInterface $container) // this is @service_container
     {
@@ -41,6 +44,9 @@ class UserRedirectListener {
                 self::FORGOT_PASSWORD_SEND_EMAIL_ROUTE,
                 self::RESET_PASSWORD_ROUTE,
                 self::FIND_NAME_ROUTE,
+                self::SITEMAP,
+                self::USERS_LIST,
+                self::ROBOTS_TXT,
             ])
             && $event->getRequest()->get('autologin') != 1
         ) {
