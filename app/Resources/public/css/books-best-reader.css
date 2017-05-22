@@ -1,0 +1,10 @@
+#products.js-best-readers{
+    width: 1177px;
+}
+.grid-list-view #products.js-best-readers .item{
+    margin-left: 21px;
+}
+
+.js-best-readers .item:focus {
+    outline: none;
+}
