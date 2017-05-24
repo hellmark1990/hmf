@@ -166,17 +166,17 @@
             <div class="col-sm-6">
                 <ul class="pull-right">
                     <li>
-                        <a href="{% if app.user %}{{ path('fos_user_profile_edit') }}{% else %}{{ path('fos_user_security_login') }}{% endif %}">Home</a>
+                        <a href="{% if app.user %}{{ path('homepage') }}{% else %}{{ path('fos_user_security_login') }}{% endif %}">Home</a>
                     </li>
                     {% if app.user %}
                         <li class="{% if app.request.attributes.get('_route') in ['fos_user_profile_edit'] %}active{% endif %}">
                             <a href="{{ path('fos_user_profile_edit') }}">{% trans %}My Profile{% endtrans %}</a>
                         </li>
                         <li class="{% if app.request.attributes.get('_route') == 'book' %}active{% endif %}">
-                            <a href="{{ path('book') }}">{% trans %}All books{% endtrans %}</a>
+                            <a href="{{ path('book') }}">{% trans %}My books{% endtrans %}</a>
                         </li>
                         <li class="{% if app.request.attributes.get('_route') == 'shelf' %}active{% endif %}">
-                            <a href="{{ path('shelf') }}">{% trans %}All shelfs{% endtrans %}</a>
+                            <a href="{{ path('shelf') }}">{% trans %}My shelfs{% endtrans %}</a>
                         </li>
                     {% endif %}
                 </ul>
