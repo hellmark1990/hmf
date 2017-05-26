@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class DefaultController extends Controller {
 
@@ -29,7 +30,7 @@ class DefaultController extends Controller {
         foreach ($urls as $url) {
             $sitemap .=
                 '<url >
-                  <loc > ' . $this->generateUrl($url) . ' </loc >
+                  <loc > ' . $this->generateUrl($url, [], UrlGeneratorInterface::ABSOLUTE_URL) . ' </loc >
                   <lastmod > ' . date('Y-m-d') . ' </lastmod >
                   <changefreq >weekly</changefreq >
                   <priority >0.8</priority >
