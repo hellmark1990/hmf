@@ -23,6 +23,7 @@ class UserRedirectListener {
     const SITEMAP = 'seo_sitemap';
     const USERS_LIST = 'users_list';
     const ROBOTS_TXT = 'seo_robots_txt';
+    const BOOKS_LIST_PUBLIC_USER = 'book_list_user_public';
 
     public function __construct(ContainerInterface $container) // this is @service_container
     {
@@ -47,6 +48,7 @@ class UserRedirectListener {
                 self::SITEMAP,
                 self::USERS_LIST,
                 self::ROBOTS_TXT,
+                self::BOOKS_LIST_PUBLIC_USER,
             ])
             && $event->getRequest()->get('autologin') != 1
         ) {
