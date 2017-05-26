@@ -162,6 +162,19 @@
         color: #fff !important;
     }
 
+    .not-logged-in-mobile-dropdown.hidden{
+        display: block!important;
+        visibility: visible!important;
+    }
+
+    .navbar-nav > li:last-child.open.not-logged-in-mobile-dropdown .dropdown-menu{
+        left: -77px !important;
+    }
+
+    .nav.navbar-nav .hide-for-mobile{
+        display: none;
+    }
+
     /** Menu and header E **/
     /** Profile edit S **/
     .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
@@ -424,6 +437,19 @@
     .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
         background-color: #32b0b3 !important;
         color: #fff !important;
+    }
+
+    .not-logged-in-mobile-dropdown.hidden{
+        display: block!important;
+        visibility: visible!important;
+    }
+
+    .navbar-nav > li:last-child.open.not-logged-in-mobile-dropdown .dropdown-menu{
+        left: -77px !important;
+    }
+
+    .nav.navbar-nav .hide-for-mobile{
+        display: none;
     }
 
     /** Menu and header E **/
@@ -2032,6 +2058,19 @@ input, textarea, select, label {
     float: right;
     font-size: 86px;
     margin-top: -2px;
+}
+
+.navbar-inverse .navbar-nav > li.not-logged-in-mobile-dropdown{
+    margin-top: -10px;
+    padding-bottom: 18px;
+}
+
+.not-logged-in-mobile-dropdown .fa.fa-bars{
+    font-size: 40px;
+}
+
+.not-logged-in-mobile-dropdown .dropdown-menu{
+    left: -77px !important;
 }
 
 div.alert.alert-empty-list {
@@ -6280,6 +6319,7 @@ div.container {
 select.filter-location-select{
     display: none!important;
 }
+
 div.pp_default .pp_top,div.pp_default .pp_top .pp_middle,div.pp_default .pp_top .pp_left,div.pp_default .pp_top .pp_right,div.pp_default .pp_bottom,div.pp_default .pp_bottom .pp_left,div.pp_default .pp_bottom .pp_middle,div.pp_default .pp_bottom .pp_right{height:13px}
 div.pp_default .pp_top .pp_left{background:url(../images/prettyPhoto/default/sprite.png) -78px -93px no-repeat}
 div.pp_default .pp_top .pp_middle{background:url(../images/prettyPhoto/default/sprite_x.png) top left repeat-x}

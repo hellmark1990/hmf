@@ -1,24 +1,46 @@
 <ul class="nav navbar-nav">
     {% if app.user is null %}
-        <li class="{% if app.request.attributes.get('_route') in ['fos_user_security_login'] %}active{% endif %}">
+        <li class="{% if app.request.attributes.get('_route') in ['fos_user_security_login'] %}active{% endif %} {% if app.user is null %}hide-for-mobile{% endif %}">
             <a href="{{ path('fos_user_security_login') }}">{% trans %}Sign in{% endtrans %}</a>
         </li>
-        <li class="{% if app.request.attributes.get('_route') in ['fos_user_registration_register'] %}active{% endif %}">
+        <li class="{% if app.request.attributes.get('_route') in ['fos_user_registration_register'] %}active{% endif %} {% if app.user is null %}hide-for-mobile{% endif %}">
             <a href="{{ path('fos_user_registration_register') }}">{% trans %}Sign up{% endtrans %}</a>
         </li>
     {% endif %}
 
-    <li class="{% if app.request.attributes.get('_route') == 'users_list' %}active{% endif %}">
+    <li class="{% if app.request.attributes.get('_route') == 'users_list' %}active{% endif %} {% if app.user is null %}hide-for-mobile{% endif %}">
         <a href="{{ path('users_list') }}">
             <i class="fa fa-users" aria-hidden="true"></i>
             {% trans %}Users{% endtrans %}
         </a>
     </li>
 
+    <li class="dropdown {% if app.user is null %}not-logged-in-mobile-dropdown{% endif %} hidden">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-bars"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="{% if app.request.attributes.get('_route') == 'users_list' %}active{% endif %}">
+                <a href="{{ path('users_list') }}">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    {% trans %}Users{% endtrans %}
+                </a>
+            </li>
+            {% if app.user is null %}
+                <li class="{% if app.request.attributes.get('_route') in ['fos_user_security_login'] %}active{% endif %}">
+                    <a href="{{ path('fos_user_security_login') }}">{% trans %}Sign in{% endtrans %}</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') in ['fos_user_registration_register'] %}active{% endif %}">
+                    <a href="{{ path('fos_user_registration_register') }}">{% trans %}Sign up{% endtrans %}</a>
+                </li>
+            {% endif %}
+        </ul>
+    </li>
+
     {% if app.user %}
-        <li class="dropdown {% if app.request.attributes.get('_route')  in ['fos_user_security_logout', 'fos_user_profile_edit', 'fos_user_change_password'] %}active{% endif %}">
+        <li class="dropdown {% if app.request.attributes.get('_route')  in ['fos_user_security_logout', 'fos_user_profile_edit', 'book', 'shelf'] %}active{% endif %}">
             <a class="dropdown-toggle dropdown-toggle-avatar" data-toggle="dropdown">
-                <div class="menu-user-avatar {% if app.request.attributes.get('_route')  in ['fos_user_security_logout', 'fos_user_profile_edit', 'fos_user_change_password'] %}active{% endif %}">
+                <div class="menu-user-avatar {% if app.request.attributes.get('_route')  in ['fos_user_security_logout', 'fos_user_profile_edit', 'book', 'shelf'] %}active{% endif %}">
                     {% if app.user.avatar %}
                         {% thumbnail app.user.avatar, 'small' with {'class': 'img-polaroid media-object'} %}
                     {% else %}

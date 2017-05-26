@@ -19,6 +19,19 @@
     margin-top: -2px;
 }
 
+.navbar-inverse .navbar-nav > li.not-logged-in-mobile-dropdown{
+    margin-top: -10px;
+    padding-bottom: 18px;
+}
+
+.not-logged-in-mobile-dropdown .fa.fa-bars{
+    font-size: 40px;
+}
+
+.not-logged-in-mobile-dropdown .dropdown-menu{
+    left: -77px !important;
+}
+
 div.alert.alert-empty-list {
     background-color: rgba(50, 176, 179, 0.8);
     font-size: 20px;

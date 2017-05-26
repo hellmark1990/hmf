@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+ini_set('display_errors', 'on');
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -18,7 +20,7 @@ $loader->unregister();
 $apcLoader->register(true);
 */
 
-$kernel = new AppKernel('prod', false);
+$kernel = new AppKernel('dev', false);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
 

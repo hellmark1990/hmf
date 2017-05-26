@@ -38,6 +38,19 @@
         color: #fff !important;
     }
 
+    .not-logged-in-mobile-dropdown.hidden{
+        display: block!important;
+        visibility: visible!important;
+    }
+
+    .navbar-nav > li:last-child.open.not-logged-in-mobile-dropdown .dropdown-menu{
+        left: -77px !important;
+    }
+
+    .nav.navbar-nav .hide-for-mobile{
+        display: none;
+    }
+
     /** Menu and header E **/
     /** Profile edit S **/
     .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
