@@ -49,7 +49,7 @@ class DefaultController extends Controller {
      * @Route("/robots.txt", name="seo_robots_txt")
      */
     public function robotsAction(){
-        $robots = 'User-agent: * ' . PHP_EOL . 'Disallow: ' . PHP_EOL . 'Sitemap: ' . $this->generateUrl('seo_sitemap') . PHP_EOL;
+        $robots = 'User-agent: * ' . PHP_EOL . 'Disallow: ' . PHP_EOL . 'Sitemap: ' . $this->generateUrl('seo_sitemap', [], UrlGeneratorInterface::ABSOLUTE_URL) . PHP_EOL;
         $response = new Response($robots);
         $response->headers->set('Content-Type', 'text/plain');
         return $response;
