@@ -38,8 +38,8 @@ class SeoManager {
     }
 
     public function getAll(){
-        $request = $this->container->get('request');
-        $routeName = $request->get('_route');
+        $request = $this->container->get('request_stack');
+        $routeName = $request->getCurrentRequest()->get('_route');
 
         $seoItem = $this->seo_repository->findOneBy(['routeName' => $routeName]);
 

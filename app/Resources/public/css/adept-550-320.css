@@ -10,7 +10,7 @@
 
     /** Read edit-create S **/
 
-    form[name="bookbundle_read"].form-horizontal .datepicker-container > .col-sm-4 {
+    form[name="read"].form-horizontal .datepicker-container > .col-sm-4 {
         float: none;
         width: 100%;
     }

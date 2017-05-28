@@ -1,25 +1,25 @@
 $(document).ready(function () {
-    if ($("#bookbundle_book_name").length) {
-        $("#bookbundle_book_name").autocomplete({
+    if ($("#book_name").length) {
+        $("#book_name").autocomplete({
             minLength: 0,
             source: PROJECT_URLS['book_search_google'],
             focus: function (event, ui) {
-                $("#bookbundle_book_name").val(ui.item.label);
+                $("#book_name").val(ui.item.label);
                 return false;
             },
             select: function (event, ui) {
-                $("#bookbundle_book_name").val(ui.item.title);
+                $("#book_name").val(ui.item.title);
 
-                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[publisher]"]').val(ui.item.publisher);
-                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[description]"]').val(ui.item.description);
-                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[pageCount]"]').val(ui.item.pageCount);
-                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[printedPageCount]"]').val(ui.item.printedPageCount);
-                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[imageUrl]"]').val(ui.item.thumbnail);
-                $('form[name="bookbundle_book"]').find('.form-book-image').closest('.form-group').find('img').attr('src', ui.item.thumbnail);
-                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[language]"]').val(ui.item.language);
-                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[previewLink]"]').val(ui.item.previewLink);
-                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[previewLink]"]').val(ui.item.previewLink);
-                $('form[name="bookbundle_book"]').find('[name="bookbundle_book[authors]"]').val(ui.item.authors);
+                $('form[name="book"]').find('[name="book[publisher]"]').val(ui.item.publisher);
+                $('form[name="book"]').find('[name="book[description]"]').val(ui.item.description);
+                $('form[name="book"]').find('[name="book[pageCount]"]').val(ui.item.pageCount);
+                $('form[name="book"]').find('[name="book[printedPageCount]"]').val(ui.item.printedPageCount);
+                $('form[name="book"]').find('[name="book[imageUrl]"]').val(ui.item.thumbnail);
+                $('form[name="book"]').find('.form-book-image').closest('.form-group').find('img').attr('src', ui.item.thumbnail);
+                $('form[name="book"]').find('[name="book[language]"]').val(ui.item.language);
+                $('form[name="book"]').find('[name="book[previewLink]"]').val(ui.item.previewLink);
+                $('form[name="book"]').find('[name="book[previewLink]"]').val(ui.item.previewLink);
+                $('form[name="book"]').find('[name="book[authors]"]').val(ui.item.authors);
 
                 $(".js-datepicker-publishedDate").datepicker('setDate', ui.item.publishedDate);
                 console.log(ui.item.publishedDate)
@@ -59,13 +59,13 @@ $(document).ready(function () {
     if ($('div.location-map').length) {
         var mapSettings = {
             location: {
-                latitude: $('#bookbundle_read_latitude').val(),
-                longitude: $('#bookbundle_read_longitude').val()
+                latitude: $('#read_latitude').val(),
+                longitude: $('#read_longitude').val()
             },
             inputBinding: {
-                latitudeInput: $('#bookbundle_read_latitude'),
-                longitudeInput: $('#bookbundle_read_longitude'),
-                locationNameInput: $('#bookbundle_read_place')
+                latitudeInput: $('#read_latitude'),
+                longitudeInput: $('#read_longitude'),
+                locationNameInput: $('#read_place')
             },
             enableAutocomplete: true,
             radius: 30,
@@ -73,8 +73,8 @@ $(document).ready(function () {
 
         if ($('.location-map-edit').length) {
             mapSettings.location = {
-                latitude: $('#bookbundle_read_latitude').val(),
-                longitude: $('#bookbundle_read_longitude').val()
+                latitude: $('#read_latitude').val(),
+                longitude: $('#read_longitude').val()
             }
             $('div.location-map').locationpicker(mapSettings);
         } else if ($('.location-map-read-list').length) {

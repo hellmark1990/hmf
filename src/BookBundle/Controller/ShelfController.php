@@ -92,7 +92,7 @@ class ShelfController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(Shelf $entity){
-        $form = $this->createForm(new ShelfType(), $entity, array(
+        $form = $this->createForm(ShelfType::class, $entity, array(
             'action' => $this->generateUrl('shelf_create'),
             'method' => 'POST',
             'user' => $this->getUser(),
@@ -176,7 +176,7 @@ class ShelfController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createEditForm(Shelf $entity){
-        $form = $this->createForm(new ShelfType(), $entity, array(
+        $form = $this->createForm(ShelfType::class, $entity, array(
             'action' => $this->generateUrl('shelf_update', array('id' => $entity->getId())),
             'method' => 'PUT',
             'user' => $this->getUser(),

@@ -2,7 +2,8 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
-
+error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+ini_set('display_errors', 'on');
 class AppKernel extends Kernel
 {
     public function registerBundles()
@@ -33,7 +34,7 @@ class AppKernel extends Kernel
             // ...
             new Sonata\MediaBundle\SonataMediaBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            new Sonata\IntlBundle\SonataIntlBundle(),
+           // new Sonata\IntlBundle\SonataIntlBundle(),
 
             // You need to add this dependency to make media functional
             new JMS\SerializerBundle\JMSSerializerBundle(),

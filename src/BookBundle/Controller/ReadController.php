@@ -69,7 +69,7 @@ class ReadController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(Read $entity){
-        $form = $this->createForm(new ReadType(), $entity, array(
+        $form = $this->createForm(ReadType::class, $entity, array(
             'action' => $this->generateUrl('read_create'),
             'method' => 'POST',
         ));
@@ -198,7 +198,7 @@ class ReadController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createEditForm(Read $entity){
-        $form = $this->createForm(new ReadType(), $entity, array(
+        $form = $this->createForm(ReadType::class, $entity, array(
             'action' => $this->generateUrl('read_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

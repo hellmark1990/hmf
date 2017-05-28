@@ -11,7 +11,7 @@
 
 namespace ProfileBundle\Controller;
 
-use FOS\RestBundle\Controller\Annotations\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
@@ -27,7 +27,7 @@ class SecurityController extends \FOS\UserBundle\Controller\SecurityController
      */
     public function loginAction(Request $request)
     {
-        $user = $this->get("security.context")->getToken()->getUser();
+        $user = $this->get("security.token_storage")->getToken()->getUser();
 
         if ($user != 'anon.') {
             return $this->redirect($this->generateUrl('fos_user_profile_show'));
@@ -137,7 +137,7 @@ class SecurityController extends \FOS\UserBundle\Controller\SecurityController
 
         if ($encoder->isPasswordValid($user->getPassword(), $password, $user->getSalt())) {
             $token = new UsernamePasswordToken($user, null, "main", $user->getRoles());
-            $this->get("security.context")->setToken($token); //now the user is logged in
+            $this->get("security.token_storage")->setToken($token); //now the user is logged in
 
             return new \Symfony\Component\HttpFoundation\JsonResponse([
                 'success' => true,

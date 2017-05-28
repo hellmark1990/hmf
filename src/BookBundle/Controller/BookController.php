@@ -92,9 +92,9 @@ class BookController extends Controller {
             }
         }
 
-        if ($request->get('bookbundle_book')['imageUrl']) {
+        if ($request->get('book')['imageUrl']) {
             $tmpImagePath = $this->get('kernel')->getRootDir() . '/../web/uploads/tmp_image.jpg';
-            $imageData = file_get_contents($request->get('bookbundle_book')['imageUrl']);
+            $imageData = file_get_contents($request->get('book')['imageUrl']);
             file_put_contents($tmpImagePath, $imageData);
 
             $image = new \Application\Sonata\MediaBundle\Entity\Media();
@@ -143,7 +143,7 @@ class BookController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(Book $entity){
-        $form = $this->createForm(new BookType(), $entity, array(
+        $form = $this->createForm(BookType::class, $entity, array(
             'action' => $this->generateUrl('book_create'),
             'method' => 'POST',
             'user' => $this->getUser(),
@@ -228,7 +228,7 @@ class BookController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createEditForm(Book $entity){
-        $form = $this->createForm(new BookType(), $entity, array(
+        $form = $this->createForm(BookType::class, $entity, array(
             'action' => $this->generateUrl('book_update', array('id' => $entity->getId())),
             'method' => 'PUT',
             'user' => $this->getUser(),
@@ -271,7 +271,7 @@ class BookController extends Controller {
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
-        if ($previousImageUrl != $request->get('bookbundle_book')['imageUrl'] && $request->get('bookbundle_book')['imageUrl']) {
+        if ($previousImageUrl != $request->get('book')['imageUrl'] && $request->get('book')['imageUrl']) {
             if (!$entity->getImage()) {
                 $image = new \Application\Sonata\MediaBundle\Entity\Media();
                 $image->setProviderName('sonata.media.provider.image');
@@ -280,7 +280,7 @@ class BookController extends Controller {
             }
 
             $tmpImagePath = $this->get('kernel')->getRootDir() . '/../web/uploads/tmp_image.jpg';
-            $imageContent = file_get_contents($request->get('bookbundle_book')['imageUrl']);
+            $imageContent = file_get_contents($request->get('book')['imageUrl']);
             file_put_contents($tmpImagePath, $imageContent);
             $entity->getImage()->setBinaryContent($tmpImagePath);
 

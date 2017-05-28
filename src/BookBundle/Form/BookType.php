@@ -2,6 +2,7 @@
 
 namespace BookBundle\Form;
 
+use BookBundle\Entity\Book;
 use BookBundle\Entity\ShelfRepository;
 use ProfileBundle\Entity\User;
 use Sonata\AdminBundle\Form\Type\ModelHiddenType;
@@ -15,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Locale\Locale;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\Validator\Constraints\CallbackValidator;
@@ -108,9 +110,9 @@ class BookType extends AbstractType {
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver){
+    public function configureOptions(OptionsResolver $resolver){
         $resolver->setDefaults(array(
-            'data_class' => 'BookBundle\Entity\Book',
+            'data_class' => Book::class,
             'user' => null,
             'container' => null,
         ));
@@ -120,6 +122,6 @@ class BookType extends AbstractType {
      * @return string
      */
     public function getName(){
-        return 'bookbundle_book';
+        return 'book';
     }
 }

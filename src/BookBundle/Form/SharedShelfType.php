@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -30,7 +31,7 @@ class SharedShelfType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options){
-        $user = $this->container->get('security.context')
+        $user = $this->container->get('security.token_storage')
             ->getToken()
             ->getUser();
 
@@ -73,7 +74,7 @@ class SharedShelfType extends AbstractType {
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver){
+    public function configureOptions(OptionsResolver $resolver){
         $resolver->setDefaults(array(
             'data_class' => 'BookBundle\Entity\SharedShelf'
         ));
@@ -83,6 +84,6 @@ class SharedShelfType extends AbstractType {
      * @return string
      */
     public function getName(){
-        return 'bookbundle_sharedshelf';
+        return 'sharedshelf';
     }
 }

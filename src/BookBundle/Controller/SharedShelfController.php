@@ -5,6 +5,7 @@ namespace BookBundle\Controller;
 use BookBundle\Entity\SharedBookLink;
 use BookBundle\Entity\SharedShelfLink;
 use BookBundle\Entity\Shelf;
+use BookBundle\Form\SharedShelfEmailType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -87,7 +88,7 @@ class SharedShelfController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(SharedShelf $entity){
-        $form = $this->createForm($this->get('app.form.type.share_shelf'), $entity, array(
+        $form = $this->createForm(SharedShelfType::class, $entity, array(
             'action' => $this->generateUrl('shared_create'),
             'method' => 'POST',
         ));
@@ -154,7 +155,7 @@ class SharedShelfController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateEmailForm(Shelf $entity){
-        $form = $this->createForm($this->get('app.form.type.share_shelf_email'), [], array(
+        $form = $this->createForm(SharedShelfEmailType::class, [], array(
             'action' => $this->generateUrl('shared_create_email', ['shelfId' => $entity->getId()]),
             'method' => 'POST',
         ));
@@ -188,7 +189,7 @@ class SharedShelfController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createEditForm(SharedShelf $entity){
-        $form = $this->createForm(new SharedShelfType(), $entity, array(
+        $form = $this->createForm(SharedShelfType::class, $entity, array(
             'action' => $this->generateUrl('shared_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

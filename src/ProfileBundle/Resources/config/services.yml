@@ -15,7 +15,7 @@ services:
 
   profile.listener.request:
       class: ProfileBundle\EventListener\RequestListener
-      arguments: [ @service_container ]
+      arguments: [ "@service_container" ]
       tags:
         - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
 
@@ -29,6 +29,6 @@ services:
 
   profile.post_persist:
     class: ProfileBundle\EventListener\PostPersistListener
-    arguments: [ @service_container ]
+    arguments: [ "@service_container" ]
     tags:
       - { name: doctrine.event_listener, event: postPersist }

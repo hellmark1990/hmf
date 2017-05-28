@@ -1,4 +1,4 @@
 services:
     seo.manager:
         class: App\SeoBundle\Services\SeoManager
-        arguments: [@service_container, "@doctrine.orm.entity_manager"]
+        arguments: ["@service_container", "@doctrine.orm.entity_manager"]

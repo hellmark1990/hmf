@@ -7,6 +7,7 @@ use BookBundle\Entity\BookRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use BookBundle\Entity\Shelf;
@@ -61,7 +62,7 @@ class ShelfType extends AbstractType {
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver){
+    public function configureOptions(OptionsResolver $resolver){
         $resolver->setDefaults(array(
             'data_class' => 'BookBundle\Entity\Shelf',
             'user' => null
@@ -72,6 +73,6 @@ class ShelfType extends AbstractType {
      * @return string
      */
     public function getName(){
-        return 'bookbundle_shelf';
+        return 'shelf';
     }
 }

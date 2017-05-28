@@ -1,16 +1,16 @@
 services:
     book.google_search:
         class: BookBundle\Services\GoogleSearch
-        arguments: [@service_container, %google_api_key%, %google_project_name%]
+        arguments: ["@service_container", %google_api_key%, %google_project_name%]
 
     book.shared_shelf_messenger:
         class: BookBundle\Services\SharedShelfMessenger
-        arguments: [@service_container]
+        arguments: ["@service_container"]
 
     book.filter:
         class: BookBundle\Services\BookFilter
-        arguments: [@service_container, "@doctrine.orm.entity_manager"]
+        arguments: ["@service_container", "@doctrine.orm.entity_manager"]
 
     book.widget:
         class: BookBundle\Services\BookWidget
-        arguments: [@service_container, "@doctrine.orm.entity_manager"]
+        arguments: ["@service_container", "@doctrine.orm.entity_manager"]

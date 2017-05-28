@@ -121,7 +121,7 @@ Book create block end
     margin-bottom: 50px;
 }
 
-form[name="bookbundle_book"] .circle.image-container {
+form[name="book"] .circle.image-container {
     margin: 0 auto;
     width: 200px;
     height: 260px;
@@ -129,7 +129,7 @@ form[name="bookbundle_book"] .circle.image-container {
     padding-top: 35px;
 }
 
-form[name="bookbundle_book"] .circle.image-container > img {
+form[name="book"] .circle.image-container > img {
     margin: 0 auto;
     width: 125px;
     height: 190px;
@@ -138,12 +138,13 @@ form[name="bookbundle_book"] .circle.image-container > img {
     padding: 0px;
 }
 
-form[name="bookbundle_book"] .book-image.control-block  .pull-left{
-    width: 300px;
+form[name="book"] .book-image.control-block.pull-left{
+    width: 380px;
+    height: 470px;
 }
 
 
-form[name="bookbundle_book"] .book-image.control-block {
+form[name="book"] .book-image.control-block {
     width: 300px;
     padding-right: 0px;
     padding-left: 0px;

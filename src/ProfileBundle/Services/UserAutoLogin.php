@@ -43,7 +43,7 @@ class UserAutoLogin {
 
         // Here, "public" is the name of the firewall in your security.yml
         $token = new UsernamePasswordToken($user, $user->getPassword(), "public", $user->getRoles());
-        $this->service_container->get("security.context")->setToken($token);
+        $this->service_container->get("security.token_storage")->setToken($token);
 
         // Fire the login event
         $event = new InteractiveLoginEvent($request, $token);

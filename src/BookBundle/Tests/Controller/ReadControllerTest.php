@@ -19,7 +19,7 @@ class ReadControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'bookbundle_read[field_name]'  => 'Test',
+            'read[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class ReadControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'bookbundle_read[field_name]'  => 'Foo',
+            'read[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

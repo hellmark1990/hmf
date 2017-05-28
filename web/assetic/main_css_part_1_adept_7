@@ -2,7 +2,7 @@
 
     /** Menu and header S **/
     #header > .navbar > .container > .navbar-header {
-        width: 50px;
+        width: 195px;
         float: left;
     }
 
@@ -184,15 +184,14 @@
     }
 
     /** Book list filter E **/
-
     /** Book Create S **/
-    form[name="bookbundle_book"] > .pull-left, form[name="bookbundle_book"]  > .pull-right, form[name="bookbundle_book"]  .pull-left, form[name="bookbundle_book"]  .pull-right {
+    form[name="book"] > .pull-left, form[name="book"] > .pull-right, form[name="book"]  .pull-left, form[name="book"]  .pull-right {
         float: none !important;
         width: 100% !important;
         padding-left: 0 !important;
     }
 
-    form[name="bookbundle_book"]  .circle.image-container {
+    form[name="book"]  .circle.image-container {
         margin: 0 auto !important;
     }
 
@@ -200,53 +199,62 @@
         margin-right: 0 !important;
         margin-left: 0 !important;
     }
+
     /** Book Create E **/
-
     /** Shelves list S **/
-    div.container-shelf-list #products{
+    div.container-shelf-list #products {
         width: 384px;
         margin: 0 auto !important;
     }
 
-    div.container-shelf-list .grid-group-item{
+    div.container-shelf-list .grid-group-item {
         margin-left: 15px;
         margin-right: 0px;
     }
+
     /** Shelves list E **/
-
     /** Reading list S **/
-    div.container-read-list #products{
+    div.container-read-list #products {
         width: 384px;
         margin: 0 auto !important;
     }
 
-    div.container-read-list .grid-group-item{
+    div.container-read-list .grid-group-item {
         margin-left: 15px;
         margin-right: 0px;
     }
+
     /** Reading list E **/
+    /** Read edit-create S **/
 
+    form[name="bookbundle_read"].form-horizontal .datepicker-container > .col-sm-4 {
+        float: none;
+        width: 100%;
+    }
+
+    /** Read edit-create E **/
     /** Share Book view S **/
-
-    .share-books-list > .pull-left, .share-books-list  > .pull-right, .share-books-list  .pull-left, .share-books-list  .pull-right {
+    .share-books-list > .pull-left, .share-books-list > .pull-right, .share-books-list .pull-left, .share-books-list .pull-right {
         float: none !important;
         width: 100% !important;
         padding-left: 0 !important;
     }
 
-    div.book-share-view-container .data-block{
+    div.book-share-view-container .data-block {
         margin-top: 50px;
     }
 
-    div.book-share-view-container .image-block{
+    div.book-share-view-container .image-block {
         margin: 0 auto;
-        width: 125px!important;
+        width: 125px !important;
     }
+
     /** Share Book view E **/
     /** Toggle S **/
-    .toggle{
+    .toggle {
         right: 15px;
     }
+
     /** Toggle list E **/
 
 }

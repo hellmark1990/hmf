@@ -40,12 +40,12 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface, Au
      * @return    Response
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token){
-        $userCurrent = $this->service_container->get('security.context')->getToken()->getUser();
+        $userCurrent = $this->service_container->get('security.token_storage')->getToken()->getUser();
 
 
         // if AJAX login
         if ($request->isXmlHttpRequest()) {
-            $referer = ($url = $this->session->get('_security.main.target_path')) ? $url : $this->router->generate('fos_user_profile_show', array('name' => $this->service_container->get('security.context')->getToken()->getUser()->getUserName()));
+            $referer = ($url = $this->session->get('_security.main.target_path')) ? $url : $this->router->generate('fos_user_profile_show', array('name' => $this->service_container->get('security.token_storage')->getToken()->getUser()->getUserName()));
 
             $array = array('success' => true, 'referer' => $referer); // data to return via JSON
             $response = new Response(json_encode($array));

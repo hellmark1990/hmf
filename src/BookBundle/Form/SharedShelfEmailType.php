@@ -67,6 +67,6 @@ class SharedShelfEmailType extends AbstractType {
      * @return string
      */
     public function getName(){
-        return 'bookbundle_sharedshelf_email';
+        return 'sharedshelf_email';
     }
 }

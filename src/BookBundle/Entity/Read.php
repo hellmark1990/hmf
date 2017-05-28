@@ -37,14 +37,14 @@ class Read {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="time_start", type="datetime")
+     * @ORM\Column(name="time_start", type="datetime", nullable=true)
      */
     private $timeStart;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="time_end", type="datetime")
+     * @ORM\Column(name="time_end", type="datetime", nullable=true)
      */
     private $timeEnd;
 
@@ -58,21 +58,21 @@ class Read {
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
 
     /**
      * @var decimal
      *
-     * @ORM\Column(name="latitude", type="decimal", precision=19, scale=14)
+     * @ORM\Column(name="latitude", type="decimal", precision=19, scale=14, nullable=true)
      */
     private $latitude;
 
     /**
      * @var decimal
      *
-     * @ORM\Column(name="longitude", type="decimal", precision=19, scale=14)
+     * @ORM\Column(name="longitude", type="decimal", precision=19, scale=14, nullable=true)
      */
     private $longitude;
 

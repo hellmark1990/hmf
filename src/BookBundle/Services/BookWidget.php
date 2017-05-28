@@ -45,7 +45,7 @@ class BookWidget {
         $this->service_container = $container;
         $this->translator = $this->service_container->get('translator');
         $this->em = $em;
-        $this->user = $this->service_container->get('security.context')->getToken();
+        $this->user = $this->service_container->get('security.token_storage')->getToken();
         $this->user = $this->user ? $this->user->getUser() : null;
     }
 

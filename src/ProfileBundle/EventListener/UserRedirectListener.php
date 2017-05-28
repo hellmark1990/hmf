@@ -37,7 +37,7 @@ class UserRedirectListener {
             return;
         }
 
-        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
         if ($user === 'anon.' && !in_array($event->getRequest()->get('_route'), [
                 self::LOGIN_ROUTE,

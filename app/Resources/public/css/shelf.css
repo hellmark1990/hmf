@@ -1,14 +1,14 @@
-form[name="bookbundle_shelf"] img {
+form[name="shelf"] img {
     width: 350px;
     height: 200px;
 }
 
-form[name="bookbundle_shelf"] .button-edit {
+form[name="shelf"] .button-edit {
     bottom: 130px !important;
     left: 360px !important;
 }
 
-form[name="bookbundle_shelf"] .button-delete {
+form[name="shelf"] .button-delete {
     bottom: 100px !important;
     left: 326px !important;
 }

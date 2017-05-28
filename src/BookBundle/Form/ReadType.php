@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ReadType extends AbstractType {
@@ -61,7 +62,7 @@ class ReadType extends AbstractType {
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver){
+    public function configureOptions(OptionsResolver $resolver){
         $resolver->setDefaults(array(
             'data_class' => 'BookBundle\Entity\Read'
         ));
@@ -71,6 +72,6 @@ class ReadType extends AbstractType {
      * @return string
      */
     public function getName(){
-        return 'bookbundle_read';
+        return 'read';
     }
 }
