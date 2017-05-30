@@ -70,7 +70,7 @@ class SocialButtons {
     }
 
     public function renderButtons(){
-        return $this->templating->render('SocialNetworkBundle:Buttons:all.html.twig', $this->parameters);
+        return $this->templating->render('SocialNetworkBundle:Buttons:all.html.twig', ['params' => $this->parameters]);
     }
 
 

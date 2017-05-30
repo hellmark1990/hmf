@@ -27,7 +27,25 @@
         {% if form.avatar.binaryContent.vars.errors.count %}
             <div class="alert alert-danger" role="alert">{{ form_errors(form.avatar.binaryContent) }}</div>
         {% endif %}
-        {{  container.get('social_network.buttons').setParameters({'url': 'asdasd'}).renderButtons|raw }}
+
+        {% set imageUrl %}
+        {{ parameters.site_host }}{% path app.user.avatar, 'small' %}
+        {% endset %}
+
+        {{ container.get('social_network.buttons')
+        .setParameters({
+            'url': url('homepage'),
+            'title': 'My profile on DiveInBook',
+            'description': "Read with me books on DriveInBook",
+            'image': {
+                'url': imageUrl,
+                'width': app.user.avatar.width,
+                'height': app.user.avatar.height
+            },
+
+
+        }).renderButtons|raw }}
+
         <input type="checkbox" data-name="fos_user_profile_form[accessType]" value="1" {% if app.user.isPrivate %}checked{% endif %} data-on=" {% trans %}Private{% endtrans %}" data-off="{% trans %}Public{% endtrans %}" data-toggle="toggle" data-onstyle="danger">
         <div class="clear-float"></div>
         <div class="control-block">
