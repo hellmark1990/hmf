@@ -1,4 +1,1 @@
 services:
-    social_network.buttons:
-        class: SocialNetworkBundle\Services\SocialButtons
-        arguments: ["@service_container", "@doctrine.orm.entity_manager"]

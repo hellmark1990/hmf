@@ -39,6 +39,14 @@ framework:
     fragments:       ~
     http_method_override: true
 
+
+social_network:
+  socials:
+    facebook:
+      app_id: "%socials.facebook%"
+    twitter: true
+    vk: true
+
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
@@ -190,6 +198,8 @@ sonata_media:
             resizer: sonata.media.resizer.fixedDimensions
             thumbnail:  sonata.media.thumbnail.format
             filesystem: sonata.media.filesystem.local
+
+
 
 parameters:
     sonata.media.provider.image.class: Application\Sonata\MediaBundle\Provider\ImageProvider
