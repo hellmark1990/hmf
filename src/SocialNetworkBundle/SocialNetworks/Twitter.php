@@ -8,18 +8,13 @@ namespace SocialNetworkBundle\SocialNetworks;
  * Date: 30.05.17
  * Time: 22:20
  */
-class Facebook {
+class Twitter {
 
     /**
      * Share parameters
      * @var
      */
     protected $params;
-
-    /**
-     * @var
-     */
-    protected $apiKey;
 
     /**
      * @var TwigEngine object
@@ -36,23 +31,17 @@ class Facebook {
         $this->templating = $templating;
     }
 
-    public function setApiKey($apiKey){
-        $this->apiKey = $apiKey;
-        return $this;
-    }
-
     public function setParameters($parameters){
         $this->parameters = $parameters;
         return $this;
     }
 
     protected function getParameters($parameters){
-        $this->parameters['apiKey'] = $this->apiKey;
         return $this->parameters;
     }
 
     public function get(){
-        return $this->templating->render('SocialNetworkBundle:Buttons:facebook.html.twig', [
+        return $this->templating->render('SocialNetworkBundle:Buttons:twitter.html.twig', [
             'params' => $this->getParameters()
         ]);
     }

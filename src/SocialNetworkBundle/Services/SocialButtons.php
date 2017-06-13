@@ -9,11 +9,15 @@
 namespace SocialNetworkBundle\Services;
 
 use ProfileBundle\Entity\User;
+use SocialNetworkBundle\SocialNetworks\Facebook;
+use SocialNetworkBundle\SocialNetworks\Twitter;
+use SocialNetworkBundle\SocialNetworks\VK;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bundle\TwigBundle\TwigEngine;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -34,7 +38,6 @@ class SocialButtons {
      * @var
      */
     protected $em;
-
     /**
      * @var User
      */
@@ -51,8 +54,14 @@ class SocialButtons {
      */
     protected $templating;
 
+    /**
+     * Configs defined by Configuration
+     * @var
+     */
+    public $configs;
 
-    public function __construct(ContainerInterface $container, $em){
+
+    public function __construct($container, $em){
         $this->service_container = $container;
         $this->translator = $this->service_container->get('translator');
         $this->em = $em;
@@ -64,13 +73,41 @@ class SocialButtons {
     /**
      * @param array $parameters - ['url', 'title', 'image']
      */
-    public function setParameters(array $parameters = []){
+    protected function setParameters(array $parameters = []){
         $this->parameters = $parameters;
-        return $this;
     }
 
-    public function renderButtons(){
-        return $this->templating->render('SocialNetworkBundle:Buttons:all.html.twig', ['params' => $this->parameters]);
+    protected function renderButtons($socials){
+        return $this->templating->render('SocialNetworkBundle:Buttons:all.html.twig', ['socials' => $socials]);
+    }
+
+    public function show(array $parameters = []){
+        $this->setParameters($parameters);
+
+        $socials = [];
+        if (isset($this->configs['socials']['facebook'])) {
+            $socials['facebook'] = (new Facebook($this->templating))
+                ->setApiKey($this->configs['socials']['facebook']['app_id'])
+                ->setParameters($this->parameters)
+                ->get();
+        }
+
+        if (isset($this->configs['socials']['twitter'])) {
+            $socials['twitter'] = (new Twitter($this->templating))
+                ->setParameters($this->parameters)
+                ->get();
+        }
+
+        if (isset($this->configs['socials']['vk'])) {
+            $socials['vk'] = (new VK($this->templating))
+                ->setParameters($this->parameters)
+                ->get();
+        }
+
+//        dump($this->configs);
+//        dump($socials);exit;
+
+        return $this->renderButtons($socials);
     }
 
 
