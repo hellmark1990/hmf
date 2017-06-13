@@ -38,10 +38,11 @@
 
     <div id="dropzone">
         <div class="dropzone needsclick dz-clickable" id="demo-upload">
+            <div style="display: none">
             {{ block('form_widget') }}
+            </div>
             <div class="dz-message needsclick">
                 Drop files here or click to upload.<br>
-                <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
             </div>
         </div>
     </div>

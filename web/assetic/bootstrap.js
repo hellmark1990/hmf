@@ -3518,7 +3518,31 @@ jQuery(function ($) {
 
     Dropzone.autoDiscover = false;
     var dropzone = new Dropzone($('#demo-upload').get(0), {
-        url: "/upload"
+        url: "/upload",
+        maxFiles: 1,
+        addRemoveLinks: true,
+        autoProcessQueue: false,
+        createImageThumbnails: true,
+        acceptedFiles: 'image/*',
+        autoQueue: false,
+        thumbnailWidth: null,
+        thumbnailHeight: null,
+        init: function () {
+            this.on("maxfilesexceeded", function (file) {
+                this.removeAllFiles();
+                this.addFile(file);
+            });
+
+            this.on("thumbnail", function (file, dataUrl) {
+                $('.dz-image').last().find('img').attr({width: '100%', height: '100%'});
+                $('.dz-image').css({"width": "100%", "height": "auto"});
+                $('.dz-progress').hide();
+            });
+
+            this.on("success", function (file) {
+                $('.dz-image').css({"width": "100%", "height": "auto"});
+            })
+        }
 
     });
 
