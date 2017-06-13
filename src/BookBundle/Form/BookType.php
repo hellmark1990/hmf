@@ -15,7 +15,6 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Locale\Locale;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -97,7 +96,7 @@ class BookType extends AbstractType {
                     return $container->get('app.languages')->getLanguageByLocale($locale);
                 },
                 function ($language) use ($container){
-                    $locales = Locale::getLocales();
+                    $locales = \Locale::getLocales();
                     if (array_search($language, $locales)) {
                         return $language;
                     }

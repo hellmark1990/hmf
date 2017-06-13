@@ -1,0 +1,20 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: books
+    database_user: root
+    database_password: 64inupir
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: sheme4ko@gmail.com
+    mailer_password: 64inupiradminhell
+    my_email: sheme4ko@gmail.com
+    mailer_port: 465
+    secret: ThisTokenIsNotSoSecretChangeIt
+    locale: uk
+    google_api_key: AIzaSyCmWmxHHOZTWL6qpA04If7xtfzVa8NzMJM
+    google_project_name: ibooker
+    host: 'http://127.0.0.1:8000'
+    max_upload_size: 2m
+    socials.facebook: 2257545761137893

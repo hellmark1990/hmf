@@ -6817,6 +6817,21 @@ form[name="read"] .datepicker-container > .col-sm-4{
     z-index: 1;
 }
 
+form[name="read"] img {
+    width: 350px;
+    height: 200px;
+}
+
+form[name="read"] .button-edit {
+    bottom: 130px !important;
+    left: 360px !important;
+}
+
+form[name="read"] .button-delete {
+    bottom: 100px !important;
+    left: 326px !important;
+}
+
 /* lg */
 @media (min-width: 1200px) {
  /* Make Navigation Toggle on Desktop Hover */

@@ -1,8 +1,8 @@
 imports:
-    - { resource: parameters.yml }
-    - { resource: security.yml }
-    - { resource: services.yml }
-    - { resource: sonata_seo.yml }
+    - { resource: "../parameters/current.yml" }
+    - { resource: "../services/security.yml" }
+    - { resource: "../services/services.yml" }
+    - { resource: "../bundles/*.yml" }
     - { resource: "@ProfileBundle/Resources/config/services.yml" }
     - { resource: "@ProfileBundle/Resources/config/config.yml" }
     - { resource: "@AppSeoBundle/Resources/config/services.yml" }
@@ -19,7 +19,7 @@ framework:
             - '%kernel.root_dir%/../src/ProfileBundle/Resources/translations'
     secret:          "%secret%"
     router:
-        resource: "%kernel.root_dir%/config/routing.yml"
+        resource: "%kernel.root_dir%/config/routing/base.yml"
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
@@ -182,6 +182,13 @@ sonata_media:
 
             formats:
                 small: { width: 125, height: 190, quality: 95, constraint: false}
+
+        read:
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+            formats:
+                small: { width: 350, height: 200, quality: 95, constraint: false}
 
     cdn:
         server:

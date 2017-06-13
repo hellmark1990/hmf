@@ -4,7 +4,7 @@ namespace AppBundle\Services;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Locale\Locale;
+//use Symfony\Component\Locale\Locale;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -23,9 +23,9 @@ class Langauges {
     }
 
     public function getLocaleByLanguage($language){
-        $locales = Locale::getLocales();
+        $locales = \Locale::getLocales();
         foreach ($locales as $locale) {
-            $languages = Locale::getDisplayLanguages($locale);
+            $languages = \Locale::getDisplayLanguages($locale);
             $localeSearched = array_search($language, $languages);
             if ($localeSearched) {
                 return $localeSearched;
@@ -41,7 +41,7 @@ class Langauges {
     }
 
     public function getLanguageByLocale($locale){
-        return ucfirst(Locale::getDisplayLanguage($locale));
+        return ucfirst(\Locale::getDisplayLanguage($locale));
     }
 
 

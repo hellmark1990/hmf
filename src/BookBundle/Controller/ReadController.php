@@ -47,6 +47,21 @@ class ReadController extends Controller {
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
+        /**
+         * Validate image file
+         */
+        $fileValidator = $this->get('app.file_validatator');
+        if ($entity->getImage() && !$fileValidator->validate($entity->getImage(), [
+                'fieldName' => $form->get('image')->getName(),
+                'maxSize' => $this->getParameter('max_upload_size'),
+                'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+            ])
+        ) {
+            $form->get('image')
+                ->get('binaryContent')
+                ->addError(new FormError($fileValidator->getMessage()));
+        }
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -225,6 +240,21 @@ class ReadController extends Controller {
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
+
+        /**
+         * Validate image file
+         */
+        $fileValidator = $this->get('app.file_validatator');
+        if ($entity->getImage() && !$fileValidator->validate($entity->getImage(), [
+                'fieldName' => $editForm->get('image')->getName(),
+                'maxSize' => $this->getParameter('max_upload_size'),
+                'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+            ])
+        ) {
+            $editForm->get('image')
+                ->get('binaryContent')
+                ->addError(new FormError($fileValidator->getMessage()));
+        }
 
         if ($editForm->isValid()) {
             $em->flush();

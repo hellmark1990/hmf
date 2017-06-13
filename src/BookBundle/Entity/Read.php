@@ -82,6 +82,11 @@ class Read {
      **/
     private $book;
 
+    /**
+     * @ORM\OneToOne(targetEntity="\Application\Sonata\MediaBundle\Entity\Media", cascade={"persist"})
+     */
+    private $image;
+
 
     /**
      * Get id
@@ -285,5 +290,29 @@ class Read {
     public function getPagesCount()
     {
         return $this->pagesCount ? $this->pagesCount : 0;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $image
+     *
+     * @return Read
+     */
+    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

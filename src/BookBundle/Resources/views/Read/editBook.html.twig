@@ -30,6 +30,7 @@
     <div class="form-group control-block">
         <h2 class="control-block-h2">{% trans %}Read Location{% endtrans %}</h2>
         <div class="col-sm-10">
+            {{ form_row(form.image) }}
             <div class="read-location-map location-map"></div>
             {{ form_row(form.place) }}
         </div>

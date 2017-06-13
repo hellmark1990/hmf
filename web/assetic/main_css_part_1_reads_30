@@ -59,3 +59,18 @@ form[name="read"] .datepicker-container > .col-sm-4{
     margin-bottom: -30px;
     z-index: 1;
 }
+
+form[name="read"] img {
+    width: 350px;
+    height: 200px;
+}
+
+form[name="read"] .button-edit {
+    bottom: 130px !important;
+    left: 360px !important;
+}
+
+form[name="read"] .button-delete {
+    bottom: 100px !important;
+    left: 326px !important;
+}

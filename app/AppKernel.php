@@ -34,7 +34,7 @@ class AppKernel extends Kernel
             // ...
             new Sonata\MediaBundle\SonataMediaBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-           // new Sonata\IntlBundle\SonataIntlBundle(),
+//            new Sonata\IntlBundle\SonataIntlBundle(),
 
             // You need to add this dependency to make media functional
             new JMS\SerializerBundle\JMSSerializerBundle(),
@@ -61,6 +61,6 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+        $loader->load($this->getRootDir().'/config/environments/'.$this->getEnvironment().'.yml');
     }
 }

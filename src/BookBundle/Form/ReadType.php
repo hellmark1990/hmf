@@ -22,6 +22,14 @@ class ReadType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options){
         $builder
             ->add('title')
+            ->add('image', 'sonata_media_type', [
+                'required' => false,
+                'provider' => 'sonata.media.provider.image',
+                'context' => 'read',
+                'attr' => ['class' => 'form-read-image'],
+                'show_unlink' => false,
+                'label' => false
+            ])
             ->add('pagesCount')
             ->add('place', TextType::class, [
                 'label' => false
