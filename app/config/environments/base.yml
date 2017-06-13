@@ -123,6 +123,7 @@ assetic:
                 - '%kernel.root_dir%/Resources/public/jquery/jquery.circliful.min.js'
                 - '%kernel.root_dir%/Resources/public/jquery/jquery.prettyPhoto.js'
                 - '%kernel.root_dir%/Resources/public/jquery/jquery.geocomplete.min.js'
+                - '%kernel.root_dir%/Resources/public/jquery/dropzone.js'
 
         bootstrap:
             inputs:

@@ -1,44 +1,52 @@
 {% use "bootstrap_3_horizontal_layout.html.twig" %}
 
 {% block sonata_media_type_widget %}
-    <div class="pull-left">
-        {% if value is not empty and value.providerReference %}
-                <div class="circle image-container">
-                    {% thumbnail value, 'small' with {'class': 'img-polaroid media-object', 'data-default-src': asset('bundles/sonatamedia/grey.png')} %}
-                    <button type="button" class="btn btn-default btn-small button button-edit">
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-small button button-delete">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-            </div>
+    {#<div class="pull-left">#}
+    {#{% if value is not empty and value.providerReference %}#}
+    {#<div class="circle image-container">#}
+    {#{% thumbnail value, 'small' with {'class': 'img-polaroid media-object', 'data-default-src': asset('bundles/sonatamedia/grey.png')} %}#}
+    {#<button type="button" class="btn btn-default btn-small button button-edit">#}
+    {#<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>#}
+    {#</button>#}
+    {#<button type="button" class="btn btn-default btn-small button button-delete">#}
+    {#<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>#}
+    {#</button>#}
+    {#</div>#}
 
-            {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
-                <a href="{{ url('admin_sonata_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>
-            {% else %}
-            {% endif %}
-        {% else %}
-            <div class="pull-left" style="margin-right: 5px">
-                <a class="circle image-container no-image">
-                    <span class="pseudo-letters">
-                        <span class="helper"></span>
-                        <span class="s-t">{{ app.user.avatarLetters }}</span>
-                    </span>
-                    <img src="{{ asset('bundles/sonatamedia/grey.png') }}" data-default-src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-polaroid media-object"/>
-                    <button type="button" class="btn btn-default btn-small button button-edit">
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-small button button-delete">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                </a>
+    {#{% if sonata_admin_enabled is defined and sonata_admin_enabled %}#}
+    {#<a href="{{ url('admin_sonata_media_media_edit', {id: value.id}) }}"><strong>{{ value.name }}</strong></a>#}
+    {#{% else %}#}
+    {#{% endif %}#}
+    {#{% else %}#}
+    {#<div class="pull-left" style="margin-right: 5px">#}
+    {#<a class="circle image-container no-image">#}
+    {#<span class="pseudo-letters">#}
+    {#<span class="helper"></span>#}
+    {#<span class="s-t">{{ app.user.avatarLetters }}</span>#}
+    {#</span>#}
+    {#<img src="{{ asset('bundles/sonatamedia/grey.png') }}" data-default-src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-polaroid media-object"/>#}
+    {#<button type="button" class="btn btn-default btn-small button button-edit">#}
+    {#<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>#}
+    {#</button>#}
+    {#<button type="button" class="btn btn-default btn-small button button-delete">#}
+    {#<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>#}
+    {#</button>#}
+    {#</a>#}
+    {#</div>#}
+    {#{% endif %}#}
+    {#</div>#}
+
+    <div id="dropzone">
+        <div class="dropzone needsclick dz-clickable" id="demo-upload">
+            {{ block('form_widget') }}
+            <div class="dz-message needsclick">
+                Drop files here or click to upload.<br>
+                <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
             </div>
-        {% endif %}
+        </div>
     </div>
 
-    <div class="span3 pull-left" style="display: none">
-        {{ block('form_widget') }}
-    </div>
+
 {% endblock sonata_media_type_widget %}
 
 

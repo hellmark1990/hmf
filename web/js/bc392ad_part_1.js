@@ -3496,7 +3496,7 @@ jQuery(function ($) {
     // Tooltip init
     $('[data-toggle="tooltip"]').tooltip()
 
-     // Dropdown init
+    // Dropdown init
     $(".dropdown-menu li a").click(function () {
         $(this).closest('.btn-group').find(".btn:first-child").text($(this).text());
         $(this).closest('.btn-group').find(".btn:first-child").val($(this).text());
@@ -3511,8 +3511,15 @@ jQuery(function ($) {
 
         $(this).closest('.input-group-btn').find('.btn').removeClass('active')
 
-        if(!$(this).hasClass('selected')){
+        if (!$(this).hasClass('selected')) {
             $(this).addClass('active');
         }
     });
+
+    Dropzone.autoDiscover = false;
+    var dropzone = new Dropzone($('#demo-upload').get(0), {
+        url: "/upload"
+
+    });
+
 });
