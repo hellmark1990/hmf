@@ -74,3 +74,65 @@ form[name="read"] .datepicker-container > .col-sm-4{
     /*bottom: 100px !important;*/
     /*left: 326px !important;*/
 /*}*/
+
+.read-location-image-container .control-block-h2{
+    margin-bottom: 20px;
+}
+
+.read-location-image-container .left{
+    position: relative;
+    width: 400px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.read-location-image-container .right{
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    margin-bottom: 20px;
+    top: 0px;
+    left: 575px;
+}
+
+.read-location-image-container .left .dropzone, .read-location-image-container .left #dropzone{
+    height: 235px;
+}
+
+.read-location-image-container .dz-preview.dz-image-preview{
+    width: 350px;
+    height: 200px;
+}
+
+.read-location-image-container .dz-preview.dz-image-preview .dz-image{
+    width: 350px;
+    height: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

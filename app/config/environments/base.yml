@@ -124,6 +124,7 @@ assetic:
                 - '%kernel.root_dir%/Resources/public/jquery/jquery.prettyPhoto.js'
                 - '%kernel.root_dir%/Resources/public/jquery/jquery.geocomplete.min.js'
                 - '%kernel.root_dir%/Resources/public/jquery/dropzone.js'
+                - '%kernel.root_dir%/Resources/public/jquery/cropper.min.js'
 
         bootstrap:
             inputs:

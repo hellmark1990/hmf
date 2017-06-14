@@ -1,6 +1,7 @@
 {% use "bootstrap_3_horizontal_layout.html.twig" %}
 
 {% block sonata_media_type_widget %}
+    {#{{ dump(value) }}#}
     {#<div class="pull-left">#}
     {#{% if value is not empty and value.providerReference %}#}
     {#<div class="circle image-container">#}
@@ -39,10 +40,43 @@
     <div id="dropzone">
         <div class="dropzone needsclick dz-clickable" id="demo-upload">
             <div style="display: none">
-            {{ block('form_widget') }}
+                {{ block('form_widget') }}
             </div>
-            <div class="dz-message needsclick">
-                Drop files here or click to upload.<br>
+
+            <div class="dz-message needsclick" {% if value is not empty and value.providerReference %}style="display: none;" {% endif %}>
+                <img src="/uploads/camera.png"/>
+                <div class="helper-text">{% trans %}Drop files here or click to upload.{% endtrans %}</div>
+            </div>
+            {% if value is not empty and value.providerReference %}
+                <div class="dz-preview dz-image-preview">
+                    <div class="dz-image">
+                        {% thumbnail value, 'small' with {'data-dz-thumbnail': ''} %}
+                        {#<img data-dz-thumbnail="" alt="file0001735386118.jpg" src="" style="width: auto; height: 100%;">#}
+                    </div>
+                    <a class="dz-remove" href="javascript:undefined;" data-dz-remove="">Remove file</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Modal image crop -->
+    <div class="modal fade" id="imageCropModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{% trans %}Crop image{% endtrans %}</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans %}
+                        Close{% endtrans %}</button>
+                    <button type="button" class="btn btn-primary btn-modal-submit">{% trans %}
+                        Done{% endtrans %}</button>
+                </div>
             </div>
         </div>
     </div>

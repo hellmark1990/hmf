@@ -184,16 +184,43 @@ jQuery(function ($) {
             });
 
             this.on("thumbnail", function (file, dataUrl) {
-                $('.dz-image').last().find('img').attr({width: '100%', height: '100%'});
-                $('.dz-image').css({"width": "100%", "height": "auto"});
+                $('.dz-image > img').last().find('img').attr({width: 'auto', height: '100%'});
+                $('.dz-image > img').css({"width": "auto", "height": "100%"});
                 $('.dz-progress').hide();
+
+                $('#imageCropModal').find('img').attr('src', $('.dz-image > img').last().attr('src'));
+
+                var image = $('#imageCropModal').find('img').get(0);
+                var cropper = new Cropper(image, {
+                    viewMode:1,
+                    modal: true,
+                    minContainerWidth: null,
+                    minContainerHeight: null,
+                    aspectRatio: 16 / 9,
+                    crop: function (e) {
+                    }
+                });
+                $('#imageCropModal').modal('show');
             });
 
             this.on("success", function (file) {
-                $('.dz-image').css({"width": "100%", "height": "auto"});
+                $('.dz-image > img').css({"width": "auto", "height": "100%"});
             })
         }
+    });
 
+    $('body').on('click', '.dz-remove', function () {
+        $(this).closest('.form-group').find('input[name$="[unlink]"]').val(1);
+        $(this).closest('.form-group').find('input[name$="[unlink]"]').prop('checked', true).attr('checked', true);
+        $('.dz-image-preview').remove();
+        $('.needsclick').show();
+    })
+
+
+    $('.dz-hidden-input').on('change', function () {
+        var originFileInput = $('form').find('input[name$="[binaryContent]"]');
+        originFileInput[0].files = $(this)[0].files;
+        $('.dz-image-preview').remove();
     });
 
 });
