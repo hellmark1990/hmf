@@ -287,9 +287,42 @@ class ReadController extends Controller {
             throw $this->createNotFoundException('Unable to find Read entity.');
         }
 
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
+
+        if ($request->get('croppedImage')) {
+            if (!$entity->getImage()) {
+                $image = new \Application\Sonata\MediaBundle\Entity\Media();
+                $image->setProviderName('sonata.media.provider.image');
+                $image->setContext('read');
+                $entity->setImage($image);
+            }
+
+            $tmpImagePath = $this->get('kernel')->getRootDir() . '/../web/uploads/tmp_image.jpg';
+            $data = $request->get('croppedImage');
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $data = base64_decode($data);
+            file_put_contents($tmpImagePath, $data);
+            $entity->getImage()->setBinaryContent($tmpImagePath);
+        } else {
+            /**
+             * Validate image file
+             */
+            $fileValidator = $this->get('app.file_validatator');
+            if ($entity->getImage() && !$fileValidator->validate($entity->getImage(), [
+                    'fieldName' => $editForm->get('image')->getName(),
+                    'maxSize' => $this->getParameter('max_upload_size'),
+                    'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
+                ])
+            ) {
+                $editForm->get('image')
+                    ->get('binaryContent')
+                    ->addError(new FormError($fileValidator->getMessage()));
+            }
+        }
 
         if ($editForm->isValid()) {
             $em->flush();

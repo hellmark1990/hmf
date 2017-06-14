@@ -169,7 +169,7 @@ sonata_media:
                 - sonata.media.provider.file
 
             formats:
-                small: { width: 350, height: 200, quality: 95, constraint: false}
+                small: { width: 350, height: 197, quality: 95, constraint: false}
         profile_avatar:
             providers:
                 - sonata.media.provider.image
@@ -190,7 +190,7 @@ sonata_media:
                 - sonata.media.provider.image
                 - sonata.media.provider.file
             formats:
-                small: { width: 350, height: 200, quality: 95, constraint: false}
+                small: { width: 350, height: 197, quality: 95, constraint: false}
 
     cdn:
         server:

@@ -41,6 +41,7 @@
         <div class="dropzone needsclick dz-clickable" id="demo-upload">
             <div style="display: none">
                 {{ block('form_widget') }}
+                <input type="hidden" name="croppedImage" class="croppedImageInput" value="">
             </div>
 
             <div class="dz-message needsclick" {% if value is not empty and value.providerReference %}style="display: none;" {% endif %}>

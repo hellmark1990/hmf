@@ -167,6 +167,7 @@ jQuery(function ($) {
     });
 
     Dropzone.autoDiscover = false;
+    var CropperOBJ = 0;
     var dropzone = new Dropzone($('#demo-upload').get(0), {
         url: "/upload",
         maxFiles: 1,
@@ -183,6 +184,7 @@ jQuery(function ($) {
                 this.addFile(file);
             });
 
+            var self = this;
             this.on("thumbnail", function (file, dataUrl) {
                 $('.dz-image > img').last().find('img').attr({width: 'auto', height: '100%'});
                 $('.dz-image > img').css({"width": "auto", "height": "100%"});
@@ -191,15 +193,40 @@ jQuery(function ($) {
                 $('#imageCropModal').find('img').attr('src', $('.dz-image > img').last().attr('src'));
 
                 var image = $('#imageCropModal').find('img').get(0);
-                var cropper = new Cropper(image, {
-                    viewMode:1,
+
+
+                var cropWidth = $(window).width() > $('#imageCropModal').find('img').prop("naturalWidth") ? $('#imageCropModal').find('img').prop("naturalWidth") : $(window).width();
+                var cropHeight = $(window).height() > $('#imageCropModal').find('img').prop("naturalHeight") + 200 ? $('#imageCropModal').find('img').prop("naturalHeight") : $(window).height() - 200;
+
+                if (CropperOBJ) {
+                    CropperOBJ.destroy();
+                }
+                CropperOBJ = new Cropper(image, {
+                    viewMode: 1,
                     modal: true,
-                    minContainerWidth: null,
-                    minContainerHeight: null,
-                    aspectRatio: 16 / 9,
+                    minContainerWidth: cropWidth - 40,
+                    minContainerHeight: cropHeight,
+                    minCropBoxWidth: 323,
+                    minCropBoxHeight: 185,
+                    aspectRatio: 350 / 200,
                     crop: function (e) {
                     }
                 });
+
+                $('#imageCropModal .btn-modal-submit').on('click', function () {
+                    var canvasData = CropperOBJ.getCroppedCanvas()
+                    var imageDataUrl = canvasData.toDataURL('image/jpeg');
+
+                    // canvasData.toBlob(function (blob) {
+                    //     $('form').find('input[name$="[binaryContent]"]')[0].files[0] = blob;
+                    // });
+
+                    $('.croppedImageInput').val(imageDataUrl);
+                    $('.dz-image > img').last().attr('src', imageDataUrl);
+                    $('#imageCropModal').modal('hide');
+                });
+
+
                 $('#imageCropModal').modal('show');
             });
 
