@@ -539,13 +539,23 @@
     border-right: 1px solid #ada2a2;
 }
 
-.dropzone .remove-button .fa{
+.dropzone .remove-button .fa, .dropzone .change-button .fa{
     cursor: pointer;
 }
 
-.dropzone .remove-button:hover{
-    opacity: 0.8;
+.dropzone .change-button{
+    position: relative;
+    z-index: 11;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    border: none;
+    opacity: 0.5;
+    border-top: 1px solid #ada2a2;
+    border-left: 1px solid #ada2a2;
 }
+
+
 
 #imageCropModal .modal-dialog {
     width: 100%;

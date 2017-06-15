@@ -2554,11 +2554,6 @@ form.form-horizontal .control-block > h2 {
 }
 
 .dropzone .dz-preview:hover .dz-image img {
-    -webkit-transform: scale(1.05, 1.05);
-    -moz-transform: scale(1.05, 1.05);
-    -ms-transform: scale(1.05, 1.05);
-    -o-transform: scale(1.05, 1.05);
-    transform: scale(1.05, 1.05);
     -webkit-filter: blur(8px);
     filter: blur(8px);
 }
@@ -2713,6 +2708,23 @@ form.form-horizontal .control-block > h2 {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-bottom: 6px solid #be2626;
+}
+
+.dropzone .remove-button.dz-remove{
+    position: relative;
+    z-index: 11;
+    opacity: 0.5;
+    cursor: pointer;
+    border-top: 1px solid #ada2a2;
+    border-right: 1px solid #ada2a2;
+}
+
+.dropzone .remove-button .fa{
+    cursor: pointer;
+}
+
+.dropzone .remove-button:hover{
+    opacity: 0.8;
 }
 
 #imageCropModal .modal-dialog {
@@ -7341,11 +7353,11 @@ a.dropdown-toggle-avatar > .menu-user-avatar > img:hover {
     border: 3px solid #f1f1f1;
 }
 
-form[name="read"] .datepicker-container .control-label{
+form[name="read"] .datepicker-container .control-label {
     text-align: right;
 }
 
-form[name="read"] .datepicker-container > .col-sm-4{
+form[name="read"] .datepicker-container > .col-sm-4 {
     width: 30%;
     float: left;
 }
@@ -7360,37 +7372,37 @@ form[name="read"] .datepicker-container > .col-sm-4{
     margin-top: 10px;
 }
 
-.container-read-list .item{
-    width: 365px!important;
+.container-read-list .item {
+    width: 365px !important;
     margin-left: 27px;
 }
 
 .container-read-list .item.list-group-item {
-    height: 198px!important;
+    height: 198px !important;
     width: 100%;
     float: left;
-    margin-bottom: 15px!important;
+    margin-bottom: 15px !important;
 }
 
-.container-read-list .read-location-map{
+.container-read-list .read-location-map {
     border: 0;
 }
 
 .container-read-list .list-group-item .location-map-read-list {
-    height: 200px!important;
+    height: 200px !important;
     width: 400px;
     float: left;
 }
 
 .container-read-list .list-group-item .caption {
-    padding: 20px 9px 0px 410px!important;
+    padding: 20px 9px 0px 410px !important;
 }
 
 .container-read-list .list-group-item > .thumbnail {
     height: 200px;
 }
 
-.container-read-list .btn-delete{
+.container-read-list .btn-delete {
     position: relative;
     top: -2px;
     left: 326px;
@@ -7399,32 +7411,32 @@ form[name="read"] .datepicker-container > .col-sm-4{
 }
 
 /*form[name="read"] img {*/
-    /*width: 350px;*/
-    /*height: 200px;*/
+/*width: 350px;*/
+/*height: 200px;*/
 /*}*/
 
 /*form[name="read"] .button-edit {*/
-    /*bottom: 130px !important;*/
-    /*left: 360px !important;*/
+/*bottom: 130px !important;*/
+/*left: 360px !important;*/
 /*}*/
 
 /*form[name="read"] .button-delete {*/
-    /*bottom: 100px !important;*/
-    /*left: 326px !important;*/
+/*bottom: 100px !important;*/
+/*left: 326px !important;*/
 /*}*/
 
-.read-location-image-container .control-block-h2{
+.read-location-image-container .control-block-h2 {
     margin-bottom: 20px;
 }
 
-.read-location-image-container .left{
+.read-location-image-container .left {
     position: relative;
     width: 340px;
     height: 300px;
     margin-bottom: 20px;
 }
 
-.read-location-image-container .right{
+.read-location-image-container .right {
     position: absolute;
     width: 400px;
     height: 300px;
@@ -7433,25 +7445,33 @@ form[name="read"] .datepicker-container > .col-sm-4{
     left: 575px;
 }
 
-.read-location-image-container .left .dropzone, .read-location-image-container .left #dropzone{
+.read-location-image-container .left .dropzone, .read-location-image-container .left #dropzone {
     height: 203px;
 }
 
-.read-location-image-container .dz-preview.dz-image-preview{
+.read-location-image-container .dz-preview.dz-image-preview {
     width: 350px;
     height: 200px;
     margin: 0;
+    padding-top: 1px;
 }
 
-.read-location-image-container .dz-preview.dz-image-preview .dz-image{
+.read-location-image-container .dz-preview.dz-image-preview .dz-image {
     width: 350px;
     height: 200px;
 }
 
-form.form-horizontal .read-location-image-container .form-group > div.col-sm-10{
+form.form-horizontal .read-location-image-container .form-group > div.col-sm-10 {
     width: 358px;
     padding: 0;
     margin: 0;
+}
+
+.read-location-image-container .remove-button.dz-remove  {
+    top: -78px;
+    width: 100%;
+    height: 77px;
+    font-size: 40px;
 }
 
 

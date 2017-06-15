@@ -374,11 +374,6 @@
 }
 
 .dropzone .dz-preview:hover .dz-image img {
-    -webkit-transform: scale(1.05, 1.05);
-    -moz-transform: scale(1.05, 1.05);
-    -ms-transform: scale(1.05, 1.05);
-    -o-transform: scale(1.05, 1.05);
-    transform: scale(1.05, 1.05);
     -webkit-filter: blur(8px);
     filter: blur(8px);
 }
@@ -533,6 +528,23 @@
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-bottom: 6px solid #be2626;
+}
+
+.dropzone .remove-button.dz-remove{
+    position: relative;
+    z-index: 11;
+    opacity: 0.5;
+    cursor: pointer;
+    border-top: 1px solid #ada2a2;
+    border-right: 1px solid #ada2a2;
+}
+
+.dropzone .remove-button .fa{
+    cursor: pointer;
+}
+
+.dropzone .remove-button:hover{
+    opacity: 0.8;
 }
 
 #imageCropModal .modal-dialog {

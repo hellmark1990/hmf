@@ -3516,88 +3516,110 @@ jQuery(function ($) {
         }
     });
 
-    Dropzone.autoDiscover = false;
-    var CropperOBJ = 0;
-    var dropzone = new Dropzone($('#demo-upload').get(0), {
-        url: "/upload",
-        maxFiles: 1,
-        addRemoveLinks: true,
-        autoProcessQueue: false,
-        createImageThumbnails: true,
-        acceptedFiles: 'image/*',
-        autoQueue: false,
-        thumbnailWidth: null,
-        thumbnailHeight: null,
-        init: function () {
-            this.on("maxfilesexceeded", function (file) {
-                this.removeAllFiles();
-                this.addFile(file);
-            });
+    if ($('#demo-upload').length) {
+        Dropzone.autoDiscover = false;
+        var CropperOBJ = 0;
+        var dropzone = new Dropzone($('#demo-upload').get(0), {
+            url: "/upload",
+            maxFiles: 1,
+            addRemoveLinks: true,
+            autoProcessQueue: false,
+            createImageThumbnails: true,
+            acceptedFiles: 'image/*',
+            autoQueue: false,
+            thumbnailWidth: null,
+            thumbnailHeight: null,
+            init: function () {
+                this.on("maxfilesexceeded", function (file) {
+                    this.removeAllFiles();
+                    this.addFile(file);
+                });
 
-            var self = this;
-            this.on("thumbnail", function (file, dataUrl) {
-                $('.dz-image > img').last().find('img').attr({width: 'auto', height: '100%'});
-                $('.dz-image > img').css({"width": "auto", "height": "100%"});
-                $('.dz-progress').hide();
+                var self = this;
+                this.on("thumbnail", function (file, dataUrl) {
+                    $('.dz-image > img').last().find('img').attr({width: 'auto', height: '100%'});
+                    $('.dz-image > img').css({"width": "auto", "height": "100%"});
+                    $('.dz-progress').hide();
 
-                $('#imageCropModal').find('img').attr('src', $('.dz-image > img').last().attr('src'));
+                    $('#imageCropModal').find('img').attr('src', $('.dz-image > img').last().attr('src'));
 
-                var image = $('#imageCropModal').find('img').get(0);
+                    var image = $('#imageCropModal').find('img').get(0);
 
 
-                var cropWidth = $(window).width() > $('#imageCropModal').find('img').prop("naturalWidth") ? $('#imageCropModal').find('img').prop("naturalWidth") : $(window).width();
-                var cropHeight = $(window).height() > $('#imageCropModal').find('img').prop("naturalHeight") + 200 ? $('#imageCropModal').find('img').prop("naturalHeight") : $(window).height() - 200;
+                    var cropWidth = $(window).width() > $('#imageCropModal').find('img').prop("naturalWidth") ? $('#imageCropModal').find('img').prop("naturalWidth") : $(window).width();
+                    var cropHeight = $(window).height() > $('#imageCropModal').find('img').prop("naturalHeight") + 200 ? $('#imageCropModal').find('img').prop("naturalHeight") : $(window).height() - 200;
 
-                if (CropperOBJ) {
-                    CropperOBJ.destroy();
-                }
-                CropperOBJ = new Cropper(image, {
-                    viewMode: 1,
-                    modal: true,
-                    minContainerWidth: cropWidth - 40,
-                    minContainerHeight: cropHeight,
-                    minCropBoxWidth: 323,
-                    minCropBoxHeight: 185,
-                    aspectRatio: 350 / 200,
-                    crop: function (e) {
+                    if (CropperOBJ) {
+                        CropperOBJ.destroy();
                     }
+                    CropperOBJ = new Cropper(image, {
+                        viewMode: 1,
+                        modal: true,
+                        minContainerWidth: cropWidth - 40,
+                        minContainerHeight: cropHeight,
+                        minCropBoxWidth: 323,
+                        minCropBoxHeight: 185,
+                        aspectRatio: 350 / 200,
+                    });
+
+                    $('#imageCropModal .btn-modal-submit').on('click', function () {
+                        var canvasData = CropperOBJ.getCroppedCanvas()
+                        var imageDataUrl = canvasData.toDataURL('image/jpeg');
+
+                        $('.croppedImageInput').val(imageDataUrl);
+                        $('.dz-image > img').last().attr('src', imageDataUrl);
+                        $('#imageCropModal').modal('hide');
+                    });
+
+
+                    $('#imageCropModal').modal('show');
                 });
 
-                $('#imageCropModal .btn-modal-submit').on('click', function () {
-                    var canvasData = CropperOBJ.getCroppedCanvas()
-                    var imageDataUrl = canvasData.toDataURL('image/jpeg');
+                this.on("success", function (file) {
+                    $('.dz-image > img').css({"width": "auto", "height": "100%"});
+                })
+            }
+        });
 
-                    // canvasData.toBlob(function (blob) {
-                    //     $('form').find('input[name$="[binaryContent]"]')[0].files[0] = blob;
-                    // });
+        $('#imageCropModal button.btn-modal-submit').on('click', function () {
+            var currentPreview = $('.dropzone .dz-image-preview');
+            var replacedPreview = '<div class="dz-preview dz-image-preview">' +
+                '<div class="dz-image"><img/></div>' +
+                '<button class="dz-remove remove-button" data-dz-remove="">' +
+                '<i class="fa fa-trash" aria-hidden="true"></i>' +
+                '</button>' +
+                '</div>';
+            $(replacedPreview).find('img').replaceWith($(currentPreview).find('img'));
+            $(currentPreview).replaceWith(replacedPreview);
+        });
 
-                    $('.croppedImageInput').val(imageDataUrl);
-                    $('.dz-image > img').last().attr('src', imageDataUrl);
-                    $('#imageCropModal').modal('hide');
-                });
+        $('#imageCropModal').on('hide.bs.modal', function (e) {
+            if (!$(document.activeElement).hasClass('btn-modal-submit')) {
+                $(this).closest('.form-group').find('input[name$="[unlink]"]').val(1);
+                $(this).closest('.form-group').find('input[name$="[unlink]"]').prop('checked', true).attr('checked', true);
+                $('.dz-image-preview').remove();
+                $('.needsclick').show();
+            }
+        })
+
+        $('body').on('click', '.dz-remove', function () {
+            $(this).closest('.form-group').find('input[name$="[unlink]"]').val(1);
+            $(this).closest('.form-group').find('input[name$="[unlink]"]').prop('checked', true).attr('checked', true);
+            $('.dz-image-preview').remove();
+            $('.needsclick').show();
+        })
 
 
-                $('#imageCropModal').modal('show');
-            });
+        $('.dz-hidden-input').on('change', function () {
+            var originFileInput = $('form').find('input[name$="[binaryContent]"]');
+            originFileInput[0].files = $(this)[0].files;
+            $('.dz-image-preview').remove();
+        });
 
-            this.on("success", function (file) {
-                $('.dz-image > img').css({"width": "auto", "height": "100%"});
-            })
-        }
-    });
-
-    $('body').on('click', '.dz-remove', function () {
-        $(this).closest('.form-group').find('input[name$="[unlink]"]').val(1);
-        $(this).closest('.form-group').find('input[name$="[unlink]"]').prop('checked', true).attr('checked', true);
-        $('.dz-image-preview').remove();
-        $('.needsclick').show();
-    })
-
-
-    $('.dz-hidden-input').on('change', function () {
-        var originFileInput = $('form').find('input[name$="[binaryContent]"]');
-        originFileInput[0].files = $(this)[0].files;
-        $('.dz-image-preview').remove();
-    });
-
+        $('.dropzone .change-button').on('click', function (e) {
+            e.stopPropagation();
+            $('.dropzone.needsclick').trigger('click')
+            return false;
+        });
+    }
 });

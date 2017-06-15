@@ -52,13 +52,16 @@
                 <div class="dz-preview dz-image-preview">
                     <div class="dz-image">
                         {% thumbnail value, 'small' with {'data-dz-thumbnail': ''} %}
-                        {#<img data-dz-thumbnail="" alt="file0001735386118.jpg" src="" style="width: auto; height: 100%;">#}
                     </div>
-                    <a class="dz-remove" href="javascript:undefined;" data-dz-remove="">Remove file</a>
+                    <button class="dz-remove remove-button" data-dz-remove="">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
                 </div>
             {% endif %}
         </div>
     </div>
+
+
 
     <!-- Modal image crop -->
     <div class="modal fade" id="imageCropModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
