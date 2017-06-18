@@ -1,5 +1,5 @@
 .read-location-map {
-    height: 300px;
+    height: 205px;
     border: 3px solid #f1f1f1;
 }
 
@@ -82,17 +82,17 @@ form[name="read"] .datepicker-container > .col-sm-4 {
 .read-location-image-container .left {
     position: relative;
     width: 340px;
-    height: 300px;
+    height: 200px;
     margin-bottom: 20px;
 }
 
 .read-location-image-container .right {
     position: absolute;
-    width: 400px;
-    height: 300px;
+    width: 760px;
+    height: 200px;
     margin-bottom: 20px;
     top: 0px;
-    left: 575px;
+    left: 380px;
 }
 
 .read-location-image-container .left .dropzone, .read-location-image-container .left #dropzone {
@@ -112,7 +112,7 @@ form[name="read"] .datepicker-container > .col-sm-4 {
 }
 
 form.form-horizontal .read-location-image-container .form-group > div.col-sm-10 {
-    width: 358px;
+    /*width: 358px;*/
     padding: 0;
     margin: 0;
 }

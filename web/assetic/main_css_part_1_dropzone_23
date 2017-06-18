@@ -233,7 +233,7 @@
 }
 
 .dropzone .dz-message > .helper-text {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 200;
     color: black;
     margin-top: -10px;
@@ -545,6 +545,10 @@
 
 .dropzone .remove-button:hover{
     opacity: 0.8;
+}
+
+.dropzone .dz-error, .dropzone .dz-complete{
+    display: none;
 }
 
 #imageCropModal .modal-dialog {

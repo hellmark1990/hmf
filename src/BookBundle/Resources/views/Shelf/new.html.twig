@@ -27,7 +27,7 @@
         <div class="alert alert-danger" role="alert">{{ form_errors(form.image.binaryContent) }}</div>
     {% endif %}
 
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'data-image-with': 323, 'data-image-height': 185}}) }}
     <div class="control-block">
         {{ form_row(form.image) }}
         {{ form_row(form.title) }}

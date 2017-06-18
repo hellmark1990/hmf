@@ -94,6 +94,8 @@ $(document).ready(function () {
                 latitude: 46.15242437752303,
                 longitude: 2.7470703125
             }
+            console.log(mapSettings)
+
             $('div.location-map').locationpicker(mapSettings);
         }
 

@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    {{ form_start(form, {'action': path('read_book_update', {'id': entity.id, 'bookId': entity.book.id}), 'method': 'PUT'}) }}
+    {{ form_start(form, {'action': path('read_book_update', {'id': entity.id, 'bookId': entity.book.id}), 'method': 'PUT', 'attr': {'data-image-with': 323, 'data-image-height': 185}}) }}
     <div class="form-group control-block read-location-image-container">
         <h2 class="control-block-h2">{% trans %}Image & Location{% endtrans %}</h2>
         <div class="col-sm-10">
@@ -33,7 +33,7 @@
                 {{ form_row(form.image) }}
             </div>
             <div class="right">
-                <div class="read-location-map location-map"></div>
+                <div class="read-location-map location-map {% if entity.place %}location-map-edit{% endif %}"></div>
             </div>
             {{ form_row(form.place) }}
         </div>

@@ -108,6 +108,43 @@ form[name="shelf"] .button-delete {
     width: 140px;
 }
 
+/**
+Shelf Dropzone start
+ */
+form[name="shelf"] #dropzone {
+    width: 390px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+form[name="shelf"] #dropzone .dropzone.dz-clickable {
+    width: 390px;
+    height: 220px;
+    margin: 0 auto;
+}
+
+form[name="shelf"] #dropzone .dropzone .dz-preview .dz-image{
+    width: 350px;
+    height: 200px;
+}
+
+form[name="shelf"] #dropzone .dropzone .dz-preview.dz-image-preview{
+    width: 350px;
+    height: 200px;
+}
+
+form[name="shelf"] #dropzone .remove-button.dz-remove  {
+    top: -78px;
+    width: 100%;
+    height: 77px;
+    font-size: 40px;
+}
+
+
+/**
+Shelf Dropzone end
+ */
+
 
 
 

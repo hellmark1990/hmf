@@ -2,6 +2,7 @@
 
 namespace BookBundle\Controller;
 
+use Application\Sonata\MediaBundle\Entity\Media;
 use BookBundle\Entity\Book;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -47,19 +48,12 @@ class ReadController extends Controller {
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
-        /**
-         * Validate image file
-         */
-        $fileValidator = $this->get('app.file_validatator');
-        if ($entity->getImage() && !$fileValidator->validate($entity->getImage(), [
-                'fieldName' => $form->get('image')->getName(),
-                'maxSize' => $this->getParameter('max_upload_size'),
-                'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
-            ])
-        ) {
-            $form->get('image')
-                ->get('binaryContent')
-                ->addError(new FormError($fileValidator->getMessage()));
+        if ($request->get('croppedImage')) {
+            $media = new Media();
+            $media->setProviderName('sonata.media.provider.image');
+            $media->setContext('read');
+            $entity->setImage($media);
+            $this->get('app.image_data_saver')->save($request->get('croppedImage'), $entity->getImage());
         }
 
         if ($form->isValid()) {
@@ -287,46 +281,20 @@ class ReadController extends Controller {
             throw $this->createNotFoundException('Unable to find Read entity.');
         }
 
-
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($request->get('croppedImage')) {
-            if (!$entity->getImage()) {
-                $image = new \Application\Sonata\MediaBundle\Entity\Media();
-                $image->setProviderName('sonata.media.provider.image');
-                $image->setContext('read');
-                $entity->setImage($image);
-            }
-
-            $tmpImagePath = $this->get('kernel')->getRootDir() . '/../web/uploads/tmp_image.jpg';
-            $data = $request->get('croppedImage');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $data = base64_decode($data);
-            file_put_contents($tmpImagePath, $data);
-            $entity->getImage()->setBinaryContent($tmpImagePath);
-        } else {
-            /**
-             * Validate image file
-             */
-            $fileValidator = $this->get('app.file_validatator');
-            if ($entity->getImage() && !$fileValidator->validate($entity->getImage(), [
-                    'fieldName' => $editForm->get('image')->getName(),
-                    'maxSize' => $this->getParameter('max_upload_size'),
-                    'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
-                ])
-            ) {
-                $editForm->get('image')
-                    ->get('binaryContent')
-                    ->addError(new FormError($fileValidator->getMessage()));
-            }
+            $media = new Media();
+            $media->setProviderName('sonata.media.provider.image');
+            $media->setContext('read');
+            $entity->setImage($media);
+            $this->get('app.image_data_saver')->save($request->get('croppedImage'), $entity->getImage());
         }
 
         if ($editForm->isValid()) {
             $em->flush();
-
             return $this->redirect($this->generateUrl('read_book_edit', array('id' => $id, 'bookId' => $bookId)));
         }
 

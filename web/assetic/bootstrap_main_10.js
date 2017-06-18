@@ -166,10 +166,11 @@ jQuery(function ($) {
         }
     });
 
-    if ($('#demo-upload').length) {
+    var dropzoneElement = $('#demo-upload');
+    if ($(dropzoneElement).length) {
         Dropzone.autoDiscover = false;
         var CropperOBJ = 0;
-        var dropzone = new Dropzone($('#demo-upload').get(0), {
+        var dropzone = new Dropzone($(dropzoneElement).get(0), {
             url: "/upload",
             maxFiles: 1,
             addRemoveLinks: true,
@@ -195,7 +196,6 @@ jQuery(function ($) {
 
                     var image = $('#imageCropModal').find('img').get(0);
 
-
                     var cropWidth = $(window).width() > $('#imageCropModal').find('img').prop("naturalWidth") ? $('#imageCropModal').find('img').prop("naturalWidth") : $(window).width();
                     var cropHeight = $(window).height() > $('#imageCropModal').find('img').prop("naturalHeight") + 200 ? $('#imageCropModal').find('img').prop("naturalHeight") : $(window).height() - 200;
 
@@ -207,9 +207,9 @@ jQuery(function ($) {
                         modal: true,
                         minContainerWidth: cropWidth - 40,
                         minContainerHeight: cropHeight,
-                        minCropBoxWidth: 323,
-                        minCropBoxHeight: 185,
-                        aspectRatio: 350 / 200,
+                        minCropBoxWidth: $(dropzoneElement).closest('form').data('image-with'),
+                        minCropBoxHeight: $(dropzoneElement).closest('form').data('image-height'),
+                        aspectRatio: $(dropzoneElement).closest('form').data('image-with') / $(dropzoneElement).closest('form').data('image-height'),
                     });
 
                     $('#imageCropModal .btn-modal-submit').on('click', function () {
@@ -241,6 +241,7 @@ jQuery(function ($) {
                 '</div>';
             $(replacedPreview).find('img').replaceWith($(currentPreview).find('img'));
             $(currentPreview).replaceWith(replacedPreview);
+            $('.dz-message.needsclick').hide();
         });
 
         $('#imageCropModal').on('hide.bs.modal', function (e) {
@@ -248,17 +249,19 @@ jQuery(function ($) {
                 $(this).closest('.form-group').find('input[name$="[unlink]"]').val(1);
                 $(this).closest('.form-group').find('input[name$="[unlink]"]').prop('checked', true).attr('checked', true);
                 $('.dz-image-preview').remove();
+                $('.dz-message.needsclick').hide();
                 $('.needsclick').show();
             }
         })
 
-        $('body').on('click', '.dz-remove', function () {
-            $(this).closest('.form-group').find('input[name$="[unlink]"]').val(1);
-            $(this).closest('.form-group').find('input[name$="[unlink]"]').prop('checked', true).attr('checked', true);
-            $('.dz-image-preview').remove();
-            $('.needsclick').show();
-        })
-
+        $('body').on('click', '.dz-remove', function (e) {
+            if (e.eventPhase == 3) {
+                $(this).closest('.form-group').find('input[name$="[unlink]"]').val(1);
+                $(this).closest('.form-group').find('input[name$="[unlink]"]').prop('checked', true).attr('checked', true);
+                $('.dz-image-preview').remove();
+                $('.needsclick').show();
+            }
+        });
 
         $('.dz-hidden-input').on('change', function () {
             var originFileInput = $('form').find('input[name$="[binaryContent]"]');

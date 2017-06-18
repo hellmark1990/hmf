@@ -64,6 +64,10 @@ services:
         class: AppBundle\Services\FileValidate
         arguments: ['@service_container']
 
+    app.image_data_saver:
+        class: AppBundle\Services\ImageDataSaver
+        arguments: ['@service_container']
+
     app.languages:
         class: AppBundle\Services\Langauges
 
