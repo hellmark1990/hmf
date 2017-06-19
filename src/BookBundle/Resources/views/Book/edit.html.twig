@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    {{ form_start(form) }}
+    {{ form_start(form,{'attr': {'data-image-with': 120, 'data-image-height': 182} }) }}
     <div class="book-create-form-container">
         <div class="pull-left control-block book-image">
             <h2 class="control-block-h2">{% trans %}Book image{% endtrans %}</h2>
@@ -69,8 +69,9 @@
                     <form class="form-horizontal">
                         <div class="input-group">
                             <input type="text" class="form-control share-link" id="share-link" readonly>
-                              <span class="input-group-btn">
-                                <button class="btn btn-primary copy-share-link" type="button" data-clipboard-action="copy" data-clipboard-target="#share-link">{% trans %}Copy{% endtrans %}</button>
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary copy-share-link" type="button" data-clipboard-action="copy" data-clipboard-target="#share-link">{% trans %}
+                                    Copy{% endtrans %}</button>
                               </span>
                         </div>
                     </form>

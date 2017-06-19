@@ -11,6 +11,7 @@
 
 namespace ProfileBundle\Controller;
 
+use Application\Sonata\MediaBundle\Entity\Media;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
@@ -21,6 +22,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
@@ -75,23 +77,13 @@ class ProfileController extends Controller {
 
         $form->handleRequest($request);
 
-        /**
-         * Validate image file
-         */
-        $fileValidator = $this->get('app.file_validatator');
-        if ($user->getAvatar()) {
-            if (!$fileValidator->validate($user->getAvatar(), [
-                'fieldName' => $form->get('avatar')->getName(),
-                'maxSize' => $this->getParameter('max_upload_size'),
-                'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
-            ])
-            ) {
-                $form->get('avatar')
-                    ->get('binaryContent')
-                    ->addError(new FormError($fileValidator->getMessage()));
-            }
+        if ($request->get('croppedImage')) {
+            $media = new Media();
+            $media->setProviderName('sonata.media.provider.image');
+            $media->setContext('profile_avatar');
+            $user->setAvatar($media);
+            $this->get('app.image_data_saver')->save($request->get('croppedImage'), $user->getAvatar());
         }
-
 
         if ($form->isValid()) {
             /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
@@ -113,8 +105,22 @@ class ProfileController extends Controller {
             return $response;
         }
 
+        $seoParams = [
+            'url' => $this->generateUrl('homepage'),
+            'title' => 'My profile on DiveInBook',
+            'description' => "Read with me books on DriveInBook"
+        ];
+        if ($user->getAvatar()) {
+            $seoParams['image'] = [
+                'url' => rtrim($this->generateUrl('homepage', [], UrlGeneratorInterface::ABSOLUTE_URL), '/') . $this->get('sonata.media.twig.extension')->path($user->getAvatar(), 'small'),
+                'width' => $user->getAvatar()->getWidth(),
+                'height' => $user->getAvatar()->getHeight()
+            ];
+        }
+
         return $this->render('FOSUserBundle:Profile:edit.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'seoParams' => $seoParams
         ));
     }
 }

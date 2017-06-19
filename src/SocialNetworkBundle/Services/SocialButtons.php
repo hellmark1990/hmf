@@ -74,6 +74,9 @@ class SocialButtons {
      * @param array $parameters - ['url', 'title', 'image']
      */
     protected function setParameters(array $parameters = []){
+        if(!isset($parameters['image'])){
+            $parameters['image'] = ['url' => '', 'width' => '', 'height'=> ''];
+        }
         $this->parameters = $parameters;
     }
 
@@ -103,9 +106,6 @@ class SocialButtons {
                 ->setParameters($this->parameters)
                 ->get();
         }
-
-//        dump($this->configs);
-//        dump($socials);exit;
 
         return $this->renderButtons($socials);
     }

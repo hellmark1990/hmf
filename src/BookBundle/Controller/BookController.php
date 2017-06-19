@@ -279,25 +279,15 @@ class BookController extends Controller {
                 $entity->setImage($image);
             }
 
-            $tmpImagePath = $this->get('kernel')->getRootDir() . '/../web/uploads/tmp_image.jpg';
             $imageContent = file_get_contents($request->get('book')['imageUrl']);
-            file_put_contents($tmpImagePath, $imageContent);
-            $entity->getImage()->setBinaryContent($tmpImagePath);
-
+            $this->get('app.image_data_saver')->save($imageContent, $entity->getImage());
         }else{
-            /**
-             * Validate image file
-             */
-            $fileValidator = $this->get('app.file_validatator');
-            if ($entity->getImage() && !$fileValidator->validate($entity->getImage(), [
-                'fieldName' => $editForm->get('image')->getName(),
-                'maxSize' => $this->getParameter('max_upload_size'),
-                'mimeTypes' => ['image/png', 'image/jpeg', 'image/jpg']
-            ])
-            ) {
-                $editForm->get('image')
-                    ->get('binaryContent')
-                    ->addError(new FormError($fileValidator->getMessage()));
+            if ($request->get('croppedImage')) {
+                $media = new \Application\Sonata\MediaBundle\Entity\Media();
+                $media->setProviderName('sonata.media.provider.image');
+                $media->setContext('book');
+                $entity->setImage($media);
+                $this->get('app.image_data_saver')->save($request->get('croppedImage'), $entity->getImage());
             }
         }
 

@@ -17,7 +17,7 @@
     </div>
 </div>
 
-{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit', 'data-image-with': 192, 'data-image-height': 192} }) }}
 <div class="profile-edit-form-container">
     <div class="pull-left profile-avatar control-block">
         <h2 class="control-block-h2">{% trans %}My Avatar{% endtrans %}</h2>
@@ -28,17 +28,7 @@
             <div class="alert alert-danger" role="alert">{{ form_errors(form.avatar.binaryContent) }}</div>
         {% endif %}
 
-        {% set imageUrl %}{{ parameters.site_host }}{% path app.user.avatar, 'small' %}{% endset %}
-        {{ container.get('social_network.buttons').show({
-            'url': url('homepage'),
-            'title': 'My profile on DiveInBook',
-            'description': "Read with me books on DriveInBook",
-            'image': {
-                'url': imageUrl,
-                'width': app.user.avatar.width,
-                'height': app.user.avatar.height
-            },
-        })|raw }}
+        {{ container.get('social_network.buttons').show(seoParams)|raw }}
 
         <input type="checkbox" data-name="fos_user_profile_form[accessType]" value="1" {% if app.user.isPrivate %}checked{% endif %} data-on=" {% trans %}Private{% endtrans %}" data-off="{% trans %}Public{% endtrans %}" data-toggle="toggle" data-onstyle="danger">
         <div class="clear-float"></div>

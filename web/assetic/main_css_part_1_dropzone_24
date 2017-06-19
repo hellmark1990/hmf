@@ -233,7 +233,7 @@
 }
 
 .dropzone .dz-message > .helper-text {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 200;
     color: black;
     margin-top: -10px;
@@ -539,23 +539,17 @@
     border-right: 1px solid #ada2a2;
 }
 
-.dropzone .remove-button .fa, .dropzone .change-button .fa{
+.dropzone .remove-button .fa{
     cursor: pointer;
 }
 
-.dropzone .change-button{
-    position: relative;
-    z-index: 11;
-    text-align: center;
-    display: block;
-    cursor: pointer;
-    border: none;
-    opacity: 0.5;
-    border-top: 1px solid #ada2a2;
-    border-left: 1px solid #ada2a2;
+.dropzone .remove-button:hover{
+    opacity: 0.8;
 }
 
-
+.dropzone .dz-error, .dropzone .dz-complete{
+    display: none;
+}
 
 #imageCropModal .modal-dialog {
     width: 100%;

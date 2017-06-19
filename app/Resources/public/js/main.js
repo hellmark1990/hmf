@@ -99,21 +99,23 @@ jQuery(function ($) {
         var modal = $(this).closest('.modal');
         var form = $(modal).find('form');
         var formData = new FormData(form[0]);
-        $.ajax({
-            url: $(form).attr('action'),
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (content) {
-                $(modal).find('.modal-body').html(content)
-                if (content.search("alert-success") !== -1) {
-                    setTimeout(function () {
-                        window.location.reload();
-                    }, 300);
+        if ($(form).attr('action')) {
+            $.ajax({
+                url: $(form).attr('action'),
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (content) {
+                    $(modal).find('.modal-body').html(content)
+                    if (content.search("alert-success") !== -1) {
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 300);
+                    }
                 }
-            }
-        });
+            });
+        }
     });
 
     $('button.btn-submit-form').on('click', function () {
