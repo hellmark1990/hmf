@@ -15,15 +15,13 @@ $(document).ready(function () {
                 $('form[name="book"]').find('[name="book[pageCount]"]').val(ui.item.pageCount);
                 $('form[name="book"]').find('[name="book[printedPageCount]"]').val(ui.item.printedPageCount);
                 $('form[name="book"]').find('[name="book[imageUrl]"]').val(ui.item.thumbnail);
-                $('form[name="book"]').find('.form-book-image').closest('.form-group').find('img').attr('src', ui.item.thumbnail);
+                $('form[name="book"]').find('.form-book-image').closest('.form-group').find('.dz-image > img').attr('src', ui.item.thumbnail);
                 $('form[name="book"]').find('[name="book[language]"]').val(ui.item.language);
                 $('form[name="book"]').find('[name="book[previewLink]"]').val(ui.item.previewLink);
                 $('form[name="book"]').find('[name="book[previewLink]"]').val(ui.item.previewLink);
                 $('form[name="book"]').find('[name="book[authors]"]').val(ui.item.authors);
 
                 $(".js-datepicker-publishedDate").datepicker('setDate', ui.item.publishedDate);
-                console.log(ui.item.publishedDate)
-
                 return false;
             }
         })

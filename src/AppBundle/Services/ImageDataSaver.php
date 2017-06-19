@@ -35,20 +35,26 @@ class ImageDataSaver {
     }
 
     public function save($data, Media $media){
-        if (!$data) {
-            return null;
-        }
+        return $this->setImageData($data, $media);
+    }
 
-        $this->setImageData($data, $media);
-        return $media;
+    public function saveFromUrl($url, Media $media){
+        $imageContent = file_get_contents($url);
+        return $this->saveData($imageContent, $media);
     }
 
     protected function setImageData($data, Media $media){
         list($type, $data) = explode(';', $data);
         list(, $data) = explode(',', $data);
-        $data = base64_decode($data);
-        file_put_contents($this->pathToTmpFile, $data);
-        $media->setBinaryContent($this->pathToTmpFile);
+        return $this->saveData(base64_decode($data), $media);
+    }
+
+    protected function saveData($data, Media $media){
+        if ($data) {
+            file_put_contents($this->pathToTmpFile, $data);
+            $media->setBinaryContent($this->pathToTmpFile);
+        }
+        return $media;
     }
 
 }

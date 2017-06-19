@@ -279,8 +279,7 @@ class BookController extends Controller {
                 $entity->setImage($image);
             }
 
-            $imageContent = file_get_contents($request->get('book')['imageUrl']);
-            $this->get('app.image_data_saver')->save($imageContent, $entity->getImage());
+            $this->get('app.image_data_saver')->saveFromUrl($request->get('book')['imageUrl'], $entity->getImage());
         }else{
             if ($request->get('croppedImage')) {
                 $media = new \Application\Sonata\MediaBundle\Entity\Media();
