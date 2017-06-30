@@ -170,4 +170,10 @@
         right: 15px;
     }
     /** Toggle list E **/
+
+    /** READ CREATE_EDIT S**/
+    div.read-location-image-container .right{
+        width: 515px;
+    }
+    /** READ CREATE_EDIT E**/
 }

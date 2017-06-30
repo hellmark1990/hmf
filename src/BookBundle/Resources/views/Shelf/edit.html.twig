@@ -35,6 +35,7 @@
 
     {{ form_start(edit_form, {'attr': {'data-image-with': 323, 'data-image-height': 185}}) }}
     <div class="control-block">
+        <h2 class="control-block-h2">{% trans %}Image{% endtrans %}</h2>
         {{ form_row(edit_form.image) }}
         {{ form_row(edit_form.title) }}
         {{ form_row(edit_form.access) }}

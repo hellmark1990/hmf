@@ -1,3 +1,7 @@
+form.form-horizontal .form-group > label{
+    width: 100%;
+}
+
 .navbar-brand > span{
     text-transform: uppercase;
     line-height: 20px;

@@ -6,13 +6,13 @@
             <h1>{% trans %}My Profile{% endtrans %}</h1>
         </div>
         <div class="btn-group pull-right">
-            <a class="btn btn-primary btn-submit-form" href="{{ path('fos_user_change_password') }}">
-                {% trans %}Change Password{% endtrans %}
-            </a>
             <button class="btn btn-primary btn-submit-form">
                 <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                 {% trans %}Update{% endtrans %}
             </button>
+            <a class="btn btn-primary btn-submit-form" href="{{ path('fos_user_change_password') }}">
+                {% trans %}Change Password{% endtrans %}
+            </a>
         </div>
     </div>
 </div>

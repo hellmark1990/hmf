@@ -257,4 +257,17 @@
 
     /** Toggle list E **/
 
+    /** READ CREATE_EDIT S**/
+    div.read-location-image-container .left{
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    div.read-location-image-container .right{
+        float: right;
+        position: static;
+        width: 100%;
+    }
+    /** READ CREATE_EDIT E**/
+
 }

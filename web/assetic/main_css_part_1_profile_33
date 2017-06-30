@@ -314,9 +314,6 @@ a.dropdown-toggle-avatar > .menu-user-avatar > img:hover {
 
 /** Profile image END **/
 
-.fos_user_profile_edit .pull-right .control-block{
-    height: 340px;
-}
 
 
 

@@ -1,3 +1,183 @@
+@media screen and (max-width: 1000px) and (min-width: 767px) {
+    /** Profile edit S **/
+    .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    .profile-edit-form-container .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /** Profile edit E **/
+
+    /** Books List S **/
+    div#products {
+        width: 750px
+    }
+
+    .book-grid-list-view.grid-list-view .item{
+        width: 227px!important;
+    }
+
+    .book-grid-list-view.grid-list-view .btn-delete{
+        left: 189px;
+        height: 26px;
+    }
+
+    .book-grid-list-view.grid-list-view a.list-main-bottom-button {
+        width: 167px;
+    }
+
+    /** Books List E **/
+
+    /** Book Filter S **/
+    div.book-filter .filter-row .row-right > .bootstrap-select{
+        width: 270px!important;
+    }
+
+    div.book-filter .filter-row .row-left > .bootstrap-select{
+        width: 270px!important;
+    }
+
+    div.book-filter .filter-row .row-right{
+        width: 100%;
+    }
+
+    div.book-filter .filter-row .row-left{
+        width: 100%;
+    }
+
+    div.book-filter .left-filter{
+        width: 50%;
+    }
+
+    div.book-filter .right-filter{
+        width: 50%;
+    }
+
+    div.book-filter .filter-row{
+        margin-top: 5px;
+    }
+
+    div.book-filter .filter-row .row-left{
+        margin-bottom: 5px;
+    }
+
+    div.book-filter .navbar-form .filter-reset {
+        width: 170px;
+        float: left;
+    }
+
+    div.book-filter .navbar-form .filter-submit {
+        width: 170px;
+        float: right;
+        margin-right: 10px;
+    }
+
+    .book-filter .right-filter > .location-filter #filter-location-map-input{
+        width: 270px!important;
+    }
+
+    .book-filter .right-filter > .location-filter .filter-location-select{
+        width: 270px!important;
+    }
+
+    .book-filter form.navbar-form{
+        padding-bottom: 20px;
+    }
+
+    /** Book Filter E **/
+
+    /** Book Create S **/
+    form[name="book"] > .pull-left, form[name="book"]  > .pull-right, form[name="book"]  .pull-left, form[name="book"]  .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    form[name="book"] .book-image.control-block  .pull-left{
+        width: 300px;
+    }
+
+    form[name="book"] .circle.image-container {
+        margin: 0 auto;
+        width: 200px;
+        height: 260px;
+        padding: 25px;
+        padding-top: 35px;
+    }
+
+    form[name="book"]  .circle.image-container {
+        margin: 0 auto !important;
+    }
+
+    .form-horizontal .form-group {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+    /** Book Create E **/
+
+    /** Shelves list S **/
+    div.container-shelf-list #products{
+        width: 734px;
+        margin: 0 auto !important;
+    }
+
+    div.container-shelf-list .grid-group-item{
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+    /** Shelves list E **/
+
+    /** Reading list S **/
+    div.container-read-list #products{
+        width: 760px;
+        margin: 0 auto !important;
+    }
+
+    div.container-read-list .grid-group-item{
+        margin-left: 15px;
+        margin-right: 0px;
+    }
+    /** Reading list E **/
+    /** Share Book view S **/
+
+    .share-books-list > .pull-left, .share-books-list  > .pull-right, .share-books-list  .pull-left, .share-books-list  .pull-right {
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    div.book-share-view-container .data-block{
+        margin-top: 50px;
+    }
+
+    div.book-share-view-container .image-block{
+        margin: 0 auto;
+        width: 125px!important;
+    }
+    /** Share Book view E **/
+
+    /** Toggle S **/
+    .toggle{
+        right: 15px;
+    }
+    /** Toggle list E **/
+
+    /** READ CREATE_EDIT S**/
+    div.read-location-image-container .right{
+        width: 515px;
+    }
+    /** READ CREATE_EDIT E**/
+}
+
 @media screen and (max-width: 1200px) and (min-width: 1000px) {
     /** Profile edit S **/
     .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
@@ -100,6 +280,12 @@
         right: 15px;
     }
     /** Toggle list E **/
+
+    /** READ CREATE_EDIT S**/
+    div.read-location-image-container .right{
+        width: 515px;
+    }
+    /** READ CREATE_EDIT E**/
 }
 
 @media screen and (max-width: 550px) and (min-width: 320px) {
@@ -162,16 +348,16 @@
         color: #fff !important;
     }
 
-    .not-logged-in-mobile-dropdown.hidden{
-        display: block!important;
-        visibility: visible!important;
+    .not-logged-in-mobile-dropdown.hidden {
+        display: block !important;
+        visibility: visible !important;
     }
 
-    .navbar-nav > li:last-child.open.not-logged-in-mobile-dropdown .dropdown-menu{
+    .navbar-nav > li:last-child.open.not-logged-in-mobile-dropdown .dropdown-menu {
         left: -77px !important;
     }
 
-    .nav.navbar-nav .hide-for-mobile{
+    .nav.navbar-nav .hide-for-mobile {
         display: none;
     }
 
@@ -223,11 +409,11 @@
 
     div.book-grid-list-view.grid-list-view #products {
         width: 300px;
-        margin: 0 auto!important;
+        margin: 0 auto !important;
     }
 
     div.book-grid-list-view.grid-list-view .item {
-        width: 260px!important;
+        width: 260px !important;
         margin-left: 3%;
     }
 
@@ -320,11 +506,9 @@
         width: 100%;
     }
 
-
     /** Book list filter E **/
-
     /** Book Create S **/
-    form[name="book"] > .pull-left, form[name="book"]  > .pull-right, form[name="book"]  .pull-left, form[name="book"]  .pull-right {
+    form[name="book"] > .pull-left, form[name="book"] > .pull-right, form[name="book"]  .pull-left, form[name="book"]  .pull-right {
         float: none !important;
         width: 100% !important;
         padding-left: 0 !important;
@@ -338,65 +522,75 @@
         margin-right: 0 !important;
         margin-left: 0 !important;
     }
+
     /** Book Create E **/
-
     /** Shelves list S **/
-    div.container-shelf-list #products{
+    div.container-shelf-list #products {
         width: 384px;
         margin: 0 auto !important;
     }
 
-    div.container-shelf-list .grid-group-item{
+    div.container-shelf-list .grid-group-item {
         margin-left: 15px;
         margin-right: 0px;
     }
+
     /** Shelves list E **/
-
     /** Reading list S **/
-    div.container-read-list #products{
+    div.container-read-list #products {
         width: 384px;
         margin: 0 auto !important;
     }
 
-    div.container-read-list .grid-group-item{
+    div.container-read-list .grid-group-item {
         margin-left: 15px;
         margin-right: 0px;
     }
+
     /** Reading list E **/
-
     /** Read edit-create S **/
-
     form[name="read"].form-horizontal .datepicker-container.form-group > .col-sm-4 {
         float: none;
         width: 100%;
     }
 
     /** Read edit-create E **/
-
     /** Share Book view S **/
-
-    .share-books-list > .pull-left, .share-books-list  > .pull-right, .share-books-list  .pull-left, .share-books-list  .pull-right {
+    .share-books-list > .pull-left, .share-books-list > .pull-right, .share-books-list .pull-left, .share-books-list .pull-right {
         float: none !important;
         width: 100% !important;
         padding-left: 0 !important;
     }
 
-    div.book-share-view-container .data-block{
+    div.book-share-view-container .data-block {
         margin-top: 50px;
     }
 
-    div.book-share-view-container .image-block{
+    div.book-share-view-container .image-block {
         margin: 0 auto;
-        width: 125px!important;
+        width: 125px !important;
     }
-    /** Share Book view E **/
 
+    /** Share Book view E **/
     /** Toggle S **/
-    .toggle{
+    .toggle {
         right: 15px;
     }
-    /** Toggle list E **/
 
+    /** Toggle list E **/
+    /** READ CREATE_EDIT S**/
+    div.read-location-image-container .left {
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    div.read-location-image-container .right {
+        float: right;
+        position: static;
+        width: 100%;
+    }
+
+    /** READ CREATE_EDIT E**/
 }
 
 @media screen and (max-width: 650px) and (min-width: 600px) {
@@ -672,180 +866,18 @@
     }
     /** Toggle list E **/
 
-}
-
-@media screen and (max-width: 1000px) and (min-width: 767px) {
-    /** Profile edit S **/
-    .profile-edit-form-container > .pull-left, .profile-edit-form-container > .pull-right, .profile-edit-form-container .pull-left, .profile-edit-form-container .pull-right {
-        float: none !important;
-        width: 100% !important;
-        padding-left: 0 !important;
+    /** READ CREATE_EDIT S**/
+    div.read-location-image-container .left{
+        margin: 0 auto;
+        margin-bottom: 20px;
     }
 
-    .profile-edit-form-container .circle.image-container {
-        margin: 0 auto !important;
-    }
-
-    .form-horizontal .form-group {
-        margin-right: 0 !important;
-        margin-left: 0 !important;
-    }
-
-    /** Profile edit E **/
-
-    /** Books List S **/
-    div#products {
-        width: 750px
-    }
-
-    .book-grid-list-view.grid-list-view .item{
-        width: 227px!important;
-    }
-
-    .book-grid-list-view.grid-list-view .btn-delete{
-        left: 189px;
-        height: 26px;
-    }
-
-    .book-grid-list-view.grid-list-view a.list-main-bottom-button {
-        width: 167px;
-    }
-
-    /** Books List E **/
-
-    /** Book Filter S **/
-    div.book-filter .filter-row .row-right > .bootstrap-select{
-        width: 270px!important;
-    }
-
-    div.book-filter .filter-row .row-left > .bootstrap-select{
-        width: 270px!important;
-    }
-
-    div.book-filter .filter-row .row-right{
-        width: 100%;
-    }
-
-    div.book-filter .filter-row .row-left{
-        width: 100%;
-    }
-
-    div.book-filter .left-filter{
-        width: 50%;
-    }
-
-    div.book-filter .right-filter{
-        width: 50%;
-    }
-
-    div.book-filter .filter-row{
-        margin-top: 5px;
-    }
-
-    div.book-filter .filter-row .row-left{
-        margin-bottom: 5px;
-    }
-
-    div.book-filter .navbar-form .filter-reset {
-        width: 170px;
-        float: left;
-    }
-
-    div.book-filter .navbar-form .filter-submit {
-        width: 170px;
+    div.read-location-image-container .right{
         float: right;
-        margin-right: 10px;
+        position: static;
+        width: 100%;
     }
-
-    .book-filter .right-filter > .location-filter #filter-location-map-input{
-        width: 270px!important;
-    }
-
-    .book-filter .right-filter > .location-filter .filter-location-select{
-        width: 270px!important;
-    }
-
-    .book-filter form.navbar-form{
-        padding-bottom: 20px;
-    }
-
-    /** Book Filter E **/
-
-    /** Book Create S **/
-    form[name="book"] > .pull-left, form[name="book"]  > .pull-right, form[name="book"]  .pull-left, form[name="book"]  .pull-right {
-        float: none !important;
-        width: 100% !important;
-        padding-left: 0 !important;
-    }
-
-    form[name="book"] .book-image.control-block  .pull-left{
-        width: 300px;
-    }
-
-    form[name="book"] .circle.image-container {
-        margin: 0 auto;
-        width: 200px;
-        height: 260px;
-        padding: 25px;
-        padding-top: 35px;
-    }
-
-    form[name="book"]  .circle.image-container {
-        margin: 0 auto !important;
-    }
-
-    .form-horizontal .form-group {
-        margin-right: 0 !important;
-        margin-left: 0 !important;
-    }
-    /** Book Create E **/
-
-    /** Shelves list S **/
-    div.container-shelf-list #products{
-        width: 734px;
-        margin: 0 auto !important;
-    }
-
-    div.container-shelf-list .grid-group-item{
-        margin-left: 15px;
-        margin-right: 0px;
-    }
-    /** Shelves list E **/
-
-    /** Reading list S **/
-    div.container-read-list #products{
-        width: 760px;
-        margin: 0 auto !important;
-    }
-
-    div.container-read-list .grid-group-item{
-        margin-left: 15px;
-        margin-right: 0px;
-    }
-    /** Reading list E **/
-    /** Share Book view S **/
-
-    .share-books-list > .pull-left, .share-books-list  > .pull-right, .share-books-list  .pull-left, .share-books-list  .pull-right {
-        float: none !important;
-        width: 100% !important;
-        padding-left: 0 !important;
-    }
-
-    div.book-share-view-container .data-block{
-        margin-top: 50px;
-    }
-
-    div.book-share-view-container .image-block{
-        margin: 0 auto;
-        width: 125px!important;
-    }
-    /** Share Book view E **/
-
-    /** Toggle S **/
-    .toggle{
-        right: 15px;
-    }
-    /** Toggle list E **/
+    /** READ CREATE_EDIT E**/
 }
 
 @media screen and (max-width: 767px) and (min-width: 650px) {
@@ -1107,6 +1139,27 @@
 
     /** Toggle list E **/
 
+    /** READ CREATE_EDIT S**/
+    div.read-location-image-container .left{
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    div.read-location-image-container .right{
+        float: right;
+        position: static;
+        width: 100%;
+    }
+    /** READ CREATE_EDIT E**/
+
+}
+
+@media screen and (max-width: 990px) and (min-width: 767px) {
+    /** READ CREATE_EDIT S**/
+    div.read-location-image-container .right{
+        width: 295px;
+    }
+    /** READ CREATE_EDIT E**/
 }
 
 @charset "UTF-8";/*!
@@ -1738,9 +1791,10 @@ input, textarea, select, label {
 }
 
 form[name="book"] #dropzone{
-    width: 150px;
-    height: 215px;
+    width: 165px;
+    height: 225px;
     margin: 0 auto;
+
 }
 
 form[name="book"] .dropzone{
@@ -2081,6 +2135,10 @@ form[name="book"] .dropzone .dz-message > .helper-text{
     margin-left: 15px;
 }
 
+
+form.form-horizontal .form-group > label{
+    width: 100%;
+}
 
 .navbar-brand > span{
     text-transform: uppercase;
@@ -2427,6 +2485,8 @@ form.form-horizontal .control-block > h2 {
 
 #dropzone {
     margin-bottom: 3rem;
+    -webkit-box-shadow: 0px 1px 12px 1px rgba(0, 0, 2, 0.2);
+    box-shadow: 0px 1px 12px 1px rgba(0, 0, 2, 0.2);
 }
 
 .dropzone {
@@ -2743,7 +2803,7 @@ form.form-horizontal .control-block > h2 {
     border-bottom: 6px solid #be2626;
 }
 
-.dropzone .remove-button.dz-remove{
+.dropzone .remove-button.dz-remove {
     position: relative;
     z-index: 11;
     opacity: 0.5;
@@ -2752,15 +2812,15 @@ form.form-horizontal .control-block > h2 {
     border-right: 1px solid #ada2a2;
 }
 
-.dropzone .remove-button .fa{
+.dropzone .remove-button .fa {
     cursor: pointer;
 }
 
-.dropzone .remove-button:hover{
+.dropzone .remove-button:hover {
     opacity: 0.8;
 }
 
-.dropzone .dz-error, .dropzone .dz-complete{
+.dropzone .dz-error, .dropzone .dz-complete {
     display: none;
 }
 
@@ -2788,14 +2848,31 @@ form.form-horizontal .control-block > h2 {
     margin: 0 auto;
 }
 
-#imageCropModal .cropper-bg{
+#imageCropModal .cropper-bg {
     background-image: none;
     background-color: white;
 }
 
-#imageCropModal .cropper-modal{
+#imageCropModal .cropper-modal {
     background-image: none;
     background-color: white;
+}
+
+#imageCropModal .modal-footer {
+    border-top: none;
+}
+
+#imageCropModal .modal-header {
+    border-bottom: none;
+}
+
+#imageCropModal .modal-header .close {
+    display: none;
+}
+
+#imageCropModal .modal-title {
+    text-align: center;
+    font-size: 24px;
 }
 /*!
  *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
@@ -7446,6 +7523,9 @@ a.dropdown-toggle-avatar > .menu-user-avatar > img:hover {
 
 /** Profile image END **/
 
+.fos_user_profile_edit .pull-right .control-block{
+    height: 340px;
+}
 
 
 
@@ -7538,7 +7618,8 @@ form[name="read"] .datepicker-container > .col-sm-4 {
 }
 
 .read-location-image-container .left .dropzone, .read-location-image-container .left #dropzone {
-    height: 203px;
+    height: 205px;
+    width: 360px;
 }
 
 .read-location-image-container .dz-preview.dz-image-preview {

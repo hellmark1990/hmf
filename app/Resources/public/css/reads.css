@@ -81,7 +81,8 @@ form[name="read"] .datepicker-container > .col-sm-4 {
 }
 
 .read-location-image-container .left .dropzone, .read-location-image-container .left #dropzone {
-    height: 203px;
+    height: 205px;
+    width: 360px;
 }
 
 .read-location-image-container .dz-preview.dz-image-preview {
