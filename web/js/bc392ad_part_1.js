@@ -3525,11 +3525,13 @@ jQuery(function ($) {
         var dropzone = new Dropzone($(dropzoneElement).get(0), {
             url: "/upload",
             maxFiles: 1,
+            timeout: 1,
+            createImageThumbnails: true,
             addRemoveLinks: true,
             autoProcessQueue: false,
-            createImageThumbnails: true,
             acceptedFiles: 'image/*',
             autoQueue: false,
+            parallelUploads: true,
             thumbnailWidth: null,
             thumbnailHeight: null,
             init: function () {
@@ -3578,6 +3580,7 @@ jQuery(function ($) {
                 });
 
                 this.on("success", function (file) {
+                    alert()
                     $('.dz-image > img').css({"width": "auto", "height": "100%"});
                 })
             }

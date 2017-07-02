@@ -47,5 +47,14 @@
         </div>
 
         <input type="hidden" id="fos_user_registration_form__token" name="fos_user_registration_form[_token]" value="{{ csrf_token('registration') }}">
+
+        <div class="social-connections">
+            <div class="text">
+                {% trans %}or{% endtrans %}
+            </div>
+            <div class="social-box">
+                {% include 'ProfileBundle:Security:login_with_socials.html.twig' %}
+            </div>
+        </div>
     </div>
 </form>

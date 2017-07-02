@@ -1,4 +1,9 @@
 services:
+  social_network.auth_connect:
+    class: SocialNetworkBundle\Services\SocialAuth
+    arguments: ["@service_container", "@doctrine.orm.entity_manager"]
+
   social_network.buttons:
     class: SocialNetworkBundle\Services\SocialButtons
     arguments: ["@service_container", "@doctrine.orm.entity_manager"]
+

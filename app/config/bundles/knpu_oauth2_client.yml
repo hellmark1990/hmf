@@ -1,0 +1,45 @@
+knpu_oauth2_client:
+    clients:
+        # the key "facebook_main" can be anything, it
+        # will create a service: "knpu.oauth2.client.facebook_main"
+        facebook_main:
+            # this will be one of the supported types
+            type: facebook
+            client_id: "%socials.facebook%"
+            client_secret: "%socials.facebook_secret%"
+            # the route that you're redirected to after
+            # see the controller example below
+            redirect_route: connect_facebook_check
+            # route parameters to pass to your route, if needed
+            redirect_params: {}
+            graph_api_version: v2.8
+
+        google:
+            # must be "google" - it activates that type!
+            type: google
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: "%socials.google_client_id%"
+            client_secret: "%socials.google_client_secret%"
+            # a route name you'll create
+            redirect_route: connect_google_check
+            redirect_params: {}
+
+        linkedin:
+            # must be "linkedin" - it activates that type!
+            type: linkedin
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: "%socials.linkedin_client_id%"
+            client_secret: "%socials.linkedin_client_secret%"
+            # a route name you'll create
+            redirect_route: connect_linkedin_check
+            redirect_params: {}
+
+        github:
+            # must be "github" - it activates that type!
+            type: github
+            # add and configure client_id and client_secret in parameters.yml
+            client_id: "%socials.github_client_id%"
+            client_secret: "%socials.github_client_secret%"
+            # a route name you'll create
+            redirect_route: connect_github_check
+            redirect_params: {}

@@ -17,6 +17,17 @@
 
     <form id="main-contact-form" class="login-form form-horizontal" method="post"
           action="{{ path("fos_user_security_check") }}">
+
+        {% for message in app.session.getFlashBag.get('social_auth_error') %}
+            <div class="form-group errors"><label class="col-sm-3 control-label"></label>
+                <div class="col-sm-9">
+                    <div class="alert alert-danger" role="alert">
+                        <center>{{ message }}</center>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
         <div class="control-block">
 
             <div class="form-group">
@@ -52,7 +63,17 @@
                 </div>
             </div>
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
-        </div>
+
+            <div class="social-connections">
+                <div class="text">
+                    {% trans %}or{% endtrans %}
+                </div>
+                <div class="social-box">
+                    {% include 'ProfileBundle:Security:login_with_socials.html.twig' %}
+                </div>
+            </div>
         </div>
     </form>
+
+
 {% endblock %}

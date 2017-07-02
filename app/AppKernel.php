@@ -45,6 +45,7 @@ class AppKernel extends Kernel
             new Symfony\Cmf\Bundle\SeoBundle\CmfSeoBundle(),
             new \App\SeoBundle\AppSeoBundle(),
             new SocialNetworkBundle\SocialNetworkBundle(),
+            new KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle(),
         );
 
 

@@ -18,3 +18,10 @@ parameters:
     host: 'http://127.0.0.1:8000'
     max_upload_size: 2m
     socials.facebook: 2257545761137893
+    socials.facebook_secret: a7de46e07cbcf73495373e5b63894b5d
+    socials.google_client_id: 815125605809-hr58hjq9ukaaofesa1fkv6f9ef0s20h4.apps.googleusercontent.com
+    socials.google_client_secret: vLrzxYzv9Qkc73sScRK6_hFC
+    socials.linkedin_client_id: 815125605809-hr58hjq9ukaaofesa1fkv6f9ef0s20h4.apps.googleusercontent.com
+    socials.linkedin_client_secret: vLrzxYzv9Qkc73sScRK6_hFC
+    socials.github_client_id: 20777e8aca31f75afd97
+    socials.github_client_secret: 59b87d4b97b54e9c614f99e1759a146cc4a453e3

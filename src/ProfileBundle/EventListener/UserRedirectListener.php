@@ -26,6 +26,14 @@ class UserRedirectListener {
     const BOOKS_LIST_PUBLIC_USER = 'book_list_user_public';
     const BOOKS_VIEW_PUBLIC_USER = 'book_public_view';
     const HOMEPAGE = 'homepage';
+    const CONNECT_FACEBOOK = 'connect_facebook';
+    const CONNECT_FACEBOOK_CHECK = 'connect_facebook_check';
+    const CONNECT_GOOGLE = 'connect_google';
+    const CONNECT_GOOGLE_CHECK = 'connect_google_check';
+    const CONNECT_LINKEDIN = 'connect_linkedin';
+    const CONNECT_LINKEDIN_CHECK = 'connect_linkedin_check';
+    const CONNECT_GITHUB = 'connect_github';
+    const CONNECT_GITHUB_CHECK = 'connect_github_check';
 
     public function __construct(ContainerInterface $container) // this is @service_container
     {
@@ -53,6 +61,14 @@ class UserRedirectListener {
                 self::BOOKS_LIST_PUBLIC_USER,
                 self::BOOKS_VIEW_PUBLIC_USER,
                 self::HOMEPAGE,
+                self::CONNECT_FACEBOOK,
+                self::CONNECT_FACEBOOK_CHECK,
+                self::CONNECT_GOOGLE,
+                self::CONNECT_GOOGLE_CHECK,
+                self::CONNECT_LINKEDIN,
+                self::CONNECT_LINKEDIN_CHECK,
+                self::CONNECT_GITHUB,
+                self::CONNECT_GITHUB_CHECK,
             ])
             && $event->getRequest()->get('autologin') != 1
         ) {
